@@ -1,5 +1,12 @@
+import AuthContents from "../../components/auth/auth-contents";
+import AuthContainer from "../../containers/auth-container";
+
 const AuthPage = () => {
-  return <div>AuthPage</div>;
+  return (
+    <AuthContainer>
+      <AuthContents />
+    </AuthContainer>
+  );
 };
 
 export default AuthPage;
