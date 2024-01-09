@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+
 import RootProvider from "./providers/root-provider";
+import CustomRoutes from "./routes/custom-routes";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,7 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RootProvider>
-      <App />
+      <CustomRoutes />
     </RootProvider>
   </React.StrictMode>
 );
