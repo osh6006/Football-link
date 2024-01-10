@@ -16,9 +16,12 @@ const Button: React.FunctionComponent<IButtonProps> = ({
     <button
       className={clsx(
         "bg-init flex select-none items-center justify-center gap-2 rounded-md border px-2 py-2 text-lg transition-colors hover:bg-slate-100",
-        color === "main" && "bg-Main text-White hover:bg-MainHover",
-        color === "secondary" && "bg-Seondary hover:bg-SeondaryHover",
-        color === "destructive" && "",
+        color === "main" &&
+          "border-Main bg-Main text-White hover:border-MainHover hover:bg-MainHover",
+        color === "secondary" &&
+          "bg-Seondary hover:border-SeondaryHover hover:bg-SeondaryHover",
+        color === "destructive" &&
+          "border-Red bg-Red text-White hover:border-RedHover hover:bg-RedHover",
       )}
       {...props}
     >
