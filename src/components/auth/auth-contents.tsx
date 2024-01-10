@@ -20,10 +20,10 @@ const AuthContents: React.FunctionComponent<IAuthContentsProps> = () => {
       {/* {step === 1 && <StepOne />} */}
       {step === 2 && <StepTwo />}
       {/* {step === 3 && <StepThree />} */}
-      <img
-        src="/images/soccer-ball.png"
-        alt="soccer-ball"
-        className="absolute -bottom-24 -right-16 w-[200px]"
+      <div
+        className="absolute -bottom-24 -right-16 w-[200px]
+        bg-[url('./assets/images/soccer-ball.png')]
+        "
       />
     </section>
   );

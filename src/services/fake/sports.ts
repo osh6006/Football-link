@@ -13,7 +13,7 @@ export const SportItems: Sport[] = [
   },
   {
     id: 3,
-    name: "BaseBall",
+    name: "Baseball",
     icon: "⚾",
   },
   {

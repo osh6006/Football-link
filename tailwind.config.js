@@ -18,6 +18,7 @@ module.exports = {
         White: "#FFFFFF",
         Red: "#EA5555",
         RedHover: "#FF9898",
+        Disabled: "#bdc3c7",
       },
     },
   },

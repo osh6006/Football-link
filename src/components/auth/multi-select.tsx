@@ -1,34 +1,27 @@
-import { useState } from "react";
 import { Sport } from "../../types";
 import { SportItems } from "../../services/fake/sports";
 import clsx from "clsx";
 
 interface IMultiSelectProps {
-  items: Sport[];
+  items: any[];
+  handleSelect: (sport: any) => void;
 }
 
-const MultiSelect: React.FunctionComponent<IMultiSelectProps> = ({ items }) => {
-  const [selectedItems, setSelectedItem] = useState<Sport[]>([]);
-
-  const handleSelect = (sport: Sport) => {
-    const findIdx = selectedItems.findIndex((el) => el.id === sport.id);
-    if (findIdx !== -1) {
-      setSelectedItem(selectedItems.filter((el) => el.id !== sport.id));
-    } else {
-      setSelectedItem((prevItems) => [...prevItems, sport]);
-    }
-  };
-
+const MultiSelect: React.FunctionComponent<IMultiSelectProps> = ({
+  items,
+  handleSelect,
+}) => {
   return (
     <ul className="z-10 grid w-full grid-cols-2 items-center justify-between gap-4 sm:grid-cols-3 ">
       {SportItems.map((sport) => (
         <li
           key={sport.id}
           className={clsx(
-            `flex cursor-pointer flex-nowrap items-center gap-x-2 rounded-sm border px-4 py-2 transition-colors 
-            hover:bg-Main hover:text-white`,
-            isIncludeInSelectedItem(selectedItems, sport.id) &&
-              "bg-Main text-white",
+            `flex cursor-pointer select-none flex-nowrap items-center gap-x-2 rounded-md border px-4 py-2 
+            text-sm transition-colors hover:bg-Main hover:text-white
+            sm:text-base
+            `,
+            isIncludeInSelectedItem(items, sport.id) && "bg-Main text-white",
           )}
           onClick={() => handleSelect(sport)}
         >
