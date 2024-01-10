@@ -1,11 +1,13 @@
-type Props = {
+interface IAuthContainerProps {
   children: React.ReactNode;
-};
+}
 
-const AuthContainer = (props: Props) => {
+const AuthContainer: React.FunctionComponent<IAuthContainerProps> = ({
+  children,
+}) => {
   return (
     <main className="flex h-[100dvh] w-[100dvw] items-center justify-center bg-LightGreyLightBg">
-      {props.children}
+      {children}
     </main>
   );
 };

@@ -1,9 +1,9 @@
-import React from "react";
+import * as React from "react";
 
-type Props = {};
+interface IErrorPageProps {}
 
-const ErrorPage = (props: Props) => {
-  return <div>ErrorPage</div>;
+const ErrorPage: React.FunctionComponent<IErrorPageProps> = () => {
+  return <div>error!</div>;
 };
 
 export default ErrorPage;

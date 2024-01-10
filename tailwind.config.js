@@ -6,6 +6,8 @@ module.exports = {
       colors: {
         Main: "#635FC7",
         MainHover: "#A8A4FF",
+        Seondary: "rgba(99, 95, 199, 0.10)",
+        SeondaryHover: "rgba(99, 95, 199, 0.25)",
         DarkGrey: "#2B2C37",
         MediumGrey: "#828FA3",
         VeryDarkGreyDark: "#20212C",
