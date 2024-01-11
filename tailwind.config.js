@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       colors: {
@@ -19,6 +22,7 @@ module.exports = {
         Red: "#EA5555",
         RedHover: "#FF9898",
         Disabled: "#bdc3c7",
+        DisabledColor: "#ecf0f1",
       },
     },
   },

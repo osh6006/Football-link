@@ -8,6 +8,22 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "wide";
 }
 
+const sizes = {
+  xs: "text-xs",
+  sm: "text-sm",
+  md: "text-base",
+  lg: "text-lg",
+  xl: "text-xl",
+  wide: "w-full",
+};
+
+const colors = {
+  main: "border-Main bg-Main text-White ",
+  secondary: "bg-Seondary text-Main",
+  destructive:
+    "border-Red bg-Red text-White hover:border-RedHover hover:bg-RedHover",
+};
+
 const Button: React.FunctionComponent<IButtonProps> = ({
   children,
   color,
@@ -18,20 +34,13 @@ const Button: React.FunctionComponent<IButtonProps> = ({
   return (
     <button
       className={clsx(
-        `bg-init flex transform select-none items-center justify-center gap-2 rounded-md border px-2 py-2 text-lg
+        `flex transform select-none items-center justify-center gap-2 rounded-md border px-2 py-2 text-lg
         transition-all active:scale-95
         `,
-        color === "main" && "border-Main bg-Main text-White ",
-        color === "secondary" && "bg-Seondary text-Main",
-        color === "destructive" &&
-          "border-Red bg-Red text-White hover:border-RedHover hover:bg-RedHover",
-        size === "xs" && "text-xs",
-        size === "sm" && "text-sm",
-        size === "md" && "text-base",
-        size === "lg" && "text-lg",
-        size === "xl" && "text-xl",
-        size === "wide" && "w-full",
-        disabled && "bg-Disabled pointer-events-none border-none",
+        disabled
+          ? "bg-Disabled text-DisabledColor pointer-events-none border-transparent"
+          : color && colors[color],
+        size && sizes[size],
       )}
       {...props}
     >

@@ -11,7 +11,7 @@ const StepTwo: React.FunctionComponent<IStepTwoProps> = () => {
 
   return (
     <>
-      <p className="mt-16 text-sm">선호하는 스포츠를 골라 주세요</p>
+      <p className="mt-10 text-sm sm:mt-16">선호하는 스포츠를 골라 주세요</p>
       <div className="mt-2 flex flex-col gap-y-2">
         <MultiSelect items={sports} handleSelect={setSports} />
       </div>
