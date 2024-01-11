@@ -29,6 +29,7 @@ const Button: React.FunctionComponent<IButtonProps> = ({
   color,
   size,
   disabled,
+  iconSrc,
   ...props
 }) => {
   return (
@@ -44,7 +45,7 @@ const Button: React.FunctionComponent<IButtonProps> = ({
       )}
       {...props}
     >
-      {props.iconSrc && <img src={props.iconSrc} alt="iconSrc" />}
+      {iconSrc && <img src={iconSrc} alt="iconSrc" />}
       {children}
     </button>
   );

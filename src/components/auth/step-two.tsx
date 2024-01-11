@@ -7,7 +7,7 @@ import MultiSelect from "./multi-select";
 interface IStepTwoProps {}
 
 const StepTwo: React.FunctionComponent<IStepTwoProps> = () => {
-  const { sports, setSports } = useAuthStore();
+  const { sports, setSports, nextStep } = useAuthStore();
 
   return (
     <>
@@ -17,7 +17,7 @@ const StepTwo: React.FunctionComponent<IStepTwoProps> = () => {
       </div>
       <div className="mt-4 flex w-full justify-start">
         <Button
-          onClick={() => {}}
+          onClick={() => nextStep()}
           size="wide"
           color="main"
           disabled={sports.length < 1}
