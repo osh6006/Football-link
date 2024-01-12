@@ -1,13 +1,20 @@
 import { create } from "zustand";
+
+import { supabase } from "../libs/superbase-client";
+
 import { Sport } from "../types";
+import { Session } from "@supabase/supabase-js";
 
 interface AuthState {
   step: number;
-  minStep: 1;
-  maxStep: 3;
-  userInfo: {} | null;
+  minStep: number;
+  maxStep: number;
   sports: Sport[];
+  session: Session | null;
+  setSession: (sesstion: Session | null) => void;
   setSports: (sport: Sport) => void;
+  signIn: (provider: "google" | "github") => void;
+  signOut: () => void;
   nextStep: () => void;
   prevStep: () => void;
 }
@@ -16,8 +23,8 @@ export const useAuthStore = create<AuthState>()((set) => ({
   step: 1,
   minStep: 1,
   maxStep: 3,
-  userInfo: null,
   sports: [],
+  session: null,
   setSports: (sport: Sport) =>
     set((state) => {
       const findIdx = state.sports.findIndex((el) => el.id === sport.id);
@@ -41,4 +48,30 @@ export const useAuthStore = create<AuthState>()((set) => ({
       }
       return { step: state.step + 1 };
     }),
+  signIn: async (provider) => {
+    try {
+      await supabase.auth.signInWithOAuth({
+        provider: provider,
+        options: {
+          queryParams: {
+            access_type: "offline",
+            prompt: "consent",
+          },
+          redirectTo: `${window.location.origin}/auth`,
+        },
+      });
+    } catch (error) {
+      throw new Error(`${provider} signIn Error`);
+    }
+  },
+  setSession: async (session) =>
+    set(() => {
+      return { session: session };
+    }),
+  signOut: async () => {
+    await supabase.auth.signOut();
+    set(() => {
+      return { session: null };
+    });
+  },
 }));

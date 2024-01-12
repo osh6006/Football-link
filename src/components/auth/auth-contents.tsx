@@ -5,7 +5,6 @@ import StepThree from "./step-three";
 import StepTwo from "./step-two";
 
 interface IAuthContentsProps {}
-
 const AuthContents: React.FunctionComponent<IAuthContentsProps> = () => {
   const { step } = useAuthStore();
   return (
@@ -14,7 +13,7 @@ const AuthContents: React.FunctionComponent<IAuthContentsProps> = () => {
         className="flex flex-col items-center text-xl font-semibold
         sm:flex-row sm:justify-between"
       >
-        <h1 className="text-lg sm:text-xl">
+        <h1 className="sm:tex-xl text-lg">
           <strong className="text-Main">SpoLink</strong>에 오신 것을 환영합니다!
         </h1>
         <p
