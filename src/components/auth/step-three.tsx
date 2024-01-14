@@ -4,6 +4,7 @@ import { supabase } from "../../libs/superbase-client";
 import { addUserIdToArray } from "../../utils/util";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 interface IStepThreeProps {}
 
@@ -25,13 +26,14 @@ const StepThree: React.FunctionComponent<IStepThreeProps> = (props) => {
           .select();
 
         if (error) {
+          toast.error(error.message);
           setError(error.message);
           break;
         }
       }
 
       if (!error) {
-        nav("/");
+        nav("/", { replace: true });
       }
     }
   };

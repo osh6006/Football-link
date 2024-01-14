@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import RootProvider from "./providers/root-provider";
 import CustomRoutes from "./routes/custom-routes";
+import { Toaster } from "react-hot-toast";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -12,6 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RootProvider>
+      <Toaster />
       <CustomRoutes />
     </RootProvider>
   </React.StrictMode>,

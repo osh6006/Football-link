@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { supabase } from "../libs/superbase-client";
 import { useAuthStepStore } from "../stores/auth-step-store";
+import toast from "react-hot-toast";
 
 export default function useAuth() {
   const { setStep } = useAuthStepStore();
@@ -12,7 +13,13 @@ export default function useAuth() {
     const checkSession = async () => {
       const {
         data: { session },
+        error,
       } = await supabase.auth.getSession();
+
+      if (error) {
+        toast.error(error.message);
+        return;
+      }
 
       const userId = session?.user.id;
 
@@ -36,6 +43,7 @@ export default function useAuth() {
 
     checkSession();
   }, []);
+
   const signIn = async (provider: "google" | "github") => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: provider,
@@ -49,14 +57,19 @@ export default function useAuth() {
     });
 
     if (error) {
-      return error?.message;
+      toast.error(error.message);
+      return error.message;
     }
   };
 
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      toast.error(error.message);
+      return error.message;
+    }
     nav("/auth", { replace: true });
-    return error?.message;
   };
 
   return { signOut, signIn };

@@ -6,7 +6,7 @@ import {
 
 import App from "../App";
 import Home from "../pages/after-login/home";
-import AuthPage from "../pages/before-login/auth";
+import AuthPage from "../pages/before-login/auth-page";
 import ErrorPage from "../pages/error-page";
 import ProtectedRoute from "./protected-route";
 
