@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { useAuthStore } from "../stores/auth-store";
+import useAuth from "../hooks/use-auth";
 
 interface IPrivateRouteProps {
   children: React.ReactNode;
@@ -9,11 +10,7 @@ interface IPrivateRouteProps {
 const ProtectedRoute: React.FunctionComponent<IPrivateRouteProps> = ({
   children,
 }) => {
-  const { userInfo } = useAuthStore();
-
-  if (!userInfo) {
-    return <Navigate to="/auth" replace />;
-  }
+  useAuth();
   return <>{children}</>;
 };
 

@@ -29,9 +29,11 @@ export default function useAuth() {
           .select()
           .eq("user_id", userId);
 
+        console.log(sports);
+
         if (sports && sports?.length > 0) {
           console.log("Has sports");
-          nav("/");
+          nav("/", { replace: false });
         }
 
         if (userId && sports?.length === 0) {
@@ -42,7 +44,7 @@ export default function useAuth() {
     };
 
     checkSession();
-  }, []);
+  }, [nav, setStep]);
 
   const signIn = async (provider: "google" | "github") => {
     const { error } = await supabase.auth.signInWithOAuth({
