@@ -34,6 +34,7 @@ const StepThree: React.FunctionComponent<IStepThreeProps> = (props) => {
 
       if (!error) {
         nav("/", { replace: true });
+        setStep(1);
       }
     }
   };

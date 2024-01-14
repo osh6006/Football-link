@@ -29,8 +29,6 @@ export default function useAuth() {
           .select()
           .eq("user_id", userId);
 
-        console.log(sports);
-
         if (sports && sports?.length > 0) {
           console.log("Has sports");
           nav("/", { replace: false });
@@ -38,6 +36,7 @@ export default function useAuth() {
 
         if (userId && sports?.length === 0) {
           console.log("Not has sports");
+          nav("/auth");
           setStep(2);
         }
       }
