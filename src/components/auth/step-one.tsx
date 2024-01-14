@@ -1,11 +1,11 @@
-import { useAuthStore } from "../../stores/auth-store";
+import useAuth from "../../hooks/use-auth";
 
 import Button from "../common/Button";
 
 interface IStepOneProps {}
 
-const StepOne: React.FunctionComponent<IStepOneProps> = (props) => {
-  const { nextStep, signIn } = useAuthStore();
+const StepOne: React.FunctionComponent<IStepOneProps> = () => {
+  const { signIn } = useAuth();
 
   const handleGoogleBtn = async () => {
     signIn("google");

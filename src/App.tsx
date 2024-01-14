@@ -1,8 +1,19 @@
+import { Outlet } from "react-router-dom";
+import useAuth from "./hooks/use-auth";
+import Button from "./components/common/Button";
+
 function App() {
+  const { signOut } = useAuth();
+
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </div>
+    <>
+      {/* Nav */}
+      <div>Nav</div>
+      {/* Pages */}
+      <div>App</div>
+      <Button onClick={signOut}>SignOut</Button>
+      <Outlet />
+    </>
   );
 }
 

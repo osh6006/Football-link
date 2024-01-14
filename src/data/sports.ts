@@ -1,24 +1,24 @@
-import { Sport } from "../../types";
+import { InsertSports } from "../types";
 
-export const SportItems: Sport[] = [
+export const SportItems: InsertSports[] = [
   {
-    id: 1,
     name: "Soccer",
     icon: "⚽",
+    value: "foot-ball",
   },
   {
-    id: 2,
     name: "Basketball",
     icon: "🏀",
+    value: "Basketball",
   },
   {
-    id: 3,
     name: "Baseball",
     icon: "⚾",
+    value: "Baseball",
   },
   {
-    id: 4,
     name: "Golf",
     icon: "⛳",
+    value: "Golf",
   },
 ];

@@ -1,4 +1,6 @@
-import { useAuthStore } from "../../stores/auth-store";
+import { supabase } from "../../libs/superbase-client";
+
+import { useAuthStepStore } from "../../stores/auth-step-store";
 
 import StepOne from "./step-one";
 import StepThree from "./step-three";
@@ -6,7 +8,8 @@ import StepTwo from "./step-two";
 
 interface IAuthContentsProps {}
 const AuthContents: React.FunctionComponent<IAuthContentsProps> = () => {
-  const { step } = useAuthStore();
+  const { step } = useAuthStepStore();
+
   return (
     <section className="relative h-fit w-full max-w-xl overflow-hidden rounded-md bg-White p-8 shadow-md">
       <div
@@ -16,14 +19,6 @@ const AuthContents: React.FunctionComponent<IAuthContentsProps> = () => {
         <h1 className="sm:tex-xl text-lg">
           <strong className="text-Main">SpoLink</strong>에 오신 것을 환영합니다!
         </h1>
-        <p
-          className="mt-2 flex items-center gap-x-2 text-base font-semibold text-LinesDark
-          sm:mt-0"
-        >
-          {step}
-          <span className="text-xs">/</span>
-          <strong className="text-Main">3</strong>
-        </p>
       </div>
       {step === 1 && <StepOne />}
       {step === 2 && <StepTwo />}

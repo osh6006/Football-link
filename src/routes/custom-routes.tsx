@@ -6,37 +6,35 @@ import {
 
 import App from "../App";
 import Home from "../pages/after-login/home";
-import ProtectedRoute from "./protected-route";
 import AuthPage from "../pages/before-login/auth";
 import ErrorPage from "../pages/error-page";
+import ProtectedRoute from "./protected-route";
 
 const CustomRoutes = () => {
-  const userInfo = false;
   const routes: RouteObject[] = [
     {
       path: "/",
-      element: <ProtectedRoute userInfo={userInfo} />,
+      element: (
+        <ProtectedRoute>
+          <App />
+        </ProtectedRoute>
+      ),
+      errorElement: <ErrorPage />,
       children: [
         {
-          path: "/",
-          element: <App />,
-          children: [{ path: "/home", element: <Home /> }],
+          path: "/home",
+          element: <Home />,
         },
       ],
     },
-  ];
-
-  const routesForNotAuthenticatedOnly: RouteObject[] = [
     {
       path: "/auth",
-      element: !userInfo ? <AuthPage /> : <ErrorPage />,
+      element: <AuthPage />,
+      errorElement: <ErrorPage />,
     },
   ];
 
-  const router = createBrowserRouter([
-    ...routes,
-    ...routesForNotAuthenticatedOnly,
-  ]);
+  const router = createBrowserRouter([...routes]);
 
   return <RouterProvider router={router} />;
 };

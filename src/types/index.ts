@@ -1,1 +1,1 @@
-export type { Sport } from "./sports";
+export type { InsertSports } from "./sports";

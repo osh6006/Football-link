@@ -30,16 +30,17 @@ const Button: React.FunctionComponent<IButtonProps> = ({
   size,
   disabled,
   iconSrc,
+  className,
   ...props
 }) => {
   return (
     <button
       className={clsx(
-        `flex transform select-none items-center justify-center gap-2 rounded-md border px-2 py-2 text-lg
+        `${className} flex transform select-none items-center justify-center gap-2 rounded-md border px-2 py-2 text-lg
         transition-all active:scale-95
         `,
         disabled
-          ? "bg-Disabled text-DisabledColor pointer-events-none border-transparent"
+          ? "pointer-events-none border-transparent bg-Disabled text-DisabledColor"
           : color && colors[color],
         size && sizes[size],
       )}

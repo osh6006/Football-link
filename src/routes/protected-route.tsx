@@ -1,17 +1,20 @@
-import { Navigate, Outlet } from "react-router-dom";
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { useAuthStore } from "../stores/auth-store";
 
-interface ProtectedRouteProps {
-  userInfo: boolean;
+interface IPrivateRouteProps {
+  children: React.ReactNode;
 }
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ userInfo }) => {
-  if (!userInfo) {
-    // 유저 정보가 없다면 홈으로! 혹은 로그인페이지로 가게 할 수 있음
-    return <Navigate to="/auth" replace={true} />;
-  }
+const ProtectedRoute: React.FunctionComponent<IPrivateRouteProps> = ({
+  children,
+}) => {
+  const { userInfo } = useAuthStore();
 
-  // 유저 정보가 있다면 자식 컴포넌트를 보여줌
-  return <Outlet />;
+  if (!userInfo) {
+    return <Navigate to="/auth" replace />;
+  }
+  return <>{children}</>;
 };
 
 export default ProtectedRoute;
