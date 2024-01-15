@@ -1,9 +1,9 @@
 import { useAuthStepStore } from "../../stores/auth-step-store";
 
 import AuthContainer from "../../containers/auth-container";
-import StepOne from "../../components/auth/step-one";
-import StepThree from "../../components/auth/step-three";
-import StepTwo from "../../components/auth/step-two";
+import StepOne from "../../components/auth-page/step-one";
+import StepThree from "../../components/auth-page/step-three";
+import StepTwo from "../../components/auth-page/step-two";
 
 const AuthPage = () => {
   const { step } = useAuthStepStore();

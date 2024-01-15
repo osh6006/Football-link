@@ -36,9 +36,12 @@ export default function useAuth() {
 
         if (userId && sports?.length === 0) {
           console.log("Not has sports");
-          nav("/auth");
+          nav("/auth", { replace: false });
           setStep(2);
         }
+      } else {
+        console.log("not has session user");
+        nav("/auth", { replace: false });
       }
     };
 
