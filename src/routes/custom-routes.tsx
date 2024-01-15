@@ -24,6 +24,12 @@ const CustomRoutes = () => {
         {
           path: "/home",
           element: <Home />,
+          children: [
+            {
+              path: "test",
+              element: <div>test</div>,
+            },
+          ],
         },
       ],
     },

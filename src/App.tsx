@@ -1,14 +1,22 @@
 import { Outlet } from "react-router-dom";
+import Navbar from "./components/navbar/navbar";
+import RootContainer from "./containers/root-container";
+import LeftSidebar from "./components/navbar/left-sidebar";
+import RightSidebar from "./components/navbar/right-sidebar";
 
 function App() {
   return (
-    <>
-      {/* Nav */}
-      <div>Nav</div>
-      {/* Pages */}
-      <div>App</div>
-      <Outlet />
-    </>
+    <RootContainer>
+      {/* Left Side Bar */}
+      <LeftSidebar />
+      {/* Nav & Page*/}
+      <section className="h-full flex-1 bg-slate-700">
+        <Navbar />
+        <Outlet />
+      </section>
+      {/* Right Side bar */}
+      <RightSidebar />
+    </RootContainer>
   );
 }
 
