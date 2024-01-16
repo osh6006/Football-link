@@ -5,10 +5,13 @@ import {
 } from "react-router-dom";
 
 import App from "../App";
-import Home from "../pages/after-login/home";
 import AuthPage from "../pages/before-login/auth-page";
-import ErrorPage from "../pages/error-page";
 import ProtectedRoute from "./protected-route";
+import ErrorPage from "../pages/error-page";
+import HomePage from "../pages/after-login/home-page";
+import RankPage from "../pages/after-login/rank-page";
+import SchedulePage from "../pages/after-login/schedule-page";
+import NewsPage from "../pages/after-login/news-page";
 
 const CustomRoutes = () => {
   const routes: RouteObject[] = [
@@ -23,13 +26,19 @@ const CustomRoutes = () => {
       children: [
         {
           path: "/home",
-          element: <Home />,
-          children: [
-            {
-              path: "test",
-              element: <div>test</div>,
-            },
-          ],
+          element: <HomePage />,
+        },
+        {
+          path: "/rank",
+          element: <RankPage />,
+        },
+        {
+          path: "/schedule",
+          element: <SchedulePage />,
+        },
+        {
+          path: "/news",
+          element: <NewsPage />,
         },
       ],
     },
