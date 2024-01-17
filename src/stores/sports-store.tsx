@@ -1,24 +1,24 @@
 import { create } from "zustand";
-import { InsertSports } from "../types";
+import { InsertSports, Sports } from "../types";
 
 interface ISportsStore {
   sports: InsertSports[];
-  selectedSport: InsertSports | null;
+  selectedSport: Sports | null;
   setSports: (sports: InsertSports[]) => void;
   selectSport: (sports: InsertSports) => void;
 }
 
-export const useThemeStore = create<ISportsStore>()((set) => ({
+export const useSportStore = create<ISportsStore>()((set) => ({
   sports: [],
   selectedSport: null,
   setSports: (sports: InsertSports[]) =>
     set(() => {
       return { sports };
     }),
-  selectSport: (sport: InsertSports) =>
+  selectSport: (sport: Sports) =>
     set(() => {
       return { selectedSport: sport };
     }),
 }));
 
-export default useThemeStore;
+export default useSportStore;

@@ -5,6 +5,9 @@ import ThemeSwitch from "./theme-switch";
 import useThemeStore from "../../stores/theme-store";
 import usePath from "../../hooks/use-path";
 import SelectBox from "./select-box";
+import { useSportsQuery } from "../../hooks/use-sports";
+import useSportStore from "../../stores/sports-store";
+import { useEffect } from "react";
 
 interface ISidebarProps {}
 
@@ -12,6 +15,14 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
   const nav = useNavigate();
   const { paths, realPath } = usePath();
   const { theme } = useThemeStore();
+  const { data, isLoading } = useSportsQuery();
+  const { selectSport, selectedSport } = useSportStore();
+
+  useEffect(() => {
+    if (data && data?.length > 0) {
+      selectSport(data[0]);
+    }
+  }, [data, selectSport]);
 
   return (
     <aside
@@ -32,15 +43,22 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
         <p className="my-2 text-sm uppercase tracking-wider text-Main">
           Sports
         </p>
-        <SelectBox label="Selected Sports" />
+        <SelectBox
+          isLoading={isLoading}
+          items={data}
+          setItem={selectSport}
+          icon={selectedSport?.icon}
+          name={selectedSport?.name}
+        />
       </div>
       {/* league Selector */}
       <div className="Leagues px-2">
         <p className="my-2 text-sm uppercase tracking-wider text-Main">
           Leagues
         </p>
-        <SelectBox label="Selected Sports" />
+        {/* <SelectBox isLoading={true} items={[]} /> */}
       </div>
+
       <ul className=" flex-1">
         <p className="mx-2 my-2 text-sm uppercase tracking-wider text-Main">
           Menus

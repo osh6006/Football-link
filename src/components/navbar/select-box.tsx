@@ -4,17 +4,22 @@ import clsx from "clsx";
 import { CSSTransition } from "react-transition-group";
 
 import "./select-box.css";
+import Loading from "../common/Loading";
 
 interface ISelectBoxProps<T> {
-  label: string;
+  name?: string;
   icon?: string;
-  items?: T[];
+  items: T[] | null | undefined;
+  isLoading: boolean;
+  setItem: (item: T) => void;
 }
 
 const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
-  label,
+  name,
   icon,
   items,
+  isLoading,
+  setItem,
 }) => {
   const { theme } = useThemeStore();
   const listboxRef = useRef<HTMLDivElement>(null);
@@ -49,6 +54,7 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
     <div className="relative mt-2" ref={listboxRef}>
       {/* show side */}
       <button
+        disabled={isLoading}
         onClick={toggleSelectBox}
         type="button"
         className={clsx(
@@ -65,8 +71,16 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
         aria-labelledby="listbox-label"
       >
         <span className="flex items-center">
-          <span className="ml-2 block truncate">{icon}</span>
-          <span className="ml-2 block truncate">{label}</span>
+          {isLoading ? (
+            <div className="mx-auto">
+              <Loading size="sm" />
+            </div>
+          ) : (
+            <>
+              <span className="ml-2 block truncate">{icon || "not Icon"}</span>
+              <span className="ml-2 block truncate">{name || "not name"}</span>
+            </>
+          )}
         </span>
         <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
           <svg
@@ -106,68 +120,45 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
           aria-activedescendant="listbox-option-3"
           tabIndex={-1}
         >
-          <li
-            className={clsx(
-              `
-          relative cursor-pointer select-none py-2 pl-3 pr-9
-          transition-colors hover:bg-MainHover hover:text-White
-          `,
-              theme === "light" && "bg-LightGreyLightBg",
-              theme === "dark" && "bg-VeryDarkGreyDark",
-            )}
-          >
-            <div className="flex items-center">
-              <span>icon</span>
-              <span className="ml-3 block truncate font-normal">축구</span>
-            </div>
+          {items?.map((el) => (
+            <li
+              key={el.value}
+              onClick={() => {
+                setItem(el);
+                setIsOpen(!isOpen);
+              }}
+              className={clsx(
+                `
+                    relative cursor-pointer select-none py-2 pl-3 pr-9 
+                    transition-all hover:bg-MainHover hover:text-White active:scale-90
+                    `,
+                theme === "light" && "bg-LightGreyLightBg",
+                theme === "dark" && "bg-VeryDarkGreyDark",
+              )}
+            >
+              <div className="flex items-center">
+                <span>{el.icon}</span>
+                <span className="ml-3 block truncate font-normal">
+                  {el.name}
+                </span>
+              </div>
 
-            <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-Main">
-              <svg
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </span>
-          </li>
-          <li
-            className={clsx(
-              `
-          relative cursor-pointer select-none py-2 pl-3 pr-9
-          transition-colors hover:bg-MainHover hover:text-White
-          `,
-              theme === "light" && "bg-LightGreyLightBg",
-              theme === "dark" && "bg-VeryDarkGreyDark",
-            )}
-          >
-            <div className="flex items-center">
-              <span>icon</span>
-              <span className="ml-3 block truncate font-normal">
-                Wade Cooper
+              <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-Main">
+                <svg
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                    clipRule="evenodd"
+                  />
+                </svg>
               </span>
-            </div>
-
-            <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-Main">
-              <svg
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </span>
-          </li>
+            </li>
+          ))}
         </ul>
       </CSSTransition>
     </div>
