@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import ThemeSwitch from "./theme-switch";
 import useThemeStore from "../../stores/theme-store";
 import usePath from "../../hooks/use-path";
+import SelectBox from "./select-box";
 
-interface ILeftSidebarProps {}
+interface ISidebarProps {}
 
-const LeftSidebar: React.FunctionComponent<ILeftSidebarProps> = () => {
+const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
   const nav = useNavigate();
   const { paths, realPath } = usePath();
   const { theme } = useThemeStore();
@@ -27,9 +28,20 @@ const LeftSidebar: React.FunctionComponent<ILeftSidebarProps> = () => {
       </div>
 
       {/* Sports Selector */}
+      <div className="Sports px-2">
+        <p className="my-2 text-sm uppercase tracking-wider text-Main">
+          Sports
+        </p>
+        <SelectBox label="Selected Sports" />
+      </div>
       {/* league Selector */}
-
-      <ul className="flex-1 ">
+      <div className="Leagues px-2">
+        <p className="my-2 text-sm uppercase tracking-wider text-Main">
+          Leagues
+        </p>
+        <SelectBox label="Selected Sports" />
+      </div>
+      <ul className=" flex-1">
         <p className="mx-2 my-2 text-sm uppercase tracking-wider text-Main">
           Menus
         </p>
@@ -64,4 +76,4 @@ const LeftSidebar: React.FunctionComponent<ILeftSidebarProps> = () => {
   );
 };
 
-export default LeftSidebar;
+export default Sidebar;

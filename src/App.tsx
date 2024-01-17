@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import RootContainer from "./containers/root-container";
-import LeftSidebar from "./components/navbar/left-sidebar";
+import Sidebar from "./components/navbar/sidebar";
 
 function App() {
   return (
     <RootContainer>
-      {/* Left Side Bar */}
-      <LeftSidebar />
+      {/*  Side Bar */}
+      <Sidebar />
       {/* Nav & Page*/}
       <section className="h-full flex-1 ">
         <Navbar />

@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <nav
       className={clsx(
-        `fix  inset-x-0 top-0 flex h-[55px] items-center border px-4 capitalize`,
+        `fix  inset-x-0 top-0 flex h-[55px] items-center  border-b border-MediumGrey px-4 capitalize`,
         theme === "light" ? "bg-White" : "bg-DarkGrey",
       )}
     >
