@@ -4,14 +4,13 @@ import { useMatches } from "react-router-dom";
 import Avatar from "../common/avatar";
 import useAuth from "../../hooks/use-auth";
 import Button from "../common/button";
+import AvatarMenu from "./avatar-menu";
 
 const Navbar = () => {
   const { user } = useAuth();
   const { theme } = useThemeStore();
   const { pathname } = useMatches()[1] || [];
   let newPath = pathname?.replace(/\//g, "") || "";
-
-  console.log(user);
 
   return (
     <nav
@@ -23,7 +22,7 @@ const Navbar = () => {
       <div className="flex-1">{newPath}</div>
       <div className="">
         {user ? (
-          <Avatar imgUrl={user.user_metadata.avatar_url} size="md" />
+          <AvatarMenu user={user} size="md" />
         ) : (
           <Button onClick={() => {}} size="sm">
             로그인

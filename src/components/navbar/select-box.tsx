@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import useThemeStore from "../../stores/theme-store";
 import clsx from "clsx";
 import { CSSTransition } from "react-transition-group";
 
 import "./select-box.css";
 import Loading from "../common/loading";
+import useOutsideClick from "../../hooks/use-outside-click";
 
 interface ISelectBoxProps<T> {
   name?: string;
@@ -22,36 +23,15 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
   setItem,
 }) => {
   const { theme } = useThemeStore();
-  const listboxRef = useRef<HTMLDivElement>(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, setIsOpen, ref } = useOutsideClick();
   const nodeRef = useRef(null);
 
   const toggleSelectBox = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleOutsideClick = useCallback(
-    (event: MouseEvent) => {
-      if (
-        listboxRef.current &&
-        !listboxRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    },
-    [setIsOpen],
-  );
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
-
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [handleOutsideClick]);
-
   return (
-    <div className="relative mt-2" ref={listboxRef}>
+    <div className="relative mt-2" ref={ref}>
       {/* show side */}
       <button
         disabled={isLoading}
@@ -110,7 +90,7 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
           ref={nodeRef}
           className={clsx(
             `
-          t absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-transparent text-base 
+          absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-transparent text-base 
         shadow-lg focus:outline-none sm:text-sm
           
           `,
