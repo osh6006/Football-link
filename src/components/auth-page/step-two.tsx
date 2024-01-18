@@ -1,6 +1,6 @@
 import { MoveRight } from "lucide-react";
 
-import Button from "../common/Button";
+import Button from "../common/button";
 import MultiSelect from "./multi-select";
 import { useAuthStepStore } from "../../stores/auth-step-store";
 

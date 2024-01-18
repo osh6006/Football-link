@@ -32,14 +32,15 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
         theme === "light" ? "bg-White " : "bg-DarkGrey ",
       )}
     >
+      {/* logo */}
       <div className="flex h-[55px] items-center px-4">
         <h1 className="w-fit cursor-pointer select-none text-2xl font-semibold uppercase text-Main">
           Spolink
         </h1>
       </div>
 
-      {/* Sports Selector */}
-      <div className="Sports px-2">
+      <div className="px-2">
+        {/* Sports Selector */}
         <p className="my-2 text-sm uppercase tracking-wider text-Main">
           Sports
         </p>
@@ -50,13 +51,18 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
           icon={selectedSport?.icon}
           name={selectedSport?.name}
         />
-      </div>
-      {/* league Selector */}
-      <div className="Leagues px-2">
+
+        {/* league Selector */}
         <p className="my-2 text-sm uppercase tracking-wider text-Main">
           Leagues
         </p>
-        {/* <SelectBox isLoading={true} items={[]} /> */}
+        <SelectBox
+          isLoading={isLoading}
+          items={data}
+          setItem={selectSport}
+          icon={selectedSport?.icon}
+          name={selectedSport?.name}
+        />
       </div>
 
       <ul className=" flex-1">

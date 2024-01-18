@@ -1,6 +1,6 @@
 import useAuth from "../../hooks/use-auth";
 
-import Button from "../common/Button";
+import Button from "../common/button";
 
 interface IStepOneProps {}
 

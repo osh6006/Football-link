@@ -1,4 +1,4 @@
-import Button from "../common/Button";
+import Button from "../common/button";
 import { useAuthStepStore } from "../../stores/auth-step-store";
 import { supabase } from "../../libs/superbase-client";
 import { addUserIdToArray } from "../../utils/util";

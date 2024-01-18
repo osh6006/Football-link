@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { CSSTransition } from "react-transition-group";
 
 import "./select-box.css";
-import Loading from "../common/Loading";
+import Loading from "../common/loading";
 
 interface ISelectBoxProps<T> {
   name?: string;
@@ -143,22 +143,42 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
                 </span>
               </div>
 
-              <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-Main">
-                <svg
-                  className="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </span>
+              {name === el.name && (
+                <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-Main">
+                  <svg
+                    className="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </span>
+              )}
             </li>
           ))}
+          <li
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+            className={clsx(
+              `
+                    relative cursor-pointer select-none py-2 pl-3 pr-9
+                    transition-all hover:bg-MainHover hover:text-White active:scale-90
+                    `,
+              theme === "light" && "bg-LightGreyLightBg",
+              theme === "dark" && "bg-VeryDarkGreyDark",
+            )}
+          >
+            <div className="flex items-center justify-center gap-x-2">
+              <span>more</span>
+              <span className="block truncate font-normal">+</span>
+            </div>
+          </li>
         </ul>
       </CSSTransition>
     </div>
