@@ -1,13 +1,16 @@
 import clsx from "clsx";
 
-import { useNavigate } from "react-router-dom";
-import ThemeSwitch from "./theme-switch";
-import useThemeStore from "../../stores/theme-store";
-import usePath from "../../hooks/use-path";
-import SelectBox from "./select-box";
-import { useSportsQuery } from "../../hooks/use-sports";
-import useSportStore from "../../stores/sports-store";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import usePath from "../../hooks/use-path";
+import { useSportsQuery } from "../../hooks/use-sports";
+import useThemeStore from "../../stores/theme-store";
+import useSportStore from "../../stores/sports-store";
+import useModalsStore from "../../stores/modals-store";
+
+import SelectBox from "./select-box";
+import ThemeSwitch from "./theme-switch";
 
 interface ISidebarProps {}
 
@@ -17,6 +20,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
   const { theme } = useThemeStore();
   const { data, isLoading } = useSportsQuery();
   const { selectSport, selectedSport } = useSportStore();
+  const { openSportsSettingModal } = useModalsStore();
 
   useEffect(() => {
     if (data && data?.length > 0) {
@@ -50,6 +54,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
           setItem={selectSport}
           icon={selectedSport?.icon}
           name={selectedSport?.name}
+          moreAction={openSportsSettingModal}
         />
 
         {/* league Selector */}

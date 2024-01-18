@@ -1,8 +1,9 @@
 import clsx from "clsx";
-import useThemeStore from "../../stores/theme-store";
 import { useMatches } from "react-router-dom";
-import Avatar from "../common/avatar";
+
 import useAuth from "../../hooks/use-auth";
+import useThemeStore from "../../stores/theme-store";
+
 import Button from "../common/button";
 import AvatarMenu from "./avatar-menu";
 
@@ -20,6 +21,7 @@ const Navbar = () => {
       )}
     >
       <div className="flex-1">{newPath}</div>
+
       <div className="">
         {user ? (
           <AvatarMenu user={user} size="md" />

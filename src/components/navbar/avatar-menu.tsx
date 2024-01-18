@@ -19,8 +19,7 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({
   user,
   size,
 }) => {
-  const { isOpen, setIsOpen, ref } = useOutsideClick();
-  const nodeRef = useRef(null);
+  const { isOpen, setIsOpen, ref, nodeRef } = useOutsideClick();
 
   return (
     <div
