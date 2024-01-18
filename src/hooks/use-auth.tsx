@@ -1,13 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { supabase } from "../libs/superbase-client";
 import { useAuthStepStore } from "../stores/auth-step-store";
 import toast from "react-hot-toast";
+import { User } from "@supabase/gotrue-js";
 
 export default function useAuth() {
   const { setStep } = useAuthStepStore();
   const nav = useNavigate();
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const checkSession = async () => {
@@ -24,6 +26,7 @@ export default function useAuth() {
       const userId = session?.user.id;
 
       if (userId) {
+        setUser(session.user);
         let { data: sports } = await supabase
           .from("sports")
           .select()
@@ -76,5 +79,5 @@ export default function useAuth() {
     nav("/auth", { replace: true });
   };
 
-  return { signOut, signIn };
+  return { signOut, signIn, user };
 }
