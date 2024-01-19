@@ -1,7 +1,4 @@
 import clsx from "clsx";
-import { useRef, useState } from "react";
-import useThemeStore from "../../stores/theme-store";
-
 import { User } from "@supabase/gotrue-js";
 
 import Avatar from "../common/avatar";
@@ -9,6 +6,8 @@ import { CSSTransition } from "react-transition-group";
 
 import "./avatar-menu.css";
 import useOutsideClick from "../../hooks/use-outside-click";
+import { supabase } from "../../libs/superbase-client";
+import useAuth from "../../hooks/use-auth";
 
 interface IAvatarMenuProps {
   user: User;
@@ -20,6 +19,7 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({
   size,
 }) => {
   const { isOpen, setIsOpen, ref, nodeRef } = useOutsideClick();
+  const { signOut } = useAuth();
 
   return (
     <div
@@ -44,6 +44,7 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({
           )}
         >
           <li
+            onClick={async () => signOut()}
             className={clsx(
               `
                 relative cursor-pointer select-none rounded-md p-1

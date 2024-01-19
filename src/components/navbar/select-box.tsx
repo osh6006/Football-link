@@ -4,7 +4,7 @@ import { CSSTransition } from "react-transition-group";
 
 import "./select-box.css";
 import useOutsideClick from "../../hooks/use-outside-click";
-import Loading from "../common/Loading";
+import Loading from "../common/loading";
 
 interface ISelectBoxProps<T> {
   name?: string;
