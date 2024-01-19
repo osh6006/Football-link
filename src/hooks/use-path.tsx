@@ -12,7 +12,7 @@ export default function usePath() {
 
   const paths = [
     {
-      name: "홈 피드",
+      name: "홈",
       path: "/",
       icon: <LayoutDashboardIcon />,
     },
@@ -32,5 +32,12 @@ export default function usePath() {
       icon: <Newspaper />,
     },
   ];
-  return { paths, realPath };
+
+  const pathNameKor = getPathNameInPaths(paths, realPath);
+
+  return { paths, realPath, pathname, pathNameKor };
+}
+
+function getPathNameInPaths(paths: any[], path: string) {
+  return paths.find((el) => el.path === path).name;
 }

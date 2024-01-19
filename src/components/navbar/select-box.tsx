@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import useThemeStore from "../../stores/theme-store";
 import clsx from "clsx";
 import { CSSTransition } from "react-transition-group";
