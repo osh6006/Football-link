@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import Modal from "./modal";
 import ModalContainer from "./modal-container";
 import useModalsStore from "../../stores/modals-store";
@@ -10,24 +9,18 @@ const SportsSettingModal: React.FunctionComponent<
 > = () => {
   const { isOpenSportsSettingModal, closeSportsSettingModal } =
     useModalsStore();
-  const nodeRef = useRef(null);
-
-  console.log(isOpenSportsSettingModal);
 
   return (
-    <>
-      <Modal
-        title=""
-        desc=""
-        isOpen={isOpenSportsSettingModal}
-        onClose={() => closeSportsSettingModal()}
-        nodeRef={nodeRef}
-      >
-        <ModalContainer>
-          <div>test</div>
-        </ModalContainer>
-      </Modal>
-    </>
+    <Modal
+      title=""
+      desc=""
+      isOpen={isOpenSportsSettingModal}
+      onClose={() => closeSportsSettingModal()}
+    >
+      <ModalContainer>
+        <div>test</div>
+      </ModalContainer>
+    </Modal>
   );
 };
 

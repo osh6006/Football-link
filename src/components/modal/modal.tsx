@@ -1,5 +1,7 @@
-import * as React from "react";
+import { useRef } from "react";
 import { CSSTransition } from "react-transition-group";
+
+import "./modal.css";
 
 interface IModalProps {
   title: string;
@@ -8,7 +10,6 @@ interface IModalProps {
   onClose: () => void;
   children?: React.ReactNode;
   onConfirm?: () => void;
-  nodeRef: React.MutableRefObject<null>;
 }
 
 const Modal: React.FunctionComponent<IModalProps> = ({
@@ -18,23 +19,26 @@ const Modal: React.FunctionComponent<IModalProps> = ({
   onClose,
   onConfirm,
   children,
-  nodeRef,
 }) => {
+  const nodeRef = useRef(null);
   return (
-    <CSSTransition
-      in={isOpen}
-      nodeRef={nodeRef}
-      classNames={"modal"}
-      unmountOnExit
-      timeout={300}
-    >
-      <div
-        onClick={() => onClose()}
-        className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm"
+    <>
+      <CSSTransition
+        in={isOpen}
+        nodeRef={nodeRef}
+        timeout={500}
+        classNames="fade-modal"
+        unmountOnExit
       >
-        {children}
-      </div>
-    </CSSTransition>
+        <div
+          onClick={onClose}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/55"
+          ref={nodeRef}
+        >
+          {children}
+        </div>
+      </CSSTransition>
+    </>
   );
 };
 
