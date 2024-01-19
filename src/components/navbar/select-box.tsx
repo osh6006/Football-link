@@ -1,11 +1,10 @@
-import { useRef } from "react";
 import useThemeStore from "../../stores/theme-store";
 import clsx from "clsx";
 import { CSSTransition } from "react-transition-group";
 
 import "./select-box.css";
-import Loading from "../common/loading";
 import useOutsideClick from "../../hooks/use-outside-click";
+import Loading from "../common/Loading";
 
 interface ISelectBoxProps<T> {
   name?: string;
@@ -13,6 +12,7 @@ interface ISelectBoxProps<T> {
   items: T[] | null | undefined;
   isLoading: boolean;
   setItem: (item: T) => void;
+  moreAction?: () => void;
 }
 
 const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
@@ -21,10 +21,10 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
   items,
   isLoading,
   setItem,
+  moreAction,
 }) => {
   const { theme } = useThemeStore();
-  const { isOpen, setIsOpen, ref } = useOutsideClick();
-  const nodeRef = useRef(null);
+  const { isOpen, setIsOpen, ref, nodeRef } = useOutsideClick();
 
   const toggleSelectBox = () => {
     setIsOpen(!isOpen);
@@ -141,24 +141,27 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
               )}
             </li>
           ))}
-          <li
-            onClick={() => {
-              setIsOpen(!isOpen);
-            }}
-            className={clsx(
-              `
+          {moreAction && (
+            <li
+              onClick={() => {
+                setIsOpen(!isOpen);
+                moreAction();
+              }}
+              className={clsx(
+                `
                     relative cursor-pointer select-none py-2 pl-3 pr-9
                     transition-all hover:bg-MainHover hover:text-White active:scale-90
                     `,
-              theme === "light" && "bg-LightGreyLightBg",
-              theme === "dark" && "bg-VeryDarkGreyDark",
-            )}
-          >
-            <div className="flex items-center justify-center gap-x-2">
-              <span>more</span>
-              <span className="block truncate font-normal">+</span>
-            </div>
-          </li>
+                theme === "light" && "bg-LightGreyLightBg",
+                theme === "dark" && "bg-VeryDarkGreyDark",
+              )}
+            >
+              <div className="flex items-center justify-center gap-x-2">
+                <span>more</span>
+                <span className="block truncate font-normal">+</span>
+              </div>
+            </li>
+          )}
         </ul>
       </CSSTransition>
     </div>

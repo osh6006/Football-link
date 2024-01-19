@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 export default function useOutsideClick() {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const nodeRef = useRef(null);
 
   const handleOutsideClick = useCallback(
     (event: MouseEvent) => {
@@ -20,5 +21,5 @@ export default function useOutsideClick() {
     };
   }, [handleOutsideClick]);
 
-  return { isOpen, setIsOpen, ref };
+  return { isOpen, setIsOpen, ref, nodeRef };
 }
