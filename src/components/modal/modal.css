@@ -27,17 +27,17 @@
 }
 
 .fade-modal-enter {
-  animation: openModal 0.4s ease-in forwards;
+  animation: openModal 0.3s ease-in forwards;
 }
 
 .fade-modal-enter-active {
-  animation: openModal 0.4s ease-in forwards;
+  animation: openModal 0.3s ease-in forwards;
 }
 
 .fade-modal-exit {
-  animation: openModal 0.4s ease-in forwards;
+  animation: openModal 0.3s ease-in forwards;
 }
 
 .fade-modal-exit-active {
-  animation: closeModal 0.4s ease-out forwards;
+  animation: closeModal 0.3s ease-out forwards;
 }

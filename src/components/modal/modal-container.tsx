@@ -1,5 +1,6 @@
 import * as React from "react";
 import useThemeStore from "../../stores/theme-store";
+import clsx from "clsx";
 
 interface IModalContainerProps {
   children: React.ReactNode;
@@ -11,7 +12,15 @@ const ModalContainer: React.FunctionComponent<IModalContainerProps> = ({
   const { theme } = useThemeStore();
 
   return (
-    <div className={`min-w-64 rounded-md bg-White p-5 shadow-lg`}>test</div>
+    <div
+      className={clsx(
+        `mx-auto w-fit min-w-64 rounded-md p-5 shadow-lg`,
+        theme === "light" && "bg-LightGreyLightBg",
+        theme === "dark" && "bg-VeryDarkGreyDark",
+      )}
+    >
+      test
+    </div>
   );
 };
 
