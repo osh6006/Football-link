@@ -54,7 +54,6 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
           setItem={selectSport}
           icon={selectedSport?.icon}
           name={selectedSport?.name}
-          moreAction={openSportsSettingModal}
         />
 
         {/* league Selector */}
@@ -67,6 +66,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
           setItem={selectSport}
           icon={selectedSport?.icon}
           name={selectedSport?.name}
+          moreAction={openSportsSettingModal}
         />
       </div>
 

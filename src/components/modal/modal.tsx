@@ -37,7 +37,7 @@ const Modal: React.FunctionComponent<IModalProps> = ({
         <div
           onClick={onClose}
           className={clsx(
-            "fixed inset-0 z-50",
+            "fixed inset-0 z-50 py-28 sm:py-40",
             theme === "light" && "bg-VeryDarkGreyDark/55 text-DarkGrey",
             theme === "dark" && "bg-LightGreyLightBg/35 text-White",
           )}

@@ -6,7 +6,6 @@ import { CSSTransition } from "react-transition-group";
 
 import "./avatar-menu.css";
 import useOutsideClick from "../../hooks/use-outside-click";
-import { supabase } from "../../libs/superbase-client";
 import useAuth from "../../hooks/use-auth";
 
 interface IAvatarMenuProps {

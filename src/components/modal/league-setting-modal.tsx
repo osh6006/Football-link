@@ -6,12 +6,12 @@ import useThemeStore from "../../stores/theme-store";
 import Modal from "./modal";
 import StepTwo from "../auth-page/step-two";
 
-interface ISportsSettingModalProps {}
+interface ILeagueSettingModalProps {}
 
-const SportsSettingModal: React.FunctionComponent<
-  ISportsSettingModalProps
+const LeagueSettingModal: React.FunctionComponent<
+  ILeagueSettingModalProps
 > = () => {
-  const { isOpenSportsSettingModal, closeSportsSettingModal } =
+  const { isOpenLeagueSettingModal, closeLeagueSettingModal } =
     useModalsStore();
   const { theme } = useThemeStore();
 
@@ -19,8 +19,8 @@ const SportsSettingModal: React.FunctionComponent<
     <Modal
       title=""
       desc=""
-      isOpen={isOpenSportsSettingModal}
-      onClose={() => closeSportsSettingModal()}
+      isOpen={isOpenLeagueSettingModal}
+      onClose={() => closeLeagueSettingModal()}
     >
       <div
         className={clsx(
@@ -35,4 +35,4 @@ const SportsSettingModal: React.FunctionComponent<
   );
 };
 
-export default SportsSettingModal;
+export default LeagueSettingModal;

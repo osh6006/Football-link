@@ -12,9 +12,7 @@ const StepTwo: React.FunctionComponent<IStepTwoProps> = () => {
   return (
     <>
       <div className="flex items-center justify-between">
-        <p className="mt-10 text-sm sm:mt-12 sm:text-base">
-          선호하는 스포츠를 골라 주세요
-        </p>
+        <p className="text-sm sm:text-base">선호하는 스포츠를 골라 주세요</p>
       </div>
       <div className="mt-2 flex flex-col gap-y-2">
         <MultiSelect items={sports} handleSelect={setSports} />
