@@ -1,13 +1,13 @@
 import { create } from "zustand";
-import { InsertSports } from "../types";
+import { ISport } from "../types";
 
 interface IAuthStepState {
   step: number;
   minStep: number;
   maxStep: number;
-  sports: InsertSports[];
+  sports: ISport[];
 
-  setSports: (sport: InsertSports) => void;
+  setSports: (sport: ISport) => void;
   setStep: (select: number) => void;
 }
 
@@ -17,12 +17,12 @@ export const useAuthStepStore = create<IAuthStepState>()((set) => ({
   maxStep: 3,
   sports: [],
 
-  setSports: (sport: InsertSports) =>
+  setSports: (sport: ISport) =>
     set((state) => {
-      const findIdx = state.sports.findIndex((el) => el.value === sport.value);
+      const findIdx = state.sports.findIndex((el) => el.id === sport.id);
       if (findIdx !== -1) {
         return {
-          sports: state.sports.filter((el) => el.value !== sport.value),
+          sports: state.sports.filter((el) => el.id !== sport.id),
         };
       } else {
         return { sports: [...state.sports, sport] };

@@ -58,7 +58,9 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
           ) : (
             <>
               <span className="ml-2 block truncate">{icon || "not Icon"}</span>
-              <span className="ml-2 block truncate">{name || "not name"}</span>
+              <span className="ml-2 block truncate capitalize">
+                {name || "not name"}
+              </span>
             </>
           )}
         </span>
@@ -118,13 +120,13 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
             >
               <div className="flex items-center">
                 <span>{el.icon}</span>
-                <span className="ml-3 block truncate font-normal">
+                <span className="ml-3 block truncate font-normal capitalize">
                   {el.name}
                 </span>
               </div>
 
               {name === el.name && (
-                <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-Main">
+                <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-Main ">
                   <svg
                     className="h-5 w-5"
                     viewBox="0 0 20 20"

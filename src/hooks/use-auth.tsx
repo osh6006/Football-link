@@ -27,9 +27,9 @@ export default function useAuth() {
 
       if (userId) {
         setUser(session.user);
-        let { data: sports } = await supabase
-          .from("sports")
-          .select()
+        let { data: sports, error } = await supabase
+          .from("user_sports")
+          .select("*")
           .eq("user_id", userId);
 
         if (sports && sports?.length > 0) {
@@ -41,6 +41,10 @@ export default function useAuth() {
           console.log("Not has sports");
           nav("/auth", { replace: false });
           setStep(2);
+        }
+
+        if (error) {
+          toast.error(error.message);
         }
       } else {
         console.log("not has session user");

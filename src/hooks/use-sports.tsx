@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { getSports } from "../services/sports";
-import { Sports } from "../types";
+import { ISport } from "types";
 
 export const useSportsQuery = () => {
-  return useQuery<Sports[] | null>({
+  return useQuery<ISport[] | null>({
     queryKey: ["sportsQuery"],
     queryFn: getSports,
     retry: false,

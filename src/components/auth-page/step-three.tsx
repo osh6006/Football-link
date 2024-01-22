@@ -1,7 +1,6 @@
 import Button from "../common/button";
 import { useAuthStepStore } from "../../stores/auth-step-store";
 import { supabase } from "../../libs/superbase-client";
-import { addUserIdToArray } from "../../utils/util";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -17,12 +16,10 @@ const StepThree: React.FunctionComponent<IStepThreeProps> = (props) => {
     const userId = (await supabase.auth.getSession()).data.session?.user.id;
 
     if (userId) {
-      const newSportsArr = addUserIdToArray(sports, userId);
-      console.log(newSportsArr);
-      for (const sport of newSportsArr) {
+      for (const sport of sports) {
         const { error } = await supabase
-          .from("sports")
-          .insert([sport])
+          .from("user_sports")
+          .insert({ user_id: userId, sport_id: sport.id })
           .select();
 
         if (error) {
@@ -36,6 +33,8 @@ const StepThree: React.FunctionComponent<IStepThreeProps> = (props) => {
         nav("/", { replace: true });
         setStep(1);
       }
+    } else {
+      toast.error("인증된 유저가 아니에요!");
     }
   };
 

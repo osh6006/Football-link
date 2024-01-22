@@ -1,10 +1,5 @@
-import { InsertSports } from "../types";
-
-export const isIncludeInSelectedItem = (
-  array: InsertSports[],
-  value: string,
-) => {
-  if (array.find((el) => el.value === value)) return true;
+export const isIncludeInSelectedItem = (array: any[], id: string) => {
+  if (array.find((el) => el.id === id)) return true;
   return false;
 };
 

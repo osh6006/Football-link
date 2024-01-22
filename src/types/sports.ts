@@ -1,11 +1,9 @@
-export interface Sports {
-  name: string;
+export interface ISport {
   icon: string;
+  id: string;
+  name: string;
   value: string;
-}
-
-export interface InsertSports extends Sports {
-  user_id?: string;
+  created_at: string;
 }
 
 export interface SoccerLeague {
