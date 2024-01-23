@@ -30,8 +30,6 @@ const StepTwo: React.FunctionComponent<IStepTwoProps> = () => {
     checkSport();
   }, [setSelectSports]);
 
-  console.log(sports);
-
   return (
     <>
       <div className="flex items-center justify-between">

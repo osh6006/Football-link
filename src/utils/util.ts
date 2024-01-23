@@ -8,3 +8,8 @@ export const addUserIdToArray = (array: any[], userId: string) => {
     return { ...el, user_id: userId };
   });
 };
+
+export const isIncludeInArray = (array: any[], item: any) => {
+  if (array.find((el) => el.id === item.id)) return true;
+  return false;
+};

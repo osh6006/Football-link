@@ -5,14 +5,16 @@ import { CSSTransition } from "react-transition-group";
 import "./select-box.css";
 import useOutsideClick from "../../hooks/use-outside-click";
 import Loading from "../common/loading";
+import Avatar from "components/common/avatar";
 
 interface ISelectBoxProps<T> {
-  name?: string;
-  icon?: string;
+  name?: string | null;
+  icon?: string | null;
   items: T[] | null | undefined;
   isLoading: boolean;
   setItem: (item: T) => void;
   moreAction?: () => void;
+  isImg?: boolean;
 }
 
 const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
@@ -22,6 +24,7 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
   isLoading,
   setItem,
   moreAction,
+  isImg,
 }) => {
   const { theme } = useThemeStore();
   const { isOpen, setIsOpen, ref, nodeRef } = useOutsideClick();
@@ -57,9 +60,11 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
             </div>
           ) : (
             <>
-              <span className="ml-2 block truncate">{icon || "not Icon"}</span>
+              <span className="ml-2 block truncate">
+                {isImg ? <Avatar size="sm" imgUrl={icon!} /> : icon}
+              </span>
               <span className="ml-2 block truncate capitalize">
-                {name || "not name"}
+                {name || "Not Selected"}
               </span>
             </>
           )}
@@ -102,47 +107,54 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
           aria-activedescendant="listbox-option-3"
           tabIndex={-1}
         >
-          {items?.map((el) => (
-            <li
-              key={el.value}
-              onClick={() => {
-                setItem(el);
-                setIsOpen(!isOpen);
-              }}
-              className={clsx(
-                `
+          {items &&
+            items?.map((el) => (
+              <li
+                key={el?.league?.id}
+                onClick={() => {
+                  setItem(el);
+                  setIsOpen(!isOpen);
+                }}
+                className={clsx(
+                  `
                     relative cursor-pointer select-none py-2 pl-3 pr-9 
                     transition-all hover:bg-MainHover hover:text-White active:scale-90
                     `,
-                theme === "light" && "bg-LightGreyLightBg",
-                theme === "dark" && "bg-VeryDarkGreyDark",
-              )}
-            >
-              <div className="flex items-center">
-                <span>{el.icon}</span>
-                <span className="ml-3 block truncate font-normal capitalize">
-                  {el.name}
-                </span>
-              </div>
+                  theme === "light" && "bg-LightGreyLightBg",
+                  theme === "dark" && "bg-VeryDarkGreyDark",
+                )}
+              >
+                <div className="flex items-center">
+                  <span>
+                    {isImg ? (
+                      <Avatar size="sm" imgUrl={el?.league?.logo} />
+                    ) : (
+                      el.icon
+                    )}
+                  </span>
+                  <span className="ml-3 block truncate font-normal capitalize">
+                    {el?.league?.name}
+                  </span>
+                </div>
 
-              {name === el.name && (
-                <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-Main ">
-                  <svg
-                    className="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </span>
-              )}
-            </li>
-          ))}
+                {name === el?.league?.name && (
+                  <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-Main ">
+                    <svg
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                )}
+              </li>
+            ))}
           {moreAction && (
             <li
               onClick={() => {
@@ -159,7 +171,7 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
               )}
             >
               <div className="flex items-center justify-center gap-x-2">
-                <span>more</span>
+                <span>리그 설정</span>
                 <span className="block truncate font-normal">+</span>
               </div>
             </li>

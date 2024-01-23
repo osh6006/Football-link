@@ -54,3 +54,14 @@ export interface ISupabaseFootballLeagueType {
   serea: ISupabaseFootballLeague;
   league1: ISupabaseFootballLeague;
 }
+
+export interface ISupabaseLeague {
+  country: string | null;
+  created_at: string;
+  flag: string | null;
+  id: string;
+  logo: string | null;
+  name: string | null;
+  rapid_football_league_id: number | null;
+  sports_id: string | null;
+}

@@ -18,7 +18,7 @@ export interface Database {
           logo: string | null
           name: string | null
           rapid_football_league_id: number | null
-          sport_id: number | null
+          sports_id: string | null
         }
         Insert: {
           country?: string | null
@@ -28,7 +28,7 @@ export interface Database {
           logo?: string | null
           name?: string | null
           rapid_football_league_id?: number | null
-          sport_id?: number | null
+          sports_id?: string | null
         }
         Update: {
           country?: string | null
@@ -38,29 +38,11 @@ export interface Database {
           logo?: string | null
           name?: string | null
           rapid_football_league_id?: number | null
-          sport_id?: number | null
-        }
-        Relationships: []
-      }
-      sport_leagues: {
-        Row: {
-          created_at: string
-          id: string
-          sports_id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          sports_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          sports_id?: string
+          sports_id?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "sport_leagues_sports_id_fkey"
+            foreignKeyName: "league_sports_id_fkey"
             columns: ["sports_id"]
             isOneToOne: false
             referencedRelation: "sports"
@@ -91,6 +73,42 @@ export interface Database {
           value?: string
         }
         Relationships: []
+      }
+      user_leagues: {
+        Row: {
+          created_at: string
+          id: string
+          league_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          league_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          league_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_leagues_league_id_fkey"
+            columns: ["league_id"]
+            isOneToOne: false
+            referencedRelation: "league"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_leagues_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       user_sports: {
         Row: {

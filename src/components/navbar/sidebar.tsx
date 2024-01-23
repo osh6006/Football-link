@@ -11,28 +11,44 @@ import useModalsStore from "../../stores/modals-store";
 
 import SelectBox from "./select-box";
 import ThemeSwitch from "./theme-switch";
+import { useSaveLeagueQuery } from "hooks/use-league";
+import useLeagueStore from "stores/league-store";
 
 interface ISidebarProps {}
 
 const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
   const nav = useNavigate();
   const { paths, realPath } = usePath();
+
   const { theme } = useThemeStore();
-  const { data, isLoading } = useSportsQuery();
+
+  const { data: savedSports, isLoading: isSavedSportsLoading } =
+    useSportsQuery();
   const { selectSport, selectedSport } = useSportStore();
-  const { openSportsSettingModal } = useModalsStore();
+
+  const { data: saveLeagues, isLoading: isSaveLeaguesLoading } =
+    useSaveLeagueQuery();
+  const { selectLeague, selectedLeague } = useLeagueStore();
+
+  const { openLeagueSettingModal } = useModalsStore();
 
   useEffect(() => {
-    if (data && data?.length > 0) {
-      selectSport(data[0]);
+    if (savedSports && savedSports?.length > 0) {
+      selectSport(savedSports[0]);
     }
-  }, [data, selectSport]);
+  }, [savedSports, selectSport]);
+
+  useEffect(() => {
+    if (saveLeagues && saveLeagues?.length > 0) {
+      selectLeague(saveLeagues[0].league);
+    }
+  }, [selectLeague, saveLeagues]);
 
   return (
     <aside
       className={clsx(
         `hidden h-[100dvh] w-[15dvw] min-w-60 flex-col border-r border-MediumGrey   
-      text-MediumGrey xl:flex xl:flex-col`,
+      text-MediumGrey lg:flex lg:flex-col`,
         theme === "light" ? "bg-White " : "bg-DarkGrey ",
       )}
     >
@@ -49,8 +65,8 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
           Sports
         </p>
         <SelectBox
-          isLoading={isLoading}
-          items={data}
+          isLoading={isSavedSportsLoading}
+          items={savedSports}
           setItem={selectSport}
           icon={selectedSport?.icon}
           name={selectedSport?.name}
@@ -61,12 +77,13 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
           Leagues
         </p>
         <SelectBox
-          isLoading={isLoading}
-          items={data}
-          setItem={selectSport}
-          icon={selectedSport?.icon}
-          name={selectedSport?.name}
-          moreAction={openSportsSettingModal}
+          isImg
+          isLoading={isSaveLeaguesLoading}
+          items={saveLeagues}
+          setItem={selectLeague}
+          icon={selectedLeague?.logo}
+          name={selectedLeague?.name}
+          moreAction={openLeagueSettingModal}
         />
       </div>
 

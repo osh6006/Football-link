@@ -3,7 +3,8 @@ import { isIncludeInSelectedItem } from "../../utils/util";
 
 interface IMultiSelectProps {
   items: any[];
-  handleSelect: (sport: any) => void;
+  isImg?: boolean;
+  handleSelect: (item: any) => void;
   selectedItems: any[];
 }
 
@@ -11,6 +12,7 @@ const MultiSelect: React.FunctionComponent<IMultiSelectProps> = ({
   items,
   handleSelect,
   selectedItems,
+  isImg,
 }) => {
   return (
     <ul className="z-10 grid w-full grid-cols-2 items-center justify-between gap-4 sm:grid-cols-3 ">
@@ -27,7 +29,11 @@ const MultiSelect: React.FunctionComponent<IMultiSelectProps> = ({
           )}
           onClick={() => handleSelect(item)}
         >
-          <p>{item.icon}</p>
+          {isImg ? (
+            <img src={item.logo} alt="logo" className="aspect-auto h-5 w-5" />
+          ) : (
+            <p>{item.icon}</p>
+          )}
           <p className="flex-1 capitalize">{item.name}</p>
         </li>
       ))}

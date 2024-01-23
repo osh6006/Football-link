@@ -24,11 +24,11 @@ const useModalsStore = create<IModalsState>()((set) => ({
   isOpenLeagueSettingModal: false,
   openLeagueSettingModal: () =>
     set(() => {
-      return { isOpenSportsSettingModal: true };
+      return { isOpenLeagueSettingModal: true };
     }),
   closeLeagueSettingModal: () =>
     set(() => {
-      return { isOpenSportsSettingModal: false };
+      return { isOpenLeagueSettingModal: false };
     }),
 }));
 

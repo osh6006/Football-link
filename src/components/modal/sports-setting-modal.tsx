@@ -4,7 +4,7 @@ import useModalsStore from "../../stores/modals-store";
 import useThemeStore from "../../stores/theme-store";
 
 import Modal from "./modal";
-import StepTwo from "../auth-page/step-two";
+import useSportStore from "stores/sports-store";
 
 interface ISportsSettingModalProps {}
 
@@ -14,6 +14,7 @@ const SportsSettingModal: React.FunctionComponent<
   const { isOpenSportsSettingModal, closeSportsSettingModal } =
     useModalsStore();
   const { theme } = useThemeStore();
+  const { selectedSport } = useSportStore();
 
   return (
     <Modal
@@ -23,14 +24,15 @@ const SportsSettingModal: React.FunctionComponent<
       onClose={() => closeSportsSettingModal()}
     >
       <div
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
         className={clsx(
           `mx-auto w-fit rounded-md px-5 py-8 shadow-lg`,
           theme === "light" && "bg-LightGreyLightBg",
           theme === "dark" && "bg-VeryDarkGreyDark",
         )}
-      >
-        <StepTwo />
-      </div>
+      ></div>
     </Modal>
   );
 };

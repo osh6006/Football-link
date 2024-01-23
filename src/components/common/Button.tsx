@@ -9,12 +9,12 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const sizes = {
-  xs: "text-xs",
-  sm: "text-sm",
-  md: "text-base",
-  lg: "text-lg",
-  xl: "text-xl",
-  wide: "w-full",
+  xs: "text-xs px-3 py-2",
+  sm: "text-sm px-4 py-2",
+  md: "text-base px-4 py-2",
+  lg: "text-lg px-4 py-2",
+  xl: "text-xl px-4 py-2",
+  wide: "w-full px-1 py-2",
 };
 
 const colors = {
@@ -36,7 +36,7 @@ const Button: React.FunctionComponent<IButtonProps> = ({
   return (
     <button
       className={clsx(
-        `${className} flex transform select-none items-center justify-center gap-2 rounded-md border px-2 py-2 text-lg
+        `${className} flex transform select-none items-center justify-center gap-2 rounded-md border text-lg
         transition-all active:scale-95
         `,
         disabled
