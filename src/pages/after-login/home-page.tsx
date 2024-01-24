@@ -1,9 +1,15 @@
-import * as React from "react";
+import Banner from "components/home/banner";
+import HomeContainer from "containers/home-container";
 
 interface IHomePageProps {}
 
 const HomePage: React.FunctionComponent<IHomePageProps> = () => {
-  return <section></section>;
+  return (
+    <HomeContainer>
+      <Banner />
+      <div>test2</div>
+    </HomeContainer>
+  );
 };
 
 export default HomePage;
