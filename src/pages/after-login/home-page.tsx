@@ -6,8 +6,13 @@ interface IHomePageProps {}
 const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   return (
     <HomeContainer>
-      <Banner />
-      <div>test2</div>
+      <div>
+        <Banner />
+        {/* RankTable */}
+      </div>
+      <div>
+        <div>test</div>
+      </div>
     </HomeContainer>
   );
 };
