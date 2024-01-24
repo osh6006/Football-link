@@ -25,7 +25,7 @@ const CustomRoutes = () => {
       errorElement: <ErrorPage />,
       children: [
         {
-          path: "/home",
+          path: "/",
           element: <HomePage />,
         },
         {

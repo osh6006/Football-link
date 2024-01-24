@@ -106,29 +106,43 @@ const LeagueSettingModal: React.FunctionComponent<
 
   if (isLeagueLoading || isSaveLeagueLoading) {
     return (
-      <div
-        className={clsx(
-          `mx-auto min-h-[200px] min-w-[375px] rounded-md px-4 py-4 shadow-lg`,
-          theme === "light" && "bg-LightGreyLightBg",
-          theme === "dark" && "bg-VeryDarkGreyDark",
-        )}
+      <Modal
+        title=""
+        desc=""
+        isOpen={isOpenLeagueSettingModal}
+        onClose={closeLeagueSettingModal}
       >
-        <Loading size="lg" />
-      </div>
+        <div
+          className={clsx(
+            `mx-auto min-h-[200px] min-w-[375px] rounded-md px-4 py-4 shadow-lg`,
+            theme === "light" && "bg-LightGreyLightBg",
+            theme === "dark" && "bg-VeryDarkGreyDark",
+          )}
+        >
+          <Loading size="lg" />
+        </div>
+      </Modal>
     );
   }
 
   if (isLeagueError || isSaveLeagueError) {
     return (
-      <div
-        className={clsx(
-          `mx-auto min-h-[200px] min-w-[375px] rounded-md px-4 py-4 shadow-lg`,
-          theme === "light" && "bg-LightGreyLightBg",
-          theme === "dark" && "bg-VeryDarkGreyDark",
-        )}
+      <Modal
+        title=""
+        desc=""
+        isOpen={isOpenLeagueSettingModal}
+        onClose={closeLeagueSettingModal}
       >
-        Error!
-      </div>
+        <div
+          className={clsx(
+            `mx-auto min-h-[200px] min-w-[375px] rounded-md px-4 py-4 shadow-lg`,
+            theme === "light" && "bg-LightGreyLightBg",
+            theme === "dark" && "bg-VeryDarkGreyDark",
+          )}
+        >
+          Error
+        </div>
+      </Modal>
     );
   }
 
