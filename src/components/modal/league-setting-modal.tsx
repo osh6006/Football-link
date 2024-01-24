@@ -1,24 +1,27 @@
 import { useEffect, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 import clsx from "clsx";
-import { isIncludeInArray } from "utils/util";
+import { flattenedArray, isIncludeInArray } from "utils/util";
 
 import useModalsStore from "../../stores/modals-store";
 import useThemeStore from "../../stores/theme-store";
 import useSportStore from "stores/sports-store";
-import useLeagueStore from "stores/league-store";
 
-import { useLeagueQuery, useSaveLeagueQuery } from "hooks/use-league";
+import {
+  leagueQueryKey,
+  useLeagueQuery,
+  useSaveLeagueQuery,
+} from "hooks/use-league";
 
 import Modal from "./modal";
 import MultiSelect from "components/auth-page/multi-select";
 import Button from "components/common/button";
+import Loading from "components/common/loading";
 
 import { ISupabaseLeague } from "types/football/league";
-import Loading from "components/common/loading";
 import {
   deleteAllSupabaseLeague,
-  getSupabaseLeague,
   insertAllSupabaseLeague,
 } from "services/league";
 
@@ -27,6 +30,8 @@ interface ILeagueSettingModalProps {}
 const LeagueSettingModal: React.FunctionComponent<
   ILeagueSettingModalProps
 > = () => {
+  const queryClient = useQueryClient();
+
   const { isOpenLeagueSettingModal, closeLeagueSettingModal } =
     useModalsStore();
 
@@ -34,11 +39,17 @@ const LeagueSettingModal: React.FunctionComponent<
 
   const { selectedSport } = useSportStore();
 
-  const { data, isLoading, isError } = useLeagueQuery(
-    selectedSport?.id ? selectedSport.id : "",
-  );
+  const {
+    data: leagueData,
+    isLoading: isLeagueLoading,
+    isError: isLeagueError,
+  } = useLeagueQuery(selectedSport?.id ? selectedSport.id : "");
 
-  const { leagues, setLeagues } = useLeagueStore();
+  const {
+    data: saveLeagueData,
+    isLoading: isSaveLeagueLoading,
+    isError: isSaveLeagueError,
+  } = useSaveLeagueQuery(selectedSport?.id ? selectedSport.id : "");
 
   const [isSaveLoading, setSaveLoading] = useState(false);
   const [tempSelectLeagues, setTempSelectLeague] = useState<
@@ -58,60 +69,67 @@ const LeagueSettingModal: React.FunctionComponent<
   };
 
   const handleCancel = () => {
-    setTempSelectLeague([]);
+    queryClient.invalidateQueries({
+      queryKey: [leagueQueryKey.saveLeagueQuery],
+    });
+    setTempSelectLeague(flattenedArray(saveLeagueData || [], "league"));
+
     closeLeagueSettingModal();
   };
 
   const handleSave = async () => {
     if (tempSelectLeagues && tempSelectLeagues?.length < 1) return;
-
     setSaveLoading(true);
 
     // db clear
-    const isDelete = await deleteAllSupabaseLeague(leagues);
+    const isDelete = await deleteAllSupabaseLeague(leagueData!);
+
     // db save
-    if (isDelete) {
-      await insertAllSupabaseLeague(tempSelectLeagues!);
+    if (!isDelete) {
+      setSaveLoading(false);
+      return;
     }
+    await insertAllSupabaseLeague(tempSelectLeagues!);
+
     // state update
-    setLeagues(tempSelectLeagues!);
     setTempSelectLeague([]);
+    queryClient.invalidateQueries({
+      queryKey: [leagueQueryKey.saveLeagueQuery],
+    });
     setSaveLoading(false);
     closeLeagueSettingModal();
   };
 
   useEffect(() => {
-    const initLeague = async () => {
-      const data = await getSupabaseLeague();
-      // console.log(data);
-      // setTempSelectLeague(data);
-    };
+    setTempSelectLeague(flattenedArray(saveLeagueData || [], "league"));
+  }, [saveLeagueData]);
 
-    initLeague();
-  }, []);
-
-  if (isLoading) {
-    <div
-      className={clsx(
-        `mx-auto min-h-[200px] min-w-[375px] rounded-md px-4 py-4 shadow-lg`,
-        theme === "light" && "bg-LightGreyLightBg",
-        theme === "dark" && "bg-VeryDarkGreyDark",
-      )}
-    >
-      <Loading size="lg" />
-    </div>;
+  if (isLeagueLoading || isSaveLeagueLoading) {
+    return (
+      <div
+        className={clsx(
+          `mx-auto min-h-[200px] min-w-[375px] rounded-md px-4 py-4 shadow-lg`,
+          theme === "light" && "bg-LightGreyLightBg",
+          theme === "dark" && "bg-VeryDarkGreyDark",
+        )}
+      >
+        <Loading size="lg" />
+      </div>
+    );
   }
 
-  if (isError) {
-    <div
-      className={clsx(
-        `mx-auto min-h-[200px] min-w-[375px] rounded-md px-4 py-4 shadow-lg`,
-        theme === "light" && "bg-LightGreyLightBg",
-        theme === "dark" && "bg-VeryDarkGreyDark",
-      )}
-    >
-      Error!
-    </div>;
+  if (isLeagueError || isSaveLeagueError) {
+    return (
+      <div
+        className={clsx(
+          `mx-auto min-h-[200px] min-w-[375px] rounded-md px-4 py-4 shadow-lg`,
+          theme === "light" && "bg-LightGreyLightBg",
+          theme === "dark" && "bg-VeryDarkGreyDark",
+        )}
+      >
+        Error!
+      </div>
+    );
   }
 
   return (
@@ -124,7 +142,7 @@ const LeagueSettingModal: React.FunctionComponent<
       <div
         onClick={(e) => e.stopPropagation()}
         className={clsx(
-          `mx-auto w-fit rounded-md px-4 py-4 shadow-lg`,
+          `mx-auto min-w-[200px] max-w-xl rounded-md px-4 py-4 shadow-lg`,
           theme === "light" && "bg-LightGreyLightBg",
           theme === "dark" && "bg-VeryDarkGreyDark",
         )}
@@ -134,10 +152,10 @@ const LeagueSettingModal: React.FunctionComponent<
           골라보세요!
         </div>
         <div className="mt-4">
-          {data && (
+          {leagueData && (
             <MultiSelect
-              items={data}
               isImg
+              items={leagueData}
               selectedItems={tempSelectLeagues || []}
               handleSelect={handleSelectedItem}
             />

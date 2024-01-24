@@ -39,6 +39,7 @@ export const getLeagues: QueryFunction<
 export const getSavedLeague: QueryFunction<any | null, string[]> = async ({
   queryKey,
 }) => {
+  const [, sportsId] = queryKey;
   const { data: sessionData, error: sessionError } =
     await supabase.auth.getSession();
 
@@ -54,7 +55,7 @@ export const getSavedLeague: QueryFunction<any | null, string[]> = async ({
       .from("user_leagues")
       .select(
         `
-        league(id,name,logo)
+        league(id,name,logo,sports_id)
       `,
       )
       .eq("user_id", userId);
@@ -63,7 +64,7 @@ export const getSavedLeague: QueryFunction<any | null, string[]> = async ({
       return null;
     }
 
-    return leagueData;
+    return leagueData.filter((el) => el.league?.sports_id === sportsId);
   }
 
   toast.error("not userId");

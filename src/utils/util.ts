@@ -13,3 +13,7 @@ export const isIncludeInArray = (array: any[], item: any) => {
   if (array.find((el) => el.id === item.id)) return true;
   return false;
 };
+
+export const flattenedArray = (array: any[], flatternKey: string) => {
+  return array.map((item) => item[flatternKey]);
+};

@@ -15,7 +15,7 @@ const MultiSelect: React.FunctionComponent<IMultiSelectProps> = ({
   isImg,
 }) => {
   return (
-    <ul className="z-10 grid w-full grid-cols-2 items-center justify-between gap-4 sm:grid-cols-3 ">
+    <ul className="z-10 grid w-full grid-cols-2 items-center justify-between gap-4 ">
       {items.map((item) => (
         <li
           key={item.id}

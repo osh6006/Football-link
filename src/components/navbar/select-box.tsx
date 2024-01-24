@@ -8,23 +8,23 @@ import Loading from "../common/loading";
 import Avatar from "components/common/avatar";
 
 interface ISelectBoxProps<T> {
+  type: "sports" | "league";
   name?: string | null;
   icon?: string | null;
   items: T[] | null | undefined;
   isLoading: boolean;
   setItem: (item: T) => void;
   moreAction?: () => void;
-  isImg?: boolean;
 }
 
 const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
+  type,
   name,
   icon,
   items,
   isLoading,
   setItem,
   moreAction,
-  isImg,
 }) => {
   const { theme } = useThemeStore();
   const { isOpen, setIsOpen, ref, nodeRef } = useOutsideClick();
@@ -61,10 +61,11 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
           ) : (
             <>
               <span className="ml-2 block truncate">
-                {isImg ? <Avatar size="sm" imgUrl={icon!} /> : icon}
+                {type === "sports" && icon}
+                {type === "league" && <Avatar size="sm" imgUrl={icon!} />}
               </span>
               <span className="ml-2 block truncate capitalize">
-                {name || "Not Selected"}
+                {name || "리그를 선택해 주세요"}
               </span>
             </>
           )}
@@ -110,9 +111,10 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
           {items &&
             items?.map((el) => (
               <li
-                key={el?.league?.id}
+                key={el?.league?.id || el.id}
                 onClick={() => {
-                  setItem(el);
+                  type === "sports" && setItem(el);
+                  type === "league" && setItem(el.league);
                   setIsOpen(!isOpen);
                 }}
                 className={clsx(
@@ -126,18 +128,33 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
               >
                 <div className="flex items-center">
                   <span>
-                    {isImg ? (
+                    {type === "sports" && el.icon}
+                    {type === "league" && (
                       <Avatar size="sm" imgUrl={el?.league?.logo} />
-                    ) : (
-                      el.icon
                     )}
                   </span>
                   <span className="ml-3 block truncate font-normal capitalize">
-                    {el?.league?.name}
+                    {type === "sports" && el.name}
+                    {type === "league" && el.league.name}
                   </span>
                 </div>
-
-                {name === el?.league?.name && (
+                {type === "sports" && el.name === name && (
+                  <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-Main ">
+                    <svg
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                )}
+                {type === "league" && el?.league?.name === name && (
                   <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-Main ">
                     <svg
                       className="h-5 w-5"
@@ -171,7 +188,7 @@ const SelectBox: React.FunctionComponent<ISelectBoxProps<any>> = ({
               )}
             >
               <div className="flex items-center justify-center gap-x-2">
-                <span>리그 설정</span>
+                <span>More</span>
                 <span className="block truncate font-normal">+</span>
               </div>
             </li>

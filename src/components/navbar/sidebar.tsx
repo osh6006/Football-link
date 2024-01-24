@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 
 import usePath from "../../hooks/use-path";
 import { useSportsQuery } from "../../hooks/use-sports";
+import { useSaveLeagueQuery } from "hooks/use-league";
 import useThemeStore from "../../stores/theme-store";
 import useSportStore from "../../stores/sports-store";
 import useModalsStore from "../../stores/modals-store";
+import useLeagueStore from "stores/league-store";
 
 import SelectBox from "./select-box";
 import ThemeSwitch from "./theme-switch";
-import { useSaveLeagueQuery } from "hooks/use-league";
-import useLeagueStore from "stores/league-store";
 
 interface ISidebarProps {}
 
@@ -22,13 +22,13 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
 
   const { theme } = useThemeStore();
 
+  const { selectSport, selectedSport } = useSportStore();
   const { data: savedSports, isLoading: isSavedSportsLoading } =
     useSportsQuery();
-  const { selectSport, selectedSport } = useSportStore();
 
+  const { selectLeague, selectedLeague, clearLeague } = useLeagueStore();
   const { data: saveLeagues, isLoading: isSaveLeaguesLoading } =
-    useSaveLeagueQuery();
-  const { selectLeague, selectedLeague } = useLeagueStore();
+    useSaveLeagueQuery(selectedSport?.id!);
 
   const { openLeagueSettingModal } = useModalsStore();
 
@@ -41,8 +41,10 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
   useEffect(() => {
     if (saveLeagues && saveLeagues?.length > 0) {
       selectLeague(saveLeagues[0].league);
+    } else {
+      clearLeague();
     }
-  }, [selectLeague, saveLeagues]);
+  }, [selectLeague, saveLeagues, clearLeague]);
 
   return (
     <aside
@@ -65,6 +67,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
           Sports
         </p>
         <SelectBox
+          type="sports"
           isLoading={isSavedSportsLoading}
           items={savedSports}
           setItem={selectSport}
@@ -77,7 +80,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
           Leagues
         </p>
         <SelectBox
-          isImg
+          type="league"
           isLoading={isSaveLeaguesLoading}
           items={saveLeagues}
           setItem={selectLeague}
