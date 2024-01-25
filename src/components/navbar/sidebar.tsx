@@ -49,7 +49,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
   return (
     <aside
       className={clsx(
-        `hidden h-[100dvh] w-[15dvw] min-w-60 flex-col border-r border-MediumGrey   
+        `sticky inset-y-0 hidden w-[15dvw] min-w-60 flex-col border-r border-MediumGrey   
       text-MediumGrey lg:flex lg:flex-col`,
         theme === "light" ? "bg-White " : "bg-DarkGrey ",
       )}

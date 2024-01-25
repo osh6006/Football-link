@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <nav
       className={clsx(
-        `fix  inset-x-0 top-0 flex h-[55px] items-center  border-b border-MediumGrey px-4 capitalize text-MediumGrey`,
+        `sticky inset-x-0 top-0 z-20 flex h-[55px] items-center  border-b border-MediumGrey px-4 capitalize text-MediumGrey`,
         theme === "light" ? "bg-White " : "bg-DarkGrey",
       )}
     >
