@@ -18,33 +18,33 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
     return (
       <div
         className={clsx(
-          `overflow-x-auto`,
+          `overflow-x-auto rounded-lg border-b border-r border-MediumGrey shadow-md`,
           theme === "light" && "bg-White",
           theme === "dark" && "bg-VeryDarkGreyDark",
         )}
       >
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="font-semibold">
+        <table className="min-w-full  divide-gray-200 ">
+          <thead className="text-base font-semibold">
             <tr>
-              <th className=" px-6 py-3 text-left text-xs  uppercase leading-4 tracking-wider text-gray-500">
+              <th className=" px-6 py-3 text-left   uppercase leading-4 tracking-wider text-gray-500">
                 순위
               </th>
-              <th className=" px-6 py-3 text-left text-xs  uppercase leading-4 tracking-wider text-gray-500">
+              <th className=" px-6 py-3 text-left   uppercase leading-4 tracking-wider text-gray-500">
                 팀
               </th>
-              <th className=" px-6 py-3 text-left text-xs uppercase leading-4 tracking-wider text-gray-500">
+              <th className=" px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 승
               </th>
-              <th className=" px-6 py-3 text-left text-xs  uppercase leading-4 tracking-wider text-gray-500">
+              <th className=" px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 무
               </th>
-              <th className=" px-6 py-3 text-left text-xs  uppercase leading-4 tracking-wider text-gray-500">
+              <th className=" px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 패
               </th>
-              <th className=" px-6 py-3 text-left text-xs  uppercase leading-4 tracking-wider text-gray-500">
+              <th className=" px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 득실
               </th>
-              <th className="hidden  px-6 py-3 text-left text-xs font-medium uppercase leading-4 tracking-wider text-gray-500 sm:table-cell">
+              <th className="hidden  px-6 py-3 text-left  uppercase leading-4 tracking-wider text-gray-500 sm:table-cell">
                 최근 5경기
               </th>
             </tr>
@@ -57,7 +57,7 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
               <tr key={index}>
                 <td
                   className={clsx(
-                    "whitespace-no-wrap border-b border-gray-200 px-6 py-4",
+                    "whitespace-no-wrap border-gray-200 px-6 py-4",
                     index + 1 > 0 &&
                       index + 1 <= 4 &&
                       "border-l-2 border-l-yellow-300",
@@ -66,25 +66,25 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
                 >
                   {index + 1}
                 </td>
-                <td className="whitespace-no-wrap border-b border-gray-200 px-6 py-4">
+                <td className="whitespace-no-wrap  border-gray-200 px-6 py-4">
                   <div className=" flex items-center gap-x-3">
                     <Avatar imgUrl={faker.image.avatarGitHub()} size="md" />
                     <span>Man.Utd</span>
                   </div>
                 </td>
-                <td className="whitespace-no-wrap border-b border-gray-200 px-6 py-4 ">
+                <td className="whitespace-no-wrap  border-gray-200 px-6 py-4 ">
                   12
                 </td>
-                <td className="whitespace-no-wrap border-b border-gray-200 px-6 py-4 ">
+                <td className="whitespace-no-wrap border-gray-200 px-6 py-4 ">
                   12
                 </td>
-                <td className="whitespace-no-wrap border-b border-gray-200 px-6 py-4 ">
+                <td className="whitespace-no-wrap border-gray-200 px-6 py-4 ">
                   5
                 </td>
-                <td className="whitespace-no-wrap border-b border-gray-200 px-6 py-4 ">
+                <td className="whitespace-no-wrap  border-gray-200 px-6 py-4 ">
                   +5
                 </td>
-                <td className="whitespace-no-wrap hidden border-b border-gray-200 px-6 py-4 sm:table-cell">
+                <td className="whitespace-no-wrap hidden  border-gray-200 px-6 py-4 sm:table-cell">
                   <div className="flex gap-x-1">
                     {[1, 2, 3, 4, 5].map((el) => (
                       <div className="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 p-2 text-sm text-white">
