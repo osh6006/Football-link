@@ -32,7 +32,6 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
               <th className=" px-6 py-3 text-left text-xs  uppercase leading-4 tracking-wider text-gray-500">
                 팀
               </th>
-              {/* <th className="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase leading-4 tracking-wider text-gray-500"></th> */}
               <th className=" px-6 py-3 text-left text-xs uppercase leading-4 tracking-wider text-gray-500">
                 승
               </th>
@@ -67,9 +66,11 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
                 >
                   {index + 1}
                 </td>
-                <td className="whitespace-no-wrap flex items-center gap-3 border-b border-gray-200 px-6 py-4">
-                  <Avatar imgUrl={faker.image.avatarGitHub()} size="md" />
-                  <span>Man.Utd</span>
+                <td className="whitespace-no-wrap border-b border-gray-200 px-6 py-4">
+                  <div className=" flex items-center gap-x-3">
+                    <Avatar imgUrl={faker.image.avatarGitHub()} size="md" />
+                    <span>Man.Utd</span>
+                  </div>
                 </td>
                 <td className="whitespace-no-wrap border-b border-gray-200 px-6 py-4 ">
                   12
@@ -86,7 +87,7 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
                 <td className="whitespace-no-wrap hidden border-b border-gray-200 px-6 py-4 sm:table-cell">
                   <div className="flex gap-x-1">
                     {[1, 2, 3, 4, 5].map((el) => (
-                      <div className="flex h-5 w-5 items-center justify-center rounded-full bg-green-400 p-2 text-sm text-white">
+                      <div className="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 p-2 text-sm text-white">
                         {el}
                       </div>
                     ))}

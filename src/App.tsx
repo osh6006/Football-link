@@ -9,7 +9,7 @@ function App() {
       {/*  Side Bar */}
       <Sidebar />
       {/* Nav & Page*/}
-      <div className="h-full w-full">
+      <div className="h-fit w-full">
         <Navbar />
         <Outlet />
       </div>

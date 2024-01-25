@@ -21,12 +21,12 @@ const Banner: React.FunctionComponent<IBannerProps> = (props) => {
     >
       <div
         className={clsx(
-          `flex min-h-[300px] w-full bg-[url('https://e0.365dm.com/22/09/2048x1152/skysports-premier-league-promo_5897092.png?20220913083410')] bg-cover bg-center bg-no-repeat`,
+          `flex min-h-[300px] w-full bg-[url('https://cdn.punchng.com/wp-content/uploads/2023/10/18201131/Premier-League.png')] bg-cover bg-center bg-no-repeat`,
         )}
       ></div>
       <div
         className={clsx(
-          `flex min-h-[300px] w-full bg-[url('https://cdn.punchng.com/wp-content/uploads/2023/10/18201131/Premier-League.png')] bg-cover bg-center bg-no-repeat`,
+          `flex min-h-[300px] w-full bg-[url('https://e0.365dm.com/22/09/2048x1152/skysports-premier-league-promo_5897092.png?20220913083410')] bg-cover bg-center bg-no-repeat`,
         )}
       ></div>
       <div
