@@ -14,7 +14,7 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
 }) => {
   const { theme } = useThemeStore();
 
-  if (sports.value === "foot-ball") {
+  if (sports?.value === "foot-ball") {
     return (
       <div
         className={clsx(
@@ -86,7 +86,7 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
                 <td className="whitespace-no-wrap hidden border-b border-gray-200 px-6 py-4 sm:table-cell">
                   <div className="flex gap-x-1">
                     {[1, 2, 3, 4, 5].map((el) => (
-                      <div className="flex h-4 w-4 items-center justify-center rounded-full bg-green-400 p-2 text-sm text-white">
+                      <div className="flex h-5 w-5 items-center justify-center rounded-full bg-green-400 p-2 text-sm text-white">
                         {el}
                       </div>
                     ))}
@@ -100,7 +100,7 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
     );
   }
 
-  return <></>;
+  return null;
 };
 
 export default TeamRankTable;

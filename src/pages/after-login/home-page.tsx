@@ -14,6 +14,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
 
   return (
     <HomeContainer>
+      {/* left */}
       <div className="space-y-4">
         <Banner />
 
@@ -22,39 +23,12 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
           <TeamRankTable sports={selectedSport!} />
         </div>
       </div>
+
+      {/* right */}
       <div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
+        <div className="mt-2 space-y-2">
+          <Title>라이브 매치</Title>
+        </div>
       </div>
     </HomeContainer>
   );

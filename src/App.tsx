@@ -9,10 +9,10 @@ function App() {
       {/*  Side Bar */}
       <Sidebar />
       {/* Nav & Page*/}
-      <section className="h-full flex-1 ">
+      <div className="h-full w-full">
         <Navbar />
         <Outlet />
-      </section>
+      </div>
     </RootContainer>
   );
 }

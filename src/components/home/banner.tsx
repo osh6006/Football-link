@@ -1,13 +1,14 @@
 import * as React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import clsx from "clsx";
 
 interface IBannerProps {}
 
 const Banner: React.FunctionComponent<IBannerProps> = (props) => {
   return (
     <Carousel
-      className="rounded-lg bg-white p-2"
+      className="max-h-[300px] overflow-hidden rounded-lg "
       autoPlay
       swipeable
       stopOnHover
@@ -18,14 +19,21 @@ const Banner: React.FunctionComponent<IBannerProps> = (props) => {
       showThumbs={false}
       showStatus={false}
     >
-      <img
-        src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/640px-Premier_League_Logo.svg.png"
-        alt="banner"
-      />
-      <img
-        src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/640px-Premier_League_Logo.svg.png"
-        alt="banner"
-      />
+      <div
+        className={clsx(
+          `flex min-h-[300px] w-full bg-[url('https://e0.365dm.com/22/09/2048x1152/skysports-premier-league-promo_5897092.png?20220913083410')] bg-cover bg-center bg-no-repeat`,
+        )}
+      ></div>
+      <div
+        className={clsx(
+          `flex min-h-[300px] w-full bg-[url('https://cdn.punchng.com/wp-content/uploads/2023/10/18201131/Premier-League.png')] bg-cover bg-center bg-no-repeat`,
+        )}
+      ></div>
+      <div
+        className={clsx(
+          `flex min-h-[300px] w-full bg-[url('https://hips.hearstapps.com/hmg-prod/images/manchester-city-premier-league-trophy-648b0bbfda4f8.jpeg')] bg-cover bg-center bg-no-repeat`,
+        )}
+      ></div>
     </Carousel>
   );
 };
