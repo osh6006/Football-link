@@ -5,7 +5,7 @@ import useThemeStore from "stores/theme-store";
 
 interface IHomeLiveTableProps {}
 
-const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = ({}) => {
+const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
   const { theme } = useThemeStore();
   return (
     <div

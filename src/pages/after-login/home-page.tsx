@@ -7,6 +7,7 @@ import Title from "components/home/title";
 import useLeagueStore from "stores/league-store";
 import HomeLiveTable from "components/home/home-live-table";
 import HomeNextTable from "components/home/home-next-table";
+import PlayerRankTable from "components/home/player-rank-table";
 
 interface IHomePageProps {}
 
@@ -20,7 +21,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
       <div className="space-y-4">
         <Banner />
         <div className="mt-2 space-y-2">
-          <Title>{selectedLeague?.name} 현황</Title>
+          <Title>순위</Title>
           <TeamRankTable sports={selectedSport!} />
         </div>
       </div>
@@ -35,6 +36,16 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
         <div className="space-y-2">
           <Title>Next Matches</Title>
           <HomeNextTable />
+        </div>
+
+        <div className="space-y-2">
+          <Title>최다 골</Title>
+          <PlayerRankTable distance="short" type="goal" />
+        </div>
+
+        <div className="space-y-2">
+          <Title>최다 도움</Title>
+          <PlayerRankTable distance="short" type="assist" />
         </div>
       </div>
     </HomeContainer>
