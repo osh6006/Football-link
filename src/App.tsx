@@ -9,14 +9,12 @@ import ErrorComponent from "components/common/error-component";
 function App() {
   const { selectedLeague } = useLeagueStore();
 
-  console.log(selectedLeague);
-
   return (
     <RootContainer>
       {/*  Side Bar */}
       <Sidebar />
       {/* Nav & Page*/}
-      <div className="h-full w-full">
+      <div className="h-fit w-full">
         <Navbar />
         {selectedLeague ? (
           <Outlet />

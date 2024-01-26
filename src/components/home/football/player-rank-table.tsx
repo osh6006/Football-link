@@ -46,7 +46,7 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
             20,
           ].map((item, index) => {
             if (distance === "short" && index > 4) {
-              return <></>;
+              return null;
             }
             return (
               <tr key={index}>

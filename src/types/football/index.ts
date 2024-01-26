@@ -6,3 +6,5 @@ export type {
   IFootballSeason,
   ISupabaseFootballLeague,
 } from "./league";
+
+export type { rapidFootballTeamStandingResponse } from "./team-standing";
