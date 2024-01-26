@@ -55,7 +55,7 @@ export const getSavedLeague: QueryFunction<any | null, string[]> = async ({
       .from("user_leagues")
       .select(
         `
-        league(id,name,logo,sports_id)
+        league(id,name,logo,sports_id,rapid_football_league_id)
       `,
       )
       .eq("user_id", userId);

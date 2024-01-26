@@ -38,7 +38,9 @@ interface rapidFootballLeague {
   logo: string;
   flag: string;
   season: number;
-  standings: rapidFootballTeamStanding;
+  standings: rapidFootballTeamStanding[][];
 }
 
-export type rapidFootballTeamStandingResponse = rapidFootballLeague[];
+export interface rapidFootballTeamStandingResponse {
+  league: rapidFootballLeague;
+}
