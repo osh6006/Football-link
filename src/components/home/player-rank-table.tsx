@@ -53,10 +53,6 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
                 <td
                   className={clsx(
                     "whitespace-no-wrap border-gray-200 px-6 py-4",
-                    index + 1 > 0 &&
-                      index + 1 <= 4 &&
-                      "border-l-2 border-l-yellow-300",
-                    index + 1 === 5 && "border-l-2 border-l-gray-300",
                   )}
                 >
                   {index + 1}

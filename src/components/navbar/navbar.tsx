@@ -20,7 +20,7 @@ const Navbar = () => {
         theme === "light" ? "bg-White " : "bg-DarkGrey",
       )}
     >
-      <div className="flex-1">{pathNameKor}</div>
+      <div className="flex-1 text-xl font-semibold">{pathNameKor}</div>
 
       <div className="">
         {user ? (
