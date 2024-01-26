@@ -1,25 +1,24 @@
 import clsx from "clsx";
 import useThemeStore from "stores/theme-store";
 
-interface IErrorComponentProps {
+interface IErrorContainerProps {
   children: React.ReactNode;
 }
 
-const ErrorComponent: React.FunctionComponent<IErrorComponentProps> = ({
+const ErrorContainer: React.FunctionComponent<IErrorContainerProps> = ({
   children,
 }) => {
   const { theme } = useThemeStore();
-
   return (
-    <div
+    <main
       className={clsx(
-        "flex items-center justify-center rounded-md text-MediumGrey shadow-md",
+        "flex h-[100dvh] w-[100dvw] text-MediumGrey",
         theme === "light" ? "bg-White " : "bg-DarkGrey",
       )}
     >
       {children}
-    </div>
+    </main>
   );
 };
 
-export default ErrorComponent;
+export default ErrorContainer;

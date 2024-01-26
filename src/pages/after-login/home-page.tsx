@@ -4,27 +4,14 @@ import Banner from "components/home/banner";
 import TeamRankTable from "components/home/team-rank-table";
 import HomeContainer from "containers/home-container";
 import Title from "components/home/title";
-import useLeagueStore from "stores/league-store";
 import HomeLiveTable from "components/home/home-live-table";
 import HomeNextTable from "components/home/home-next-table";
 import PlayerRankTable from "components/home/player-rank-table";
-import ErrorComponent from "components/common/error-component";
 
 interface IHomePageProps {}
 
 const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   const { selectedSport } = useSportStore();
-  const { selectedLeague } = useLeagueStore();
-
-  console.log(selectedLeague);
-
-  if (!selectedLeague) {
-    return (
-      <div className="mt-60 flex items-center justify-center">
-        <ErrorComponent>리그를 선택해 주세요!</ErrorComponent>
-      </div>
-    );
-  }
 
   return (
     <HomeContainer>
