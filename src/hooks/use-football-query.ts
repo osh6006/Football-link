@@ -1,33 +1,37 @@
 import { useQuery } from "@tanstack/react-query";
 import { getSports } from "../services/sports";
 import { ISport } from "types";
-import { getTeamStandings } from "services/football";
+import { getLiveMatches, getTeamStandings } from "services/football";
 
-export const rankQueryKey = {
+export const footballQueryKey = {
   useFootballTeamRankQuery: "footballTeamRankQuery",
   useFootballPlayerRankQuery: "footballPlayerRankQuery",
+  useFootballHomeLiveMathesQuery: "footballLiveMatchesQuery",
 };
 
 export const useFootballTeamRankQuery = (league: string, season: string) => {
   return useQuery({
-    queryKey: [rankQueryKey.useFootballTeamRankQuery, league, season],
+    queryKey: [footballQueryKey.useFootballTeamRankQuery, league, season],
     queryFn: ({ queryKey }) =>
       getTeamStandings({ league: queryKey[1], season: queryKey[2] }),
     enabled: !!league && !!season,
-    retry: false,
-    select(data) {
-      return data;
-    },
   });
 };
 
 export const useFootballPlayerRankQuery = () => {
   return useQuery<ISport[] | null>({
-    queryKey: [rankQueryKey.useFootballPlayerRankQuery],
+    queryKey: [footballQueryKey.useFootballPlayerRankQuery],
     queryFn: getSports,
-    retry: false,
+  });
+};
+
+export const useFootballHomeLiveMathesQuery = (leagueId: number) => {
+  return useQuery({
+    queryKey: [footballQueryKey.useFootballHomeLiveMathesQuery, leagueId],
+    queryFn: ({ queryKey }) => getLiveMatches(queryKey[1] as number),
+    enabled: !!leagueId,
     select(data) {
-      return data;
+      return data[0];
     },
   });
 };

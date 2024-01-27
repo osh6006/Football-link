@@ -10,12 +10,6 @@ export const getBanner = async (
     .from("spolink")
     .list(`banner_images/${sports}/${leagueId}`);
 
-  const { data: test } = supabase.storage
-    .from("spolink")
-    .getPublicUrl(`banner_images/${sports}/${leagueId}`);
-
-  console.log(test);
-
   if (error) {
     toast.error(error.message);
     throw new Error(error.message);

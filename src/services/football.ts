@@ -1,9 +1,9 @@
 import { rapidApi } from "libs/axios";
-import toast from "react-hot-toast";
 
 import { rapidFootballTeamStandingResponse } from "types/football";
+import { rapidFootballLiveMatchResponse } from "types/football/live";
 
-export const getTeamStandings = (params: {
+export const getTeamStandings = async (params: {
   league: string | unknown;
   season: string | unknown;
 }): Promise<rapidFootballTeamStandingResponse> => {
@@ -19,6 +19,26 @@ export const getTeamStandings = (params: {
     })
     .catch((error) => {
       console.log(error);
-      toast.error(error.response.data.message);
+      throw new Error(error.response.data.message);
+    });
+};
+
+export const getLiveMatches = async (
+  leagueId: number,
+): Promise<rapidFootballLiveMatchResponse[]> => {
+  return rapidApi
+    .get("fixtures", {
+      params: {
+        live: "all",
+        league: leagueId,
+        timezone: "Asia/Seoul",
+      },
+    })
+    .then((res) => {
+      return res.data.response;
+    })
+    .catch((error) => {
+      console.log(error);
+      throw new Error(error.response.data.message);
     });
 };

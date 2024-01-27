@@ -49,9 +49,9 @@ const Banner: React.FunctionComponent<IBannerProps> = (props) => {
     return (
       <div
         className={clsx(
-          `flex h-[350px] w-full items-center justify-center bg-cover bg-center bg-no-repeat text-xl shadow-md`,
+          `flex h-[350px] w-full items-center justify-center rounded-md bg-cover bg-center bg-no-repeat text-xl shadow-md`,
           theme === "light" && "bg-White",
-          theme === "dark" && "bg-VeryDarkGreyDark",
+          theme === "dark" && "bg-DarkGrey",
         )}
       >
         아직 배너 이미지가 추가되지 않았습니다.
