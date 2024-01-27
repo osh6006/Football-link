@@ -108,7 +108,7 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
                     {[1, 2, 3, 4, 5].map((el) => (
                       <div
                         key={el}
-                        className="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 p-2 text-sm text-white"
+                        className="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 p-2 text-sm text-white drop-shadow-md"
                       >
                         {el}
                       </div>
