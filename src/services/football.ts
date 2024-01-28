@@ -4,6 +4,7 @@ import {
   rapidFootballLiveMatchResponse,
   rapidFootballNextMatchesResponse,
   rapidFootballTeamStandingResponse,
+  rapidPlayerResponse,
 } from "types/football";
 
 const TIME_ZONE = "Asia/Seoul";
@@ -12,7 +13,7 @@ export const getTeamStandings = async (params: {
   league: string | unknown;
   season: string | unknown;
 }): Promise<rapidFootballTeamStandingResponse> => {
-  return rapidApi
+  return await rapidApi
     .get("standings", {
       params: {
         season: params.season,
@@ -31,7 +32,7 @@ export const getTeamStandings = async (params: {
 export const getLiveMatches = async (
   leagueId: number,
 ): Promise<rapidFootballLiveMatchResponse[]> => {
-  return rapidApi
+  return await rapidApi
     .get("fixtures", {
       params: {
         live: "all",
@@ -51,7 +52,7 @@ export const getLiveMatches = async (
 export const getHomeNextMatchSchedule = async (
   leagueId: number,
 ): Promise<rapidFootballNextMatchesResponse[]> => {
-  return rapidApi
+  return await rapidApi
     .get("fixtures", {
       params: {
         league: leagueId,
@@ -68,4 +69,23 @@ export const getHomeNextMatchSchedule = async (
     });
 };
 
-export const getTopScorers = async (leagueId: number, season: string) => {};
+export const getTopPlayers = async (params: {
+  type: string;
+  season: string;
+  leagueId: number;
+}): Promise<rapidPlayerResponse[]> => {
+  return await rapidApi
+    .get(`players/${params.type}`, {
+      params: {
+        season: params.season,
+        league: params.leagueId,
+      },
+    })
+    .then((res) => {
+      return res.data.response;
+    })
+    .catch((error) => {
+      console.log(error);
+      throw new Error(error.response.data.message);
+    });
+};

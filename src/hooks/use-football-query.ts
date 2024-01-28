@@ -5,6 +5,7 @@ import {
   getLiveMatches,
   getTeamStandings,
   getHomeNextMatchSchedule,
+  getTopPlayers,
 } from "services/football";
 
 export const footballQueryKey = {
@@ -12,6 +13,8 @@ export const footballQueryKey = {
   useFootballPlayerRankQuery: "footballPlayerRankQuery",
   useFootballHomeLiveMathesQuery: "useFootballHomeLiveMathesQuery",
   useFootballHomeNextMatchQuery: "useFootballHomeNextMatchQuery",
+  useFootballHomeTopScorerQuery: "useFootballHomeTopScorerQuery",
+  useFootballHomeTopAssistQuery: "useFootballHomeTopAssistQuery",
 };
 
 export const useFootballTeamRankQuery = (league: string, season: string) => {
@@ -48,6 +51,35 @@ export const useFootballHomeNextMatchQuery = (leagueId: number) => {
     enabled: !!leagueId,
     select(data) {
       return data[0];
+    },
+  });
+};
+
+export const useFootballHomeTopPlayerQuery = (
+  type: string,
+  season: string,
+  leagueId: number,
+) => {
+  return useQuery({
+    queryKey: [
+      footballQueryKey.useFootballHomeTopScorerQuery,
+      {
+        type: type,
+        season: season,
+        leagueId: leagueId,
+      },
+    ],
+    queryFn: ({ queryKey }) =>
+      getTopPlayers(
+        queryKey[1] as {
+          type: string;
+          season: string;
+          leagueId: number;
+        },
+      ),
+    enabled: !!type && !!season && !!leagueId,
+    select(data) {
+      return data.filter((el: any, i: number) => i < 5);
     },
   });
 };

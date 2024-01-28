@@ -44,25 +44,25 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
         <table className="min-w-full  divide-gray-200 ">
           <thead className="text-base font-semibold">
             <tr>
-              <th className=" px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 순위
               </th>
-              <th className=" px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 팀
               </th>
-              <th className=" px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 승
               </th>
-              <th className=" px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 무
               </th>
-              <th className=" px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 패
               </th>
-              <th className=" px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 승점
               </th>
-              <th className="hidden  px-6 py-3 text-left  uppercase leading-4 tracking-wider text-gray-500 sm:table-cell">
+              <th className="hidden whitespace-nowrap  px-6 py-3 text-left  uppercase leading-4 tracking-wider text-gray-500 sm:table-cell">
                 최근 5경기
               </th>
             </tr>

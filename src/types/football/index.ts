@@ -13,4 +13,4 @@ export type {
   rapidFootballNextMatchesResponse,
 } from "./schedule";
 
-export type { Player } from "./player";
+export type { rapidPlayerResponse } from "./player";
