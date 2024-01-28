@@ -1,7 +1,12 @@
 import { rapidApi } from "libs/axios";
 
-import { rapidFootballTeamStandingResponse } from "types/football";
-import { rapidFootballLiveMatchResponse } from "types/football/live";
+import {
+  rapidFootballLiveMatchResponse,
+  rapidFootballNextMatchesResponse,
+  rapidFootballTeamStandingResponse,
+} from "types/football";
+
+const TIME_ZONE = "Asia/Seoul";
 
 export const getTeamStandings = async (params: {
   league: string | unknown;
@@ -31,7 +36,27 @@ export const getLiveMatches = async (
       params: {
         live: "all",
         league: leagueId,
-        timezone: "Asia/Seoul",
+        timezone: TIME_ZONE,
+      },
+    })
+    .then((res) => {
+      return res.data.response;
+    })
+    .catch((error) => {
+      console.log(error);
+      throw new Error(error.response.data.message);
+    });
+};
+
+export const getHomeNextMatchSchedule = async (
+  leagueId: number,
+): Promise<rapidFootballNextMatchesResponse[]> => {
+  return rapidApi
+    .get("fixtures", {
+      params: {
+        league: leagueId,
+        next: "1",
+        timezone: TIME_ZONE,
       },
     })
     .then((res) => {

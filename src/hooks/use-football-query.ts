@@ -1,12 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { getSports } from "../services/sports";
 import { ISport } from "types";
-import { getLiveMatches, getTeamStandings } from "services/football";
+import {
+  getLiveMatches,
+  getTeamStandings,
+  getHomeNextMatchSchedule,
+} from "services/football";
 
 export const footballQueryKey = {
   useFootballTeamRankQuery: "footballTeamRankQuery",
   useFootballPlayerRankQuery: "footballPlayerRankQuery",
-  useFootballHomeLiveMathesQuery: "footballLiveMatchesQuery",
+  useFootballHomeLiveMathesQuery: "useFootballHomeLiveMathesQuery",
+  useFootballHomeNextMatchQuery: "useFootballHomeNextMatchQuery",
 };
 
 export const useFootballTeamRankQuery = (league: string, season: string) => {
@@ -29,6 +34,17 @@ export const useFootballHomeLiveMathesQuery = (leagueId: number) => {
   return useQuery({
     queryKey: [footballQueryKey.useFootballHomeLiveMathesQuery, leagueId],
     queryFn: ({ queryKey }) => getLiveMatches(queryKey[1] as number),
+    enabled: !!leagueId,
+    select(data) {
+      return data[0];
+    },
+  });
+};
+
+export const useFootballHomeNextMatchQuery = (leagueId: number) => {
+  return useQuery({
+    queryKey: [footballQueryKey.useFootballHomeNextMatchQuery, leagueId],
+    queryFn: ({ queryKey }) => getHomeNextMatchSchedule(queryKey[1] as number),
     enabled: !!leagueId,
     select(data) {
       return data[0];

@@ -8,3 +8,7 @@ export type {
 } from "./league";
 
 export type { rapidFootballTeamStandingResponse } from "./team-standing";
+export type {
+  rapidFootballLiveMatchResponse,
+  rapidFootballNextMatchesResponse,
+} from "./schedule";

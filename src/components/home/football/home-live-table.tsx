@@ -95,7 +95,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
     //       <p>{liveMatch.teams.away.name}</p>
     //     </div>
     //   </div>
-    //   <p className="text-center">{liveMatch.fixture.venue.name}</p>
+    //   <p className="text-center">{`${liveMatch?.fixture.venue.name} / ${liveMatch?.fixture.venue.city}`}</p>
     // </div>
     <div
       className={clsx(

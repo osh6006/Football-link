@@ -84,3 +84,6 @@ export interface rapidFootballLiveMatchResponse {
   };
   events: Event[];
 }
+
+export interface rapidFootballNextMatchesResponse
+  extends Omit<rapidFootballLiveMatchResponse, "events"> {}
