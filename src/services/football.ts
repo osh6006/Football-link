@@ -67,3 +67,5 @@ export const getHomeNextMatchSchedule = async (
       throw new Error(error.response.data.message);
     });
 };
+
+export const getTopScorers = async (leagueId: number, season: string) => {};
