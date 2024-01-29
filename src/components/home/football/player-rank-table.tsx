@@ -3,9 +3,9 @@ import clsx from "clsx";
 import Avatar from "components/common/avatar";
 import Loading from "components/common/loading";
 import { useFootballHomeTopPlayerQuery } from "hooks/use-football-query";
-import * as React from "react";
 import useLeagueStore from "stores/league-store";
 import useThemeStore from "stores/theme-store";
+import { componentBackgroundChange } from "utils/util";
 
 interface IPlayerRankTableProps {
   type: "assist" | "goal";
@@ -38,9 +38,9 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
   if (false) {
     return (
       <div
-        className={clsx(
-          `h flex min-h-[350px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md`,
-          theme === "light" ? "bg-White " : "bg-DarkGrey ",
+        className={componentBackgroundChange(
+          theme,
+          "flex min-h-[350px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         <Loading size="md" />
@@ -51,9 +51,9 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
   if (false) {
     return (
       <div
-        className={clsx(
-          `h flex min-h-[350px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md`,
-          theme === "light" ? "bg-White " : "bg-DarkGrey ",
+        className={componentBackgroundChange(
+          theme,
+          "flex min-h-[350px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         데이터를 불러오는 도중 오류가 발생했어요 🤮
@@ -63,10 +63,9 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
 
   return (
     <div
-      className={clsx(
-        `overflow-x-auto rounded-lg border-b border-r border-MediumGrey shadow-md`,
-        theme === "light" && "bg-White",
-        theme === "dark" && "bg-VeryDarkGreyDark",
+      className={componentBackgroundChange(
+        theme,
+        "overflow-x-auto rounded-lg border-b border-r border-MediumGrey shadow-md",
       )}
     >
       <table className="min-w-full  divide-gray-200 ">

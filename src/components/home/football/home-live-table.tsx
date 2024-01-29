@@ -5,6 +5,7 @@ import { useFootballHomeLiveMathesQuery } from "hooks/use-football-query";
 import * as React from "react";
 import useLeagueStore from "stores/league-store";
 import useThemeStore from "stores/theme-store";
+import { componentBackgroundChange } from "utils/util";
 
 interface IHomeLiveTableProps {}
 
@@ -21,9 +22,9 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
   if (false) {
     return (
       <div
-        className={clsx(
-          `h flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md`,
-          theme === "light" ? "bg-White " : "bg-DarkGrey ",
+        className={componentBackgroundChange(
+          theme,
+          "h flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         <Loading size="md" />
@@ -34,9 +35,9 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
   if (false) {
     return (
       <div
-        className={clsx(
-          `h flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md`,
-          theme === "light" ? "bg-White " : "bg-DarkGrey ",
+        className={componentBackgroundChange(
+          theme,
+          "h flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         서버에서 오류가 발생했어요 🤮
@@ -47,9 +48,9 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
   if (!true) {
     return (
       <div
-        className={clsx(
-          `h relative flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md`,
-          theme === "light" ? "bg-White " : "bg-DarkGrey ",
+        className={componentBackgroundChange(
+          theme,
+          "h relative flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         현재 진행중인 경기가 없어요 🤔

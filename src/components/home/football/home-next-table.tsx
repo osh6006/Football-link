@@ -4,6 +4,7 @@ import Loading from "components/common/loading";
 import { useFootballHomeNextMatchQuery } from "hooks/use-football-query";
 import useLeagueStore from "stores/league-store";
 import useThemeStore from "stores/theme-store";
+import { componentBackgroundChange } from "utils/util";
 
 interface IHomeNextTableProps {}
 
@@ -22,9 +23,9 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = (props) => {
   if (false) {
     return (
       <div
-        className={clsx(
-          `h flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md`,
-          theme === "light" ? "bg-White " : "bg-DarkGrey ",
+        className={componentBackgroundChange(
+          theme,
+          "h flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         <Loading size="md" />
@@ -35,9 +36,9 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = (props) => {
   if (false) {
     return (
       <div
-        className={clsx(
-          `h flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md`,
-          theme === "light" ? "bg-White " : "bg-DarkGrey ",
+        className={componentBackgroundChange(
+          theme,
+          "h flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         서버에서 오류가 발생했어요 🤮
