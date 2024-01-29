@@ -1,6 +1,6 @@
 import useSportStore from "stores/sports-store";
 import HomeContainer from "containers/home-container";
-import FoorballPageContent from "components/home/football/football-page-content";
+import FootballHomeContent from "components/home/football/football-home-content";
 
 interface IHomePageProps {}
 
@@ -9,8 +9,8 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
 
   return (
     <HomeContainer>
-      {selectedSport?.value === "foot-ball" && <FoorballPageContent />}
-      {selectedSport?.value === "basket-ball" && <FoorballPageContent />}
+      {selectedSport?.value === "foot-ball" && <FootballHomeContent />}
+      {selectedSport?.value === "basket-ball" && <FootballHomeContent />}
     </HomeContainer>
   );
 };

@@ -1,6 +1,5 @@
+import { ThemeColor } from "types";
 import { create } from "zustand";
-
-type ThemeColor = "light" | "dark";
 
 interface IThemeStore {
   theme: ThemeColor;

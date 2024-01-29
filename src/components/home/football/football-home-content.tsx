@@ -6,10 +6,10 @@ import HomeNextTable from "./home-next-table";
 import PlayerRankTable from "./player-rank-table";
 import useLeagueStore from "stores/league-store";
 
-interface IFoorballPageContentProps {}
+interface IFootballHomeContentProps {}
 
-const FoorballPageContent: React.FunctionComponent<
-  IFoorballPageContentProps
+const FootballHomeContent: React.FunctionComponent<
+  IFootballHomeContentProps
 > = () => {
   const { selectedLeague } = useLeagueStore();
 
@@ -18,7 +18,7 @@ const FoorballPageContent: React.FunctionComponent<
       <div className="space-y-4">
         <Banner />
         <div className="mt-2 space-y-2">
-          <Title>순위</Title>
+          <Title>종합 순위</Title>
           <TeamRankTable
             season={new Date().getFullYear() - 1 + ""}
             leagueId={selectedLeague?.rapid_football_league_id! + ""}
@@ -52,4 +52,4 @@ const FoorballPageContent: React.FunctionComponent<
   );
 };
 
-export default FoorballPageContent;
+export default FootballHomeContent;

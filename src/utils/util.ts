@@ -1,3 +1,6 @@
+import clsx from "clsx";
+import { ThemeColor } from "types";
+
 export const isIncludeInSelectedItem = (array: any[], id: string) => {
   if (array.find((el) => el.id === id)) return true;
   return false;
@@ -16,4 +19,15 @@ export const isIncludeInArray = (array: any[], item: any) => {
 
 export const flattenedArray = (array: any[], flatternKey: string) => {
   return array.map((item) => item[flatternKey]);
+};
+
+export const componentBackgroundChange = (
+  theme: ThemeColor,
+  className: string,
+) => {
+  return clsx(
+    className,
+    theme === "light" && "bg-White",
+    theme === "dark" && "bg-DarkGrey",
+  );
 };
