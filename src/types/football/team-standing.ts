@@ -15,7 +15,7 @@ interface rapidFootballTeamStandingMatchInfo {
   };
 }
 
-interface rapidFootballTeamStanding {
+export interface rapidFootballTeamStanding {
   rank: number;
   team: rapidFootballTeamStandingTeam;
   points: number;
@@ -27,11 +27,10 @@ interface rapidFootballTeamStanding {
   all: rapidFootballTeamStandingMatchInfo;
   home: rapidFootballTeamStandingMatchInfo;
   away: rapidFootballTeamStandingMatchInfo;
-
   update: "2024-01-25T00:00:00+00:00";
 }
 
-interface rapidFootballLeague {
+export interface rapidFootballLeague {
   id: number;
   name: string;
   country: string;

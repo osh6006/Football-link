@@ -4,7 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import clsx from "clsx";
 import useSportStore from "stores/sports-store";
 import useLeagueStore from "stores/league-store";
-import { useBannerQuery } from "hooks/use-banner-query";
+import { useBannerQuery } from "hooks/services/quries/use-banner-query";
 import Loading from "components/common/loading";
 import useThemeStore from "stores/theme-store";
 

@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { supabase } from "../libs/superbase-client";
+import { supabase } from "../../../libs/superbase-client";
 import { ISport } from "types";
 
 export const getSports: () => Promise<ISport[] | null> = async () => {

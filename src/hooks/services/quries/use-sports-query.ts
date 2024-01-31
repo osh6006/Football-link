@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getSports } from "../services/sports";
+import { getSports } from "../apis/sports";
 import { ISport } from "types";
 
 export const sportsQueryKey = {

@@ -1,4 +1,4 @@
-import FootballRankContent from "components/rank/football/football-rank-contents";
+import RankContent from "components/rank/football/rank-contents";
 import RankContainer from "containers/rank-container";
 import useSportStore from "stores/sports-store";
 
@@ -9,7 +9,7 @@ const RankPage: React.FunctionComponent<IRankPageProps> = () => {
 
   return (
     <RankContainer>
-      {selectedSport?.value === "foot-ball" && <FootballRankContent />}
+      {selectedSport?.value === "foot-ball" && <RankContent />}
     </RankContainer>
   );
 };

@@ -7,10 +7,13 @@ export type {
   ISupabaseFootballLeague,
 } from "./league";
 
-export type { rapidFootballTeamStandingResponse } from "./team-standing";
+export type {
+  rapidFootballTeamStandingResponse,
+  rapidFootballTeamStanding,
+} from "./team-standing";
 export type {
   rapidFootballLiveMatchResponse,
   rapidFootballNextMatchesResponse,
 } from "./schedule";
 
-export type { rapidPlayerResponse } from "./player";
+export type { rapidPlayerResponse, Player } from "./player";

@@ -10,8 +10,8 @@ import {
 const TIME_ZONE = "Asia/Seoul";
 
 export const getTeamStandings = async (params: {
-  league: string | unknown;
-  season: string | unknown;
+  league: string;
+  season: string;
 }): Promise<rapidFootballTeamStandingResponse> => {
   return await rapidApi
     .get("standings", {

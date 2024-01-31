@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getLeagues, getSavedLeague } from "services/league";
+import { getLeagues, getSavedLeague } from "hooks/services/apis/league";
 
 export const leagueQueryKey = {
   useLeagueQuery: "leaguesQuery",

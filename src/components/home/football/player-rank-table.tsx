@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import clsx from "clsx";
 import Avatar from "components/common/avatar";
 import Loading from "components/common/loading";
-import { useFootballHomeTopPlayerQuery } from "hooks/use-football-query";
+import { useFootballHomeTopPlayerQuery } from "hooks/services/quries/use-football-query";
 import useLeagueStore from "stores/league-store";
 import useThemeStore from "stores/theme-store";
 import { componentBackgroundChange } from "utils/util";

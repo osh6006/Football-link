@@ -4,7 +4,7 @@ import { faker } from "@faker-js/faker";
 import Avatar from "components/common/avatar";
 
 import useThemeStore from "stores/theme-store";
-import { useFootballTeamRankQuery } from "hooks/use-football-query";
+import { useFootballTeamRankQuery } from "hooks/services/quries/use-football-query";
 import Loading from "components/common/loading";
 import { componentBackgroundChange } from "utils/util";
 

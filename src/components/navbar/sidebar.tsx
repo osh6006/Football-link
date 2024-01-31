@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import usePath from "../../hooks/use-path";
-import { useSportsQuery } from "../../hooks/use-sports";
-import { useSaveLeagueQuery } from "hooks/use-league";
+import { useSportsQuery } from "../../hooks/services/quries/use-sports-query";
+import { useSaveLeagueQuery } from "hooks/services/quries/use-league-query";
 import useThemeStore from "../../stores/theme-store";
 import useSportStore from "../../stores/sports-store";
 import useModalsStore from "../../stores/modals-store";

@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import clsx from "clsx";
 import Loading from "components/common/loading";
-import { useFootballHomeNextMatchQuery } from "hooks/use-football-query";
+import { useFootballHomeNextMatchQuery } from "hooks/services/quries/use-football-query";
 import useLeagueStore from "stores/league-store";
 import useThemeStore from "stores/theme-store";
 import { componentBackgroundChange } from "utils/util";

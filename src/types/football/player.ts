@@ -105,7 +105,7 @@ interface Statistics {
   penalty: Penalty;
 }
 
-interface Player {
+export interface Player {
   id: number;
   name: string;
   firstname: string;

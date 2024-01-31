@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { getSports } from "../services/sports";
+import { getSports } from "../apis/sports";
 import { ISport } from "types";
 import {
   getLiveMatches,
   getTeamStandings,
   getHomeNextMatchSchedule,
   getTopPlayers,
-} from "services/football";
+} from "hooks/services/apis/football";
 
 export const footballQueryKey = {
   useFootballTeamRankQuery: "footballTeamRankQuery",
@@ -23,6 +23,8 @@ export const useFootballTeamRankQuery = (league: string, season: string) => {
     queryFn: ({ queryKey }) =>
       getTeamStandings({ league: queryKey[1], season: queryKey[2] }),
     enabled: !!league && !!season,
+    staleTime: Infinity,
+    gcTime: Infinity,
   });
 };
 
@@ -30,6 +32,8 @@ export const useFootballPlayerRankQuery = () => {
   return useQuery<ISport[] | null>({
     queryKey: [footballQueryKey.useFootballPlayerRankQuery],
     queryFn: getSports,
+    staleTime: Infinity,
+    gcTime: Infinity,
   });
 };
 
@@ -52,6 +56,8 @@ export const useFootballHomeNextMatchQuery = (leagueId: number) => {
     select(data) {
       return data[0];
     },
+    staleTime: Infinity,
+    gcTime: Infinity,
   });
 };
 
@@ -81,5 +87,7 @@ export const useFootballHomeTopPlayerQuery = (
     select(data) {
       return data.filter((el: any, i: number) => i < 5);
     },
+    staleTime: Infinity,
+    gcTime: Infinity,
   });
 };

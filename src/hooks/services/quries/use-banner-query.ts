@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getBanner } from "services/banner";
+import { getBanner } from "hooks/services/apis/banner";
 
 export const bannerQueryKey = {
   useBannerQuery: "bannerQuery",

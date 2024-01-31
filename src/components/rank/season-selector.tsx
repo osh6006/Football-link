@@ -43,8 +43,8 @@ const SeasonSelector: React.FunctionComponent<ISeasonSelectorProps> = ({
       <div
         role="button"
         ref={ref}
-        className="relative rounded-md px-2 py-1 text-2xl transition-colors 
-      hover:bg-MainHover hover:text-white"
+        className="relative select-none rounded-md border px-2 py-1 text-2xl shadow-sm transition-colors
+       hover:border hover:text-Main"
         onClick={(e) => {
           setIsOpen(!isOpen);
         }}

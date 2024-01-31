@@ -12,7 +12,7 @@ import {
   leagueQueryKey,
   useLeagueQuery,
   useSaveLeagueQuery,
-} from "hooks/use-league";
+} from "hooks/services/quries/use-league-query";
 
 import Modal from "./modal";
 import MultiSelect from "components/auth-page/multi-select";
@@ -23,7 +23,7 @@ import { ISupabaseLeague } from "types/football/league";
 import {
   deleteAllSupabaseLeague,
   insertAllSupabaseLeague,
-} from "services/league";
+} from "hooks/services/apis/league";
 
 interface ILeagueSettingModalProps {}
 
