@@ -1,0 +1,17 @@
+.select-season-enter {
+  opacity: 0;
+}
+
+.select-season-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.select-season-exit {
+  opacity: 1;
+}
+
+.select-season-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
