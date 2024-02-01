@@ -11,6 +11,7 @@ import clsx from "clsx";
 import Avatar from "components/common/avatar";
 import Loading from "components/common/loading";
 import { useFootballTeamRankQuery } from "hooks/services/quries/use-football-query";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
 import { rapidFootballTeamStanding } from "types/football";
 
@@ -174,16 +175,33 @@ const TeamRankTable: React.FunctionComponent<IFootballRankTableProps> = ({
                   key={header.id}
                   className="whitespace-nowrap px-6 py-3 text-left leading-4 tracking-wider"
                 >
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
+                  {header.isPlaceholder ? null : (
+                    <div
+                      {...{
+                        className: header.column.getCanSort()
+                          ? "cursor-pointer select-none flex min-w-[36px]"
+                          : "",
+                        onClick: header.column.getToggleSortingHandler(),
+                      }}
+                    >
+                      {flexRender(
                         header.column.columnDef.header,
                         header.getContext(),
                       )}
-                  {{
-                    asc: <span className="pl-2">↑</span>,
-                    desc: <span className="pl-2">↓</span>,
-                  }[header.column.getIsSorted() as string] ?? null}
+                      {{
+                        asc: (
+                          <span className="pl-2 text-Main">
+                            <ChevronUp size={15} />
+                          </span>
+                        ),
+                        desc: (
+                          <span className="pl-2 text-Main">
+                            <ChevronDown size={15} />
+                          </span>
+                        ),
+                      }[header.column.getIsSorted() as string] ?? null}
+                    </div>
+                  )}
                 </th>
               ))}
             </tr>
@@ -201,7 +219,7 @@ const TeamRankTable: React.FunctionComponent<IFootballRankTableProps> = ({
           ))}
         </tbody>
       </table>
-      <div className="m-4">
+      <div className="mt-4">
         <p>- 순위 규칙</p>
         <div className="mt-2 flex items-center gap-x-2 before:block before:h-4 before:w-4 before:bg-yellow-400 before:content-['']">
           1~4위 팀은 UEFA 챔스 출전 자격을 얻는다.
