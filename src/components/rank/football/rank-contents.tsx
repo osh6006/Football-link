@@ -49,7 +49,7 @@ const RankContent: React.FunctionComponent<IFootballRankContentProps> = () => {
         </div>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-10 overflow-x-auto">
         <TeamRankTable
           league={selectedLeague?.rapid_football_league_id + ""}
           season={season + ""}
