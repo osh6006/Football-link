@@ -31,7 +31,7 @@ const RankContent: React.FunctionComponent<IFootballRankContentProps> = () => {
   };
 
   return (
-    <section>
+    <section className="xl:px-4">
       <div className="relative flex flex-col-reverse items-center justify-center gap-y-4 py-2">
         <div className="md:absolute md:left-0 md:top-0 md:mt-3">
           <PlayerTeamSwitcher
@@ -49,11 +49,15 @@ const RankContent: React.FunctionComponent<IFootballRankContentProps> = () => {
         </div>
       </div>
 
-      <div className="mt-10 overflow-x-auto">
-        <TeamRankTable
-          league={selectedLeague?.rapid_football_league_id + ""}
-          season={season + ""}
-        />
+      <div className="mt-10 overflow-x-auto py-4">
+        {selectedTarget === "team" && (
+          <TeamRankTable
+            league={selectedLeague?.rapid_football_league_id + ""}
+            season={season + ""}
+          />
+        )}
+
+        {selectedTarget === "player" && <>Player!</>}
       </div>
     </section>
   );
