@@ -24,8 +24,8 @@ interface Games {
   lineups: 35;
   minutes: 3087;
   number: null;
-  position: "Attacker";
-  rating: "7.642857";
+  position: string;
+  rating: string;
   captain: false;
 }
 
@@ -123,3 +123,9 @@ export interface rapidPlayerResponse {
   player: Player;
   statistics: Statistics[];
 }
+
+export type PlayerSelectType =
+  | "topscorers"
+  | "topassists"
+  | "topredcards"
+  | "topyellowcards";

@@ -23,7 +23,7 @@ const Table: React.FunctionComponent<ITableProps> = ({
     );
   }
 
-  if (false) {
+  if (isError) {
     return (
       <ComponentStatusContainer state="error" height="430">
         서버에서 오류가 발생했어요 🤮

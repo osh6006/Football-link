@@ -11,6 +11,7 @@ import Avatar from "components/common/avatar";
 import { rapidFootballTeamStanding } from "types/football";
 import useTable from "hooks/use-table";
 import Table from "components/common/table";
+import { useTeamRankQuery } from "hooks/services/quries/use-football-query";
 
 interface IFootballRankTableProps {
   league: string;
@@ -129,7 +130,7 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
     ];
   }, [columnHelper]);
 
-  // const { data, isLoading, isError } = useFootballTeamRankQuery(league, season);
+  // const { data, isLoading, isError } = useTeamRankQuery(league, season);
 
   const table = useReactTable({
     // data: data?.league.standings[0] || emptyArray,

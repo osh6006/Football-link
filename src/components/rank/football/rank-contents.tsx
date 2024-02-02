@@ -55,7 +55,7 @@ const RankContent: React.FunctionComponent<IFootballRankContentProps> = () => {
         </div>
       </div>
 
-      <div className="mt-10 overflow-x-auto py-4">
+      <div className="overflow-x-auto sm:mt-4 lg:mt-10">
         {selectedTarget === "team" && (
           <TeamRank
             league={selectedLeague?.rapid_football_league_id + ""}
