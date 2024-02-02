@@ -32,7 +32,7 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
     setType(type);
   };
 
-  const { data, isLoading, isError } = useTopPlayerQuery(type, season, league);
+  // const { data, isLoading, isError } = useTopPlayerQuery(type, season, league);
 
   const columns = useMemo(() => {
     return [
@@ -109,8 +109,8 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
   }, [columnHelper]);
 
   const table = useReactTable({
-    // data: emptyArray,
-    data: data || emptyArray,
+    data: emptyArray,
+    // data: data || emptyArray,
     columns: columns || emptyArray,
     getCoreRowModel: getCoreRowModel(),
     state: {
@@ -125,7 +125,11 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
       <TopPlayerSelector setType={handleType} type={type} />
       {/* table */}
       <h2 className="text-lg font-semibold">종합 순위</h2>
-      <Table tableData={table} isLoading={isLoading} isError={isError} />
+      <Table
+        tableData={table}
+        // isLoading={isLoading}
+        // isError={isError}
+      />
     </div>
   );
 };
