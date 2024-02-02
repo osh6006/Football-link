@@ -6,20 +6,20 @@ import {
   getTeamStandings,
   getHomeNextMatchSchedule,
   getTopPlayers,
+  getAllPlayers,
 } from "hooks/services/apis/football";
 
 export const footballQueryKey = {
-  useFootballTeamRankQuery: "footballTeamRankQuery",
-  useFootballPlayerRankQuery: "footballPlayerRankQuery",
-  useFootballHomeLiveMathesQuery: "useFootballHomeLiveMathesQuery",
-  useFootballHomeNextMatchQuery: "useFootballHomeNextMatchQuery",
-  useFootballHomeTopScorerQuery: "useFootballHomeTopScorerQuery",
-  useFootballHomeTopAssistQuery: "useFootballHomeTopAssistQuery",
+  useTeamRankQuery: "footballTeamRankQuery",
+  usePlayerRankQuery: "footballPlayerRankQuery",
+  useLiveMathesQuery: "footballHomeLiveMathesQuery",
+  useNextMatchQuery: "footballHomeNextMatchQuery",
+  useTopPlayerQuery: "footballTopScorerQuery",
 };
 
-export const useFootballTeamRankQuery = (league: string, season: string) => {
+export const useTeamRankQuery = (league: string, season: string) => {
   return useQuery({
-    queryKey: [footballQueryKey.useFootballTeamRankQuery, league, season],
+    queryKey: [footballQueryKey.useTeamRankQuery, league, season],
     queryFn: ({ queryKey }) =>
       getTeamStandings({ league: queryKey[1], season: queryKey[2] }),
     enabled: !!league && !!season,
@@ -28,18 +28,18 @@ export const useFootballTeamRankQuery = (league: string, season: string) => {
   });
 };
 
-export const useFootballPlayerRankQuery = () => {
+export const usePlayerRankQuery = () => {
   return useQuery<ISport[] | null>({
-    queryKey: [footballQueryKey.useFootballPlayerRankQuery],
+    queryKey: [footballQueryKey.usePlayerRankQuery],
     queryFn: getSports,
     staleTime: Infinity,
     gcTime: Infinity,
   });
 };
 
-export const useFootballHomeLiveMathesQuery = (leagueId: number) => {
+export const useLiveMathesQuery = (leagueId: number) => {
   return useQuery({
-    queryKey: [footballQueryKey.useFootballHomeLiveMathesQuery, leagueId],
+    queryKey: [footballQueryKey.useLiveMathesQuery, leagueId],
     queryFn: ({ queryKey }) => getLiveMatches(queryKey[1] as number),
     enabled: !!leagueId,
     select(data) {
@@ -48,9 +48,9 @@ export const useFootballHomeLiveMathesQuery = (leagueId: number) => {
   });
 };
 
-export const useFootballHomeNextMatchQuery = (leagueId: number) => {
+export const useNextMatchQuery = (leagueId: number) => {
   return useQuery({
-    queryKey: [footballQueryKey.useFootballHomeNextMatchQuery, leagueId],
+    queryKey: [footballQueryKey.useNextMatchQuery, leagueId],
     queryFn: ({ queryKey }) => getHomeNextMatchSchedule(queryKey[1] as number),
     enabled: !!leagueId,
     select(data) {
@@ -61,14 +61,14 @@ export const useFootballHomeNextMatchQuery = (leagueId: number) => {
   });
 };
 
-export const useFootballHomeTopPlayerQuery = (
+export const useTopPlayerQuery = (
   type: string,
   season: string,
   leagueId: number,
 ) => {
   return useQuery({
     queryKey: [
-      footballQueryKey.useFootballHomeTopScorerQuery,
+      footballQueryKey.useTopPlayerQuery,
       {
         type: type,
         season: season,
@@ -84,10 +84,22 @@ export const useFootballHomeTopPlayerQuery = (
         },
       ),
     enabled: !!type && !!season && !!leagueId,
-    select(data) {
-      return data.filter((el: any, i: number) => i < 5);
-    },
     staleTime: Infinity,
     gcTime: Infinity,
   });
 };
+
+// export const useAllPlayerQuery = (season: string, leagueId: string) => {
+//   return useQuery({
+//     queryKey: [
+//       footballQueryKey.useFootballHomeTopScorerQuery,
+//       season,
+//       leagueId,
+//     ],
+//     queryFn: ({ queryKey }) =>
+//       getAllPlayers(queryKey[1] as string, queryKey[2] as string),
+//     enabled: !!season && !!leagueId,
+//     staleTime: Infinity,
+//     gcTime: Infinity,
+//   });
+// };

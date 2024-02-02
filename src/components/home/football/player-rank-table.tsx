@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import clsx from "clsx";
 import Avatar from "components/common/avatar";
 import Loading from "components/common/loading";
-import { useFootballHomeTopPlayerQuery } from "hooks/services/quries/use-football-query";
+import { useTopPlayerQuery } from "hooks/services/quries/use-football-query";
 import useLeagueStore from "stores/league-store";
 import useThemeStore from "stores/theme-store";
 import { componentBackgroundChange } from "utils/util";
@@ -29,7 +29,7 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
   //   data: topscorers,
   //   isLoading,
   //   isError,
-  // } = useFootballHomeTopPlayerQuery(
+  // } = useTopPlayerQuery(
   //   rankType[type],
   //   season,
   //   selectedLeague?.rapid_football_league_id!,
@@ -147,6 +147,7 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
     //     </thead>
     //     <tbody>
     //       {topscorers?.map((item, index) => {
+    //         if (index > 5) return null;
     //         return (
     //           <tr key={index}>
     //             <td

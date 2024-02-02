@@ -1,8 +1,11 @@
 import { useState } from "react";
+
+import useLeagueStore from "stores/league-store";
+
+import TeamRank from "./team-rank";
+import PlayerRank from "./player-rank";
 import PlayerTeamSwitcher from "../player-team-switcher";
 import SeasonSelector from "../season-selector";
-import TeamRankTable from "./team-rank-table";
-import useLeagueStore from "stores/league-store";
 
 interface IFootballRankContentProps {}
 
@@ -24,6 +27,9 @@ const RankContent: React.FunctionComponent<IFootballRankContentProps> = () => {
     setSeason(season + 1);
   };
   const handleSeasonDecrese = () => {
+    if (2008 === season) {
+      return;
+    }
     setSeason(season - 1);
   };
   const handleSetSeason = (season: number) => {
@@ -51,13 +57,18 @@ const RankContent: React.FunctionComponent<IFootballRankContentProps> = () => {
 
       <div className="mt-10 overflow-x-auto py-4">
         {selectedTarget === "team" && (
-          <TeamRankTable
+          <TeamRank
             league={selectedLeague?.rapid_football_league_id + ""}
             season={season + ""}
           />
         )}
 
-        {selectedTarget === "player" && <>Player!</>}
+        {selectedTarget === "player" && (
+          <PlayerRank
+            season={season + ""}
+            league={selectedLeague?.rapid_football_league_id!}
+          />
+        )}
       </div>
     </section>
   );

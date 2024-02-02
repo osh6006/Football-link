@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import clsx from "clsx";
 import Loading from "components/common/loading";
-import { useFootballHomeLiveMathesQuery } from "hooks/services/quries/use-football-query";
+import { useLiveMathesQuery } from "hooks/services/quries/use-football-query";
 import * as React from "react";
 import useLeagueStore from "stores/league-store";
 import useThemeStore from "stores/theme-store";

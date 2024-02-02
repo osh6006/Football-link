@@ -1,35 +1,30 @@
+import { useMemo } from "react";
 import {
-  createColumnHelper,
-  flexRender,
   getCoreRowModel,
   getSortedRowModel,
-  SortingState,
   useReactTable,
 } from "@tanstack/react-table";
 import clsx from "clsx";
+
 import Avatar from "components/common/avatar";
-import Loading from "components/common/loading";
-import { useFootballTeamRankQuery } from "hooks/services/quries/use-football-query";
-import { ChevronDown, ChevronUp } from "lucide-react";
-import { useMemo, useState } from "react";
+
 import { rapidFootballTeamStanding } from "types/football";
+import useTable from "hooks/use-table";
+import Table from "components/common/table";
 
 interface IFootballRankTableProps {
   league: string;
   season: string;
 }
 
-const emptyArray: any = [];
-
-const TeamRankTable: React.FunctionComponent<IFootballRankTableProps> = ({
+const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
   league,
   season,
 }) => {
-  const columnHelper = createColumnHelper<rapidFootballTeamStanding>();
-  const [sorting, setSorting] = useState<SortingState>([]);
-  // const { data, isLoading, isError } = useFootballTeamRankQuery(league, season);
+  const { sorting, setSorting, columnHelper, emptyArray } =
+    useTable<rapidFootballTeamStanding>();
 
-  const columns = useMemo<any>(() => {
+  const columns = useMemo(() => {
     return [
       columnHelper.accessor((row) => row.rank, {
         id: "rank",
@@ -59,7 +54,7 @@ const TeamRankTable: React.FunctionComponent<IFootballRankTableProps> = ({
             <span>{info.getValue().name}</span>
           </div>
         ),
-        header: () => <span>팀</span>,
+        header: () => <span className="flex items-center">팀</span>,
       }),
       columnHelper.accessor((row) => row.all.played, {
         id: "played",
@@ -134,6 +129,8 @@ const TeamRankTable: React.FunctionComponent<IFootballRankTableProps> = ({
     ];
   }, [columnHelper]);
 
+  // const { data, isLoading, isError } = useFootballTeamRankQuery(league, season);
+
   const table = useReactTable({
     // data: data?.league.standings[0] || emptyArray,
     data: emptyArray,
@@ -146,101 +143,9 @@ const TeamRankTable: React.FunctionComponent<IFootballRankTableProps> = ({
     getSortedRowModel: getSortedRowModel(),
   });
 
-  if (false) {
-    return (
-      <div
-        className={
-          "h flex min-h-[430px] w-full items-center justify-center rounded-md p-2 text-xl  "
-        }
-      >
-        <Loading size="md" />
-      </div>
-    );
-  }
-
-  if (false) {
-    return (
-      <div
-        className={
-          "h flex min-h-[430px] w-full items-center justify-center rounded-md p-2 text-xl"
-        }
-      >
-        서버에서 오류가 발생했어요 🤮
-      </div>
-    );
-  }
-
   return (
     <>
-      <table className="w-full rounded-md border border-MediumGrey ">
-        <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr
-              key={headerGroup.id}
-              className="border-b border-MediumGrey uppercase"
-            >
-              {headerGroup.headers.map((header) => {
-                const breakpoints: any = header.column.columnDef.meta;
-                return (
-                  <th
-                    key={header.id}
-                    className={clsx(
-                      "whitespace-nowrap px-6 py-3 text-left leading-4 tracking-wider",
-                      breakpoints?.className,
-                    )}
-                  >
-                    {header.isPlaceholder ? null : (
-                      <div
-                        {...{
-                          className: header.column.getCanSort()
-                            ? "cursor-pointer select-none flex min-w-[36px]"
-                            : "",
-                          onClick: header.column.getToggleSortingHandler(),
-                        }}
-                      >
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
-                        {{
-                          asc: (
-                            <span className="pl-2 text-Main">
-                              <ChevronUp size={20} />
-                            </span>
-                          ),
-                          desc: (
-                            <span className="pl-2 text-Main">
-                              <ChevronDown size={20} />
-                            </span>
-                          ),
-                        }[header.column.getIsSorted() as string] ?? null}
-                      </div>
-                    )}
-                  </th>
-                );
-              })}
-            </tr>
-          ))}
-        </thead>
-        <tbody className="">
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id} className="relative">
-              {row.getVisibleCells().map((cell) => {
-                const breakpoints: any = cell.column.columnDef.meta;
-
-                return (
-                  <td
-                    key={cell.id}
-                    className={clsx("px-6 py-3", breakpoints?.className)}
-                  >
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Table tableData={table} />
       <div className="mt-4">
         <p>- 순위 규칙</p>
         <div className="mt-2 flex items-center gap-x-2 before:block before:h-4 before:w-4 before:bg-yellow-400 before:content-['']">
@@ -258,4 +163,4 @@ const TeamRankTable: React.FunctionComponent<IFootballRankTableProps> = ({
   );
 };
 
-export default TeamRankTable;
+export default TeamRank;
