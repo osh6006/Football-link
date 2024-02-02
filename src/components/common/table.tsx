@@ -33,8 +33,8 @@ const Table: React.FunctionComponent<ITableProps> = ({
 
   return (
     <>
-      <table className="w-full rounded-md border border-MediumGrey ">
-        <thead>
+      <table className="w-full border-separate rounded-md border border-MediumGrey">
+        <thead className="">
           {tableData.getHeaderGroups().map((headerGroup) => (
             <tr
               key={headerGroup.id}
