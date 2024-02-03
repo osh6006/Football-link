@@ -11,5 +11,7 @@ export const useBannerQuery = (sports: string, leagueId: number) => {
     queryFn: ({ queryKey }) =>
       getBanner(queryKey[1] as string, queryKey[2] as number),
     enabled: !!sports && !!leagueId,
+    staleTime: Infinity,
+    gcTime: Infinity,
   });
 };

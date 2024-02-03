@@ -8,6 +8,7 @@ import {
   getTopPlayers,
   getAllPlayers,
 } from "hooks/services/apis/football";
+import { getNaverNews } from "../apis/news";
 
 export const footballQueryKey = {
   useTeamRankQuery: "footballTeamRankQuery",
@@ -15,6 +16,7 @@ export const footballQueryKey = {
   useLiveMathesQuery: "footballHomeLiveMathesQuery",
   useNextMatchQuery: "footballHomeNextMatchQuery",
   useTopPlayerQuery: "footballTopScorerQuery",
+  useNewsQuery: "footballNewsQuery",
 };
 
 export const useTeamRankQuery = (league: string, season: string) => {
@@ -103,3 +105,13 @@ export const useTopPlayerQuery = (
 //     gcTime: Infinity,
 //   });
 // };
+
+export const useNewsQuery = (query: string) => {
+  return useQuery({
+    queryKey: [footballQueryKey.useNewsQuery, query],
+    queryFn: ({ queryKey }) => getNaverNews(queryKey[1]),
+    enabled: !!query,
+    staleTime: Infinity,
+    gcTime: Infinity,
+  });
+};

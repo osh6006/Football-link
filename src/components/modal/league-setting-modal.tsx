@@ -15,7 +15,7 @@ import {
 } from "hooks/services/quries/use-league-query";
 
 import Modal from "./modal";
-import MultiSelect from "components/auth-page/multi-select";
+import MultiSelect from "components/auth/multi-select";
 import Button from "components/common/button";
 import Loading from "components/common/loading";
 

@@ -10,9 +10,10 @@ export const useSportsQuery = () => {
   return useQuery<ISport[] | null>({
     queryKey: [sportsQueryKey.useSportsQuery],
     queryFn: getSports,
-    retry: false,
     select(data) {
       return data;
     },
+    staleTime: Infinity,
+    gcTime: Infinity,
   });
 };
