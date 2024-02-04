@@ -1,5 +1,5 @@
 import { naverApi, newsApi } from "libs/axios";
-import { LocalNewsResponse } from "types/football";
+import { GlobalNewsResponse, LocalNewsResponse } from "types/football";
 
 export const getNaverNews = async (
   query: string,
@@ -19,10 +19,19 @@ export const getNaverNews = async (
     });
 };
 
-export const getGlobalNews = async ({}) => {
+export const getGlobalNews = async (
+  query: string,
+  pageParam: number,
+  filter?: string,
+): Promise<GlobalNewsResponse> => {
   return newsApi
-    .get("", {
-      params: {},
+    .get("/everything", {
+      params: {
+        q: query,
+        pageSize: 20,
+        page: pageParam,
+        sources: filter,
+      },
     })
     .then((res) => res.data)
     .catch((error) => {

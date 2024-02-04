@@ -18,4 +18,4 @@ export type {
 
 export type { rapidPlayerResponse, Player, PlayerSelectType } from "./player";
 
-export type { LocalNewsResponse } from "./news";
+export type { LocalNewsResponse, GlobalNewsResponse } from "./news";

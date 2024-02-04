@@ -6,6 +6,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   iconSrc?: string;
   color?: "main" | "secondary" | "destructive";
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "wide";
+  outline?: boolean;
 }
 
 const sizes = {
@@ -18,7 +19,7 @@ const sizes = {
 };
 
 const colors = {
-  main: "border-Main bg-Main text-White ",
+  main: "border-Main bg-Main text-White",
   secondary: "bg-Seondary text-Main",
   destructive:
     "border-Red bg-Red text-White hover:border-RedHover hover:bg-RedHover",
@@ -30,19 +31,20 @@ const Button: React.FunctionComponent<IButtonProps> = ({
   size,
   disabled,
   iconSrc,
+  outline,
   className,
   ...props
 }) => {
   return (
     <button
       className={clsx(
-        `${className} flex transform select-none items-center justify-center gap-2 rounded-md border text-lg
-        transition-all active:scale-95
-        `,
+        "flex transform select-none items-center justify-center gap-2 rounded-md text-lg transition-all active:scale-95",
         disabled
           ? "pointer-events-none border-transparent bg-Disabled text-DisabledColor"
           : color && colors[color],
         size && sizes[size],
+        className,
+        outline && "border border-MediumGrey",
       )}
       {...props}
     >

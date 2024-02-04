@@ -2,12 +2,12 @@ import clsx from "clsx";
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 // Context 생성
-interface TabsContextProps {
+interface ITabsContextProps {
   activeTab: string | null;
   selectTab: (tab: string) => void;
 }
 
-const TabsContext = createContext<TabsContextProps | undefined>(undefined);
+const TabsContext = createContext<ITabsContextProps | undefined>(undefined);
 
 // TabList 컴포넌트
 interface ITabContainerProps {
@@ -16,7 +16,7 @@ interface ITabContainerProps {
 
 const TabContainer: React.FC<ITabContainerProps> = ({ children }) => {
   return (
-    <div className="flex items-center overflow-hidden rounded-md ">
+    <div className="flex items-center gap-x-4 overflow-hidden rounded-md ">
       {children}
     </div>
   );
@@ -37,7 +37,7 @@ const Tab: React.FC<ITabProps> = ({ id, children }) => {
     <button
       onClick={() => selectTab(id)}
       className={clsx(
-        "flex-1 border-b-2 py-2 ",
+        "flex-1 border-b-2 py-2 transition-colors hover:border-Main hover:text-Main",
         isActive && "border-Main font-semibold text-Main",
       )}
     >

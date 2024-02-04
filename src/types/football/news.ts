@@ -1,3 +1,4 @@
+// local
 interface LocalNewsItem {
   description: string;
   link: string;
@@ -12,4 +13,27 @@ export interface LocalNewsResponse {
   lastBuildDate: string;
   start: number;
   total: number;
+}
+
+// global
+
+interface Source {
+  id: string;
+  name: string;
+}
+interface GlobalNewsItem {
+  source: Source;
+  author: "BBC News";
+  title: string;
+  description: string;
+  url: string;
+  urlToImage: string;
+  publishedAt: string;
+  content: string;
+}
+
+export interface GlobalNewsResponse {
+  status: string;
+  totalResults: number;
+  articles: GlobalNewsItem[];
 }
