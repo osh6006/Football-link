@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { getSports } from "../apis/sports";
 import { ISport } from "types";
 import {
@@ -6,7 +6,6 @@ import {
   getTeamStandings,
   getHomeNextMatchSchedule,
   getTopPlayers,
-  getAllPlayers,
 } from "hooks/services/apis/football";
 import { getNaverNews } from "../apis/news";
 
@@ -16,7 +15,7 @@ export const footballQueryKey = {
   useLiveMathesQuery: "footballHomeLiveMathesQuery",
   useNextMatchQuery: "footballHomeNextMatchQuery",
   useTopPlayerQuery: "footballTopScorerQuery",
-  useNewsQuery: "footballNewsQuery",
+  useLocalNewsQuery: "footballLocalNewsQuery",
 };
 
 export const useTeamRankQuery = (league: string, season: string) => {
@@ -106,12 +105,37 @@ export const useTopPlayerQuery = (
 //   });
 // };
 
-export const useNewsQuery = (query: string) => {
-  return useQuery({
-    queryKey: [footballQueryKey.useNewsQuery, query],
-    queryFn: ({ queryKey }) => getNaverNews(queryKey[1]),
-    enabled: !!query,
-    staleTime: Infinity,
-    gcTime: Infinity,
+export const useLocalNewsQuery = (query: string, isUse: boolean) => {
+  return useInfiniteQuery({
+    queryKey: [footballQueryKey.useLocalNewsQuery, query],
+    queryFn: ({ pageParam }) => getNaverNews(query, pageParam),
+    initialPageParam: 1,
+    enabled: !!query && isUse,
+    getNextPageParam: (lastPage, allPages) => {
+      const nextPage = lastPage.start + 1;
+      return lastPage.items.length === 0 ? undefined : nextPage;
+    },
+    select(data) {
+      return data.pages.flatMap((data) => data.items);
+    },
   });
 };
+
+// export const useGlobalNewsQuery = (
+//   query: string,
+//   isUse: boolean,
+//   options?: string,
+// ) => {
+//   return useQuery({
+//     queryKey: [footballQueryKey.useNewsQuery, query],
+//     queryFn: ({ queryKey }) => getNaverNews(queryKey[1]),
+//     enabled: !!query && isUse,
+//     staleTime: Infinity,
+//     gcTime: Infinity,
+//   });
+// };
+// queryKey: [footballQueryKey.useNewsQuery, query],
+// queryFn: ({ queryKey }) => getNaverNews(queryKey[1]),
+// enabled: !!query && isUse,
+// staleTime: Infinity,
+// gcTime: Infinity,

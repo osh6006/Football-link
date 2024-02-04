@@ -17,3 +17,5 @@ export type {
 } from "./schedule";
 
 export type { rapidPlayerResponse, Player, PlayerSelectType } from "./player";
+
+export type { LocalNewsResponse } from "./news";

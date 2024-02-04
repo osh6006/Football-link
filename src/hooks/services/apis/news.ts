@@ -1,10 +1,16 @@
 import { naverApi, newsApi } from "libs/axios";
+import { LocalNewsResponse } from "types/football";
 
-export const getNaverNews = async (query: string) => {
+export const getNaverNews = async (
+  query: string,
+  pageParam: number,
+): Promise<LocalNewsResponse> => {
   return naverApi
     .get("", {
       params: {
         query,
+        display: 20,
+        start: pageParam,
       },
     })
     .then((res) => res.data)

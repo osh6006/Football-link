@@ -14,7 +14,7 @@ function App() {
       {/*  Side Bar */}
       <Sidebar />
       {/* Nav & Page*/}
-      <div className="relative h-full w-full ">
+      <div className="relative h-fit w-full ">
         <Navbar />
         {selectedLeague ? (
           <Outlet />

@@ -1,13 +1,10 @@
 import Tabs from "components/common/tabs";
 import NewsList from "components/news/news-list";
 import NewsContainer from "containers/news-container";
-import { useNewsQuery } from "hooks/services/quries/use-football-query";
 
 interface INewsPageProps {}
 
 const NewsPage: React.FunctionComponent<INewsPageProps> = (props) => {
-  // const { data, isLoading, isError } = useNewsQuery("Premier League");
-
   return (
     <NewsContainer>
       <Tabs defaultTab="global">
