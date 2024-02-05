@@ -73,6 +73,8 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
     );
   }
 
+  console.log(globalNewsData?.length);
+
   return (
     <div className="py-2">
       {type === "local" && (
@@ -113,49 +115,65 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
             selectFilter={filterTerm}
             setFilter={handleFilter}
           />
-          <ul className="mt-4 grid grid-cols-1 gap-2 xl:grid-cols-2">
-            {globalNewsData?.map((el, i) => (
-              <li
-                onClick={() => openInNewTab(el.url)}
-                key={i}
-                className="flex cursor-pointer flex-col justify-around rounded-md border-2  border-MediumGrey px-5 py-3  transition-colors hover:border-Main hover:text-Main"
-              >
-                <div className="mb-2 flex  flex-col justify-end text-sm">
-                  {/* <p>{el.author}</p>
+          {globalNewsData && globalNewsData?.length > 0 ? (
+            <>
+              <ul className="mt-4 grid grid-cols-1 gap-2 xl:grid-cols-2">
+                {globalNewsData?.map((el, i) => (
+                  <li
+                    onClick={() => openInNewTab(el.url)}
+                    key={i}
+                    className="flex cursor-pointer flex-col justify-around rounded-md border-2  border-MediumGrey px-5 py-3  transition-colors hover:border-Main hover:text-Main"
+                  >
+                    <div className="mb-2 flex  flex-col justify-end text-sm">
+                      {/* <p>{el.author}</p>
                   <p>{el.source.name}</p> */}
-                  <time>{formatPublicDay(el.publishedAt)}</time>
-                </div>
+                      <time>{formatPublicDay(el.publishedAt)}</time>
+                    </div>
 
-                <div className="flex justify-between gap-x-4">
-                  <img
-                    src={el.urlToImage}
-                    alt="thumbnail"
-                    className="aspect-square h-32 rounded-md"
-                  />
-                  <div className="">
-                    <h2 className="font-semibold">{el.title}</h2>
-                    <p className="mt-2 text-sm">{el.description}</p>
+                    <div className="flex justify-between gap-x-4">
+                      <img
+                        src={el.urlToImage}
+                        alt="thumbnail"
+                        className="aspect-square h-32 rounded-md"
+                      />
+                      <div className="">
+                        <h2 className="font-semibold">{el.title}</h2>
+                        <p className="mt-2 text-sm">{el.description}</p>
+                      </div>
+                    </div>
+                    <div className="mt-2 flex items-end justify-between text-sm">
+                      <p>{el.author}</p>
+                      <p>{el.source.name}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <div
+                className="my-2 flex h-20 items-center justify-center p-5"
+                ref={globalRef}
+              >
+                {globalNewsData &&
+                globalNewsData?.length > 0 &&
+                isGlobalFetching ? (
+                  <div className="my-5">
+                    <Loading size="sm" />
                   </div>
-                </div>
-                <div className="mt-2 flex items-end justify-between text-sm">
-                  <p>{el.author}</p>
-                  <p>{el.source.name}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <div
-            className="my-2 flex h-20 items-center justify-center p-5"
-            ref={globalRef}
-          >
-            {isGlobalFetching ? (
-              <div className="my-5">
-                <Loading size="sm" />
+                ) : (
+                  <p>Load More...</p>
+                )}
               </div>
-            ) : (
-              <p>Load More...</p>
-            )}
-          </div>
+            </>
+          ) : (
+            <>
+              <ComponentStatusContainer
+                height="300"
+                state="error"
+                classNames="mt-10 h-[350px]"
+              >
+                해당 데이터의 기사가 존재하지 않습니다.
+              </ComponentStatusContainer>
+            </>
+          )}
         </>
       )}
     </div>

@@ -9,8 +9,8 @@ const NewsPage: React.FunctionComponent<INewsPageProps> = (props) => {
     <NewsContainer>
       <Tabs defaultTab="global">
         <Tabs.TabContainer>
-          <Tabs.Tab id="local">국내 뉴스</Tabs.Tab>
-          <Tabs.Tab id="global">해외 뉴스</Tabs.Tab>
+          <Tabs.Tab id="local">국내 소식</Tabs.Tab>
+          <Tabs.Tab id="global">해외 소식</Tabs.Tab>
         </Tabs.TabContainer>
         <Tabs.TabPanel id="local">
           <NewsList type="local" />
