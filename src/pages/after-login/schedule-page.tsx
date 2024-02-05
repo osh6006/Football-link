@@ -1,9 +1,9 @@
-import * as React from "react";
+import ScheduleContainer from "containers/schedule-container";
 
 interface ISchedulePageProps {}
 
 const SchedulePage: React.FunctionComponent<ISchedulePageProps> = (props) => {
-  return <>SchedulePage</>;
+  return <ScheduleContainer>SchedulePage</ScheduleContainer>;
 };
 
 export default SchedulePage;
