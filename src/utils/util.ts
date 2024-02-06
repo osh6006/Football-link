@@ -31,3 +31,5 @@ export const componentBackgroundChange = (
     theme === "dark" && "bg-DarkGrey",
   );
 };
+
+export const convertCalendarData = (data: any) => {};

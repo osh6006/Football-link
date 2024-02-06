@@ -44,7 +44,7 @@ const Button: React.FunctionComponent<IButtonProps> = ({
           : color && colors[color],
         size && sizes[size],
         className,
-        outline && "border border-MediumGrey",
+        outline && "border border-MediumGrey hover:bg-MediumGrey/30",
       )}
       {...props}
     >

@@ -5,35 +5,21 @@ import useLeagueStore from "stores/league-store";
 import TeamRank from "./team-rank";
 import PlayerRank from "./player-rank";
 import PlayerTeamSwitcher from "../player-team-switcher";
-import SeasonSelector from "../season-selector";
+import SeasonSelector from "../../common/season-selector";
+import useSeasonSelector from "hooks/use-season-selector";
 
 interface IFootballRankContentProps {}
 
 const RankContent: React.FunctionComponent<IFootballRankContentProps> = () => {
   const { selectedLeague } = useLeagueStore();
-  const [season, setSeason] = useState(new Date().getFullYear() - 1);
+  const { season, handleSeasonDecrese, handleSeasonIncrese, handleSetSeason } =
+    useSeasonSelector();
   const [selectedTarget, setSelectedTarget] = useState<"team" | "player">(
     "team",
   );
 
   const handleTargetChange = (target: "team" | "player") => {
     setSelectedTarget(target);
-  };
-
-  const handleSeasonIncrese = () => {
-    if (new Date().getFullYear() - 1 === season) {
-      return;
-    }
-    setSeason(season + 1);
-  };
-  const handleSeasonDecrese = () => {
-    if (2008 === season) {
-      return;
-    }
-    setSeason(season - 1);
-  };
-  const handleSetSeason = (season: number) => {
-    setSeason(season);
   };
 
   return (

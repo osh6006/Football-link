@@ -16,7 +16,6 @@ import {
 
 import Modal from "./modal";
 import MultiSelect from "components/auth/multi-select";
-import Button from "components/common/button";
 import Loading from "components/common/loading";
 
 import { ISupabaseLeague } from "types/football/league";
@@ -24,6 +23,8 @@ import {
   deleteAllSupabaseLeague,
   insertAllSupabaseLeague,
 } from "hooks/services/apis/league";
+
+import Button from "../../components/common/button";
 
 interface ILeagueSettingModalProps {}
 

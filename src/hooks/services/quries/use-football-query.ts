@@ -6,6 +6,7 @@ import {
   getTeamStandings,
   getHomeNextMatchSchedule,
   getTopPlayers,
+  getLeagueSchedule,
 } from "hooks/services/apis/football";
 import { getGlobalNews, getNaverNews } from "../apis/news";
 
@@ -17,6 +18,7 @@ export const footballQueryKey = {
   useTopPlayerQuery: "footballTopScorerQuery",
   useLocalNewsQuery: "footballLocalNewsQuery",
   useGlobalNewsQuery: "footballGlobalNewsQuery",
+  useScheduleQuery: "footballScheduleQuery",
 };
 
 export const useTeamRankQuery = (league: string, season: string) => {
@@ -145,21 +147,33 @@ export const useGlobalNewsQuery = (
   });
 };
 
-// export const useGlobalNewsQuery = (
-//   query: string,
-//   isUse: boolean,
-//   options?: string,
-// ) => {
-//   return useQuery({
-//     queryKey: [footballQueryKey.useNewsQuery, query],
-//     queryFn: ({ queryKey }) => getNaverNews(queryKey[1]),
-//     enabled: !!query && isUse,
-//     staleTime: Infinity,
-//     gcTime: Infinity,
-//   });
-// };
-// queryKey: [footballQueryKey.useNewsQuery, query],
-// queryFn: ({ queryKey }) => getNaverNews(queryKey[1]),
-// enabled: !!query && isUse,
-// staleTime: Infinity,
-// gcTime: Infinity,
+export const useScheduleQuery = ({
+  leagueId,
+  season,
+  start,
+  end,
+}: {
+  leagueId: number;
+  season: number;
+  start: string;
+  end: string;
+}) => {
+  return useQuery({
+    queryKey: [
+      footballQueryKey.useScheduleQuery,
+      { leagueId, season, start, end },
+    ],
+    queryFn: ({ queryKey }) =>
+      getLeagueSchedule(
+        queryKey[1] as {
+          leagueId: number;
+          season: number;
+          start: string;
+          end: string;
+        },
+      ),
+    enabled: !!leagueId && !!season && !!start && !!end,
+    staleTime: Infinity,
+    gcTime: Infinity,
+  });
+};

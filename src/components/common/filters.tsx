@@ -16,8 +16,6 @@ const Filter: React.FunctionComponent<IFilterProps> = ({
   selectFilter,
   setFilter,
 }) => {
-  console.log(selectFilter);
-
   return (
     <ul className="flex flex-wrap items-center gap-2 ">
       {items.map((item) => (

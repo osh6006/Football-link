@@ -21,7 +21,7 @@ const SeasonSelector: React.FunctionComponent<ISeasonSelectorProps> = ({
   handleSeasonDecrese,
 }) => {
   const thisYear = new Date().getFullYear() - 1;
-  const firtYear = 2008;
+  const firtYear = 2009;
   const selecte_years = Array.from(
     { length: thisYear - firtYear + 1 },
     (_, index) => firtYear + index,

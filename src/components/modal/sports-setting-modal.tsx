@@ -4,7 +4,6 @@ import useModalsStore from "../../stores/modals-store";
 import useThemeStore from "../../stores/theme-store";
 
 import Modal from "./modal";
-import useSportStore from "stores/sports-store";
 
 interface ISportsSettingModalProps {}
 
@@ -14,7 +13,6 @@ const SportsSettingModal: React.FunctionComponent<
   const { isOpenSportsSettingModal, closeSportsSettingModal } =
     useModalsStore();
   const { theme } = useThemeStore();
-  const { selectedSport } = useSportStore();
 
   return (
     <Modal

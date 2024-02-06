@@ -23,6 +23,7 @@ const StepOne: React.FunctionComponent<IStepOneProps> = () => {
           onClick={handleGoogleBtn}
           size="wide"
           iconSrc="/svgs/google-icon.svg"
+          outline
         >
           Google
         </Button>
@@ -30,6 +31,7 @@ const StepOne: React.FunctionComponent<IStepOneProps> = () => {
           onClick={handleGithubBtn}
           size="wide"
           iconSrc="/svgs/github-icon.svg"
+          outline
         >
           Github
         </Button>

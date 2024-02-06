@@ -8,6 +8,7 @@
     "@tanstack/react-table": "^8.11.7",
     "@types/node": "^16.18.69",
     "@types/react": "^18.2.46",
+    "@types/react-big-calendar": "^1.8.8",
     "@types/react-dom": "^18.2.18",
     "@types/react-transition-group": "^4.4.10",
     "axios": "^1.6.5",

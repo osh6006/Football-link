@@ -120,3 +120,34 @@ export const getAllPlayers = async (
 
   return playersData;
 };
+
+export async function getLeagueSchedule({
+  leagueId,
+  season,
+  end,
+  start,
+}: {
+  leagueId: number;
+  season: number;
+  start: string;
+  end: string;
+}) {
+  if (season && leagueId && start && end) {
+    try {
+      const response = await rapidApi.get("/fixtures", {
+        params: {
+          league: leagueId,
+          season: season,
+          from: start,
+          to: end,
+          timezone: "Asia/Seoul",
+        },
+      });
+      return response.data.response;
+    } catch (error) {
+      throw new Error("ERROR GET DATA IN GET_LEAGUE_SCHEDULE");
+    }
+  } else {
+    throw new Error("NOT PARAMETER IN GET_LEAGUE_SCHEDULE");
+  }
+}

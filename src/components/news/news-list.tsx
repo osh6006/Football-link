@@ -73,8 +73,6 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
     );
   }
 
-  console.log(globalNewsData?.length);
-
   return (
     <div className="py-2">
       {type === "local" && (
