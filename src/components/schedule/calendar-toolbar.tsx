@@ -148,28 +148,28 @@ const CalendarToolbar: React.FunctionComponent<ICalendarToolbarProps> = ({
           name={"month"}
           onClick={() => handleChangeView("month")}
         >
-          월 별
+          Month
         </CalendarToolBtn>
         <CalendarToolBtn
           view={props.view}
           name={"week"}
           onClick={() => handleChangeView("week")}
         >
-          주 별
+          Week
         </CalendarToolBtn>
         <CalendarToolBtn
           view={props.view}
           name={"day"}
           onClick={() => handleChangeView("day")}
         >
-          일 별
+          Day
         </CalendarToolBtn>
         <CalendarToolBtn
           view={props.view}
           name={"agenda"}
           onClick={() => handleChangeView("agenda")}
         >
-          통 계
+          Agenda
         </CalendarToolBtn>
       </div>
     </div>

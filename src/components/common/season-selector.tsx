@@ -2,8 +2,8 @@ import clsx from "clsx";
 
 import useOutsideClick from "hooks/use-outside-click";
 
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { CSSTransition } from "react-transition-group";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 import "./season-selector-animation.css";
 
@@ -53,7 +53,7 @@ const SeasonSelector: React.FunctionComponent<ISeasonSelectorProps> = ({
         <CSSTransition
           in={isOpen}
           nodeRef={nodeRef}
-          timeout={100}
+          timeout={300}
           classNames={"select-season"}
           unmountOnExit
         >

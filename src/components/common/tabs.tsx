@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-// Context 생성
 interface ITabsContextProps {
   activeTab: string | null;
   selectTab: (tab: string) => void;
@@ -9,7 +8,6 @@ interface ITabsContextProps {
 
 const TabsContext = createContext<ITabsContextProps | undefined>(undefined);
 
-// TabList 컴포넌트
 interface ITabContainerProps {
   children: ReactNode;
 }
@@ -22,7 +20,6 @@ const TabContainer: React.FC<ITabContainerProps> = ({ children }) => {
   );
 };
 
-// Tab 컴포넌트
 interface ITabProps {
   id: string;
   children: ReactNode;
@@ -30,7 +27,6 @@ interface ITabProps {
 
 const Tab: React.FC<ITabProps> = ({ id, children }) => {
   const { activeTab, selectTab } = useContext(TabsContext)!;
-
   const isActive = activeTab === id;
 
   return (
@@ -54,7 +50,6 @@ interface ITabPanelProps {
 
 const TabPanel: React.FC<ITabPanelProps> = ({ id, children }) => {
   const { activeTab } = useContext(TabsContext)!;
-
   return activeTab === id ? <div>{children}</div> : null;
 };
 
