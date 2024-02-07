@@ -1,31 +1,35 @@
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
-import { Calendar as BigCalendar, dayjsLocalizer } from "react-big-calendar";
+import {
+  Calendar as BigCalendar,
+  View,
+  dayjsLocalizer,
+} from "react-big-calendar";
 
 import "./calendar.css";
-import { formatMonthStartAndEnd } from "libs/day";
 import CalendarToolbar from "./calendar-toolbar";
-import { useState } from "react";
 
 interface ICalendarProps {
-  season: string;
-  events: any[];
   date: string;
+  events: any[];
+  controlDate: (action: string, Type: View) => void;
+  initDate: () => void;
 }
 
 dayjs.locale("ko");
 
 const Calendar: React.FunctionComponent<ICalendarProps> = ({
   events,
-  season,
   date,
+  initDate,
+  controlDate,
 }) => {
   const localizer = dayjsLocalizer(dayjs);
 
   return (
     <BigCalendar
       events={events}
-      date={season}
+      date={date}
       startAccessor="start"
       endAccessor="end"
       localizer={localizer}
@@ -35,10 +39,13 @@ const Calendar: React.FunctionComponent<ICalendarProps> = ({
       components={{
         toolbar: (props) => (
           <CalendarToolbar
+            props={props}
             date={props.date}
             label={props.label}
+            initDate={initDate}
+            controlDate={controlDate}
             onView={props.onView}
-            onNavigate={props.onNavigate}
+            // onNavigate={props.onNavigate}
           />
         ),
       }}

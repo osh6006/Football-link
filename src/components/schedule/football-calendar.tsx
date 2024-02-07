@@ -5,20 +5,16 @@ import useLeagueStore from "stores/league-store";
 import { componentBackgroundChange } from "utils/util";
 
 import Calendar from "./calendar";
-import useCalendar from "hooks/use-calendar";
+import useScheduleStore from "stores/schedule-store";
 
-interface IFootballCalendarProps {
-  season: number;
-}
+interface IFootballCalendarProps {}
 
-const FootballCalendar: React.FunctionComponent<IFootballCalendarProps> = ({
-  season,
-}) => {
+const FootballCalendar: React.FunctionComponent<
+  IFootballCalendarProps
+> = () => {
   const { theme } = useThemeStore();
   const { selectedLeague } = useLeagueStore();
-  const { month } = useCalendar(season + "");
-
-  console.log(month);
+  const { currentDate, controlDate, initDate } = useScheduleStore();
 
   //   const {} = useScheduleQuery({
   //     season,
@@ -35,9 +31,10 @@ const FootballCalendar: React.FunctionComponent<IFootballCalendarProps> = ({
       )}
     >
       <Calendar
-        date={month.monthStart}
-        season={month.monthStart}
         events={calendar_data}
+        date={currentDate}
+        controlDate={controlDate}
+        initDate={initDate}
       />
     </div>
   );
