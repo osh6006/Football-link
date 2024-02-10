@@ -9,6 +9,7 @@ import useScheduleStore from "stores/schedule-store";
 import { useScheduleQuery } from "hooks/services/quries/use-football-query";
 import dayjs from "dayjs";
 import DaySelector from "./day-selector";
+import YearSelector from "./year-selector";
 
 interface IFootballCalendarProps {}
 
@@ -40,6 +41,7 @@ const FootballCalendar: React.FunctionComponent<
         "h-full w-full max-w-[1280px] rounded-md p-8",
       )}
     >
+      <YearSelector />
       <DaySelector />
     </div>
   );

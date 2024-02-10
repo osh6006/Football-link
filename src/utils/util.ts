@@ -32,4 +32,4 @@ export const componentBackgroundChange = (
   );
 };
 
-export const convertCalendarData = (data: any) => {};
+export const isToday = () => {};

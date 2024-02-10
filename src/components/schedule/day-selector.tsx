@@ -14,8 +14,6 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = () => {
   const { containerRef, handleScroll, handleItemClick } =
     useHorizontalScroll(150);
 
-  console.log(selectedDate);
-
   return (
     <div className="flex items-center justify-center gap-x-6">
       <button onClick={() => handleScroll("left")}>
@@ -75,6 +73,11 @@ function getAllDatesInMonth(date: string, selectedDate: string) {
 
     currentDate = dayjs(currentDate).add(1, "day").format("YYYY-MM-DD");
   }
+  datesArray.push({
+    stringOfDay: dayjs(currentDate).locale("ko").format("dd"),
+    numberOfDay: dayjs(currentDate).locale("ko").date(),
+    isActive: currentDate === selectedDate,
+  });
 
   return datesArray;
 }
