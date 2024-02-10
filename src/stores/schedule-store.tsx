@@ -4,13 +4,13 @@ import { NavigateAction, View } from "react-big-calendar";
 
 interface IScheduleStoreState {
   currentDate: string;
-  controlDate: (action: NavigateAction | string, type: View) => void;
+  controlDate: (action: NavigateAction | string, type: View | string) => void;
   initDate: () => void;
 }
 
 export const useScheduleStore = create<IScheduleStoreState>()((set) => ({
   currentDate: dayjs().format("YYYY-MM-DD"),
-  controlDate: (action: NavigateAction | string, type) =>
+  controlDate: (action, type) =>
     set(({ currentDate }) => {
       switch (action) {
         case "NEXT":
@@ -65,6 +65,10 @@ export const useScheduleStore = create<IScheduleStoreState>()((set) => ({
         case "TODAY":
           return {
             currentDate: dayjs().format("YYYY-MM-DD"),
+          };
+        case "CUSTOM":
+          return {
+            currentDate: dayjs(type).format("YYYY-MM-DD"),
           };
         default:
           return { currentDate: dayjs(action).format("YYYY-MM-DD") };

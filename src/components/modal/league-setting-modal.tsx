@@ -24,7 +24,7 @@ import {
   insertAllSupabaseLeague,
 } from "hooks/services/apis/league";
 
-import Button from "../../components/common/button";
+import Button from "../common/button";
 
 interface ILeagueSettingModalProps {}
 

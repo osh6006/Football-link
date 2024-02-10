@@ -4,6 +4,7 @@ export const calendar_data = [
     allDay: true,
     start: new Date(2024, 3, 0),
     end: new Date(2024, 3, 1),
+    test: "asdfasdfsdf",
   },
   {
     title: "Long Event",

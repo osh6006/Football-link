@@ -6,6 +6,9 @@ import { componentBackgroundChange } from "utils/util";
 
 import Calendar from "./calendar";
 import useScheduleStore from "stores/schedule-store";
+import { useScheduleQuery } from "hooks/services/quries/use-football-query";
+import dayjs from "dayjs";
+import DaySelector from "./day-selector";
 
 interface IFootballCalendarProps {}
 
@@ -16,12 +19,19 @@ const FootballCalendar: React.FunctionComponent<
   const { selectedLeague } = useLeagueStore();
   const { currentDate, controlDate, initDate } = useScheduleStore();
 
-  //   const {} = useScheduleQuery({
-  //     season,
-  //     leagueId: selectedLeague?.rapid_football_league_id!,
-  //     start: "",
-  //     end: "",
-  //   });
+  const formatDate = dayjs(currentDate);
+  const season = formatDate.year() - 1;
+  const firstDayOfMonth = formatDate.startOf("month").format("YYYY-MM-DD");
+  const lastDayOfMonth = formatDate.endOf("month").format("YYYY-MM-DD");
+
+  // const { data, isLoading, isError } = useScheduleQuery({
+  //   season,
+  //   leagueId: selectedLeague?.rapid_football_league_id!,
+  //   start: firstDayOfMonth,
+  //   end: lastDayOfMonth,
+  // });
+
+  // console.log(data);
 
   return (
     <div
@@ -30,12 +40,7 @@ const FootballCalendar: React.FunctionComponent<
         "h-full w-full max-w-[1280px] rounded-md p-8",
       )}
     >
-      <Calendar
-        events={calendar_data}
-        date={currentDate}
-        controlDate={controlDate}
-        initDate={initDate}
-      />
+      <DaySelector />
     </div>
   );
 };

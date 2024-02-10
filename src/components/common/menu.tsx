@@ -30,7 +30,13 @@ const MenuButton: React.FC<IMenuButtonProps> = ({ children, className }) => {
   };
 
   return (
-    <button onClick={() => handleToggle(isOpen)} className={className}>
+    <button
+      onClick={() => handleToggle(isOpen)}
+      className={clsx(
+        "flex w-full items-center justify-between gap-x-5 px-3 py-2 uppercase text-Main",
+        className,
+      )}
+    >
       {children}
     </button>
   );
@@ -38,9 +44,13 @@ const MenuButton: React.FC<IMenuButtonProps> = ({ children, className }) => {
 
 interface IMenuContainerProps {
   children: ReactNode;
+  className?: string;
 }
 
-const MenuItemContainer: React.FC<IMenuContainerProps> = ({ children }) => {
+const MenuItemContainer: React.FC<IMenuContainerProps> = ({
+  children,
+  className,
+}) => {
   const { isOpen, nodeRef } = useContext(MenuContext)!;
 
   return (
@@ -51,7 +61,15 @@ const MenuItemContainer: React.FC<IMenuContainerProps> = ({ children }) => {
       classNames={"select-season"}
       unmountOnExit
     >
-      <ul ref={nodeRef}>{children}</ul>
+      <ul
+        ref={nodeRef}
+        className={clsx(
+          "absolute right-0 z-20 mt-2 flex w-full flex-col rounded-md bg-white p-2 shadow-md",
+          className,
+        )}
+      >
+        {children}
+      </ul>
     </CSSTransition>
   );
 };
@@ -71,10 +89,12 @@ const MenuItem: React.FC<IMenuItemProps> = ({
   return (
     <li
       className={clsx(
-        "absolute w-full rounded-md bg-white px-4 py-2 shadow-md",
+        "flex w-full  rounded-md  px-3 py-1 transition-colors hover:bg-Main hover:text-White",
+        className,
       )}
     >
       <button
+        className="w-full text-start"
         onClick={() => {
           if (onClick) {
             onClick();
@@ -90,6 +110,7 @@ const MenuItem: React.FC<IMenuItemProps> = ({
 
 interface IMenuProps {
   children: ReactNode;
+  className?: string;
 }
 
 interface IMenuComponent extends React.FC<IMenuProps> {
@@ -109,7 +130,7 @@ interface IMenuContextProps {
 
 const MenuContext = createContext<IMenuContextProps | undefined>(undefined);
 
-const Menu: IMenuComponent = ({ children }) => {
+const Menu: IMenuComponent = ({ children, className }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const onClose = () => setIsOpen(false);
@@ -139,7 +160,7 @@ const Menu: IMenuComponent = ({ children }) => {
       <MenuContext.Provider
         value={{ isOpen, onClose, onOpen, ref, nodeRef, handleOutsideClick }}
       >
-        <div className="relative " ref={ref}>
+        <div className={clsx("relative ", className)} ref={ref}>
           {children}
         </div>
       </MenuContext.Provider>

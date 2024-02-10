@@ -9,6 +9,7 @@ import {
   getLeagueSchedule,
 } from "hooks/services/apis/football";
 import { getGlobalNews, getNaverNews } from "../apis/news";
+import dayjs from "dayjs";
 
 export const footballQueryKey = {
   useTeamRankQuery: "footballTeamRankQuery",
@@ -172,6 +173,21 @@ export const useScheduleQuery = ({
           end: string;
         },
       ),
+    select(data) {
+      const newData = data.map((el) => {
+        const title = `${el.teams.home.name} ${el.goals.home || "0"} ${
+          el.fixture.status.long
+        } ${el.goals.away || "0"} ${el.teams.away.name}`;
+
+        const start = el.fixture.date;
+        const end = dayjs(el.fixture.date).add(2, "hour");
+
+        return { ...el, title, start, end };
+      });
+
+      console.log(newData);
+      return newData;
+    },
     enabled: !!leagueId && !!season && !!start && !!end,
     staleTime: Infinity,
     gcTime: Infinity,

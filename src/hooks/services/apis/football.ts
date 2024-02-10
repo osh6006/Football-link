@@ -121,17 +121,17 @@ export const getAllPlayers = async (
   return playersData;
 };
 
-export async function getLeagueSchedule({
+export const getLeagueSchedule = async ({
   leagueId,
   season,
-  end,
   start,
+  end,
 }: {
   leagueId: number;
   season: number;
   start: string;
   end: string;
-}) {
+}): Promise<rapidFootballNextMatchesResponse[]> => {
   if (season && leagueId && start && end) {
     try {
       const response = await rapidApi.get("/fixtures", {
@@ -143,6 +143,7 @@ export async function getLeagueSchedule({
           timezone: "Asia/Seoul",
         },
       });
+
       return response.data.response;
     } catch (error) {
       throw new Error("ERROR GET DATA IN GET_LEAGUE_SCHEDULE");
@@ -150,4 +151,4 @@ export async function getLeagueSchedule({
   } else {
     throw new Error("NOT PARAMETER IN GET_LEAGUE_SCHEDULE");
   }
-}
+};

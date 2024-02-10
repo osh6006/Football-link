@@ -6,8 +6,9 @@ import clsx from "clsx";
 import useOutsideClick from "hooks/use-outside-click";
 
 import { CSSTransition } from "react-transition-group";
-import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import dayjs from "dayjs";
+import Menu from "components/common/menu";
 
 interface ICalendarToolbarProps {
   label: string;
@@ -21,6 +22,8 @@ interface ICalendarToolbarProps {
 interface ICalendarToolBtn extends ButtonHTMLAttributes<HTMLButtonElement> {
   name?: string;
   view?: string;
+  circle?: boolean;
+  outline?: boolean;
 }
 
 const CalendarToolBtn: React.FC<ICalendarToolBtn> = ({
@@ -28,14 +31,18 @@ const CalendarToolBtn: React.FC<ICalendarToolBtn> = ({
   name,
   children,
   onClick,
+  circle,
+  outline,
 }) => {
   return (
     <button
       onClick={onClick}
       className={clsx(
-        `select-none rounded-md border border-MediumGrey px-3 py-2 transition-all hover:bg-Main hover:text-White
+        `select-none transition-all hover:bg-Main hover:text-White
       focus:outline-none focus:ring-2 focus:ring-Main active:scale-95`,
         view === name && name !== undefined && "bg-Main text-White",
+        circle ? "aspect-square rounded-full p-2" : "rounded-md px-3 py-2",
+        outline ? "border border-MediumGrey" : "border-none",
       )}
     >
       {children}
@@ -68,24 +75,28 @@ const CalendarToolbar: React.FunctionComponent<ICalendarToolbarProps> = ({
   );
 
   return (
-    <div className="flex flex-col items-center justify-between gap-y-2 py-3 sm:flex-row">
+    <div className="mb-3 flex flex-col items-center justify-between gap-y-2 py-3 sm:flex-row">
       <div className="flex gap-x-2">
         <CalendarToolBtn
           type="button"
-          view={props.view}
-          onClick={() => handleNavigate("TODAY", props.view)}
-        >
-          Today
-        </CalendarToolBtn>
-        <CalendarToolBtn
-          type="button"
           onClick={() => handleNavigate("PREV", props.view)}
+          circle
+          outline
         >
           <ChevronLeft />
         </CalendarToolBtn>
         <CalendarToolBtn
           type="button"
+          view={props.view}
+          onClick={() => handleNavigate("TODAY", props.view)}
+        >
+          TODAY
+        </CalendarToolBtn>
+        <CalendarToolBtn
+          type="button"
           onClick={() => handleNavigate("NEXT", props.view)}
+          circle
+          outline
         >
           <ChevronRight />
         </CalendarToolBtn>
@@ -143,34 +154,26 @@ const CalendarToolbar: React.FunctionComponent<ICalendarToolbarProps> = ({
         </div>
       </span>
       <div className="flex gap-x-2">
-        <CalendarToolBtn
-          view={props.view}
-          name={"month"}
-          onClick={() => handleChangeView("month")}
-        >
-          Month
-        </CalendarToolBtn>
-        <CalendarToolBtn
-          view={props.view}
-          name={"week"}
-          onClick={() => handleChangeView("week")}
-        >
-          Week
-        </CalendarToolBtn>
-        <CalendarToolBtn
-          view={props.view}
-          name={"day"}
-          onClick={() => handleChangeView("day")}
-        >
-          Day
-        </CalendarToolBtn>
-        <CalendarToolBtn
-          view={props.view}
-          name={"agenda"}
-          onClick={() => handleChangeView("agenda")}
-        >
-          Agenda
-        </CalendarToolBtn>
+        <Menu className="w-[200px] rounded-md border border-MediumGrey">
+          <Menu.MenuButton>
+            {props.view}
+            <ChevronDown />
+          </Menu.MenuButton>
+          <Menu.MenuContainer>
+            <Menu.MenuItem onClick={() => handleChangeView("month")}>
+              Month
+            </Menu.MenuItem>
+            <Menu.MenuItem onClick={() => handleChangeView("week")}>
+              Week
+            </Menu.MenuItem>
+            <Menu.MenuItem onClick={() => handleChangeView("day")}>
+              Day
+            </Menu.MenuItem>
+            <Menu.MenuItem onClick={() => handleChangeView("agenda")}>
+              Agenda
+            </Menu.MenuItem>
+          </Menu.MenuContainer>
+        </Menu>
       </div>
     </div>
   );
