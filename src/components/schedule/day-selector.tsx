@@ -6,9 +6,15 @@ import useScheduleStore from "stores/schedule-store";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import useHorizontalScroll from "hooks/use-horizontal-scroll";
 
-interface IDaySelectorProps {}
+interface IDaySelectorProps {
+  isAll: boolean;
+  setIsAll: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const DaySelector: React.FunctionComponent<IDaySelectorProps> = () => {
+const DaySelector: React.FunctionComponent<IDaySelectorProps> = ({
+  isAll,
+  setIsAll,
+}) => {
   const { currentDate: selectedDate, controlDate } = useScheduleStore();
   const dayList = getAllDatesInMonth(selectedDate, selectedDate);
   const { containerRef, handleScroll, handleItemClick } =
@@ -23,15 +29,33 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = () => {
         ref={containerRef}
         className="flex max-w-4xl items-center justify-between gap-x-6 overflow-hidden"
       >
+        <li
+          role="button"
+          className={clsx(
+            "rou flex flex-col items-center justify-center rounded-md border px-3 py-2 font-semibold transition-colors hover:border-Main  hover:text-Main",
+            isAll
+              ? " border-2 border-Main font-semibold text-Main"
+              : "border-MediumGrey",
+          )}
+          onClick={() => {
+            setIsAll(true);
+          }}
+        >
+          <p>전</p>
+          <p>체</p>
+        </li>
         {dayList.map((el, i) => (
           <li
             key={el.numberOfDay}
             role="button"
             className={clsx(
               "rou flex flex-col items-center justify-center rounded-md border  px-3 py-2 font-semibold transition-colors hover:border-Main  hover:text-Main",
-              el.isActive
+              !isAll && el.isActive
                 ? " border-2 border-Main font-semibold text-Main"
                 : "border-MediumGrey",
+              el.numberOfDay === dayjs(new Date()).date()
+                ? "border-2 border-green-500 font-semibold text-green-500"
+                : "",
             )}
             onClick={() => {
               handleItemClick(i);
@@ -41,6 +65,7 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = () => {
                   dayjs(selectedDate).month() + 1
                 }-${el.numberOfDay}`,
               );
+              setIsAll(false);
             }}
           >
             <p>{el.stringOfDay}</p>

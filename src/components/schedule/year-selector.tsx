@@ -6,9 +6,13 @@ import useScheduleStore from "stores/schedule-store";
 import { CSSTransition } from "react-transition-group";
 import useOutsideClick from "hooks/use-outside-click";
 
-interface IYearSelectorProps {}
+interface IYearSelectorProps {
+  setIsAll: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const YearSelector: React.FunctionComponent<IYearSelectorProps> = (props) => {
+const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
+  setIsAll,
+}) => {
   const { currentDate, controlDate } = useScheduleStore();
   const isToday =
     currentDate === dayjs(new Date()).locale("ko").format("YYYY-MM-DD");
@@ -25,10 +29,13 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = (props) => {
     <div className="mb-4 flex items-center justify-center ">
       <button
         className={clsx(
-          "mr-4 rounded-xl border px-2 text-sm",
+          "mr-4 mt-2 rounded-xl border px-2 text-sm",
           isToday && "bg-Main text-white",
         )}
-        onClick={() => controlDate("TODAY", "asdf")}
+        onClick={() => {
+          controlDate("TODAY", "asdf");
+          setIsAll(false);
+        }}
       >
         오늘
       </button>

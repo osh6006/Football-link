@@ -153,16 +153,20 @@ export const useScheduleQuery = ({
   season,
   start,
   end,
+  isAll,
+  date,
 }: {
   leagueId: number;
   season: number;
   start: string;
   end: string;
+  isAll: boolean;
+  date: string;
 }) => {
   return useQuery({
     queryKey: [
       footballQueryKey.useScheduleQuery,
-      { leagueId, season, start, end },
+      { leagueId, season, start, end, isAll, date },
     ],
     queryFn: ({ queryKey }) =>
       getLeagueSchedule(
@@ -171,6 +175,8 @@ export const useScheduleQuery = ({
           season: number;
           start: string;
           end: string;
+          isAll: boolean;
+          date: string;
         },
       ),
     select(data) {

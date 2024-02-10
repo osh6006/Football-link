@@ -10,6 +10,9 @@ import { useScheduleQuery } from "hooks/services/quries/use-football-query";
 import dayjs from "dayjs";
 import DaySelector from "./day-selector";
 import YearSelector from "./year-selector";
+import ComponentStatusContainer from "containers/component-status-container";
+import Loading from "components/common/loading";
+import { useState } from "react";
 
 interface IFootballCalendarProps {}
 
@@ -18,21 +21,37 @@ const FootballCalendar: React.FunctionComponent<
 > = () => {
   const { theme } = useThemeStore();
   const { selectedLeague } = useLeagueStore();
-  const { currentDate, controlDate, initDate } = useScheduleStore();
+  const { currentDate } = useScheduleStore();
 
   const formatDate = dayjs(currentDate);
   const season = formatDate.year() - 1;
   const firstDayOfMonth = formatDate.startOf("month").format("YYYY-MM-DD");
   const lastDayOfMonth = formatDate.endOf("month").format("YYYY-MM-DD");
 
-  // const { data, isLoading, isError } = useScheduleQuery({
-  //   season,
-  //   leagueId: selectedLeague?.rapid_football_league_id!,
-  //   start: firstDayOfMonth,
-  //   end: lastDayOfMonth,
-  // });
+  const [isAll, setIsAll] = useState(true);
 
-  // console.log(data);
+  const { data, isLoading, isError } = useScheduleQuery({
+    isAll,
+    season,
+    date: currentDate,
+    end: lastDayOfMonth,
+    start: firstDayOfMonth,
+    leagueId: selectedLeague?.rapid_football_league_id!,
+  });
+
+  console.log(data);
+
+  if (isLoading) {
+    <ComponentStatusContainer state="loading" height="500">
+      <Loading size="md" />
+    </ComponentStatusContainer>;
+  }
+
+  if (isError) {
+    <ComponentStatusContainer state="loading" height="500">
+      <p>데이터를 불러오던 도중 오류가 발생하였습니다.</p>
+    </ComponentStatusContainer>;
+  }
 
   return (
     <div
@@ -41,8 +60,8 @@ const FootballCalendar: React.FunctionComponent<
         "h-full w-full max-w-[1280px] rounded-md p-8",
       )}
     >
-      <YearSelector />
-      <DaySelector />
+      <YearSelector setIsAll={setIsAll} />
+      <DaySelector isAll={isAll} setIsAll={setIsAll} />
     </div>
   );
 };

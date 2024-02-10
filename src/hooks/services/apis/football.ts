@@ -126,14 +126,18 @@ export const getLeagueSchedule = async ({
   season,
   start,
   end,
+  isAll,
+  date,
 }: {
   leagueId: number;
   season: number;
   start: string;
   end: string;
+  isAll: boolean;
+  date: string;
 }): Promise<rapidFootballNextMatchesResponse[]> => {
-  if (season && leagueId && start && end) {
-    try {
+  try {
+    if (isAll) {
       const response = await rapidApi.get("/fixtures", {
         params: {
           league: leagueId,
@@ -143,12 +147,19 @@ export const getLeagueSchedule = async ({
           timezone: "Asia/Seoul",
         },
       });
-
       return response.data.response;
-    } catch (error) {
-      throw new Error("ERROR GET DATA IN GET_LEAGUE_SCHEDULE");
+    } else {
+      const response = await rapidApi.get("/fixtures", {
+        params: {
+          league: leagueId,
+          season: season,
+          date: date,
+          timezone: "Asia/Seoul",
+        },
+      });
+      return response.data.response;
     }
-  } else {
-    throw new Error("NOT PARAMETER IN GET_LEAGUE_SCHEDULE");
+  } catch (error) {
+    throw new Error("ERROR GET DATA IN GET_LEAGUE_SCHEDULE");
   }
 };
