@@ -42,7 +42,7 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
       <div className="flex items-center gap-x-4">
         <button
           className="mt-1 hover:text-Main"
-          onClick={() => controlDate("NEXT", "month")}
+          onClick={() => controlDate("PREV", "month")}
         >
           <ChevronLeftIcon size={25} />
         </button>
