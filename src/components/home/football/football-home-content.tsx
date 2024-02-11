@@ -17,6 +17,9 @@ const FootballHomeContent: React.FunctionComponent<
     <>
       <div className="space-y-4">
         <Banner />
+        <div className="mt-2">
+          <Title>소식</Title>
+        </div>
         <div className="mt-2 space-y-2">
           <Title>종합 순위</Title>
           <TeamRankTable

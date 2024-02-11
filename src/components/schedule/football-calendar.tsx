@@ -51,7 +51,10 @@ const FootballCalendar: React.FunctionComponent<IFootballCalendarProps> = ({
   return (
     <ul className="mt-6 w-full space-y-4 px-8">
       {data?.map((el) => (
-        <li className="flex w-full items-center justify-between rounded-md  border border-MediumGrey px-4 py-2">
+        <li
+          key={el.fixture.id}
+          className="flex w-full items-center justify-between rounded-md  border border-MediumGrey px-4 py-2"
+        >
           <div className="flex gap-x-4 ">
             <time className="text-sm font-semibold">
               {isAll

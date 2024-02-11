@@ -1,25 +1,23 @@
 import clsx from "clsx";
 
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
-import usePath from "../../hooks/use-path";
 import { useSportsQuery } from "../../hooks/services/quries/use-sports-query";
 import { useSaveLeagueQuery } from "hooks/services/quries/use-league-query";
+
 import useThemeStore from "../../stores/theme-store";
 import useSportStore from "../../stores/sports-store";
 import useModalsStore from "../../stores/modals-store";
 import useLeagueStore from "stores/league-store";
 
-import SelectBox from "./select-box";
-import ThemeSwitch from "./theme-switch";
+import SelectBox from "../navbar/select-box";
+import ThemeSwitch from "../navbar/theme-switch";
+import Logo from "components/common/logo";
+import SideMenuList from "./side-menu-list";
 
 interface ISidebarProps {}
 
 const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
-  const nav = useNavigate();
-  const { paths, realPath } = usePath();
-
   const { theme } = useThemeStore();
 
   const { selectSport, selectedSport } = useSportStore();
@@ -56,9 +54,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
     >
       {/* logo */}
       <div className="flex h-[55px] items-center px-4">
-        <h1 className="w-fit cursor-pointer select-none text-2xl font-semibold uppercase text-Main">
-          Spolink
-        </h1>
+        <Logo />
       </div>
 
       <div className="px-2">
@@ -90,37 +86,18 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
         />
       </div>
 
-      <ul className=" flex-1">
+      <>
         <p className="mx-2 my-2 text-sm uppercase tracking-wider text-Main">
           Menus
         </p>
-        {paths.map((item) => (
-          <li
-            key={item.path}
-            onClick={() => nav(item.path)}
-            className={clsx(
-              "flex cursor-pointer items-center gap-x-2 px-5 py-3 text-lg transition-colors hover:bg-Main hover:text-White",
-              realPath === `${item.path}` ? "bg-Main text-White" : "",
-            )}
-          >
-            {item.icon}
-            {item.name}
-          </li>
-        ))}
-      </ul>
+        <SideMenuList />
+      </>
 
       {/* DarkMode change */}
-      <div className="">
+      <>
         <p className="mx-2 text-sm uppercase tracking-wider text-Main">Theme</p>
-        <div
-          className={clsx(
-            `mx-4 mb-4 mt-2 flex items-center justify-center rounded-md py-4`,
-            theme === "light" ? "bg-LinesLight" : "bg-VeryDarkGreyDark",
-          )}
-        >
-          <ThemeSwitch />
-        </div>
-      </div>
+        <ThemeSwitch />
+      </>
     </aside>
   );
 };

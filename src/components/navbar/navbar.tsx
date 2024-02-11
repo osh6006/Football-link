@@ -6,6 +6,7 @@ import useThemeStore from "../../stores/theme-store";
 import Button from "../common/button";
 import AvatarMenu from "./avatar-menu";
 import usePath from "../../hooks/use-path";
+import { SearchIcon } from "lucide-react";
 
 const Navbar = () => {
   const { user } = useAuth();
@@ -22,9 +23,17 @@ const Navbar = () => {
     >
       <div className="flex-1 text-xl font-semibold">{pathNameKor}</div>
 
-      <div className="">
+      <div className="flex items-center gap-x-2">
         {user ? (
-          <AvatarMenu user={user} size="md" />
+          <>
+            <button
+              onClick={() => {}}
+              className="transition-colors hover:text-Main"
+            >
+              <SearchIcon />
+            </button>
+            <AvatarMenu user={user} size="md" />
+          </>
         ) : (
           <Button onClick={() => {}} size="sm">
             로그인
