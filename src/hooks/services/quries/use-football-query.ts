@@ -180,19 +180,11 @@ export const useScheduleQuery = ({
         },
       ),
     select(data) {
-      const newData = data.map((el) => {
-        const title = `${el.teams.home.name} ${el.goals.home || "0"} ${
-          el.fixture.status.long
-        } ${el.goals.away || "0"} ${el.teams.away.name}`;
-
-        const start = el.fixture.date;
-        const end = dayjs(el.fixture.date).add(2, "hour");
-
-        return { ...el, title, start, end };
+      return data.sort((a, b) => {
+        const dateA = new Date(a.fixture.date) as any;
+        const dateB = new Date(b.fixture.date) as any;
+        return dateA - dateB;
       });
-
-      console.log(newData);
-      return newData;
     },
     enabled: !!leagueId && !!season && !!start && !!end,
     staleTime: Infinity,

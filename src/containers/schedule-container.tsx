@@ -8,7 +8,7 @@ const ScheduleContainer: React.FunctionComponent<IScheduleContainerProps> = ({
   return (
     <div
       className={
-        "flex h-[calc(100dvh-60px)] w-full flex-col items-center justify-center gap-y-2 rounded-md p-8 text-MediumGrey shadow-md"
+        "flex w-full flex-col items-center justify-center gap-y-2 rounded-md p-8 text-MediumGrey"
       }
     >
       {children}
