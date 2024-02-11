@@ -9,7 +9,6 @@ import {
   getLeagueSchedule,
 } from "hooks/services/apis/football";
 import { getGlobalNews, getNaverNews } from "../apis/news";
-import dayjs from "dayjs";
 
 export const footballQueryKey = {
   useTeamRankQuery: "footballTeamRankQuery",
