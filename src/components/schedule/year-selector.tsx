@@ -26,7 +26,7 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
   );
 
   return (
-    <div className="mb-4 flex items-center justify-center ">
+    <div className="mb-5 flex items-center justify-center ">
       <button
         className={clsx(
           "mr-4 mt-2 rounded-xl border px-2 text-sm",
