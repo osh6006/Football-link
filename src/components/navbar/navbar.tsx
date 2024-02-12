@@ -6,13 +6,17 @@ import useThemeStore from "../../stores/theme-store";
 import Button from "../common/button";
 import AvatarMenu from "./avatar-menu";
 import usePath from "../../hooks/use-path";
-import { SearchIcon } from "lucide-react";
+import { MenuIcon, SearchIcon } from "lucide-react";
+import Logo from "components/common/logo";
+import MobileSideBar from "components/sidebar/mobile-side-bar";
+import { useState } from "react";
 
 const Navbar = () => {
   const { user } = useAuth();
   const { theme } = useThemeStore();
-
   const { pathNameKor } = usePath();
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <nav
@@ -21,7 +25,16 @@ const Navbar = () => {
         theme === "light" ? "bg-White " : "bg-DarkGrey",
       )}
     >
-      <div className="flex-1 text-xl font-semibold">{pathNameKor}</div>
+      <div className="flex flex-1 items-center justify-between lg:hidden">
+        <button className="text-Main" onClick={() => setIsSidebarOpen(true)}>
+          <MenuIcon size={25} />
+        </button>
+        <Logo />
+        <div></div>
+      </div>
+      <div className="hidden flex-1 text-xl font-semibold lg:block">
+        {pathNameKor}
+      </div>
 
       <div className="flex items-center gap-x-2">
         {user ? (
@@ -40,6 +53,12 @@ const Navbar = () => {
           </Button>
         )}
       </div>
+      {isSidebarOpen ? (
+        <MobileSideBar
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+        />
+      ) : null}
     </nav>
   );
 };

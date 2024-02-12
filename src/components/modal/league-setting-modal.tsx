@@ -35,9 +35,7 @@ const LeagueSettingModal: React.FunctionComponent<
 
   const { isOpenLeagueSettingModal, closeLeagueSettingModal } =
     useModalsStore();
-
   const { theme } = useThemeStore();
-
   const { selectedSport } = useSportStore();
 
   const {

@@ -10,14 +10,21 @@ import useSportStore from "../../stores/sports-store";
 import useModalsStore from "../../stores/modals-store";
 import useLeagueStore from "stores/league-store";
 
-import SelectBox from "../navbar/select-box";
-import ThemeSwitch from "../navbar/theme-switch";
+import { XIcon } from "lucide-react";
 import Logo from "components/common/logo";
 import SideMenuList from "./side-menu-list";
+import SelectBox from "../navbar/select-box";
+import ThemeSwitch from "../navbar/theme-switch";
 
-interface ISidebarProps {}
+interface ISidebarProps {
+  isMobile?: boolean;
+  onClose?: () => void;
+}
 
-const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
+const Sidebar: React.FunctionComponent<ISidebarProps> = ({
+  isMobile,
+  onClose,
+}) => {
   const { theme } = useThemeStore();
 
   const { selectSport, selectedSport } = useSportStore();
@@ -47,14 +54,26 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
   return (
     <aside
       className={clsx(
-        `sticky inset-y-0 hidden w-[15dvw] min-w-60 flex-col border-r border-MediumGrey   
-      text-MediumGrey lg:flex lg:flex-col`,
+        `sticky inset-y-0 h-full w-[15dvw] min-w-60 flex-col border-r border-MediumGrey   
+      text-MediumGrey `,
         theme === "light" ? "bg-White " : "bg-DarkGrey ",
+        isMobile ? "flex flex-col" : "hidden lg:flex lg:flex-col",
       )}
     >
       {/* logo */}
-      <div className="flex h-[55px] items-center px-4">
+      <div className="flex h-[55px] items-center justify-between px-4">
         <Logo />
+        <button
+          className={clsx("hover:text-Main", isMobile ? "block" : "hidden")}
+          onClick={(e) => {
+            e.stopPropagation();
+            if (onClose) {
+              onClose();
+            }
+          }}
+        >
+          <XIcon />
+        </button>
       </div>
 
       <div className="px-2">

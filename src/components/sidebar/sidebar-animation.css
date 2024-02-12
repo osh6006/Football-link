@@ -1,0 +1,28 @@
+/* 초기 상태 */
+.sidebar-menu-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+/* 애니메이션 진행 중 */
+.sidebar-menu-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity 300ms,
+    transform 300ms; /* 애니메이션 지속 시간 설정 */
+}
+
+/* 애니메이션 종료 상태 */
+.sidebar-menu-exit {
+  transform: translateX(0);
+}
+
+/* 애니메이션 종료 중 */
+.sidebar-menu-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition:
+    opacity 300ms,
+    transform 300ms; /* 애니메이션 지속 시간 설정 */
+}
