@@ -71,16 +71,16 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
       <table className="min-w-full  divide-gray-200 ">
         <thead className="text-base font-semibold">
           <tr>
-            <th className=" px-6 py-3 text-left   uppercase leading-4 tracking-wider text-gray-500">
+            <th className=" text-nowrap px-6 py-3 text-left  uppercase leading-4 tracking-wider text-gray-500">
               순위
             </th>
-            <th className=" px-6 py-3 text-left   uppercase leading-4 tracking-wider text-gray-500">
+            <th className=" text-nowrap px-6 py-3  text-left uppercase leading-4 tracking-wider text-gray-500">
               이름
             </th>
-            <th className=" px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+            <th className=" text-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
               나라
             </th>
-            <th className=" px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+            <th className=" text-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
               골
             </th>
           </tr>

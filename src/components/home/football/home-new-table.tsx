@@ -4,7 +4,6 @@ import { useLocalNewsQuery } from "hooks/services/quries/use-football-query";
 import useLeagueStore from "stores/league-store";
 import ComponentStatusContainer from "containers/component-status-container";
 import Loading from "components/common/loading";
-import { formatPublicDay } from "libs/day";
 
 interface IHomeNewTableProps {}
 
@@ -43,7 +42,7 @@ const HomeNewTable: React.FunctionComponent<IHomeNewTableProps> = (props) => {
         "mt-2 rounded-md p-4 shadow-md",
       )}
     >
-      <ul className="space-y-2">
+      <ul className="space-y-4">
         {data?.map((el, i) => {
           if (i >= 6) return null;
           return (
