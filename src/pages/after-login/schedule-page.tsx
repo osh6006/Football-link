@@ -21,7 +21,7 @@ const SchedulePage: React.FunctionComponent<ISchedulePageProps> = () => {
       <div
         className={componentBackgroundChange(
           theme,
-          "max-w-[1280px] rounded-md p-8 shadow-md",
+          "mx-auto max-w-5xl rounded-md p-4 shadow-md sm:p-8",
         )}
       >
         <YearSelector setIsAll={setIsAll} />

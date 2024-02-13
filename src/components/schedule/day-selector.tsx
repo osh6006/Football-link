@@ -27,12 +27,12 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = ({
       </button>
       <ul
         ref={containerRef}
-        className="flex max-w-4xl items-center justify-between gap-x-6 overflow-hidden"
+        className="flex items-center justify-between gap-x-6 overflow-hidden"
       >
         <li
           role="button"
           className={clsx(
-            "rou flex flex-col items-center justify-center rounded-md border px-3 py-2 font-semibold transition-colors hover:border-Main  hover:text-Main",
+            " flex flex-col items-center justify-center rounded-md border px-3 py-2 font-semibold transition-colors hover:border-Main  hover:text-Main",
             isAll
               ? " border-2 border-Main font-semibold text-Main"
               : "border-MediumGrey",
@@ -49,7 +49,7 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = ({
             key={el.numberOfDay}
             role="button"
             className={clsx(
-              "rou flex flex-col items-center justify-center rounded-md border  px-3 py-2 font-semibold transition-colors hover:border-Main  hover:text-Main",
+              "flex flex-col items-center justify-center rounded-md border  px-3 py-2 font-semibold transition-colors hover:border-Main  hover:text-Main",
               !isAll && el.isActive
                 ? " border-2 border-Main font-semibold text-Main"
                 : "border-MediumGrey",

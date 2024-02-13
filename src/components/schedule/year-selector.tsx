@@ -29,7 +29,7 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
     <div className="mb-5 flex items-center justify-center ">
       <button
         className={clsx(
-          "mr-4 mt-2 rounded-xl border px-2 text-sm",
+          "mr-2 rounded-xl border px-2 text-xs leading-10 sm:mr-4 sm:text-sm",
           isToday && "bg-Main text-white",
         )}
         onClick={() => {
@@ -46,7 +46,9 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
         >
           <ChevronLeftIcon size={25} />
         </button>
-        <h2 className="text-3xl font-semibold text-Main">{currentDate}</h2>
+        <h2 className="text-2xl font-semibold text-Main sm:text-3xl">
+          {currentDate}
+        </h2>
         <button
           className="mt-1 hover:text-Main"
           onClick={() => controlDate("NEXT", "month")}
@@ -61,7 +63,7 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
           }}
           className="ml-2 mt-2 hover:text-Main "
         >
-          <CalendarIcon size={25} />
+          <CalendarIcon />
         </button>
         <CSSTransition
           in={isOpen}

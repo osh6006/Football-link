@@ -49,45 +49,53 @@ const FootballCalendar: React.FunctionComponent<IFootballCalendarProps> = ({
   }
 
   return (
-    <ul className="mt-6 w-full space-y-4 px-8">
+    <ul className=" mt-6 w-full space-y-4 p-0 sm:px-8 md:block">
       {data?.map((el) => (
         <li
           key={el.fixture.id}
-          className="flex w-full items-center justify-between rounded-md  border border-MediumGrey px-4 py-2"
+          className="relative flex w-full flex-wrap items-center justify-between rounded-md border  border-MediumGrey px-4 py-2 md:gap-x-4"
         >
-          <div className="flex gap-x-4 ">
-            <time className="text-sm font-semibold">
+          <div className="absolute left-1 top-1 flex gap-x-4 md:static ">
+            <time className="text-xs font-semibold sm:text-sm">
               {isAll
                 ? dayjs(el.fixture.date).format("MM-DD HH:MM")
                 : dayjs(el.fixture.date).format("HH:MM")}
             </time>
-            <span className="text-sm">{el.fixture.venue.name}</span>
+            <span className="hidden text-sm ">{el.fixture.venue.name}</span>
           </div>
 
-          <div className="flex items-center gap-x-4">
-            <div>
-              <span className="flex items-center justify-center rounded-sm bg-green-500 px-[3px] text-xs leading-[20px] text-white">
-                홈
-              </span>
+          <div className="mt-4 flex flex-1 flex-col items-center justify-center gap-y-2 md:mt-0 md:flex-auto md:flex-row md:justify-between">
+            <div className="flex  items-center gap-x-2">
+              <div>
+                <span className="flex items-center justify-center rounded-sm bg-green-500 px-[3px] text-xs leading-[20px] text-white">
+                  홈
+                </span>
+              </div>
+              <div>{el.teams.home.name}</div>
             </div>
-            <div>{el.teams.home.name}</div>
-            <img src={el.teams.home.logo} alt="homeLogo" className="max-w-8" />
-          </div>
 
-          <div className="flex gap-x-3 font-semibold">
-            <div>{el.goals.home}</div>
-            <span className="rounded-md bg-blue-500 px-2 py-1 text-xs leading-[20px] text-White">
-              {el.fixture.status.long}
-            </span>
-            <div>{el.goals.away}</div>
+            <div className="flex gap-x-3 font-semibold">
+              <img
+                src={el.teams.home.logo}
+                alt="homeLogo"
+                className="max-w-8"
+              />
+              <span className="flex items-center gap-x-2 rounded-md bg-blue-500 px-2 py-1 text-xs leading-[20px] text-White">
+                <span>{el.goals.home}</span>
+                <span>{el.fixture.status.long}</span>
+                <span>{el.goals.away}</span>
+              </span>
+              <img
+                src={el.teams.away.logo}
+                alt="homeLogo"
+                className="max-w-8"
+              />
+            </div>
+            <div className="flex items-center">
+              <div>{el.teams.away.name}</div>
+            </div>
           </div>
-
-          <div className="flex items-center gap-x-4">
-            <img src={el.teams.away.logo} alt="homeLogo" className="max-w-8" />
-            <div>{el.teams.away.name}</div>
-          </div>
-
-          <span className="text-sm font-semibold">{`${el.league.round.at(
+          <span className="absolute bottom-1 right-2 font-semibold sm:block md:static">{`${el.league.round.at(
             -2,
           )}${el.league.round.at(-1)}R`}</span>
 
@@ -95,7 +103,7 @@ const FootballCalendar: React.FunctionComponent<IFootballCalendarProps> = ({
             onClick={() => {
               // TODO: 페이지 이동
             }}
-            className="rounded-md border border-MediumGrey px-2 py-[2px] text-sm transition-colors  hover:bg-Main hover:text-White"
+            className="absolute right-1 top-1 rounded-md border border-MediumGrey px-2 py-[2px] text-sm transition-colors hover:bg-Main  hover:text-White md:static"
           >
             기록
           </button>

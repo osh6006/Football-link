@@ -13,7 +13,7 @@ const RootContainer: React.FunctionComponent<IRootContainerProps> = ({
   return (
     <main
       className={clsx(
-        `flex h-[100dvh] w-[100dvw] overflow-y-auto overflow-x-hidden`,
+        `flex h-[100dvh] overflow-y-auto overflow-x-hidden`,
         theme === "light" ? "bg-LightGreyLightBg" : "bg-VeryDarkGreyDark",
       )}
     >

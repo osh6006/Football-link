@@ -6,13 +6,7 @@ const ScheduleContainer: React.FunctionComponent<IScheduleContainerProps> = ({
   children,
 }) => {
   return (
-    <div
-      className={
-        "flex w-full flex-col items-center justify-center gap-y-2 rounded-md p-8 text-MediumGrey"
-      }
-    >
-      {children}
-    </div>
+    <div className={"rounded-md p-4 text-MediumGrey sm:p-8"}>{children}</div>
   );
 };
 
