@@ -1,10 +1,12 @@
+import useLeagueStore from "stores/league-store";
+
 import Banner from "../banner";
 import Title from "../title";
 import TeamRankTable from "./team-rank-table";
 import HomeLiveTable from "./home-live-table";
 import HomeNextTable from "./home-next-table";
 import PlayerRankTable from "./player-rank-table";
-import useLeagueStore from "stores/league-store";
+import HomeNewTable from "./home-new-table";
 
 interface IFootballHomeContentProps {}
 
@@ -19,6 +21,7 @@ const FootballHomeContent: React.FunctionComponent<
         <Banner />
         <div className="mt-2">
           <Title>소식</Title>
+          <HomeNewTable />
         </div>
         <div className="mt-2 space-y-2">
           <Title>종합 순위</Title>

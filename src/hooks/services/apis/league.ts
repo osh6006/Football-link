@@ -10,7 +10,6 @@ export const getLeagues: QueryFunction<
   const [, sportsId] = queryKey;
   const { data: sessionData, error: sessionError } =
     await supabase.auth.getSession();
-
   if (sessionError) {
     toast.error(sessionError.message);
     return null;
@@ -55,7 +54,7 @@ export const getSavedLeague: QueryFunction<any | null, string[]> = async ({
       .from("user_leagues")
       .select(
         `
-        league(id,name,logo,sports_id,rapid_football_league_id)
+        league(id,name,logo,sports_id,rapid_football_league_id,kr_name)
       `,
       )
       .eq("user_id", userId);

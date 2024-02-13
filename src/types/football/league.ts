@@ -14,6 +14,7 @@ export interface ISupabaseLeague {
   name: string | null;
   rapid_football_league_id: number | null;
   sports_id: string | null;
+  kr_name: string | null;
 }
 
 interface Fixtures {

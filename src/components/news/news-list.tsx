@@ -168,7 +168,7 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
                 state="error"
                 classNames="mt-10 h-[350px]"
               >
-                해당 데이터의 기사가 존재하지 않습니다.
+                해당 키워드 기사가 존재하지 않습니다.
               </ComponentStatusContainer>
             </>
           )}
