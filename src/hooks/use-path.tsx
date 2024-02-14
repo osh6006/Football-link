@@ -31,6 +31,11 @@ export default function usePath() {
       path: "/news",
       icon: <Newspaper />,
     },
+    {
+      name: "소식",
+      path: "/team",
+      icon: <Newspaper />,
+    },
   ];
 
   const pathNameKor = getPathNameInPaths(paths, realPath);

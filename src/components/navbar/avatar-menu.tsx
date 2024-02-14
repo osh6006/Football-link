@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { User } from "@supabase/gotrue-js";
 
 import Avatar from "../common/avatar";
 import { CSSTransition } from "react-transition-group";
@@ -7,6 +6,7 @@ import { CSSTransition } from "react-transition-group";
 import "./avatar-menu.css";
 import useOutsideClick from "../../hooks/use-outside-click";
 import useAuth from "../../hooks/use-auth";
+import { User } from "@supabase/supabase-js";
 
 interface IAvatarMenuProps {
   user: User;
@@ -26,7 +26,7 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({
       className="relative rounded-full border-4 border-transparent transition hover:border-Main"
       onClick={() => setIsOpen(!isOpen)}
     >
-      <Avatar size={size} imgUrl={user.user_metadata.avatar_url} />
+      <Avatar size={size} imgUrl={user?.user_metadata?.avatar_url} />
       <CSSTransition
         in={isOpen}
         nodeRef={nodeRef}

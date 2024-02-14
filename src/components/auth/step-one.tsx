@@ -1,11 +1,26 @@
+import { useEffect } from "react";
 import useAuth from "../../hooks/use-auth";
 
 import Button from "../common/button";
+import { useAuthStepStore } from "stores/auth-step-store";
+import { checkAuthSports } from "utils/auth";
 
 interface IStepOneProps {}
 
 const StepOne: React.FunctionComponent<IStepOneProps> = () => {
   const { signIn } = useAuth();
+  const { setStep } = useAuthStepStore();
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const { auth, hasSports } = await checkAuthSports();
+      if (auth && !hasSports) {
+        setStep(2);
+      }
+    };
+
+    checkSession();
+  }, [setStep]);
 
   const handleGoogleBtn = async () => {
     signIn("google");

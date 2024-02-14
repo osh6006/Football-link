@@ -16,7 +16,8 @@ export const getSports: () => Promise<ISport[] | null> = async () => {
     let { data: sports, error } = await supabase
       .from("user_sports")
       .select("*")
-      .eq("user_id", userId);
+      .eq("user_id", userId)
+      .order("created_at");
 
     if (error) {
       toast.error(error.message);

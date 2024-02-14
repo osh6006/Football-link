@@ -1,59 +1,27 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { supabase } from "../libs/superbase-client";
-import { useAuthStepStore } from "../stores/auth-step-store";
 import toast from "react-hot-toast";
-import { User } from "@supabase/gotrue-js";
+import { useEffect, useState } from "react";
+import { User } from "@supabase/supabase-js";
 
 export default function useAuth() {
-  const { setStep } = useAuthStepStore();
   const nav = useNavigate();
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User>();
 
   useEffect(() => {
-    const checkSession = async () => {
+    const checkUser = async () => {
       const {
         data: { session },
-        error,
       } = await supabase.auth.getSession();
 
-      if (error) {
-        toast.error(error.message);
-        return;
-      }
-
-      const userId = session?.user.id;
-
-      if (userId) {
+      if (session) {
         setUser(session.user);
-        let { data: sports, error } = await supabase
-          .from("user_sports")
-          .select("*")
-          .eq("user_id", userId);
-
-        if (sports && sports?.length > 0) {
-          console.log("Has sports");
-          nav("/", { replace: false });
-        }
-
-        if (userId && sports?.length === 0) {
-          console.log("Not has sports");
-          nav("/auth", { replace: false });
-          setStep(2);
-        }
-
-        if (error) {
-          toast.error(error.message);
-        }
-      } else {
-        console.log("not has session user");
-        nav("/auth", { replace: false });
       }
     };
 
-    checkSession();
-  }, [nav, setStep]);
+    checkUser();
+  }, []);
 
   const signIn = async (provider: "google" | "github") => {
     const { error } = await supabase.auth.signInWithOAuth({

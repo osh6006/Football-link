@@ -1,20 +1,20 @@
 import clsx from "clsx";
+import { useState } from "react";
 
 import useAuth from "../../hooks/use-auth";
+import usePath from "../../hooks/use-path";
 import useThemeStore from "../../stores/theme-store";
 
 import Button from "../common/button";
 import AvatarMenu from "./avatar-menu";
-import usePath from "../../hooks/use-path";
-import { MenuIcon, SearchIcon } from "lucide-react";
 import Logo from "components/common/logo";
+import { MenuIcon, SearchIcon } from "lucide-react";
 import MobileSideBar from "components/sidebar/mobile-side-bar";
-import { useState } from "react";
 
 const Navbar = () => {
-  const { user } = useAuth();
   const { theme } = useThemeStore();
   const { pathNameKor } = usePath();
+  const { signOut, user } = useAuth();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -37,7 +37,7 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-x-2">
-        {user ? (
+        {true ? (
           <>
             <button
               onClick={() => {}}
@@ -45,10 +45,10 @@ const Navbar = () => {
             >
               <SearchIcon />
             </button>
-            <AvatarMenu user={user} size="md" />
+            <AvatarMenu user={user!} size="md" />
           </>
         ) : (
-          <Button onClick={() => {}} size="sm">
+          <Button onClick={() => signOut()} size="sm">
             로그인
           </Button>
         )}

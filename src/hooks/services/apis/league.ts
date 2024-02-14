@@ -21,7 +21,8 @@ export const getLeagues: QueryFunction<
     const { data: leagueData, error: leagueError } = await supabase
       .from("league")
       .select("*")
-      .eq("sports_id", sportsId);
+      .eq("sports_id", sportsId)
+      .order("created_at");
 
     if (leagueError) {
       toast.error(leagueError.message);
