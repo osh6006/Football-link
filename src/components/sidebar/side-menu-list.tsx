@@ -17,7 +17,11 @@ const SideMenuList: React.FunctionComponent<ISideMenuListProps> = (props) => {
           onClick={() => nav(item.path)}
           className={clsx(
             "flex cursor-pointer items-center gap-x-2 px-5 py-3 text-lg transition-colors hover:bg-Main hover:text-White",
-            realPath === `${item.path}` ? "bg-Main text-White" : "",
+            realPath === `${item.path.replace("/", "")}`
+              ? "bg-Main text-White"
+              : item.path === "/" && realPath === "Home"
+                ? "bg-Main text-White"
+                : "",
           )}
         >
           {item.icon}

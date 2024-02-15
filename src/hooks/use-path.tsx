@@ -8,12 +8,13 @@ import { useMatches } from "react-router-dom";
 
 export default function usePath() {
   const { pathname } = useMatches()[1] || "";
-  const realPath = pathname ? pathname : "/";
+  const realPath = pathname === "/" ? "Home" : pathname.replace("/", "");
 
   const paths = [
     {
       name: "홈",
       path: "/",
+      activeName: "Home",
       icon: <LayoutDashboardIcon />,
     },
     {
@@ -31,16 +32,11 @@ export default function usePath() {
       path: "/news",
       icon: <Newspaper />,
     },
-    {
-      name: "소식",
-      path: "/team",
-      icon: <Newspaper />,
-    },
   ];
 
-  const pathNameKor = getPathNameInPaths(paths, realPath);
+  // const pathNameKor = getPathNameInPaths(paths, realPath);
 
-  return { paths, realPath, pathname, pathNameKor };
+  return { paths, realPath, pathname };
 }
 
 function getPathNameInPaths(paths: any[], path: string) {

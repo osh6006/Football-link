@@ -1,7 +1,7 @@
 interface ITeamPageProps {}
 
 const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
-  return <>team!</>;
+  return <div>team!</div>;
 };
 
 export default TeamRootPage;

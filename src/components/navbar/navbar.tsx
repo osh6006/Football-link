@@ -13,7 +13,7 @@ import MobileSideBar from "components/sidebar/mobile-side-bar";
 
 const Navbar = () => {
   const { theme } = useThemeStore();
-  const { pathNameKor } = usePath();
+  const { realPath } = usePath();
   const { signOut, user } = useAuth();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -33,7 +33,7 @@ const Navbar = () => {
         <div></div>
       </div>
       <div className="hidden flex-1 text-xl font-semibold lg:block">
-        {pathNameKor}
+        {realPath}
       </div>
 
       <div className="flex items-center gap-x-2">
