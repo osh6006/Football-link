@@ -1,7 +1,7 @@
 interface ITeamInfoProps {}
 
 const TeamInfo: React.FunctionComponent<ITeamInfoProps> = () => {
-  return <></>;
+  return <div></div>;
 };
 
 export default TeamInfo;

@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
 import TeamRootContainer from "components/layouts/team-root-container";
 import TeamMenuTabs from "components/team/team-menu-tabs";
+import TeamStatTable from "components/team/team-stat-table";
 import { Outlet, useMatches } from "react-router-dom";
 
 interface ITeamPageProps {}
@@ -14,7 +15,7 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
     <TeamRootContainer>
       <div className="rounded-md bg-Main p-2 text-White sm:p-10 ">
         <div className="flex flex-col items-center justify-between xl:flex-row xl:gap-x-8 ">
-          <div className="flex w-full flex-1 flex-col items-center justify-between gap-x-10 xl:flex-row">
+          <div className="flex  w-full flex-1 flex-col items-center justify-between gap-x-8 xl:flex-row">
             <div className="w-full rounded-md bg-MainHover p-4  xl:w-[250px] xl:rounded-full xl:p-8">
               <img
                 src={faker.image.urlPicsumPhotos()}
@@ -22,7 +23,7 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
                 className="mx-auto aspect-square w-[150px] rounded-full sm:w-[200px] "
               />
             </div>
-            <div className="mt-4 text-center xl:mt-0 xl:text-start">
+            <div className="mt-4 h-full text-center xl:mt-0 xl:text-start">
               <h1 className="text-3xl font-bold sm:mt-0 sm:text-5xl">
                 LiverPool
               </h1>
@@ -43,40 +44,18 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
             >
               23/24 Season
             </div>
-            <div className="mt-4 grid w-full grid-cols-4 gap-4 text-center xl:mt-0 xl:text-start">
-              <dl>
-                <dt className="text-base text-slate-300">Rank</dt>
-                <dd className="text-2xl">1</dd>
-              </dl>
-              <dl>
-                <dt className="text-base text-slate-300">Win</dt>
-                <dd className="text-2xl">1</dd>
-              </dl>
-              <dl>
-                <dt className="text-base text-slate-300">Draw</dt>
-                <dd className="text-2xl">1</dd>
-              </dl>
-              <dl>
-                <dt className="text-base text-slate-300">Lose</dt>
-                <dd className="text-2xl">1</dd>
-              </dl>
-              <dl>
-                <dt className="text-base text-slate-300">Points</dt>
-                <dd className="text-2xl">1</dd>
-              </dl>
-              <dl>
-                <dt className="text-base text-slate-300">Goals</dt>
-                <dd className="text-2xl">1</dd>
-              </dl>
-              <dl>
-                <dt className="text-base text-slate-300">Conceded</dt>
-                <dd className="text-2xl">1</dd>
-              </dl>
-              <dl>
-                <dt className="text-base text-slate-300">Played</dt>
-                <dd className="text-2xl">1</dd>
-              </dl>
-            </div>
+            <TeamStatTable
+              items={[
+                { name: "Rank", value: 1 },
+                { name: "Win", value: 1 },
+                { name: "Draw", value: 1 },
+                { name: "Lose", value: 1 },
+                { name: "Points", value: 1 },
+                { name: "Goals", value: 1 },
+                { name: "Conceded", value: 1 },
+                { name: "Played", value: 1 },
+              ]}
+            />
           </div>
         </div>
 
