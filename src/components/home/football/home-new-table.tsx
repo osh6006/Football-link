@@ -2,7 +2,7 @@ import useThemeStore from "stores/theme-store";
 import { componentBackgroundChange } from "utils/util";
 import { useLocalNewsQuery } from "hooks/services/quries/use-football-query";
 import useLeagueStore from "stores/league-store";
-import ComponentStatusContainer from "containers/component-status-container";
+import ComponentStatusContainer from "components/layouts/component-status-container";
 import Loading from "components/common/loading";
 
 interface IHomeNewTableProps {}

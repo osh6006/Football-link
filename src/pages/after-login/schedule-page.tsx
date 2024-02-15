@@ -6,7 +6,7 @@ import { componentBackgroundChange } from "utils/util";
 import DaySelector from "components/schedule/day-selector";
 import YearSelector from "components/schedule/year-selector";
 import FootballCalendar from "components/schedule/football-calendar";
-import ScheduleContainer from "containers/schedule-container";
+import ScheduleContainer from "components/layouts/schedule-container";
 
 interface ISchedulePageProps {}
 

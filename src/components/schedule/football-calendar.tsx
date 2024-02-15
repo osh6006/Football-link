@@ -6,7 +6,7 @@ import { componentBackgroundChange } from "utils/util";
 import { useScheduleQuery } from "hooks/services/quries/use-football-query";
 
 import Loading from "components/common/loading";
-import ComponentStatusContainer from "containers/component-status-container";
+import ComponentStatusContainer from "components/layouts/component-status-container";
 
 interface IFootballCalendarProps {
   isAll: boolean;

@@ -33,7 +33,7 @@ const Navbar = () => {
         <div></div>
       </div>
       <div className="hidden flex-1 text-xl font-semibold lg:block">
-        {realPath}
+        {realPath.split("/")[0]}
       </div>
 
       <div className="flex items-center gap-x-2">

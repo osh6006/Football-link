@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import useThemeStore from "../stores/theme-store";
+import useThemeStore from "../../stores/theme-store";
 
 interface IRootContainerProps {
   children: React.ReactNode;

@@ -7,7 +7,7 @@ import {
 import { useInfiniteScroll } from "hooks/use-infinite-scroll";
 
 import Loading from "components/common/loading";
-import ComponentStatusContainer from "containers/component-status-container";
+import ComponentStatusContainer from "components/layouts/component-status-container";
 import { useState } from "react";
 import Filter from "components/common/filters";
 import { GLOBAL_NEWS_FILTERS } from "data/football/news";

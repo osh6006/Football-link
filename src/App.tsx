@@ -3,7 +3,7 @@ import useLeagueStore from "stores/league-store";
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
-import RootContainer from "./containers/root-container";
+import RootContainer from "./components/layouts/root-container";
 import ErrorComponent from "components/common/error-component";
 
 function App() {

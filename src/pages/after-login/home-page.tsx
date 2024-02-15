@@ -1,5 +1,5 @@
 import useSportStore from "stores/sports-store";
-import HomeContainer from "containers/home-container";
+import HomeContainer from "components/layouts/home-container";
 import FootballHomeContent from "components/home/football/football-home-content";
 
 interface IHomePageProps {}

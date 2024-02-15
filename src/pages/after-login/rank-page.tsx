@@ -1,5 +1,5 @@
 import RankContent from "components/rank/football/rank-contents";
-import RankContainer from "containers/rank-container";
+import RankContainer from "components/layouts/rank-container";
 import useSportStore from "stores/sports-store";
 
 interface IRankPageProps {}

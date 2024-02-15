@@ -2,7 +2,7 @@ import { Table as TableType, flexRender } from "@tanstack/react-table";
 import clsx from "clsx";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import Loading from "./loading";
-import ComponentStatusContainer from "containers/component-status-container";
+import ComponentStatusContainer from "components/layouts/component-status-container";
 
 interface ITableProps {
   isLoading?: boolean;

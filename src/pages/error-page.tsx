@@ -1,4 +1,4 @@
-import ErrorContainer from "containers/error-container";
+import ErrorContainer from "components/layouts/error-container";
 
 interface IErrorPageProps {}
 

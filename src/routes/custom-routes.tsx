@@ -49,31 +49,31 @@ const CustomRoutes = () => {
           errorElement: <ErrorPage />,
         },
         {
-          path: "/team",
+          path: "/team/football/:teamId",
           element: <TeamRootPage />,
           errorElement: <ErrorPage />,
-          // children: [
-          //   {
-          //     path: ":teamId/news",
-          //     element: <div>news</div>,
-          //     errorElement: <ErrorPage />,
-          //   },
-          //   {
-          //     path: ":teamId/schedule",
-          //     element: <div>schedule</div>,
-          //     errorElement: <ErrorPage />,
-          //   },
-          //   {
-          //     path: ":teamId/lineup",
-          //     element: <div>lineup</div>,
-          //     errorElement: <ErrorPage />,
-          //   },
-          //   {
-          //     path: ":teamId/info",
-          //     element: <div>info</div>,
-          //     errorElement: <ErrorPage />,
-          //   },
-          // ],
+          children: [
+            {
+              path: "info",
+              element: <div>info</div>,
+              errorElement: <ErrorPage />,
+            },
+            {
+              path: "news",
+              element: <div>news</div>,
+              errorElement: <ErrorPage />,
+            },
+            {
+              path: "schedule",
+              element: <div>schedule</div>,
+              errorElement: <ErrorPage />,
+            },
+            {
+              path: "lineup",
+              element: <div>lineup</div>,
+              errorElement: <ErrorPage />,
+            },
+          ],
         },
         {
           path: "/search",

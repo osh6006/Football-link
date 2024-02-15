@@ -1,6 +1,6 @@
 import Tabs from "components/common/tabs";
 import NewsList from "components/news/news-list";
-import NewsContainer from "containers/news-container";
+import NewsContainer from "components/layouts/news-container";
 
 interface INewsPageProps {}
 
