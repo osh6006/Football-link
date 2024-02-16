@@ -1,65 +1,87 @@
-import { faker } from "@faker-js/faker";
+import Loading from "components/common/loading";
+import ComponentStatusContainer from "components/layouts/component-status-container";
 import TeamRootContainer from "components/layouts/team-root-container";
+import TeamHeader from "components/team/team-header";
 import TeamMenuTabs from "components/team/team-menu-tabs";
 import TeamStatTable from "components/team/team-stat-table";
+import { useTeamInfoQuery } from "hooks/services/quries/use-football-query";
 import { Outlet, useMatches } from "react-router-dom";
+import useLeagueStore from "stores/league-store";
 
 interface ITeamPageProps {}
 
 const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
   const teamId = useMatches()[0].params.teamId;
 
-  // TODO : Team Stat
+  const { selectedLeague } = useLeagueStore();
+
+  const { data, isLoading, isError } = useTeamInfoQuery(teamId!);
+  // const {data: teamStat}
+
+  // let {
+  //   state: { teamData },
+  // } = useLocation();
+
+  const teamInfo = data?.teamInfo;
+  const teamStanding = data?.teamStanding[0].league;
+  const coachInfo = data?.coachInfo;
+
+  if (isLoading) {
+    return (
+      <ComponentStatusContainer height="500" state="loading">
+        <Loading size="md" />
+      </ComponentStatusContainer>
+    );
+  }
+
+  if (isError) {
+    return (
+      <ComponentStatusContainer height="500" state="error">
+        <h1>데이터를 불러오던 도중 오류가 발생하였습니다.</h1>
+      </ComponentStatusContainer>
+    );
+  }
+
+  console.log(teamStanding?.standings[0][0]);
 
   return (
     <TeamRootContainer>
       <div className="rounded-md bg-Main p-2 text-White sm:p-10 ">
         <div className="flex flex-col items-center justify-between xl:flex-row xl:gap-x-8 ">
-          <div className="flex  w-full flex-1 flex-col items-center justify-between gap-x-8 xl:flex-row">
-            <div className="w-full rounded-md bg-MainHover p-4  xl:w-[250px] xl:rounded-full xl:p-8">
-              <img
-                src={faker.image.urlPicsumPhotos()}
-                alt=""
-                className="mx-auto aspect-square w-[150px] rounded-full sm:w-[200px] "
-              />
-            </div>
-            <div className="mt-4 h-full text-center xl:mt-0 xl:text-start">
-              <h1 className="text-3xl font-bold sm:mt-0 sm:text-5xl">
-                LiverPool
-              </h1>
-              <p className="mt-4 sm:text-xl">
-                <span className="text-slate-300">Coach</span> 위르겐 클롭
-              </p>
-              <p className="sm:text-xl">
-                <span className="text-slate-300">Venue</span> 안필드
-              </p>
-            </div>
-          </div>
-          {/*  */}
-          <div className="flex w-full flex-col gap-x-4 px-2 text-xl xl:w-fit xl:flex-1 xl:flex-col">
-            <div
-              className="py-2 text-center font-semibold after:my-2
-              after:hidden after:h-[3px] after:w-[15px] after:bg-White after:content-[''] xl:text-start
-              after:xl:block"
-            >
-              23/24 Season
-            </div>
-            <TeamStatTable
-              items={[
-                { name: "Rank", value: 1 },
-                { name: "Win", value: 1 },
-                { name: "Draw", value: 1 },
-                { name: "Lose", value: 1 },
-                { name: "Points", value: 1 },
-                { name: "Goals", value: 1 },
-                { name: "Conceded", value: 1 },
-                { name: "Played", value: 1 },
-              ]}
-            />
-          </div>
+          <TeamHeader
+            teamLogo={teamInfo?.team.logo!}
+            coach={coachInfo?.name!}
+            name={teamInfo?.team.name!}
+            venue={teamInfo?.venue.name!}
+          />
+          <TeamStatTable
+            items={[
+              {
+                name: "Rank",
+                value: teamStanding?.standings[0][0].rank!,
+              },
+              {
+                name: "Win",
+                value: teamStanding?.standings[0][0].all.win!,
+              },
+              { name: "Draw", value: teamStanding?.standings[0][0].all.draw! },
+              { name: "Lose", value: teamStanding?.standings[0][0].all.lose! },
+              { name: "Points", value: teamStanding?.standings[0][0].points! },
+              {
+                name: "Goals",
+                value: teamStanding?.standings[0][0].all.goals?.for,
+              },
+              {
+                name: "GoalsDiff",
+                value: teamStanding?.standings[0][0].goalsDiff,
+              },
+              {
+                name: "Played",
+                value: teamStanding?.standings[0][0].all.played,
+              },
+            ]}
+          />
         </div>
-
-        {/* Render Props Pattern 으로 만들기 */}
 
         <TeamMenuTabs
           items={[
@@ -73,7 +95,13 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
 
       {/* Child */}
       <div className="mt-4">
-        <Outlet />
+        <Outlet
+          context={{
+            teamInfo,
+            teamStanding,
+            coachInfo,
+          }}
+        />
       </div>
     </TeamRootContainer>
   );

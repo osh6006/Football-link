@@ -62,7 +62,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = ({
     >
       {/* logo */}
       <div className="flex h-[55px] items-center justify-between px-4">
-        <Logo />
+        <Logo path="/" />
         <button
           className={clsx("hover:text-Main", isMobile ? "block" : "hidden")}
           onClick={(e) => {

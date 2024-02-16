@@ -29,7 +29,7 @@ const Navbar = () => {
         <button className="text-Main" onClick={() => setIsSidebarOpen(true)}>
           <MenuIcon size={25} />
         </button>
-        <Logo />
+        <Logo path="/" />
         <div></div>
       </div>
       <div className="hidden flex-1 text-xl font-semibold lg:block">

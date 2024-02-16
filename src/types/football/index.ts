@@ -10,7 +10,11 @@ export type {
 export type {
   rapidFootballTeamStandingResponse,
   rapidFootballTeamStanding,
-} from "./team-standing";
+  rapidFootballTeamInfoResponse,
+  rapidFootballCoachInfoResponse,
+  rapidFootballTeamDetailStandingResponse,
+} from "./team";
+
 export type {
   rapidFootballLiveMatchResponse,
   rapidFootballNextMatchesResponse,

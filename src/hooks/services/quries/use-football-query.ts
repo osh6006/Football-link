@@ -7,6 +7,7 @@ import {
   getHomeNextMatchSchedule,
   getTopPlayers,
   getLeagueSchedule,
+  getTeamInfo,
 } from "hooks/services/apis/football";
 import { getGlobalNews, getNaverNews } from "../apis/news";
 
@@ -19,6 +20,7 @@ export const footballQueryKey = {
   useLocalNewsQuery: "footballLocalNewsQuery",
   useGlobalNewsQuery: "footballGlobalNewsQuery",
   useScheduleQuery: "footballScheduleQuery",
+  useTeamInfoQuery: "footballQueryKey",
 };
 
 export const useTeamRankQuery = (league: string, season: string) => {
@@ -186,6 +188,16 @@ export const useScheduleQuery = ({
       });
     },
     enabled: !!leagueId && !!season && !!start && !!end,
+    staleTime: Infinity,
+    gcTime: Infinity,
+  });
+};
+
+export const useTeamInfoQuery = (teamId: string) => {
+  return useQuery({
+    queryKey: [footballQueryKey.useTeamInfoQuery, teamId],
+    queryFn: ({ queryKey }) => getTeamInfo(queryKey[1] as string),
+    enabled: !!teamId,
     staleTime: Infinity,
     gcTime: Infinity,
   });

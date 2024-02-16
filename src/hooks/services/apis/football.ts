@@ -1,8 +1,11 @@
 import { rapidApi } from "libs/axios";
 
 import {
+  rapidFootballCoachInfoResponse,
   rapidFootballLiveMatchResponse,
   rapidFootballNextMatchesResponse,
+  rapidFootballTeamDetailStandingResponse,
+  rapidFootballTeamInfoResponse,
   rapidFootballTeamStandingResponse,
   rapidPlayerResponse,
 } from "types/football";
@@ -161,5 +164,56 @@ export const getLeagueSchedule = async ({
     }
   } catch (error) {
     throw new Error("ERROR GET DATA IN GET_LEAGUE_SCHEDULE");
+  }
+};
+
+export const getTeamInfo = async (
+  teamId: string,
+): Promise<{
+  teamInfo: rapidFootballTeamInfoResponse;
+  coachInfo: rapidFootballCoachInfoResponse;
+  teamStanding: rapidFootballTeamDetailStandingResponse[];
+}> => {
+  try {
+    const teamInfo = await rapidApi
+      .get("teams", {
+        params: {
+          id: teamId,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        return res.data.response[0];
+      });
+
+    const coachInfo = await rapidApi
+      .get("coachs", {
+        params: {
+          team: teamId,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        return res.data.response[0];
+      });
+
+    const teamStanding = await rapidApi
+      .get("standings", {
+        params: {
+          season: new Date().getFullYear() - 1,
+          team: teamId,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        return res.data.response;
+      });
+
+    console.log(teamStanding);
+
+    return { teamInfo, coachInfo, teamStanding };
+  } catch (error) {
+    console.log(error);
+    throw new Error("getTeamInfo");
   }
 };

@@ -1,12 +1,18 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 
-interface ILogoProps {}
+interface ILogoProps {
+  path: string;
+}
 
-const Logo: React.FunctionComponent<ILogoProps> = (props) => {
+const Logo: React.FunctionComponent<ILogoProps> = ({ path }) => {
   return (
-    <h1 className="w-fit cursor-pointer select-none text-2xl font-semibold uppercase text-Main">
+    <Link
+      to={"/"}
+      className="w-fit cursor-pointer select-none text-2xl font-semibold uppercase text-Main"
+    >
       Spolink
-    </h1>
+    </Link>
   );
 };
 
