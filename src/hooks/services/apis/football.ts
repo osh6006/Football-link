@@ -209,8 +209,6 @@ export const getTeamInfo = async (
         return res.data.response;
       });
 
-    console.log(teamStanding);
-
     return { teamInfo, coachInfo, teamStanding };
   } catch (error) {
     console.log(error);

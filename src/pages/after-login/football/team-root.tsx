@@ -1,12 +1,25 @@
+import { Outlet, useMatches, useOutletContext } from "react-router-dom";
+import { useTeamInfoQuery } from "hooks/services/quries/use-football-query";
+import useLeagueStore from "stores/league-store";
+
 import Loading from "components/common/loading";
-import ComponentStatusContainer from "components/layouts/component-status-container";
-import TeamRootContainer from "components/layouts/team-root-container";
 import TeamHeader from "components/team/team-header";
 import TeamMenuTabs from "components/team/team-menu-tabs";
 import TeamStatTable from "components/team/team-stat-table";
-import { useTeamInfoQuery } from "hooks/services/quries/use-football-query";
-import { Outlet, useMatches } from "react-router-dom";
-import useLeagueStore from "stores/league-store";
+import TeamRootContainer from "components/layouts/team-root-container";
+import ComponentStatusContainer from "components/layouts/component-status-container";
+
+import {
+  rapidFootballCoachInfoResponse,
+  rapidFootballTeamDetailStandingResponse,
+  rapidFootballTeamInfoResponse,
+} from "types/football";
+
+type ContextType = {
+  teamInfo?: rapidFootballTeamInfoResponse;
+  coachInfo?: rapidFootballCoachInfoResponse;
+  teamStanding?: rapidFootballTeamDetailStandingResponse[];
+};
 
 interface ITeamPageProps {}
 
@@ -41,8 +54,6 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
       </ComponentStatusContainer>
     );
   }
-
-  console.log(teamStanding?.standings[0][0]);
 
   return (
     <TeamRootContainer>
@@ -96,15 +107,21 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
       {/* Child */}
       <div className="mt-4">
         <Outlet
-          context={{
-            teamInfo,
-            teamStanding,
-            coachInfo,
-          }}
+          context={
+            {
+              teamInfo: data?.teamInfo,
+              coachInfo: data?.coachInfo,
+              teamStanding: data?.teamStanding,
+            } satisfies ContextType
+          }
         />
       </div>
     </TeamRootContainer>
   );
 };
+
+export function useTeamRoot() {
+  return useOutletContext<ContextType>();
+}
 
 export default TeamRootPage;

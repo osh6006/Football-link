@@ -1,5 +1,3 @@
-import { faker } from "@faker-js/faker";
-
 interface ITeamHeaderProps {
   teamLogo: string;
   coach: string;
@@ -23,7 +21,7 @@ const TeamHeader: React.FunctionComponent<ITeamHeaderProps> = ({
         />
       </div>
       <div className="mt-4 h-full text-center xl:mt-0 xl:text-start">
-        <h1 className="text-3xl font-bold sm:mt-0 sm:text-5xl">LiverPool</h1>
+        <h1 className="text-3xl font-bold sm:mt-0 sm:text-5xl">{name}</h1>
         <p className="mt-4 sm:text-xl">
           <span className="text-slate-300">Coach</span> {coach}
         </p>
