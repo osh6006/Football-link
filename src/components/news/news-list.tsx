@@ -28,7 +28,7 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
     hasNextPage: localHasNextPage,
     fetchNextPage: localFetchNextPage,
     isFetching: isLocalFetching,
-  } = useLocalNewsQuery("프리미어 리그", type === "local");
+  } = useLocalNewsQuery(selectedLeague?.kr_name!, type === "local");
 
   const {
     data: globalNewsData,
