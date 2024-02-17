@@ -25,15 +25,7 @@ interface ITeamPageProps {}
 
 const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
   const teamId = useMatches()[0].params.teamId;
-
-  const { selectedLeague } = useLeagueStore();
-
   const { data, isLoading, isError } = useTeamInfoQuery(teamId!);
-  // const {data: teamStat}
-
-  // let {
-  //   state: { teamData },
-  // } = useLocation();
 
   const teamInfo = data?.teamInfo;
   const teamStanding = data?.teamStanding[0].league;
@@ -97,7 +89,7 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
         <TeamMenuTabs
           items={[
             { name: "info", path: "/info" },
-            { name: "lineUp", path: "/lineUp" },
+            { name: "squad", path: "/squad" },
             { name: "news", path: "/news" },
             { name: "schedule", path: "/schedule" },
           ]}

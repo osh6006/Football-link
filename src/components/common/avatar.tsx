@@ -4,10 +4,11 @@ const sizeObj = {
   sm: "w-4 h-4",
   md: "w-8 h-8",
   lg: "w-10 h-10",
+  xl: "w-[80px]",
 };
 
 interface IAvatarProps {
-  size: "sm" | "md" | "lg";
+  size: "sm" | "md" | "lg" | "xl";
   imgUrl: string;
 }
 

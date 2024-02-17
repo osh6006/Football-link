@@ -1,21 +1,15 @@
-import { useOutletContext } from "react-router-dom";
+import DetailTitle from "components/common/detail-title";
 import { useTeamRoot } from "./team-root";
 
 interface ITeamInfoProps {}
 
-const Title = ({ children }: { children: React.ReactNode }) => {
-  return <h1 className="text-xl font-bold">{children}</h1>;
-};
-
 const TeamInfo: React.FunctionComponent<ITeamInfoProps> = () => {
-  const { coachInfo, teamInfo, teamStanding } = useTeamRoot();
-
-  console.log(teamStanding);
+  const { teamInfo, teamStanding } = useTeamRoot();
 
   return (
     <div className="space-y-4">
       <section>
-        <Title>Team Info</Title>
+        <DetailTitle>Team Info</DetailTitle>
         <div className="mt-4 flex w-full rounded-md border p-4 sm:gap-x-4 sm:px-6 sm:py-8">
           <div className="hidden flex-col gap-y-4 text-lg sm:flex">
             <span>Team</span>
@@ -63,7 +57,7 @@ const TeamInfo: React.FunctionComponent<ITeamInfoProps> = () => {
       </section>
 
       <section className="space-y-4">
-        <Title>League status</Title>
+        <DetailTitle>League status</DetailTitle>
         {teamStanding?.map((el) => (
           <div
             key={el.league.id}

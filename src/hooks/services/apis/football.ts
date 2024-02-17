@@ -9,6 +9,7 @@ import {
   rapidFootballTeamStandingResponse,
   rapidPlayerResponse,
 } from "types/football";
+import { rapidFootballTeamSquadStandingResponse } from "types/football/team";
 
 const TIME_ZONE = "Asia/Seoul";
 
@@ -214,4 +215,22 @@ export const getTeamInfo = async (
     console.log(error);
     throw new Error("getTeamInfo");
   }
+};
+
+export const getTeamSquad = async (
+  teamId: string,
+): Promise<rapidFootballTeamSquadStandingResponse> => {
+  return await rapidApi
+    .get("players/squads", {
+      params: {
+        team: teamId,
+      },
+    })
+    .then((res) => {
+      return res.data.response[0];
+    })
+    .catch((error) => {
+      console.log(error);
+      throw new Error(error.response.data.message);
+    });
 };

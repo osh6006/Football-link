@@ -75,6 +75,7 @@ export interface rapidFootballCoachInfoResponse {
   firstname: number;
   lastname: number;
   age: number;
+  photo: string;
   birth: {
     date: string;
     place: string;
@@ -154,5 +155,31 @@ export interface rapidFootballTeamDetailStandingResponse {
 
       update: string;
     }[][];
+  };
+}
+
+export interface SquadPlayer {
+  age: number;
+  id: number;
+  name: string;
+  number: number;
+  photo: string;
+  position: string;
+}
+
+export interface rapidFootballTeamSquadStandingResponse {
+  players: {
+    age: number;
+    id: number;
+    name: string;
+    number: number;
+    photo: string;
+    position: string;
+  }[];
+
+  team: {
+    id: number;
+    logo: string;
+    name: string;
   };
 }

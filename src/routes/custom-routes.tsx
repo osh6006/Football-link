@@ -18,7 +18,7 @@ import { checkAuthSports } from "utils/auth";
 import TeamInfo from "pages/after-login/football/team-info";
 import TeamNews from "pages/after-login/football/team-news";
 import TeamSchedule from "pages/after-login/football/team-schedule";
-import TeamLineUp from "pages/after-login/football/team-lineup";
+import TeamSquad from "pages/after-login/football/team-squad";
 
 const CustomRoutes = () => {
   const router = createBrowserRouter([
@@ -73,8 +73,8 @@ const CustomRoutes = () => {
               errorElement: <ErrorPage />,
             },
             {
-              path: "lineup",
-              element: <TeamLineUp />,
+              path: "squad",
+              element: <TeamSquad />,
               errorElement: <ErrorPage />,
             },
           ],
