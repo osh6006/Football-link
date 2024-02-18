@@ -132,13 +132,15 @@ export const getLeagueSchedule = async ({
   end,
   isAll,
   date,
+  teamId,
 }: {
-  leagueId: number;
   season: number;
   start: string;
   end: string;
   isAll: boolean;
   date: string;
+  leagueId?: number;
+  teamId?: string;
 }): Promise<rapidFootballNextMatchesResponse[]> => {
   try {
     if (isAll) {
@@ -148,6 +150,7 @@ export const getLeagueSchedule = async ({
           season: season,
           from: start,
           to: end,
+          team: teamId,
           timezone: "Asia/Seoul",
         },
       });
@@ -158,6 +161,7 @@ export const getLeagueSchedule = async ({
           league: leagueId,
           season: season,
           date: date,
+          team: teamId,
           timezone: "Asia/Seoul",
         },
       });
