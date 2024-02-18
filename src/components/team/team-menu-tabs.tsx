@@ -14,19 +14,16 @@ const TeamMenuTabs: React.FunctionComponent<ITeamMenuTabsProps> = ({
   items,
 }) => {
   const { pathname } = useMatches()[2];
-
   const realPath = pathname.split("/").at(-1);
 
-  console.log(realPath);
-
   return (
-    <ul className="mt-8 grid w-full grid-cols-4 items-center justify-center">
+    <ul className="mt-8 grid w-full grid-cols-4 items-center justify-center gap-2">
       {items.map((item) => (
         <li
           key={item.name}
           className={clsx(
-            "flex cursor-pointer select-none items-center justify-center rounded-md uppercase transition-colors hover:bg-MainHover",
-            realPath === item.name ? "bg-MainHover" : "",
+            "flex cursor-pointer select-none items-center justify-center rounded-md uppercase transition-colors  hover:bg-Main hover:text-White",
+            realPath === item.name ? "bg-Main text-White" : "",
           )}
         >
           <Link

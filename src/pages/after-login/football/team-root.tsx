@@ -1,6 +1,5 @@
 import { Outlet, useMatches, useOutletContext } from "react-router-dom";
 import { useTeamInfoQuery } from "hooks/services/quries/use-football-query";
-import useLeagueStore from "stores/league-store";
 
 import Loading from "components/common/loading";
 import TeamHeader from "components/team/team-header";
@@ -28,7 +27,6 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
   const { data, isLoading, isError } = useTeamInfoQuery(teamId!);
 
   const teamInfo = data?.teamInfo;
-  const teamStanding = data?.teamStanding[0].league;
   const coachInfo = data?.coachInfo;
 
   if (isLoading) {
@@ -49,52 +47,22 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
 
   return (
     <TeamRootContainer>
-      <div className="rounded-md bg-Main p-2 text-White sm:p-10 ">
-        <div className="flex flex-col items-center justify-between xl:flex-row xl:gap-x-8 ">
-          <TeamHeader
-            teamLogo={teamInfo?.team.logo!}
-            coach={coachInfo?.name!}
-            name={teamInfo?.team.name!}
-            venue={teamInfo?.venue.name!}
-          />
-          <TeamStatTable
-            items={[
-              {
-                name: "Rank",
-                value: teamStanding?.standings[0][0].rank!,
-              },
-              {
-                name: "Win",
-                value: teamStanding?.standings[0][0].all.win!,
-              },
-              { name: "Draw", value: teamStanding?.standings[0][0].all.draw! },
-              { name: "Lose", value: teamStanding?.standings[0][0].all.lose! },
-              { name: "Points", value: teamStanding?.standings[0][0].points! },
-              {
-                name: "Goals",
-                value: teamStanding?.standings[0][0].all.goals?.for,
-              },
-              {
-                name: "GoalsDiff",
-                value: teamStanding?.standings[0][0].goalsDiff,
-              },
-              {
-                name: "Played",
-                value: teamStanding?.standings[0][0].all.played,
-              },
-            ]}
-          />
-        </div>
+      <TeamHeader
+        teamLogo={teamInfo?.team.logo!}
+        coach={coachInfo?.name!}
+        name={teamInfo?.team.name!}
+        venue={teamInfo?.venue.name!}
+        teamStanding={data?.teamStanding!}
+      />
 
-        <TeamMenuTabs
-          items={[
-            { name: "info", path: "/info" },
-            { name: "squad", path: "/squad" },
-            { name: "news", path: "/news" },
-            { name: "schedule", path: "/schedule" },
-          ]}
-        />
-      </div>
+      <TeamMenuTabs
+        items={[
+          { name: "info", path: "/info" },
+          { name: "squad", path: "/squad" },
+          { name: "news", path: "/news" },
+          { name: "schedule", path: "/schedule" },
+        ]}
+      />
 
       {/* Child */}
       <div className="mt-4">

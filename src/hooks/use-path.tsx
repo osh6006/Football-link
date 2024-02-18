@@ -13,33 +13,26 @@ export default function usePath() {
 
   const paths = [
     {
-      name: "홈",
+      name: "Home",
       path: "/",
-      activeName: "Home",
       icon: <LayoutDashboardIcon />,
     },
     {
-      name: "순위",
+      name: "Rank",
       path: "/rank",
       icon: <MedalIcon />,
     },
     {
-      name: "일정",
+      name: "Schedule",
       path: "/schedule",
       icon: <CalendarCheck />,
     },
     {
-      name: "소식",
+      name: "News",
       path: "/news",
       icon: <Newspaper />,
     },
   ];
 
-  // const pathNameKor = getPathNameInPaths(paths, realPath);
-
   return { paths, realPath, pathname };
-}
-
-function getPathNameInPaths(paths: any[], path: string) {
-  return paths.find((el) => el.path === path).name;
 }
