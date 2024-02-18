@@ -6,23 +6,23 @@ interface Iitems {
   name: string;
 }
 
-interface ITeamMenuTabsProps {
+interface IDetailMenuTabsProps {
   items: Iitems[];
 }
 
-const TeamMenuTabs: React.FunctionComponent<ITeamMenuTabsProps> = ({
+const DetailMenuTabs: React.FunctionComponent<IDetailMenuTabsProps> = ({
   items,
 }) => {
   const { pathname } = useMatches()[2];
   const realPath = pathname.split("/").at(-1);
 
   return (
-    <ul className="mt-8 grid w-full grid-cols-4 items-center justify-center gap-2">
+    <ul className="mt-8 flex w-full items-center justify-center gap-2">
       {items.map((item) => (
         <li
           key={item.name}
           className={clsx(
-            "flex cursor-pointer select-none items-center justify-center rounded-md uppercase transition-colors  hover:bg-Main hover:text-White",
+            "flex flex-1 cursor-pointer select-none items-center justify-center rounded-md border uppercase transition-colors  hover:bg-Main hover:text-White",
             realPath === item.name ? "bg-Main text-White" : "",
           )}
         >
@@ -39,4 +39,4 @@ const TeamMenuTabs: React.FunctionComponent<ITeamMenuTabsProps> = ({
   );
 };
 
-export default TeamMenuTabs;
+export default DetailMenuTabs;

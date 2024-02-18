@@ -2,9 +2,7 @@ import { Outlet, useMatches, useOutletContext } from "react-router-dom";
 import { useTeamInfoQuery } from "hooks/services/quries/use-football-query";
 
 import Loading from "components/common/loading";
-import TeamHeader from "components/team/team-header";
-import TeamMenuTabs from "components/team/team-menu-tabs";
-import TeamStatTable from "components/team/team-stat-table";
+import TeamHeader from "components/team/football/team-header";
 import TeamRootContainer from "components/layouts/team-root-container";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
@@ -13,6 +11,7 @@ import {
   rapidFootballTeamDetailStandingResponse,
   rapidFootballTeamInfoResponse,
 } from "types/football";
+import DetailMenuTabs from "components/common/detail-menu-tabs";
 
 type ContextType = {
   teamInfo?: rapidFootballTeamInfoResponse;
@@ -55,7 +54,7 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
         teamStanding={data?.teamStanding!}
       />
 
-      <TeamMenuTabs
+      <DetailMenuTabs
         items={[
           { name: "info", path: "/info" },
           { name: "squad", path: "/squad" },

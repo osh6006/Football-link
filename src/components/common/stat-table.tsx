@@ -3,13 +3,11 @@ interface IItem {
   value: string | number | null | undefined;
 }
 
-interface ITeamStatTableProps {
+interface IStatTableProps {
   items: IItem[];
 }
 
-const TeamStatTable: React.FunctionComponent<ITeamStatTableProps> = ({
-  items,
-}) => {
+const StatTable: React.FunctionComponent<IStatTableProps> = ({ items }) => {
   return (
     <div className="flex w-full flex-col gap-x-4 px-2 text-xl xl:w-fit xl:flex-1 xl:flex-col">
       <div
@@ -31,4 +29,4 @@ const TeamStatTable: React.FunctionComponent<ITeamStatTableProps> = ({
   );
 };
 
-export default TeamStatTable;
+export default StatTable;

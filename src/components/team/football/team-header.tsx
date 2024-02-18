@@ -1,5 +1,5 @@
+import StatTable from "components/common/stat-table";
 import { rapidFootballTeamDetailStandingResponse } from "types/football";
-import TeamStatTable from "./team-stat-table";
 
 interface ITeamHeaderProps {
   teamLogo: string;
@@ -20,8 +20,8 @@ const TeamHeader: React.FunctionComponent<ITeamHeaderProps> = ({
 
   return (
     <div className="rounded-md bg-Main p-2 text-White sm:p-10 ">
-      <div className="flex flex-col items-center justify-between xl:flex-row xl:gap-x-8 ">
-        <div className="flex  w-full flex-1 flex-col items-center justify-between gap-x-8 xl:flex-row">
+      <div className="flex flex-col items-center justify-between xl:flex-row  xl:gap-x-8 ">
+        <div className="flex  w-full flex-1 flex-col items-center justify-between gap-x-8 xl:flex-row xl:items-start">
           <div className="w-full rounded-md bg-MainHover p-4  xl:w-[250px] xl:rounded-full xl:p-8">
             <img
               src={teamLogo}
@@ -29,18 +29,20 @@ const TeamHeader: React.FunctionComponent<ITeamHeaderProps> = ({
               className="mx-auto aspect-square w-[150px] rounded-full sm:w-[200px] "
             />
           </div>
-          <div className="mt-4 h-full text-center xl:mt-0 xl:text-start">
+          <div className="mt-4 flex flex-col justify-between text-center xl:mt-0 xl:h-[250px] xl:justify-center xl:text-start">
             <h1 className="text-3xl font-bold sm:mt-0 sm:text-5xl">{name}</h1>
-            <p className="mt-4 sm:text-xl">
-              <span className="text-slate-300">Coach</span> {coach}
-            </p>
-            <p className="sm:text-xl">
-              <span className="text-slate-300">Venue</span> {venue}
-            </p>
+            <div>
+              <p className="mt-4 flex w-full justify-between sm:text-xl">
+                <span className="text-slate-300">Coach</span> {coach}
+              </p>
+              <p className="flex w-full justify-between sm:text-xl">
+                <span className="text-slate-300">Venue</span> {venue}
+              </p>
+            </div>
           </div>
         </div>
 
-        <TeamStatTable
+        <StatTable
           items={[
             {
               name: "Rank",
