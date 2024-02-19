@@ -94,6 +94,25 @@ export const getTopPlayers = async (params: {
     });
 };
 
+export const getPlayerInfo = async (
+  playerId: string,
+): Promise<rapidPlayerResponse> => {
+  return await rapidApi
+    .get(`players`, {
+      params: {
+        id: playerId,
+        season: new Date().getFullYear() - 1,
+      },
+    })
+    .then((res) => {
+      return res.data.response[0];
+    })
+    .catch((error) => {
+      console.log(error);
+      throw new Error(error.response.data.message);
+    });
+};
+
 export const getAllPlayers = async (
   season: string,
   league: string,
@@ -177,7 +196,7 @@ export const getTeamInfo = async (
 ): Promise<{
   teamInfo: rapidFootballTeamInfoResponse;
   coachInfo: rapidFootballCoachInfoResponse;
-  teamStanding: rapidFootballTeamDetailStandingResponse[];
+  teamAllStanding: rapidFootballTeamDetailStandingResponse[];
 }> => {
   try {
     const teamInfo = await rapidApi
@@ -188,6 +207,7 @@ export const getTeamInfo = async (
       })
       .then((res) => {
         console.log(res);
+
         return res.data.response[0];
       });
 
@@ -198,11 +218,10 @@ export const getTeamInfo = async (
         },
       })
       .then((res) => {
-        console.log(res);
-        return res.data.response[0];
+        return res.data.response[res.data.response.length - 1];
       });
 
-    const teamStanding = await rapidApi
+    const teamAllStanding = await rapidApi
       .get("standings", {
         params: {
           season: new Date().getFullYear() - 1,
@@ -214,7 +233,7 @@ export const getTeamInfo = async (
         return res.data.response;
       });
 
-    return { teamInfo, coachInfo, teamStanding };
+    return { teamInfo, coachInfo, teamAllStanding };
   } catch (error) {
     console.log(error);
     throw new Error("getTeamInfo");

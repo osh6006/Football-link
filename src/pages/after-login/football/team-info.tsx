@@ -4,7 +4,7 @@ import { useTeamRoot } from "./team-root";
 interface ITeamInfoProps {}
 
 const TeamInfo: React.FunctionComponent<ITeamInfoProps> = () => {
-  const { teamInfo, teamStanding } = useTeamRoot();
+  const { teamInfo, teamAllStanding } = useTeamRoot();
 
   return (
     <div className="space-y-4">
@@ -58,7 +58,7 @@ const TeamInfo: React.FunctionComponent<ITeamInfoProps> = () => {
 
       <section className="space-y-4">
         <DetailTitle>League status</DetailTitle>
-        {teamStanding?.map((el) => (
+        {teamAllStanding?.map((el) => (
           <div
             key={el.league.id}
             className="w-full space-y-2 rounded-md border p-4 sm:space-y-4 sm:px-6 sm:py-4"

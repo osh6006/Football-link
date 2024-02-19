@@ -1,4 +1,4 @@
-import { Outlet, useMatches, useOutletContext } from "react-router-dom";
+import { Outlet, useLocation, useOutletContext } from "react-router-dom";
 import { useTeamInfoQuery } from "hooks/services/quries/use-football-query";
 
 import Loading from "components/common/loading";
@@ -16,17 +16,25 @@ import DetailMenuTabs from "components/common/detail-menu-tabs";
 type ContextType = {
   teamInfo?: rapidFootballTeamInfoResponse;
   coachInfo?: rapidFootballCoachInfoResponse;
-  teamStanding?: rapidFootballTeamDetailStandingResponse[];
+  teamAllStanding?: rapidFootballTeamDetailStandingResponse[];
 };
 
 interface ITeamPageProps {}
 
 const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
-  const teamId = useMatches()[0].params.teamId;
-  const { data, isLoading, isError } = useTeamInfoQuery(teamId!);
+  const location = useLocation().pathname.split("/");
+  const leagueId = location[2];
+  const teamId = location[4];
+
+  const { data, isLoading, isError } = useTeamInfoQuery(teamId);
 
   const teamInfo = data?.teamInfo;
   const coachInfo = data?.coachInfo;
+  const teamData = data?.teamAllStanding.filter(
+    (el) => el.league.id + "" === leagueId,
+  );
+
+  console.log(data);
 
   if (isLoading) {
     return (
@@ -51,7 +59,7 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
         coach={coachInfo?.name!}
         name={teamInfo?.team.name!}
         venue={teamInfo?.venue.name!}
-        teamStanding={data?.teamStanding!}
+        teamStanding={teamData!}
       />
 
       <DetailMenuTabs
@@ -70,7 +78,7 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
             {
               teamInfo: data?.teamInfo,
               coachInfo: data?.coachInfo,
-              teamStanding: data?.teamStanding,
+              teamAllStanding: data?.teamAllStanding,
             } satisfies ContextType
           }
         />

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Link, useMatches } from "react-router-dom";
+import { Link, useLocation, useMatches } from "react-router-dom";
 
 interface Iitems {
   path: string;
@@ -13,8 +13,8 @@ interface IDetailMenuTabsProps {
 const DetailMenuTabs: React.FunctionComponent<IDetailMenuTabsProps> = ({
   items,
 }) => {
-  const { pathname } = useMatches()[2];
-  const realPath = pathname.split("/").at(-1);
+  const location = useLocation().pathname.split("/");
+  const realPath = location[5];
 
   return (
     <ul className="mt-8 flex w-full items-center justify-center gap-2">

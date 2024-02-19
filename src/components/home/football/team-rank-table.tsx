@@ -64,25 +64,25 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
           <thead className="text-base font-semibold">
             <tr>
               <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
-                순위
+                Rank
               </th>
               <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
-                팀
+                Team
               </th>
               <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
-                승
+                Win
               </th>
               <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
-                무
+                Draw
               </th>
               <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
-                패
+                Lose
               </th>
               <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
-                승점
+                Points
               </th>
               <th className="hidden whitespace-nowrap  px-6 py-3 text-left  uppercase leading-4 tracking-wider text-gray-500 sm:table-cell">
-                최근 5경기
+                Form
               </th>
             </tr>
           </thead>
@@ -103,7 +103,7 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
                 </td>
                 <td className="whitespace-no-wrap  border-gray-200 px-6 py-4">
                   <Link
-                    to={`/team/football/${item.team.id}/info`}
+                    to={`/football/${leagueId}/team/${item.team.id}/info`}
                     state={{ teamData: item }}
                     className=" flex items-center gap-x-1 transition-all hover:gap-x-3 hover:font-semibold hover:text-Main"
                   >

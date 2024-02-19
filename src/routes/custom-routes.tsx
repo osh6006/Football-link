@@ -58,7 +58,7 @@ const CustomRoutes = () => {
           errorElement: <ErrorPage />,
         },
         {
-          path: "/team/football/:teamId",
+          path: "/football/:leagueId/team/:teamId",
           element: <TeamRootPage />,
           errorElement: <ErrorPage />,
           children: [

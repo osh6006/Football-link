@@ -35,8 +35,8 @@ const TeamHeader: React.FunctionComponent<ITeamHeaderProps> = ({
               <p className="mt-4 flex w-full justify-between sm:text-xl">
                 <span className="text-slate-300">Coach</span> {coach}
               </p>
-              <p className="flex w-full justify-between sm:text-xl">
-                <span className="text-slate-300">Venue</span> {venue}
+              <p className="flex w-full justify-end text-ellipsis sm:text-xl">
+                <span className="hidden text-slate-300">Venue</span> {venue}
               </p>
             </div>
           </div>
