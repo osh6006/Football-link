@@ -1,14 +1,14 @@
-import { Outlet, useMatches } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import DetailMenuTabs from "components/common/detail-menu-tabs";
 import PlayerHeader from "components/player/football/player-header";
 import PlayerRootContainer from "components/layouts/player-root-container";
+import { useState } from "react";
 
 interface IPlayerRootPageProps {}
 
 const PlayerRootPage: React.FunctionComponent<IPlayerRootPageProps> = () => {
-  const playerId = useMatches()[0].params.playerId;
-  console.log(playerId);
+  const [test, setTest] = useState(null);
 
   return (
     <PlayerRootContainer>

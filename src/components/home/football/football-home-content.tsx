@@ -22,14 +22,14 @@ const FootballHomeContent: React.FunctionComponent<
         <Banner />
         <div className="mt-2">
           <Title>
-            소식
+            News
             <MoreArrow path="/news" />
           </Title>
           <HomeNewTable />
         </div>
         <div className="mt-2 space-y-2">
           <Title>
-            종합 순위
+            Rank
             <MoreArrow path="/rank" />
           </Title>
           <TeamRankTable
@@ -43,7 +43,7 @@ const FootballHomeContent: React.FunctionComponent<
       <div className="space-y-6">
         <div className="mt-4 space-y-2 xl:mt-0">
           <Title>
-            라이브 경기
+            Live Match
             <MoreArrow path="/" />
           </Title>
           <HomeLiveTable />
@@ -51,7 +51,7 @@ const FootballHomeContent: React.FunctionComponent<
 
         <div className="space-y-2">
           <Title>
-            다음 경기
+            Next Match
             <MoreArrow path="/schedule" />
           </Title>
           <HomeNextTable />
@@ -59,7 +59,7 @@ const FootballHomeContent: React.FunctionComponent<
 
         <div className="space-y-2">
           <Title>
-            최다 골
+            Top scorer
             <MoreArrow path="/rank" />
           </Title>
           <PlayerRankTable distance="short" type="goal" />
@@ -67,7 +67,7 @@ const FootballHomeContent: React.FunctionComponent<
 
         <div className="space-y-2">
           <Title>
-            최다 도움
+            Top assist
             <MoreArrow path="/rank" />
           </Title>
           <PlayerRankTable distance="short" type="assist" />

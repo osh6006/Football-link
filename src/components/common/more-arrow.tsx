@@ -11,7 +11,7 @@ const MoreArrow: React.FunctionComponent<IMoreArrowProps> = ({ path }) => {
       to={path}
       className="flex items-center gap-x-1 text-lg font-normal transition-all hover:mr-4 hover:text-Main"
     >
-      <span>더 보기</span>
+      <span>More</span>
       <ChevronRightIcon size={20} />
     </Link>
   );
