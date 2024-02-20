@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useOutletContext } from "react-router-dom";
 
 import DetailMenuTabs from "components/common/detail-menu-tabs";
 import PlayerHeader from "components/player/football/player-header";
@@ -6,12 +6,17 @@ import PlayerRootContainer from "components/layouts/player-root-container";
 import { usePlayerInfoQuery } from "hooks/services/quries/use-football-query";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 import Loading from "components/common/loading";
+import { rapidPlayerResponse } from "types/football";
+
+type ContextType = {
+  playerInfo: rapidPlayerResponse;
+};
 
 interface IPlayerRootPageProps {}
 
 const PlayerRootPage: React.FunctionComponent<IPlayerRootPageProps> = () => {
-  const location = useLocation();
-  const playerId = location.pathname.split("/")[3];
+  const location = useLocation().pathname.split("/");
+  const playerId = location[4];
 
   const { data, isLoading, isError, error } = usePlayerInfoQuery(playerId);
 
@@ -42,10 +47,20 @@ const PlayerRootPage: React.FunctionComponent<IPlayerRootPageProps> = () => {
         ]}
       />
       <div className="mt-6">
-        <Outlet />
+        <Outlet
+          context={
+            {
+              playerInfo: data!,
+            } satisfies ContextType
+          }
+        />
       </div>
     </PlayerRootContainer>
   );
 };
+
+export function usePlayerRoot() {
+  return useOutletContext<ContextType>();
+}
 
 export default PlayerRootPage;

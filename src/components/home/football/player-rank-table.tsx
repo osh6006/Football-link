@@ -104,7 +104,9 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
                   <div className=" flex items-center gap-x-3">
                     <div
                       onClick={() =>
-                        nav(`/player/football/${item.player.id}/info`)
+                        nav(
+                          `/football/${selectedLeague?.rapid_football_league_id}/player/${item.player.id}/info`,
+                        )
                       }
                       className="flex cursor-pointer items-center gap-x-2 whitespace-nowrap hover:text-Main hover:underline"
                     >

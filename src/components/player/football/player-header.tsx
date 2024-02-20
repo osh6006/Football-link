@@ -163,7 +163,7 @@ const PlayerHeader: React.FunctionComponent<IPlayerHeaderProps> = ({
             />
           </div>
           <div className="mt-4 h-full text-center xl:mt-0 xl:text-start">
-            <h1 className="text-3xl font-bold sm:mt-0 sm:text-5xl">
+            <h1 className="text-3xl font-bold sm:mt-0 sm:text-5xl ">
               {player?.player?.name}
             </h1>
             <p className="mt-4 flex w-full justify-between sm:text-xl">

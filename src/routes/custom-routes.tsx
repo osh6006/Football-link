@@ -85,7 +85,7 @@ const CustomRoutes = () => {
           ],
         },
         {
-          path: "/player/football/:playerId",
+          path: "/football/:leagueId/player/:playerId",
           element: <PlayerRootPage />,
           errorElement: <ErrorPage />,
           children: [

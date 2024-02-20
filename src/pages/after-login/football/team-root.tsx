@@ -34,8 +34,6 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
     (el) => el.league.id + "" === leagueId,
   );
 
-  console.log(data);
-
   if (isLoading) {
     return (
       <ComponentStatusContainer height="500" state="loading">
