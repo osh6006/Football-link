@@ -10,6 +10,7 @@ import {
   getTeamInfo,
   getTeamSquad,
   getPlayerInfo,
+  getPlayerCareer,
 } from "hooks/services/apis/football";
 import { getGlobalNews, getNaverNews } from "../apis/news";
 
@@ -25,6 +26,7 @@ export const footballQueryKey = {
   useTeamInfoQuery: "footballTeamInfoQuery",
   useTeamSquadQuery: "footballTeamSquadQuery",
   usePlayerInfoQuery: "footballPlayerInfoQuery",
+  usePlayerCareerQuery: "footballPlayerCareerQuery",
 };
 
 export const useTeamRankQuery = (league: string, season: string) => {
@@ -118,6 +120,16 @@ export const usePlayerInfoQuery = (playerId: string) => {
   return useQuery({
     queryKey: [footballQueryKey.usePlayerInfoQuery, playerId],
     queryFn: ({ queryKey }) => getPlayerInfo(queryKey[1]),
+    enabled: !!playerId,
+    staleTime: Infinity,
+    gcTime: Infinity,
+  });
+};
+
+export const usePlayerCareerQuery = (playerId: string) => {
+  return useQuery({
+    queryKey: [footballQueryKey.usePlayerCareerQuery, playerId],
+    queryFn: ({ queryKey }) => getPlayerCareer(queryKey[1]),
     enabled: !!playerId,
     staleTime: Infinity,
     gcTime: Infinity,

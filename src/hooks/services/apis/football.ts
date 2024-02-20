@@ -113,6 +113,31 @@ export const getPlayerInfo = async (
     });
 };
 
+export const getPlayerCareer = async (
+  playerId: string,
+): Promise<
+  {
+    league: string;
+    country: string;
+    place: string;
+    season: string;
+  }[]
+> => {
+  return await rapidApi
+    .get(`trophies`, {
+      params: {
+        player: playerId,
+      },
+    })
+    .then((res) => {
+      return res.data.response;
+    })
+    .catch((error) => {
+      console.log(error);
+      throw new Error(error.response.data.message);
+    });
+};
+
 export const getAllPlayers = async (
   season: string,
   league: string,
@@ -206,8 +231,6 @@ export const getTeamInfo = async (
         },
       })
       .then((res) => {
-        console.log(res);
-
         return res.data.response[0];
       });
 
