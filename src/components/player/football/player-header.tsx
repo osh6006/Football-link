@@ -1,4 +1,3 @@
-import { faker } from "@faker-js/faker";
 import StatTable from "components/common/stat-table";
 import { rapidPlayerResponse } from "types/football";
 
@@ -14,32 +13,32 @@ const PlayerHeader: React.FunctionComponent<IPlayerHeaderProps> = ({
   const attakerStat = [
     {
       name: "Position",
-      value: player?.statistics[0].games.position,
+      value: player?.statistics[0].games?.position,
     },
     {
       name: "Rating",
-      value: parseFloat(player?.statistics[0].games.rating as string).toFixed(
+      value: parseFloat(player?.statistics[0].games?.rating as string).toFixed(
         2,
       ),
     },
     {
       name: "Played",
-      value: player?.statistics[0].games.appearences,
+      value: player?.statistics[0].games?.appearences,
     },
 
     {
       name: "Goals",
-      value: player?.statistics[0].goals.total,
+      value: player?.statistics[0].goals?.total,
     },
-    { name: "Assist", value: player?.statistics[0].goals.assists },
-    { name: "Shot", value: player?.statistics[0].shots.total },
-    { name: "On target", value: player?.statistics[0].shots.on },
+    { name: "Assist", value: player?.statistics[0].goals?.assists },
+    { name: "Shot", value: player?.statistics[0].shots?.total },
+    { name: "On target", value: player?.statistics[0].shots?.on },
     {
       name: "Dribble",
       value:
         (
-          (Number(player?.statistics[0].dribbles.success) /
-            Number(player?.statistics[0].dribbles.attempts)) *
+          (Number(player?.statistics[0].dribbles?.success) /
+            Number(player?.statistics[0].dribbles?.attempts)) *
           100
         ).toFixed(2) + "%",
     },
@@ -48,30 +47,30 @@ const PlayerHeader: React.FunctionComponent<IPlayerHeaderProps> = ({
   const midfilderStat = [
     {
       name: "Position",
-      value: player?.statistics[0].games.position,
+      value: player?.statistics[0].games?.position,
     },
     {
       name: "Rating",
-      value: parseFloat(player?.statistics[0].games.rating as string).toFixed(
+      value: parseFloat(player?.statistics[0].games?.rating as string).toFixed(
         2,
       ),
     },
     {
       name: "Played",
-      value: player?.statistics[0].games.appearences,
+      value: player?.statistics[0].games?.appearences,
     },
 
     {
       name: "Goals",
-      value: player?.statistics[0].goals.total,
+      value: player?.statistics[0].goals?.total,
     },
-    { name: "Assist", value: player?.statistics[0].goals.assists },
+    { name: "Assist", value: player?.statistics[0].goals?.assists },
     {
       name: "KeyPass",
       value:
         (
-          (Number(player?.statistics[0].passes.key) /
-            Number(player?.statistics[0].passes.total)) *
+          (Number(player?.statistics[0].passes?.key) /
+            Number(player?.statistics[0].passes?.total)) *
           100
         ).toFixed(2) + "%",
     },
@@ -79,8 +78,8 @@ const PlayerHeader: React.FunctionComponent<IPlayerHeaderProps> = ({
       name: "Dribble",
       value:
         (
-          (Number(player?.statistics[0].dribbles.success) /
-            Number(player?.statistics[0].dribbles.attempts)) *
+          (Number(player?.statistics[0].dribbles?.success) /
+            Number(player?.statistics[0].dribbles?.attempts)) *
           100
         ).toFixed(2) + "%",
     },
@@ -88,8 +87,8 @@ const PlayerHeader: React.FunctionComponent<IPlayerHeaderProps> = ({
       name: "Duel",
       value:
         (
-          (Number(player?.statistics[0].dribbles.success) /
-            Number(player?.statistics[0].dribbles.attempts)) *
+          (Number(player?.statistics[0].dribbles?.success) /
+            Number(player?.statistics[0].dribbles?.attempts)) *
           100
         ).toFixed(2) + "%",
     },
@@ -98,47 +97,57 @@ const PlayerHeader: React.FunctionComponent<IPlayerHeaderProps> = ({
   const defenderStat = [
     {
       name: "Position",
-      value: player?.statistics[0].games.position,
+      value: player?.statistics[0].games?.position,
     },
     {
       name: "Rating",
-      value: parseFloat(player?.statistics[0].games.rating as string).toFixed(
+      value: parseFloat(player?.statistics[0].games?.rating as string).toFixed(
         2,
       ),
     },
     {
       name: "Played",
-      value: player?.statistics[0].games.appearences,
+      value: player?.statistics[0].games?.appearences,
     },
 
     {
       name: "Goals",
-      value: player?.statistics[0].goals.total,
+      value: player?.statistics[0].goals?.total,
     },
-    { name: "Assist", value: player?.statistics[0].goals.assists },
+    { name: "Assist", value: player?.statistics[0].goals?.assists },
+    {
+      name: "Duel",
+      value: (
+        Number(player?.statistics[0].duels?.won) /
+        Number(player?.statistics[0].duels?.total)
+      ).toFixed(2),
+    },
+    {
+      name: "Interseption",
+      value: player?.statistics[0]?.takles?.interceptions,
+    },
   ];
 
   const goalkeeperStat = [
     {
       name: "Position",
-      value: player?.statistics[0].games.position,
+      value: player?.statistics[0].games?.position,
     },
     {
       name: "Rating",
-      value: parseFloat(player?.statistics[0].games.rating as string).toFixed(
+      value: parseFloat(player?.statistics[0].games?.rating as string).toFixed(
         2,
       ),
     },
     {
       name: "Played",
-      value: player?.statistics[0].games.appearences,
+      value: player?.statistics[0].games?.appearences,
     },
 
     {
-      name: "Goals",
-      value: player?.statistics[0].goals.total,
+      name: "Save",
+      value: player?.statistics[0].goals?.saves,
     },
-    { name: "Assist", value: player?.statistics[0].goals.assists },
   ];
 
   return (

@@ -21,7 +21,7 @@ const StatTable: React.FunctionComponent<IStatTableProps> = ({ items }) => {
         {items.map((el, i) => (
           <dl key={i}>
             <dt className="text-base text-slate-300">{el.name}</dt>
-            <dd className="text:lg sm:text-2xl">{el.value || 0}</dd>
+            <dd className="text:lg sm:text-xl ">{el.value || 0}</dd>
           </dl>
         ))}
       </div>

@@ -8,6 +8,7 @@ import DetailTitle from "components/common/detail-title";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
 import { SquadPlayer } from "types/football/team";
+import useLeagueStore from "stores/league-store";
 
 interface ITeamSquadProps {}
 
@@ -16,12 +17,16 @@ interface IPhothoWrapperProps {
 }
 const PhothoWrapper: React.FC<IPhothoWrapperProps> = ({ items }) => {
   const nav = useNavigate();
-
+  const { selectedLeague } = useLeagueStore();
   return (
     <div className="grid grid-cols-3 gap-2 sm:grid-cols-5">
       {items?.map((el) => (
         <div
-          onClick={() => nav(`/player/football/${el.id}/info`)}
+          onClick={() =>
+            nav(
+              `/football/${selectedLeague?.rapid_football_league_id}/player/${el.id}/info`,
+            )
+          }
           className="flex cursor-pointer flex-col items-center justify-center gap-y-2 rounded-md border border-transparent p-2 transition-all hover:border-Main"
           key={el.id}
         >
