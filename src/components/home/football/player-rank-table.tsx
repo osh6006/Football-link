@@ -92,7 +92,15 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
           {topscorers?.map((item, index) => {
             if (index > 5) return null;
             return (
-              <tr key={index}>
+              <tr
+                key={index}
+                className="transition-colors hover:bg-MediumGrey hover:text-White"
+                onClick={() =>
+                  nav(
+                    `/football/${selectedLeague?.rapid_football_league_id}/player/${item.player.id}/info`,
+                  )
+                }
+              >
                 <td
                   className={clsx(
                     "whitespace-nowrap border-gray-200 px-6 py-4",
@@ -102,14 +110,7 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
                 </td>
                 <td className="whitespace-nowrap  border-gray-200 px-6 py-4">
                   <div className=" flex items-center gap-x-3">
-                    <div
-                      onClick={() =>
-                        nav(
-                          `/football/${selectedLeague?.rapid_football_league_id}/player/${item.player.id}/info`,
-                        )
-                      }
-                      className="flex cursor-pointer items-center gap-x-2 whitespace-nowrap hover:text-Main hover:underline"
-                    >
+                    <div className="flex cursor-pointer items-center gap-x-2 whitespace-nowrap ">
                       <Avatar imgUrl={item.player.photo} size="md" />
                       <span>{item.player?.name}</span>
                     </div>

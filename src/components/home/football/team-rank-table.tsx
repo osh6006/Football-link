@@ -7,8 +7,7 @@ import useThemeStore from "stores/theme-store";
 import { useTeamRankQuery } from "hooks/services/quries/use-football-query";
 
 import { componentBackgroundChange } from "utils/util";
-import { ChevronsRightIcon } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface ITeamRankTableProps {
   leagueId: string;
@@ -20,6 +19,7 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
   season,
 }) => {
   const { theme } = useThemeStore();
+  const nav = useNavigate();
 
   const { data, isLoading, isError, isSuccess } = useTeamRankQuery(
     leagueId,
@@ -60,7 +60,7 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
       )}
     >
       {isSuccess && (
-        <table className="min-w-full  divide-gray-200 ">
+        <table className="min-w-full divide-gray-200 ">
           <thead className="text-base font-semibold">
             <tr>
               <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
@@ -88,7 +88,13 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
           </thead>
           <tbody>
             {data?.league.standings[0].map((item, index) => (
-              <tr key={item.team.id}>
+              <tr
+                key={item.team.id}
+                className="cursor-pointer transition-colors hover:bg-MediumGrey hover:text-White"
+                onClick={() => {
+                  nav(`/football/${leagueId}/team/${item.team.id}/info`);
+                }}
+              >
                 <td
                   className={clsx(
                     "whitespace-no-wrap border-gray-200 px-6 py-4",
@@ -101,18 +107,11 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
                 >
                   {index + 1}
                 </td>
-                <td className="whitespace-no-wrap  border-gray-200 px-6 py-4">
-                  <Link
-                    to={`/football/${leagueId}/team/${item.team.id}/info`}
-                    state={{ teamData: item }}
-                    className=" flex items-center gap-x-1 transition-all hover:gap-x-3 hover:font-semibold hover:text-Main"
-                  >
-                    <div className="flex items-center gap-x-3">
-                      <Avatar imgUrl={item.team.logo} size="md" />
-                      <span>{item.team.name}</span>
-                    </div>
-                    <ChevronsRightIcon />
-                  </Link>
+                <td className="whitespace-no-wrap border-gray-200 px-6 py-4">
+                  <div className="flex  items-center gap-x-3">
+                    <Avatar imgUrl={item.team.logo} size="md" />
+                    <span>{item.team.name}</span>
+                  </div>
                 </td>
                 <td className="whitespace-no-wrap  border-gray-200 px-6 py-4 ">
                   {item.all.win}
