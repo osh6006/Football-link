@@ -1,10 +1,14 @@
 import clsx from "clsx";
-import Loading from "components/common/loading";
 import dayjs from "dayjs";
-import { useNextMatchQuery } from "hooks/services/quries/use-football-query";
+import Loading from "components/common/loading";
+import { componentBackgroundChange } from "utils/util";
+
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
+
 import useLeagueStore from "stores/league-store";
 import useThemeStore from "stores/theme-store";
-import { componentBackgroundChange } from "utils/util";
+import { useNextMatchQuery } from "hooks/services/quries/use-football-query";
 
 interface IHomeNextTableProps {}
 
@@ -62,14 +66,24 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = (props) => {
       >
         {/* home */}
         <div className="flex flex-col items-center justify-center gap-y-2">
-          <img src={nextMatch?.teams.home.logo} alt="home" className="" />
+          <LazyLoadImage
+            effect="opacity"
+            src={nextMatch?.teams.home.logo}
+            alt="home"
+            className=""
+          />
           <p>{nextMatch?.teams.home.name}</p>
         </div>
         <span className="text-3xl">vs</span>
 
         {/* away */}
         <div className="flex flex-col items-center justify-center gap-y-2">
-          <img src={nextMatch?.teams.away.logo} alt="away" className="" />
+          <LazyLoadImage
+            effect="opacity"
+            src={nextMatch?.teams.away.logo}
+            alt="away"
+            className=""
+          />
           <p>{nextMatch?.teams.away.name}</p>
         </div>
       </div>

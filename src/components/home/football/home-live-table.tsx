@@ -1,10 +1,13 @@
 import clsx from "clsx";
+import { componentBackgroundChange } from "utils/util";
+
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import Loading from "components/common/loading";
-import { useLiveMathesQuery } from "hooks/services/quries/use-football-query";
-import * as React from "react";
+import "react-lazy-load-image-component/src/effects/opacity.css";
+
 import useLeagueStore from "stores/league-store";
 import useThemeStore from "stores/theme-store";
-import { componentBackgroundChange } from "utils/util";
+import { useLiveMathesQuery } from "hooks/services/quries/use-football-query";
 
 interface IHomeLiveTableProps {}
 
@@ -77,7 +80,8 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
       >
         {/* home */}
         <div className="flex flex-col items-center justify-center gap-y-2">
-          <img
+          <LazyLoadImage
+            effect="opacity"
             src={liveMatch?.teams.home.logo}
             alt="home"
             className="rounded-full"
@@ -88,7 +92,8 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
 
         {/* away */}
         <div className="flex flex-col items-center justify-center gap-y-2">
-          <img
+          <LazyLoadImage
+            effect="opacity"
             src={liveMatch?.teams.away.logo}
             alt="away"
             className="rounded-full"
