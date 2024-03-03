@@ -1,9 +1,13 @@
+import { formatPublicDay } from "libs/day";
+
+import Loading from "components/common/loading";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import ComponentStatusContainer from "components/layouts/component-status-container";
+import "react-lazy-load-image-component/src/effects/opacity.css";
+
 import { useGlobalNewsQuery } from "hooks/services/quries/use-football-query";
 import { usePlayerRoot } from "./player-root";
 import { useInfiniteScroll } from "hooks/use-infinite-scroll";
-import ComponentStatusContainer from "components/layouts/component-status-container";
-import Loading from "components/common/loading";
-import { formatPublicDay } from "libs/day";
 
 interface IPlayerNewsProps {}
 
@@ -56,10 +60,12 @@ const PlayerNews: React.FunctionComponent<IPlayerNewsProps> = () => {
                 </div>
 
                 <div className="flex justify-between gap-x-4">
-                  <img
+                  <LazyLoadImage
+                    effect="opacity"
                     src={el.urlToImage}
                     alt="thumbnail"
-                    className="aspect-square h-32 rounded-md"
+                    width={200}
+                    className="aspect-square h-32 max-w-[150px] rounded-md"
                   />
                   <div className="">
                     <h2 className="font-semibold">{el.title}</h2>
