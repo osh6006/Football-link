@@ -1,17 +1,20 @@
-import useLeagueStore from "stores/league-store";
+import { formatPublicDay } from "libs/day";
 
+import Loading from "components/common/loading";
+import ComponentStatusContainer from "components/layouts/component-status-container";
+import Filter from "components/common/filters";
+import { GLOBAL_NEWS_FILTERS } from "data/football/news";
+
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
+
+import { useState } from "react";
+import useLeagueStore from "stores/league-store";
 import {
   useGlobalNewsQuery,
   useLocalNewsQuery,
 } from "hooks/services/quries/use-football-query";
 import { useInfiniteScroll } from "hooks/use-infinite-scroll";
-
-import Loading from "components/common/loading";
-import ComponentStatusContainer from "components/layouts/component-status-container";
-import { useState } from "react";
-import Filter from "components/common/filters";
-import { GLOBAL_NEWS_FILTERS } from "data/football/news";
-import { formatPublicDay } from "libs/day";
 
 interface INewsListProps {
   type: "local" | "global";
@@ -129,10 +132,12 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
                     </div>
 
                     <div className="flex justify-between gap-x-4">
-                      <img
+                      <LazyLoadImage
+                        effect="opacity"
                         src={el.urlToImage}
                         alt="thumbnail"
-                        className="aspect-square h-32 rounded-md"
+                        width={200}
+                        className="aspect-square h-32 max-w-[150px] rounded-md"
                       />
                       <div className="">
                         <h2 className="font-semibold">{el.title}</h2>
