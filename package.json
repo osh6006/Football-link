@@ -21,6 +21,7 @@
     "react-calendar": "^4.8.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-lazy-load-image-component": "^1.6.0",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
@@ -35,6 +36,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
+    "@types/react-lazy-load-image-component": "^1.6.3",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.0"

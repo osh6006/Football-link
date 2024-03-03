@@ -33,7 +33,7 @@ const PlayerNews: React.FunctionComponent<IPlayerNewsProps> = () => {
   if (isError) {
     return (
       <ComponentStatusContainer state="error" height="500">
-        <h1>서버에서 데이터를 불러오던 도중 에러가 발생하였습니다.</h1>
+        <h1>An error occurred while fetching data from the server.</h1>
       </ComponentStatusContainer>
     );
   }

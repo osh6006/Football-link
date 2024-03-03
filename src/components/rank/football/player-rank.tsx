@@ -11,9 +11,10 @@ import { useTopPlayerQuery } from "hooks/services/quries/use-football-query";
 import TopPlayerSelector from "./top-player-selector";
 
 import { PlayerSelectType, rapidPlayerResponse } from "types/football";
-import clsx from "clsx";
 import Avatar from "components/common/avatar";
 import Table from "components/common/table";
+import { useNavigate } from "react-router-dom";
+import useLeagueStore from "stores/league-store";
 
 interface IPlayerRankTableProps {
   league: number;
@@ -24,6 +25,9 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
   league,
   season,
 }) => {
+  const nav = useNavigate();
+  const { selectedLeague } = useLeagueStore();
+
   const [type, setType] = useState<PlayerSelectType>("topscorers");
   const { sorting, setSorting, columnHelper, emptyArray } =
     useTable<rapidPlayerResponse>();
@@ -32,7 +36,7 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
     setType(type);
   };
 
-  // const { data, isLoading, isError } = useTopPlayerQuery(type, season, league);
+  const { data, isLoading, isError } = useTopPlayerQuery(type, season, league);
 
   const columns = useMemo(() => {
     return [
@@ -46,9 +50,22 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
       columnHelper.accessor((row) => row.player, {
         id: "name",
         cell: (info) => (
-          <div className=" flex items-center gap-x-3">
+          <div
+            className=" flex cursor-pointer items-center gap-x-3 transition-all hover:font-bold hover:text-Main hover:underline"
+            onClick={() =>
+              nav(
+                `/football/${selectedLeague?.rapid_football_league_id}/player/${
+                  info.getValue().id
+                }/info`,
+              )
+            }
+          >
             <Avatar imgUrl={info.getValue().photo} size="md" />
-            <span>{info.getValue().name}</span>
+            <span>
+              {info.getValue().name.length > 10
+                ? info.getValue().name.slice(0, 7) + "..."
+                : info.getValue().name}
+            </span>
           </div>
         ),
         header: () => <span className="flex items-center">이름</span>,
@@ -109,8 +126,8 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
   }, [columnHelper]);
 
   const table = useReactTable({
-    data: emptyArray,
-    // data: data || emptyArray,
+    // data: emptyArray,
+    data: data || emptyArray,
     columns: columns || emptyArray,
     getCoreRowModel: getCoreRowModel(),
     state: {
@@ -125,11 +142,7 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
       <TopPlayerSelector setType={handleType} type={type} />
       {/* table */}
       <h2 className="text-lg font-semibold">종합 순위</h2>
-      <Table
-        tableData={table}
-        // isLoading={isLoading}
-        // isError={isError}
-      />
+      <Table tableData={table} isLoading={isLoading} isError={isError} />
     </div>
   );
 };

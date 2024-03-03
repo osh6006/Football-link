@@ -16,8 +16,7 @@ const AuthPage = () => {
         sm:flex-row sm:justify-between"
         >
           <h1 className="sm:tex-xl text-lg">
-            <strong className="text-Main">SpoLink</strong>에 오신 것을
-            환영합니다!
+            Welcome to <strong className="text-Main">SpoLink !</strong>
           </h1>
         </div>
         {step === 1 && <StepOne />}

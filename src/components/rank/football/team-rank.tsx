@@ -12,6 +12,8 @@ import { rapidFootballTeamStanding } from "types/football";
 import useTable from "hooks/use-table";
 import Table from "components/common/table";
 import { useTeamRankQuery } from "hooks/services/quries/use-football-query";
+import ComponentStatusContainer from "components/layouts/component-status-container";
+import Loading from "components/common/loading";
 
 interface IFootballRankTableProps {
   league: string;
@@ -30,22 +32,30 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
       columnHelper.accessor((row) => row.rank, {
         id: "rank",
         cell: (info) => {
+          const champions =
+            info.getValue() <= 4 ? "before:border-yellow-300" : "";
+          const uropa =
+            info.getValue() >= 5 && info.getValue() <= 6
+              ? "before:border-sky-300"
+              : "";
+          const down = info.getValue() >= 18 ? "before:border-red-300" : "";
+
+          console.log(uropa);
+
           return (
             <div
               className={clsx(
-                `before:absolute before:inset-y-0 before:left-0 before:top-0 before:border-2 before:border-transparent before:content-['']
-                ${info.getValue() <= 4 && "before:border-yellow-300"}
-                ${info.getValue() === 5 && "before:border-blue-300"}
-                ${info.getValue() === 6 && "before:border-blue-300"}
-                ${info.getValue() >= 18 && "before:border-red-400"}
-                `,
+                `before:absolute before:inset-y-0 before:left-0 before:top-0 before:border-2 before:border-transparent before:content-['']`,
+                champions,
+                uropa,
+                down,
               )}
             >
               {info.getValue()}
             </div>
           );
         },
-        header: () => <span>순위</span>,
+        header: () => <span>Rank</span>,
       }),
       columnHelper.accessor((row) => row.team, {
         id: "team",
@@ -55,12 +65,12 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
             <span>{info.getValue().name}</span>
           </div>
         ),
-        header: () => <span className="flex items-center">팀</span>,
+        header: () => <span className="flex items-center">Team</span>,
       }),
       columnHelper.accessor((row) => row.all.played, {
         id: "played",
         cell: (info) => <div>{info.getValue()}</div>,
-        header: () => <span>경기 수</span>,
+        header: () => <span>Played</span>,
         meta: {
           className: "hidden md:table-cell",
         },
@@ -68,22 +78,22 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
       columnHelper.accessor((row) => row.all.win, {
         id: "win",
         cell: (info) => <div>{info.getValue()}</div>,
-        header: () => <span>승</span>,
+        header: () => <span>Win</span>,
       }),
       columnHelper.accessor((row) => row.all.draw, {
         id: "draw",
         cell: (info) => <div>{info.getValue()}</div>,
-        header: () => <span>무</span>,
+        header: () => <span>Draw</span>,
       }),
       columnHelper.accessor((row) => row.all.draw, {
         id: "lose",
         cell: (info) => <div>{info.getValue()}</div>,
-        header: () => <span>패</span>,
+        header: () => <span>Lose</span>,
       }),
       columnHelper.accessor((row) => row.points, {
         id: "point",
         cell: (info) => <div>{info.getValue()}</div>,
-        header: () => <span>승점</span>,
+        header: () => <span>Points</span>,
       }),
       columnHelper.accessor((row) => row.all, {
         id: "percentage",
@@ -95,7 +105,7 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
             %
           </div>
         ),
-        header: () => <span>승률</span>,
+        header: () => <span>Winrate</span>,
         meta: {
           className: "hidden xl:table-cell",
         },
@@ -122,7 +132,7 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
               ))}
           </div>
         ),
-        header: () => <span>최근 5경기</span>,
+        header: () => <span>Form</span>,
         meta: {
           className: "hidden lg:table-cell",
         },
@@ -130,11 +140,10 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
     ];
   }, [columnHelper]);
 
-  // const { data, isLoading, isError } = useTeamRankQuery(league, season);
+  const { data, isLoading, isError } = useTeamRankQuery(league, season);
 
   const table = useReactTable({
-    // data: data?.league.standings[0] || emptyArray,
-    data: emptyArray,
+    data: data?.league.standings[0] || emptyArray,
     columns: columns || emptyArray,
     getCoreRowModel: getCoreRowModel(),
     state: {
@@ -144,20 +153,36 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
     getSortedRowModel: getSortedRowModel(),
   });
 
+  if (isLoading) {
+    return (
+      <ComponentStatusContainer state="loading" height="500">
+        <Loading size="md" />
+      </ComponentStatusContainer>
+    );
+  }
+
+  if (isError) {
+    return (
+      <ComponentStatusContainer state="error" height="500">
+        <h1>An error occurred while fetching data from the server. </h1>
+      </ComponentStatusContainer>
+    );
+  }
+
   return (
     <>
       <Table tableData={table} />
       <div className="mt-4">
-        <p>- 순위 규칙</p>
+        <p>- Rules</p>
         <div className="mt-2 flex items-center gap-x-2 before:block before:h-4 before:w-4 before:bg-yellow-400 before:content-['']">
-          1~4위 팀은 UEFA 챔스 출전 자격을 얻는다.
+          The first to fourth place teams qualify for the UEFA Champions.
         </div>
-        <div className="mt-2 flex items-center gap-x-2 before:block before:h-4 before:w-4 before:bg-blue-300 before:content-['']">
-          5위 팀은 유로파리그 출전 자격을 얻는다. (컵대회 결과에 따라 차순위 팀
-          자격 획득)
+        <div className="mt-2 flex items-center gap-x-2 before:block before:h-4 before:w-4 before:bg-sky-300 before:content-['']">
+          The fifth-placed team will qualify for the Europa League (the
+          next-placed team qualifies based on the results of the cup tournament)
         </div>
         <div className="mt-2 flex items-center gap-x-2 before:block before:h-4 before:w-4 before:bg-red-500 before:content-['']">
-          18~20위 팀은 2부 리그로 강등된다.
+          The 18th-20th ranked teams will be relegated to the second division.
         </div>
       </div>
     </>

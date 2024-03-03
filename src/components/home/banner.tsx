@@ -1,12 +1,16 @@
-import * as React from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
 import clsx from "clsx";
-import useSportStore from "stores/sports-store";
-import useLeagueStore from "stores/league-store";
-import { useBannerQuery } from "hooks/services/quries/use-banner-query";
+import * as React from "react";
+
+import { LazyLoadComponent } from "react-lazy-load-image-component";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+
 import Loading from "components/common/loading";
+
+import useLeagueStore from "stores/league-store";
 import useThemeStore from "stores/theme-store";
+import useSportStore from "stores/sports-store";
+import { useBannerQuery } from "hooks/services/quries/use-banner-query";
 
 interface IBannerProps {}
 
@@ -61,28 +65,32 @@ const Banner: React.FunctionComponent<IBannerProps> = (props) => {
 
   if (isSuccess) {
     return (
-      <Carousel
-        className=" overflow-hidden rounded-lg "
-        autoPlay
-        swipeable
-        stopOnHover
-        infiniteLoop
-        emulateTouch
-        showIndicators
-        showArrows={false}
-        showThumbs={false}
-        showStatus={false}
-      >
-        {banners?.map((banner) => (
-          <div
-            style={{
-              backgroundImage: `url("${BASE_URL}/storage/v1/object/public/spolink/banner_images/${sportsType}/${leagueId}/${banner.name}")`,
-            }}
-            key={banner.id}
-            className={"flex h-[350px] w-full bg-cover bg-center bg-no-repeat"}
-          />
-        ))}
-      </Carousel>
+      <LazyLoadComponent>
+        <Carousel
+          className=" overflow-hidden rounded-lg "
+          autoPlay
+          swipeable
+          stopOnHover
+          infiniteLoop
+          emulateTouch
+          showIndicators
+          showArrows={false}
+          showThumbs={false}
+          showStatus={false}
+        >
+          {banners?.map((banner) => (
+            <div
+              style={{
+                backgroundImage: `url("${BASE_URL}/storage/v1/object/public/spolink/banner_images/${sportsType}/${leagueId}/${banner.name}")`,
+              }}
+              key={banner.id}
+              className={
+                "flex h-[350px] w-full bg-cover bg-center bg-no-repeat"
+              }
+            />
+          ))}
+        </Carousel>
+      </LazyLoadComponent>
     );
   }
 

@@ -32,7 +32,9 @@ const StepOne: React.FunctionComponent<IStepOneProps> = () => {
 
   return (
     <>
-      <p className="mt-16 text-sm">SNS 로그인 / 회원가입</p>
+      <p className="mt-16 text-sm">
+        SNS <strong className="text-Main">Sign In / Sign Up</strong>
+      </p>
       <div className="mt-2 flex w-1/2 flex-col gap-y-2">
         <Button
           onClick={handleGoogleBtn}
