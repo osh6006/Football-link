@@ -50,22 +50,9 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
       columnHelper.accessor((row) => row.player, {
         id: "name",
         cell: (info) => (
-          <div
-            className=" flex cursor-pointer items-center gap-x-3 transition-all hover:font-bold hover:text-Main hover:underline"
-            onClick={() =>
-              nav(
-                `/football/${selectedLeague?.rapid_football_league_id}/player/${
-                  info.getValue().id
-                }/info`,
-              )
-            }
-          >
+          <div className=" flex cursor-pointer items-center gap-x-3 whitespace-nowrap">
             <Avatar imgUrl={info.getValue().photo} size="md" />
-            <span>
-              {info.getValue().name.length > 10
-                ? info.getValue().name.slice(0, 7) + "..."
-                : info.getValue().name}
-            </span>
+            <span>{info.getValue().name}</span>
           </div>
         ),
         header: () => <span className="flex items-center">이름</span>,
@@ -73,7 +60,7 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
       columnHelper.accessor((row) => row.statistics[0].team, {
         id: "team",
         cell: (info) => (
-          <div className=" flex items-center gap-x-3">
+          <div className=" flex items-center gap-x-3 whitespace-nowrap">
             <Avatar imgUrl={info.getValue().logo} size="md" />
             <span>{info.getValue().name}</span>
           </div>
@@ -123,7 +110,7 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
         header: () => <span>퇴장</span>,
       }),
     ];
-  }, [columnHelper]);
+  }, [columnHelper, nav, selectedLeague?.rapid_football_league_id]);
 
   const table = useReactTable({
     // data: emptyArray,
@@ -142,7 +129,13 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
       <TopPlayerSelector setType={handleType} type={type} />
       {/* table */}
       <h2 className="text-lg font-semibold">종합 순위</h2>
-      <Table tableData={table} isLoading={isLoading} isError={isError} />
+      <Table
+        type="player"
+        leagueId={123}
+        tableData={table}
+        isLoading={isLoading}
+        isError={isError}
+      />
     </div>
   );
 };

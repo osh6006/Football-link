@@ -3,18 +3,25 @@ import clsx from "clsx";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import Loading from "./loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
+import { useNavigate } from "react-router-dom";
 
 interface ITableProps {
   isLoading?: boolean;
   isError?: boolean;
+  leagueId: number;
+  type?: "team" | "player";
   tableData: TableType<any>;
 }
 
 const Table: React.FunctionComponent<ITableProps> = ({
-  tableData,
+  type,
   isError,
+  leagueId,
   isLoading,
+  tableData,
 }) => {
+  const nav = useNavigate();
+
   if (isLoading) {
     return (
       <ComponentStatusContainer state="loading" height="430">
@@ -36,10 +43,7 @@ const Table: React.FunctionComponent<ITableProps> = ({
       <table className="w-full border-separate rounded-md border border-MediumGrey">
         <thead className="">
           {tableData.getHeaderGroups().map((headerGroup) => (
-            <tr
-              key={headerGroup.id}
-              className="border-b border-MediumGrey uppercase"
-            >
+            <tr key={headerGroup.id} className="border uppercase">
               {headerGroup.headers.map((header) => {
                 const breakpoints: any = header.column.columnDef.meta;
                 return (
@@ -84,22 +88,35 @@ const Table: React.FunctionComponent<ITableProps> = ({
           ))}
         </thead>
         <tbody className="">
-          {tableData.getRowModel().rows.map((row) => (
-            <tr key={row.id} className="relative">
-              {row.getVisibleCells().map((cell) => {
-                const breakpoints: any = cell.column.columnDef.meta;
+          {tableData.getRowModel().rows.map((row) => {
+            const id =
+              type === "team" ? row.original.team.id : row.original.player.id;
 
-                return (
-                  <td
-                    key={cell.id}
-                    className={clsx("px-6 py-3", breakpoints?.className)}
-                  >
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
+            return (
+              <tr
+                key={row.id}
+                className="relative cursor-pointer transition-colors hover:bg-MediumGrey hover:text-White"
+                onClick={() => {
+                  nav(`/football/${leagueId}/${type}/${id}/info`);
+                }}
+              >
+                {row.getVisibleCells().map((cell) => {
+                  const breakpoints: any = cell.column.columnDef.meta;
+                  return (
+                    <td
+                      key={cell.id}
+                      className={clsx("px-6 py-3", breakpoints?.className)}
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </>

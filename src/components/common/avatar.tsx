@@ -3,10 +3,10 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 
 const sizeObj = {
-  sm: "w-4 h-4",
-  md: "w-8 h-8",
-  lg: "w-10 h-10",
-  xl: "w-[80px]",
+  sm: 20,
+  md: 32,
+  lg: 40,
+  xl: 50,
 };
 
 interface IAvatarProps {
@@ -23,7 +23,8 @@ const Avatar: React.FunctionComponent<IAvatarProps> = ({ imgUrl, size }) => {
             src={imgUrl}
             alt="avatar"
             effect="opacity"
-            className={clsx(`rounded-full`, sizeObj[size])}
+            className={clsx(`rounded-full`)}
+            width={sizeObj[size]}
           />
         </>
       ) : (

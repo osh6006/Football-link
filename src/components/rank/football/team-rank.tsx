@@ -40,8 +40,6 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
               : "";
           const down = info.getValue() >= 18 ? "before:border-red-300" : "";
 
-          console.log(uropa);
-
           return (
             <div
               className={clsx(
@@ -171,7 +169,7 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
 
   return (
     <>
-      <Table tableData={table} />
+      <Table tableData={table} leagueId={data?.league.id!} type="team" />
       <div className="mt-4">
         <p>- Rules</p>
         <div className="mt-2 flex items-center gap-x-2 before:block before:h-4 before:w-4 before:bg-yellow-400 before:content-['']">
