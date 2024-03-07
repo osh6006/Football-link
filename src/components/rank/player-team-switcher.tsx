@@ -21,7 +21,7 @@ const PlayerTeamSwitcher: React.FunctionComponent<IPlayerTeamSwitcherProps> = ({
         )}
         onClick={() => setSelectedTarget("team")}
       >
-        팀
+        Team
       </button>
       <button
         className={clsx(
@@ -32,7 +32,7 @@ const PlayerTeamSwitcher: React.FunctionComponent<IPlayerTeamSwitcherProps> = ({
         )}
         onClick={() => setSelectedTarget("player")}
       >
-        선수
+        Player
       </button>
     </div>
   );

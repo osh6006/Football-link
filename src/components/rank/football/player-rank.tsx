@@ -13,8 +13,6 @@ import TopPlayerSelector from "./top-player-selector";
 import { PlayerSelectType, rapidPlayerResponse } from "types/football";
 import Avatar from "components/common/avatar";
 import Table from "components/common/table";
-import { useNavigate } from "react-router-dom";
-import useLeagueStore from "stores/league-store";
 
 interface IPlayerRankTableProps {
   league: number;
@@ -25,9 +23,6 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
   league,
   season,
 }) => {
-  const nav = useNavigate();
-  const { selectedLeague } = useLeagueStore();
-
   const [type, setType] = useState<PlayerSelectType>("topscorers");
   const { sorting, setSorting, columnHelper, emptyArray } =
     useTable<rapidPlayerResponse>();
@@ -110,7 +105,7 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
         header: () => <span>퇴장</span>,
       }),
     ];
-  }, [columnHelper, nav, selectedLeague?.rapid_football_league_id]);
+  }, [columnHelper]);
 
   const table = useReactTable({
     // data: emptyArray,
