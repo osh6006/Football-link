@@ -74,17 +74,17 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
         <thead className="text-base font-semibold">
           <tr>
             <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
-              순위
+              Rank
             </th>
             <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
-              이름
+              Name
             </th>
             <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
-              나라
+              Team
             </th>
             <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
-              {type === "goal" && "골"}
-              {type === "assist" && "도움"}
+              {type === "goal" && "Goal"}
+              {type === "assist" && "Assist"}
             </th>
           </tr>
         </thead>
@@ -94,7 +94,7 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
             return (
               <tr
                 key={index}
-                className="transition-colors hover:bg-MediumGrey hover:text-White"
+                className="cursor-pointer transition-colors hover:bg-MediumGrey hover:text-White"
                 onClick={() =>
                   nav(
                     `/football/${selectedLeague?.rapid_football_league_id}/player/${item.player.id}/info`,
@@ -116,8 +116,9 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
                     </div>
                   </div>
                 </td>
-                <td className="whitespace-nowrap  border-gray-200 px-6 py-4 ">
-                  {item.player.birth.country}
+                <td className="flex items-center gap-x-2 whitespace-nowrap border-gray-200 px-6 py-4 ">
+                  <Avatar imgUrl={item.statistics[0].team.logo} size="md" />
+                  {item.statistics[0].team.name}
                 </td>
                 <td className="whitespace-nowrap border-gray-200 px-6 py-4 ">
                   {type === "goal" && item?.statistics[0].goals.total}

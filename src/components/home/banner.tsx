@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import * as React from "react";
 
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 import { Carousel } from "react-responsive-carousel";
@@ -14,7 +13,7 @@ import { useBannerQuery } from "hooks/services/quries/use-banner-query";
 
 interface IBannerProps {}
 
-const Banner: React.FunctionComponent<IBannerProps> = (props) => {
+const Banner: React.FunctionComponent<IBannerProps> = () => {
   const { selectedSport } = useSportStore();
   const { selectedLeague } = useLeagueStore();
   const { theme } = useThemeStore();
@@ -67,7 +66,7 @@ const Banner: React.FunctionComponent<IBannerProps> = (props) => {
     return (
       <LazyLoadComponent>
         <Carousel
-          className=" overflow-hidden rounded-lg "
+          className="overflow-hidden rounded-lg "
           autoPlay
           swipeable
           stopOnHover

@@ -1,23 +1,22 @@
-import useThemeStore from "stores/theme-store";
 import { componentBackgroundChange } from "utils/util";
-import { useLocalNewsQuery } from "hooks/services/quries/use-football-query";
+
+import useThemeStore from "stores/theme-store";
 import useLeagueStore from "stores/league-store";
-import ComponentStatusContainer from "components/layouts/component-status-container";
+import { useGlobalNewsQuery } from "hooks/services/quries/use-football-query";
+
 import Loading from "components/common/loading";
+import ComponentStatusContainer from "components/layouts/component-status-container";
+import HomeNewsCard from "../home-news-card";
 
 interface IHomeNewTableProps {}
 
-const HomeNewTable: React.FunctionComponent<IHomeNewTableProps> = (props) => {
+const HomeNewTable: React.FunctionComponent<IHomeNewTableProps> = () => {
   const { theme } = useThemeStore();
   const { selectedLeague } = useLeagueStore();
-  const { data, isLoading, isError } = useLocalNewsQuery(
-    selectedLeague?.kr_name!,
+  const { data, isLoading, isError } = useGlobalNewsQuery(
+    selectedLeague?.name!,
     true,
   );
-
-  const openInNewTab = (url: string) => {
-    window.open(url, "_blank", "noreferrer");
-  };
 
   if (isLoading) {
     return (
@@ -39,23 +38,21 @@ const HomeNewTable: React.FunctionComponent<IHomeNewTableProps> = (props) => {
     <div
       className={componentBackgroundChange(
         theme,
-        "mt-2 rounded-md p-4 shadow-md",
+        "mt-2 max-w-[1000px] rounded-md p-4 shadow-md",
       )}
     >
-      <ul className="space-y-4">
+      <ul className="flex  gap-x-4 overflow-x-scroll">
         {data?.map((el, i) => {
-          if (i >= 6) return null;
           return (
-            <li
-              onClick={() => openInNewTab(el.link)}
-              key={i}
-              className="w-full"
-            >
-              <h2
-                className="cursor-pointer font-semibold underline transition-colors hover:text-Main"
-                dangerouslySetInnerHTML={{ __html: el.title }}
-              />
-            </li>
+            <HomeNewsCard
+              author={el.author}
+              imgUrl={el.urlToImage}
+              title={el.title}
+              url={el.url}
+              desc={el.description}
+              date={el.publishedAt}
+              key={el.url}
+            />
           );
         })}
       </ul>

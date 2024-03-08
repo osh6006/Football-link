@@ -27,6 +27,7 @@ const FootballHomeContent: React.FunctionComponent<
           </Title>
           <HomeNewTable />
         </div>
+
         <div className="mt-2 space-y-2">
           <Title>
             Rank
@@ -40,7 +41,7 @@ const FootballHomeContent: React.FunctionComponent<
       </div>
 
       {/* right */}
-      <div className="space-y-6">
+      <div className="mt-4 space-y-6 ">
         <div className="mt-4 space-y-2 xl:mt-0">
           <Title>
             Live Match

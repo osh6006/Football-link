@@ -40,7 +40,7 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
         cell: (info) => {
           return <div>{info.getValue() + 1}</div>;
         },
-        header: () => <span>순위</span>,
+        header: () => <span>Rank</span>,
       }),
       columnHelper.accessor((row) => row.player, {
         id: "name",
@@ -50,7 +50,7 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
             <span>{info.getValue().name}</span>
           </div>
         ),
-        header: () => <span className="flex items-center">이름</span>,
+        header: () => <span className="flex items-center">Name</span>,
       }),
       columnHelper.accessor((row) => row.statistics[0].team, {
         id: "team",
@@ -60,36 +60,36 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
             <span>{info.getValue().name}</span>
           </div>
         ),
-        header: () => <span>팀</span>,
+        header: () => <span>Team</span>,
       }),
       columnHelper.accessor((row) => row.statistics[0].games.minutes, {
         id: "played",
         cell: (info) => <div>{info.getValue() || 0}</div>,
-        header: () => <span>경기 시간(분)</span>,
+        header: () => <span>Running Time(minute)</span>,
       }),
       columnHelper.accessor((row) => row.statistics[0].goals.total, {
         id: "goal",
         cell: (info) => <div>{info.getValue() || 0}</div>,
-        header: () => <span>골</span>,
+        header: () => <span>Goal</span>,
       }),
       columnHelper.accessor((row) => row.statistics[0].goals.assists, {
         id: "assist",
         cell: (info) => <div>{info.getValue() || 0}</div>,
-        header: () => <span>도움</span>,
+        header: () => <span>Assist</span>,
       }),
       columnHelper.accessor((row) => row.statistics[0].goals, {
         id: "attack-point",
         cell: (info) => (
           <div>{info.getValue().total + info.getValue().assists || 0}</div>
         ),
-        header: () => <span>공격 포인트</span>,
+        header: () => <span>Attack Point</span>,
       }),
       columnHelper.accessor((row) => row.statistics[0].games.rating, {
         id: "rating",
         cell: (info) => (
           <span>{parseFloat(info.getValue()).toFixed(1) || 0}</span>
         ),
-        header: () => <span>평균 평점</span>,
+        header: () => <span>Avarage</span>,
         meta: {
           className: "hidden xl:table-cell",
         },
@@ -97,12 +97,12 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
       columnHelper.accessor((row) => row.statistics[0].cards.yellow, {
         id: "yellow",
         cell: (info) => <div>{info.getValue() || 0}</div>,
-        header: () => <span>경고</span>,
+        header: () => <span>Yellow Card</span>,
       }),
       columnHelper.accessor((row) => row.statistics[0].cards.red, {
         id: "red",
         cell: (info) => <div>{info.getValue() || 0}</div>,
-        header: () => <span>퇴장</span>,
+        header: () => <span>Red Card</span>,
       }),
     ];
   }, [columnHelper]);
@@ -123,7 +123,6 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
     <div className="space-y-4">
       <TopPlayerSelector setType={handleType} type={type} />
       {/* table */}
-      <h2 className="text-lg font-semibold">종합 순위</h2>
       <Table
         type="player"
         leagueId={123}
