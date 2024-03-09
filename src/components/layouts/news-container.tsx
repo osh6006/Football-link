@@ -14,7 +14,7 @@ const NewsContainer: React.FunctionComponent<INewsContainerProps> = ({
     <div
       className={componentBackgroundChange(
         theme,
-        "m-4 rounded-md p-8 text-MediumGrey shadow-md",
+        "m-4 mx-auto max-w-[1280px] rounded-md p-8 text-MediumGrey shadow-md",
       )}
     >
       {children}

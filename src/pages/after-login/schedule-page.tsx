@@ -1,7 +1,5 @@
 import { useState } from "react";
 import useSportStore from "stores/sports-store";
-import useThemeStore from "stores/theme-store";
-import { componentBackgroundChange } from "utils/util";
 
 import DaySelector from "components/schedule/day-selector";
 import YearSelector from "components/schedule/year-selector";
@@ -11,23 +9,15 @@ import ScheduleContainer from "components/layouts/schedule-container";
 interface ISchedulePageProps {}
 
 const SchedulePage: React.FunctionComponent<ISchedulePageProps> = () => {
-  const { theme } = useThemeStore();
   const { selectedSport } = useSportStore();
 
   const [isAll, setIsAll] = useState(true);
 
   return (
     <ScheduleContainer>
-      <div
-        className={componentBackgroundChange(
-          theme,
-          "mx-auto max-w-5xl rounded-md p-4 shadow-md sm:p-8",
-        )}
-      >
-        <YearSelector setIsAll={setIsAll} />
-        <DaySelector isAll={isAll} setIsAll={setIsAll} />
-        {selectedSport?.name === "soccer" && <FootballCalendar isAll={isAll} />}
-      </div>
+      <YearSelector setIsAll={setIsAll} />
+      <DaySelector isAll={isAll} setIsAll={setIsAll} />
+      {selectedSport?.name === "soccer" && <FootballCalendar isAll={isAll} />}
     </ScheduleContainer>
   );
 };
