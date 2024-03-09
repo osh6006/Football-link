@@ -79,9 +79,7 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
             <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
               Name
             </th>
-            <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
-              Team
-            </th>
+
             <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
               {type === "goal" && "Goal"}
               {type === "assist" && "Assist"}
@@ -115,10 +113,6 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
                       <span>{item.player?.name}</span>
                     </div>
                   </div>
-                </td>
-                <td className="flex items-center gap-x-2 whitespace-nowrap border-gray-200 px-6 py-4 ">
-                  <Avatar imgUrl={item.statistics[0].team.logo} size="md" />
-                  {item.statistics[0].team.name}
                 </td>
                 <td className="whitespace-nowrap border-gray-200 px-6 py-4 ">
                   {type === "goal" && item?.statistics[0].goals.total}

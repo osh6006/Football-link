@@ -95,7 +95,7 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
           autoPlay
           autoPlaySpeed={3000}
           centerMode={false}
-          className="max-w-[1000px] rounded-md"
+          className="rounded-md"
           containerClass="container"
           dotListClass=""
           draggable

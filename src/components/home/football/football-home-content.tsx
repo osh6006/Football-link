@@ -18,9 +18,27 @@ const FootballHomeContent: React.FunctionComponent<
 
   return (
     <>
-      <div className="space-y-4">
+      {/* left */}
+      <div className="mx-auto max-w-[1100px]">
         <Banner />
-        <div className="mt-2 w-full">
+        <div className="my-2 flex justify-between gap-x-4">
+          <div className="flex-1 space-y-2">
+            <Title>
+              Live Match
+              <MoreArrow path="/" />
+            </Title>
+            <HomeLiveTable />
+          </div>
+
+          <div className="flex-1 space-y-2">
+            <Title>
+              Next Match
+              <MoreArrow path="/schedule" />
+            </Title>
+            <HomeNextTable />
+          </div>
+        </div>
+        <div className="w-full">
           <Title>
             News
             <MoreArrow path="/news" />
@@ -28,7 +46,7 @@ const FootballHomeContent: React.FunctionComponent<
           <HomeNewTable />
         </div>
 
-        <div className="mt-2 space-y-2">
+        <div className="my-2 space-y-2">
           <Title>
             Rank
             <MoreArrow path="/rank" />
@@ -41,23 +59,7 @@ const FootballHomeContent: React.FunctionComponent<
       </div>
 
       {/* right */}
-      <div className="mt-4 space-y-6 ">
-        <div className="mt-4 space-y-2 xl:mt-0">
-          <Title>
-            Live Match
-            <MoreArrow path="/" />
-          </Title>
-          <HomeLiveTable />
-        </div>
-
-        <div className="space-y-2">
-          <Title>
-            Next Match
-            <MoreArrow path="/schedule" />
-          </Title>
-          <HomeNextTable />
-        </div>
-
+      <div className="mx-auto w-full max-w-[1100px] space-y-4">
         <div className="space-y-2">
           <Title>
             Top scorer

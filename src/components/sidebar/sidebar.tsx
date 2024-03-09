@@ -54,7 +54,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = ({
   return (
     <aside
       className={clsx(
-        `sticky inset-y-0 h-full w-[15dvw] min-w-60 flex-col border-r border-MediumGrey   
+        `fixed inset-y-0 h-full w-[280px] flex-col border-r border-MediumGrey   
       text-MediumGrey `,
         theme === "light" ? "bg-White " : "bg-DarkGrey ",
         isMobile ? "flex flex-col" : "hidden lg:flex lg:flex-col",
@@ -105,18 +105,14 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = ({
         />
       </div>
 
-      <>
-        <p className="mx-2 my-2 text-sm uppercase tracking-wider text-Main">
-          Menus
-        </p>
-        <SideMenuList />
-      </>
+      <p className="mx-2 my-2 text-sm uppercase tracking-wider text-Main">
+        Menus
+      </p>
+      <SideMenuList />
 
       {/* DarkMode change */}
-      <>
-        <p className="mx-2 text-sm uppercase tracking-wider text-Main">Theme</p>
-        <ThemeSwitch />
-      </>
+      <p className="mx-2 text-sm uppercase tracking-wider text-Main">Theme</p>
+      <ThemeSwitch />
     </aside>
   );
 };

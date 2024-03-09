@@ -6,7 +6,7 @@ const HomeContainer: React.FunctionComponent<IHomeContainerProps> = ({
   children,
 }) => {
   return (
-    <div className="grid grid-cols-1 gap-x-4 p-5 text-MediumGrey 2xl:grid-cols-[2fr,1fr]">
+    <div className="mx-auto flex max-w-[1580px] flex-col justify-between gap-x-2 p-5 min-[1800px]:flex-row">
       {children}
     </div>
   );

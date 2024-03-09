@@ -38,14 +38,21 @@ const HomeNewTable: React.FunctionComponent<IHomeNewTableProps> = () => {
 
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 1400 },
+      items: 3,
+      slidesToSlide: 3, // optional, default to 1.
+    },
+
+    laptop: {
+      breakpoint: { max: 1400, min: 1024 },
       items: 2,
       slidesToSlide: 2, // optional, default to 1.
     },
+
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 1,
-      slidesToSlide: 1, // optional, default to 1.
+      items: 2,
+      slidesToSlide: 2, // optional, default to 1.
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
@@ -58,7 +65,7 @@ const HomeNewTable: React.FunctionComponent<IHomeNewTableProps> = () => {
     <div
       className={componentBackgroundChange(
         theme,
-        "mt-2 max-w-[1000px] rounded-md p-4 shadow-md",
+        "mt-2 w-full rounded-md p-4 shadow-md",
       )}
     >
       <Carousel
@@ -66,7 +73,6 @@ const HomeNewTable: React.FunctionComponent<IHomeNewTableProps> = () => {
         arrows
         autoPlaySpeed={3000}
         centerMode={false}
-        className=""
         containerClass="container-with-dots"
         dotListClass=""
         draggable
