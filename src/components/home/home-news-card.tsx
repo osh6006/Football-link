@@ -26,14 +26,14 @@ const HomeNewsCard: React.FunctionComponent<IHomeNewsCardProps> = ({
 
   return (
     <li
-      className="flex w-full min-w-[350px] flex-col justify-between  overflow-hidden rounded-md border-2 border-MediumGrey p-2"
+      className="flex h-full w-full min-w-[350px] cursor-pointer flex-col justify-between overflow-hidden rounded-md p-2 shadow-md transition-all hover:scale-105"
       onClick={() => openInNewTab(url)}
     >
       <div className="space-y-2">
         <LazyLoadImage
-          alt="new-thumbnail"
+          alt="news-thumbnail"
           src={imgUrl}
-          className="aspect-video w-full rounded-md"
+          className="aspect-video w-full rounded-md object-fill"
         />
         <h2 className="text-xl font-bold">{title}</h2>
         <p>{desc.length > 150 ? desc.slice(0, 150) + "..." : desc}</p>

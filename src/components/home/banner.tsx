@@ -1,8 +1,7 @@
 import clsx from "clsx";
 
 import { LazyLoadComponent } from "react-lazy-load-image-component";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-multi-carousel/lib/styles.css";
 
 import Loading from "components/common/loading";
 
@@ -10,6 +9,7 @@ import useLeagueStore from "stores/league-store";
 import useThemeStore from "stores/theme-store";
 import useSportStore from "stores/sports-store";
 import { useBannerQuery } from "hooks/services/quries/use-banner-query";
+import Carousel from "react-multi-carousel";
 
 interface IBannerProps {}
 
@@ -62,20 +62,60 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
     );
   }
 
+  const responsive = {
+    desktop: {
+      breakpoint: {
+        max: 3000,
+        min: 1024,
+      },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: {
+        max: 464,
+        min: 0,
+      },
+      items: 1,
+    },
+    tablet: {
+      breakpoint: {
+        max: 1024,
+        min: 464,
+      },
+      items: 1,
+    },
+  };
+
   if (isSuccess) {
     return (
       <LazyLoadComponent>
         <Carousel
-          className="overflow-hidden rounded-lg "
+          additionalTransfrom={0}
+          arrows={false}
           autoPlay
+          autoPlaySpeed={3000}
+          centerMode={false}
+          className="max-w-[1000px] rounded-md"
+          containerClass="container"
+          dotListClass=""
+          draggable
+          focusOnSelect={false}
+          infinite
+          itemClass=""
+          keyBoardControl
+          minimumTouchDrag={80}
+          pauseOnHover
+          renderArrowsWhenDisabled={false}
+          renderButtonGroupOutside={false}
+          responsive={responsive}
+          rewind={false}
+          rewindWithAnimation={false}
+          rtl={false}
+          showDots
+          shouldResetAutoplay
+          renderDotsOutside
+          slidesToSlide={1}
           swipeable
-          stopOnHover
-          infiniteLoop
-          emulateTouch
-          showIndicators
-          showArrows={false}
-          showThumbs={false}
-          showStatus={false}
         >
           {banners?.map((banner) => (
             <div

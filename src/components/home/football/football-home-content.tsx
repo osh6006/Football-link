@@ -20,7 +20,7 @@ const FootballHomeContent: React.FunctionComponent<
     <>
       <div className="space-y-4">
         <Banner />
-        <div className="mt-2">
+        <div className="mt-2 w-full">
           <Title>
             News
             <MoreArrow path="/news" />
