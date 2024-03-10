@@ -70,6 +70,9 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
                 Team
               </th>
               <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+                Played
+              </th>
+              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 Win
               </th>
               <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
@@ -112,6 +115,9 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
                     <Avatar imgUrl={item.team.logo} size="md" />
                     <span>{item.team.name}</span>
                   </div>
+                </td>
+                <td className="whitespace-no-wrap  border-gray-200 px-6 py-4 ">
+                  {item.all.played}
                 </td>
                 <td className="whitespace-no-wrap  border-gray-200 px-6 py-4 ">
                   {item.all.win}

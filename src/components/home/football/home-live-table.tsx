@@ -27,7 +27,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
       <div
         className={componentBackgroundChange(
           theme,
-          "h flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
+          "h flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         <Loading size="md" />
@@ -40,7 +40,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
       <div
         className={componentBackgroundChange(
           theme,
-          "h flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
+          "h flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         {error.message}
@@ -53,7 +53,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
       <div
         className={componentBackgroundChange(
           theme,
-          "h relative flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
+          "h relative flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         There are no matches in progress 🤔

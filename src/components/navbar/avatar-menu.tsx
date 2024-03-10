@@ -23,7 +23,7 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({
   return (
     <div
       ref={ref}
-      className="relative rounded-full border-4 border-transparent transition hover:border-Main"
+      className="relative rounded-full border-2 border-transparent transition hover:border-Main"
       onClick={() => setIsOpen(!isOpen)}
     >
       <Avatar size={size} imgUrl={user?.user_metadata?.avatar_url} />

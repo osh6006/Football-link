@@ -1,8 +1,6 @@
 import dayjs from "dayjs";
-import useThemeStore from "stores/theme-store";
 import useLeagueStore from "stores/league-store";
 import useScheduleStore from "stores/schedule-store";
-import { componentBackgroundChange } from "utils/util";
 import { useScheduleQuery } from "hooks/services/quries/use-football-query";
 
 import Loading from "components/common/loading";
@@ -48,6 +46,8 @@ const FootballCalendar: React.FunctionComponent<IFootballCalendarProps> = ({
     );
   }
 
+  console.log(data);
+
   return (
     <ul className=" mt-6 w-full space-y-4 p-0 sm:px-8 md:block">
       {data?.map((el) => (
@@ -58,8 +58,8 @@ const FootballCalendar: React.FunctionComponent<IFootballCalendarProps> = ({
           <div className="absolute left-1 top-1 flex gap-x-4 md:static ">
             <time className="text-xs font-semibold sm:text-sm">
               {isAll
-                ? dayjs(el.fixture.date).format("MM-DD HH:MM")
-                : dayjs(el.fixture.date).format("HH:MM")}
+                ? `${dayjs(el.fixture.date).format("MM-DD HH:mm")}`
+                : `${dayjs(el.fixture.date).format("HH:mm")}`}
             </time>
             <span className="hidden text-sm ">{el.fixture.venue.name}</span>
           </div>

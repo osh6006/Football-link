@@ -21,7 +21,7 @@ const FootballHomeContent: React.FunctionComponent<
       {/* left */}
       <div className="mx-auto max-w-[1100px]">
         <Banner />
-        <div className="my-2 flex justify-between gap-x-4">
+        <div className="my-4 flex justify-between gap-x-4">
           <div className="flex-1 space-y-2">
             <Title>
               Live Match
