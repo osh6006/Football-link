@@ -49,8 +49,8 @@ interface Goals {
 
 interface Event {
   time: {
-    elapsed: 2;
-    extra: null;
+    elapsed: null | number;
+    extra: null | number;
   };
   team: {
     id: number;

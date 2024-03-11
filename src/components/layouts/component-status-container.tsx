@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 interface IComponentStatusContainerProps {
   state: "error" | "loading";
-  height: string;
+  height: string | number;
   classNames?: string;
   children: React.ReactNode;
 }
@@ -12,9 +12,11 @@ const ComponentStatusContainer: React.FunctionComponent<
 > = ({ height, children, classNames, state }) => {
   return (
     <div
+      style={{
+        height: +height,
+      }}
       className={clsx(
-        "h flex  w-full items-center justify-center rounded-md p-2 text-xl",
-        `min-h-[${height}px]`,
+        "h flex w-full items-center justify-center rounded-md p-2 text-xl",
         state === "error" && "border-2 border-Red bg-RedHover/25",
         classNames,
       )}
