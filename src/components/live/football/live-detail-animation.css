@@ -1,0 +1,15 @@
+.live-detail-enter {
+  transform: translateY(-100px);
+}
+
+.live-detail-enter-active {
+  transform: translateY(0px);
+}
+
+.live-detail-exit {
+  transform: translateY(0px);
+}
+
+.live-detail-exit-active {
+  transform: translateY(-100px);
+}

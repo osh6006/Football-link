@@ -1,8 +1,10 @@
 import {
   CalendarCheck,
+  Eye,
   LayoutDashboardIcon,
   MedalIcon,
   Newspaper,
+  RadioTower,
 } from "lucide-react";
 import { useMatches } from "react-router-dom";
 
@@ -16,21 +18,38 @@ export default function usePath() {
       name: "Home",
       path: "/",
       icon: <LayoutDashboardIcon />,
+      isNew: false,
+    },
+    {
+      name: "Predict",
+      path: "/predict",
+      icon: <Eye />,
+      isNew: true,
+    },
+    {
+      name: "Live",
+      path: "/live",
+      icon: <RadioTower />,
+      isNew: false,
     },
     {
       name: "Rank",
       path: "/rank",
       icon: <MedalIcon />,
+      isNew: false,
     },
+
     {
       name: "Schedule",
       path: "/schedule",
       icon: <CalendarCheck />,
+      isNew: false,
     },
     {
       name: "News",
       path: "/news",
       icon: <Newspaper />,
+      isNew: false,
     },
   ];
 

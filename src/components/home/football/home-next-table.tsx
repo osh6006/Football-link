@@ -27,7 +27,7 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = (props) => {
       <div
         className={componentBackgroundChange(
           theme,
-          "h flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
+          "h flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         <Loading size="md" />
@@ -40,7 +40,7 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = (props) => {
       <div
         className={componentBackgroundChange(
           theme,
-          "h flex min-h-[260px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
+          "h flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         There's been an error on the server 🤮
@@ -51,13 +51,13 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = (props) => {
   return (
     <div
       className={clsx(
-        `relative rounded-md p-4
+        `relative min-h-[285px] rounded-md p-4
          shadow-md`,
         theme === "light" ? "bg-White " : "bg-DarkGrey ",
       )}
     >
       <time className="text-lg">
-        {dayjs(nextMatch?.fixture.date).format("YYYY MM DD HH:MM")}
+        {dayjs(nextMatch?.fixture.date).format("YYYY-MM-DD HH:mm")}
       </time>
       <div
         className={clsx(
@@ -72,7 +72,7 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = (props) => {
             alt="home"
             className=""
           />
-          <p>{nextMatch?.teams.home.name}</p>
+          <h2 className="text-lg font-bold">{nextMatch?.teams.home.name}</h2>
         </div>
         <span className="text-3xl">vs</span>
 
@@ -84,10 +84,10 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = (props) => {
             alt="away"
             className=""
           />
-          <p>{nextMatch?.teams.away.name}</p>
+          <h1 className="text-lg font-bold">{nextMatch?.teams.away.name}</h1>
         </div>
       </div>
-      <p className="text-center">{`${nextMatch?.fixture.venue.name} / ${nextMatch?.fixture.venue.city}`}</p>
+      <p className="text-center text-lg font-bold">{`${nextMatch?.fixture.venue.name} / ${nextMatch?.fixture.venue.city}`}</p>
     </div>
   );
 };

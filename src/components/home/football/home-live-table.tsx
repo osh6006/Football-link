@@ -27,7 +27,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
       <div
         className={componentBackgroundChange(
           theme,
-          "h flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
+          "flex min-h-[290px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         <Loading size="md" />
@@ -40,7 +40,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
       <div
         className={componentBackgroundChange(
           theme,
-          "h flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
+          "flex min-h-[290px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         {error.message}
@@ -48,12 +48,12 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
     );
   }
 
-  if (!liveMatch) {
+  if (liveMatch && liveMatch.length === 0) {
     return (
       <div
         className={componentBackgroundChange(
           theme,
-          "h relative flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
+          "relative flex min-h-[285px] w-full  items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         There are no matches in progress 🤔
@@ -64,7 +64,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
   return (
     <div
       className={clsx(
-        `relative rounded-md p-2 shadow-md`,
+        `relative min-h-[285px] rounded-md p-2 shadow-md`,
         theme === "light" ? "bg-White " : "bg-DarkGrey ",
       )}
     >
@@ -82,11 +82,11 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
         <div className="flex flex-col items-center justify-center gap-y-2">
           <LazyLoadImage
             effect="opacity"
-            src={liveMatch?.teams.home.logo}
+            src={liveMatch && liveMatch[0]?.teams.home.logo}
             alt="home"
             className="rounded-full"
           />
-          <p>{liveMatch?.teams.home.name}</p>
+          <p>{liveMatch && liveMatch[0]?.teams.home.name}</p>
         </div>
         <span className="text-3xl">vs</span>
 
@@ -94,14 +94,16 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
         <div className="flex flex-col items-center justify-center gap-y-2">
           <LazyLoadImage
             effect="opacity"
-            src={liveMatch?.teams.away.logo}
+            src={liveMatch && liveMatch[0]?.teams.away.logo}
             alt="away"
             className="rounded-full"
           />
-          <p>{liveMatch?.teams.away.name}</p>
+          <p>{liveMatch && liveMatch[0]?.teams.away.name}</p>
         </div>
       </div>
-      <p className="text-center">{`${liveMatch?.fixture.venue.name} / ${liveMatch?.fixture.venue.city}`}</p>
+      <p className="text-center">{`${
+        liveMatch && liveMatch[0]?.fixture.venue.name
+      } / ${liveMatch && liveMatch[0]?.fixture.venue.city}`}</p>
     </div>
   );
 };

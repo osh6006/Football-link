@@ -25,6 +25,7 @@ import {
 } from "hooks/services/apis/league";
 
 import Button from "../common/button";
+import toast from "react-hot-toast";
 
 interface ILeagueSettingModalProps {}
 
@@ -77,7 +78,10 @@ const LeagueSettingModal: React.FunctionComponent<
   };
 
   const handleSave = async () => {
-    if (tempSelectLeagues && tempSelectLeagues?.length < 1) return;
+    if (tempSelectLeagues && tempSelectLeagues?.length < 1) {
+      toast.error("Please select at least one league 🤔");
+      return;
+    }
     setSaveLoading(true);
 
     // db clear

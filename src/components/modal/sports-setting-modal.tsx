@@ -52,7 +52,10 @@ const SportsSettingModal: React.FunctionComponent<
   };
 
   const handleSave = async () => {
-    if (tempSports?.length < 1) return;
+    if (tempSports?.length < 1) {
+      toast.error("Please select at least one sport 🤔");
+      return;
+    }
 
     // db clear
     setSaveLoading(true);

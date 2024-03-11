@@ -20,6 +20,8 @@ export type {
   rapidFootballNextMatchesResponse,
 } from "./schedule";
 
+export type {};
+
 export type { rapidPlayerResponse, Player, PlayerSelectType } from "./player";
 
 export type { LocalNewsResponse, GlobalNewsResponse } from "./news";

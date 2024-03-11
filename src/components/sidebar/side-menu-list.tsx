@@ -26,6 +26,9 @@ const SideMenuList: React.FunctionComponent<ISideMenuListProps> = (props) => {
         >
           {item.icon}
           {item.name}
+          {item.isNew ? (
+            <sup className="text-xs text-green-500">New</sup>
+          ) : null}
         </li>
       ))}
     </ul>

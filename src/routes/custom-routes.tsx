@@ -24,6 +24,8 @@ import PlayerRootPage from "pages/after-login/football/player-root";
 import PlayerInfo from "pages/after-login/football/player-info";
 import PlayerNews from "pages/after-login/football/player-news";
 import PlayerCareer from "pages/after-login/football/player-career";
+import PredictPage from "pages/after-login/predict-page";
+import LivePage from "pages/after-login/live-page";
 
 const CustomRoutes = () => {
   const router = createBrowserRouter([
@@ -55,6 +57,16 @@ const CustomRoutes = () => {
         {
           path: "/news",
           element: <NewsPage />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: "/predict",
+          element: <PredictPage />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: "/live",
+          element: <LivePage />,
           errorElement: <ErrorPage />,
         },
         {

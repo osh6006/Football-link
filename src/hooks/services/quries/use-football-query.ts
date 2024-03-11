@@ -54,9 +54,8 @@ export const useLiveMathesQuery = (leagueId: number) => {
     queryKey: [footballQueryKey.useLiveMathesQuery, leagueId],
     queryFn: ({ queryKey }) => getLiveMatches(queryKey[1] as number),
     enabled: !!leagueId,
-    select(data) {
-      return data[0];
-    },
+    staleTime: 60000,
+    gcTime: 60000,
   });
 };
 

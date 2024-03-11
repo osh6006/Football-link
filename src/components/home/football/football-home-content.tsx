@@ -19,9 +19,9 @@ const FootballHomeContent: React.FunctionComponent<
   return (
     <>
       {/* left */}
-      <div className="mx-auto max-w-[1100px]">
+      <div className="mx-4 max-w-[1100px] xl:mx-auto">
         <Banner />
-        <div className="my-4 flex justify-between gap-x-4">
+        <div className="my-4 flex w-full flex-col justify-between gap-x-4 xl:flex-row">
           <div className="flex-1 space-y-2">
             <Title>
               Live Match

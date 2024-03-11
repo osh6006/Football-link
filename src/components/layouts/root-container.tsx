@@ -11,14 +11,14 @@ const RootContainer: React.FunctionComponent<IRootContainerProps> = ({
   const { theme } = useThemeStore();
 
   return (
-    <main
+    <div
       className={clsx(
         `h-[100dvh] overflow-y-auto overflow-x-hidden text-MediumGrey `,
         theme === "light" ? "bg-LightGreyLightBg" : "bg-VeryDarkGreyDark",
       )}
     >
       {children}
-    </main>
+    </div>
   );
 };
 
