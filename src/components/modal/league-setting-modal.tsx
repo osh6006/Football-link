@@ -161,8 +161,7 @@ const LeagueSettingModal: React.FunctionComponent<
         )}
       >
         <div className="text-lg capitalize">
-          {selectedSport?.icon} {selectedSport?.name} Sports의 리그를
-          골라보세요!
+          {selectedSport?.icon} Select {selectedSport?.name} League!
         </div>
         <div className="mt-4">
           {leagueData && (

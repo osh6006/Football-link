@@ -38,8 +38,8 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({
           ref={nodeRef}
           role="menu"
           className={clsx(
-            `absolute right-0 z-10 mt-2 min-w-28 overflow-hidden rounded-md bg-White px-1
-            py-1 text-xs text-DarkGrey shadow-lg focus:outline-none sm:text-sm`,
+            `absolute right-0 z-10 mt-2 min-w-28 overflow-hidden rounded-md bg-White px-2
+            py-2 text-DarkGrey shadow-lg focus:outline-none `,
           )}
         >
           <li

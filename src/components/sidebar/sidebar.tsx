@@ -35,7 +35,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = ({
   const { data: saveLeagues, isLoading: isSaveLeaguesLoading } =
     useSaveLeagueQuery(selectedSport?.id!);
 
-  const { openLeagueSettingModal } = useModalsStore();
+  const { openLeagueSettingModal, openSportsSettingModal } = useModalsStore();
 
   useEffect(() => {
     if (savedSports && savedSports?.length > 0) {
@@ -88,6 +88,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = ({
           setItem={selectSport}
           icon={selectedSport?.icon}
           name={selectedSport?.name}
+          moreAction={openSportsSettingModal}
         />
 
         {/* league Selector */}

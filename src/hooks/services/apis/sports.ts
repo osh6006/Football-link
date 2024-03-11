@@ -49,3 +49,79 @@ export const getSports: () => Promise<ISport[] | null> = async () => {
   toast.error("not userID");
   return null;
 };
+
+export const getServerSports: () => Promise<ISport[] | null> = async () => {
+  let { data: sports, error } = await supabase.from("sports").select("*");
+
+  if (error) {
+    toast.error(error.message);
+    return null;
+  }
+  return sports as ISport[];
+};
+
+export const deleteUserSupabaseSports = async () => {
+  const { data: sessionData, error: sessionError } =
+    await supabase.auth.getSession();
+
+  if (sessionError) {
+    toast.error(sessionError.message);
+    return false;
+  }
+
+  const userId = sessionData.session?.user.id;
+
+  const { data, error } = await supabase
+    .from("user_sports")
+    .select()
+    .eq("user_id", userId!);
+
+  if (error) return false;
+
+  if (userId && data) {
+    for (const item of data) {
+      const { error } = await supabase
+        .from("user_sports")
+        .delete()
+        .eq("id", item.id);
+
+      if (error) {
+        toast.error(error.message);
+        return false;
+      }
+    }
+  } else {
+    return false;
+  }
+
+  return true;
+};
+
+export const insertAllSupabaseSports = async (items: ISport[]) => {
+  const { data: sessionData, error: sessionError } =
+    await supabase.auth.getSession();
+
+  if (sessionError) {
+    toast.error(sessionError.message);
+    return false;
+  }
+
+  const userId = sessionData.session?.user.id;
+
+  if (userId) {
+    for (const item of items) {
+      const { error } = await supabase.from("user_sports").insert({
+        sport_id: item.id,
+        user_id: userId,
+      });
+
+      if (error) {
+        console.log(error);
+        toast.error(error.message);
+        return false;
+      }
+    }
+  }
+
+  return true;
+};

@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/opacity.css";
 
 const sizeObj = {
   sm: 20,
@@ -22,7 +21,6 @@ const Avatar: React.FunctionComponent<IAvatarProps> = ({ imgUrl, size }) => {
           <LazyLoadImage
             src={imgUrl}
             alt="avatar"
-            effect="opacity"
             className={clsx(`aspect-square rounded-full`)}
             width={sizeObj[size]}
           />

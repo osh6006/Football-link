@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { MoveRight } from "lucide-react";
 
 import Button from "../common/button";
@@ -6,7 +7,6 @@ import { useAuthStepStore } from "../../stores/auth-step-store";
 import { useEffect, useState } from "react";
 import { supabase } from "libs/superbase-client";
 import { ISport } from "types";
-import toast from "react-hot-toast";
 
 interface IStepTwoProps {}
 
