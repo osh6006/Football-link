@@ -7,7 +7,6 @@ import { useSaveLeagueQuery } from "hooks/services/quries/use-league-query";
 
 import useThemeStore from "../../stores/theme-store";
 import useSportStore from "../../stores/sports-store";
-import useModalsStore from "../../stores/modals-store";
 import useLeagueStore from "stores/league-store";
 
 import { XIcon } from "lucide-react";
@@ -15,6 +14,7 @@ import Logo from "components/common/logo";
 import SideMenuList from "./side-menu-list";
 import SelectBox from "../navbar/select-box";
 import ThemeSwitch from "../navbar/theme-switch";
+import { useModalActions } from "stores/modals-store";
 
 interface ISidebarProps {
   isMobile?: boolean;
@@ -35,7 +35,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = ({
   const { data: saveLeagues, isLoading: isSaveLeaguesLoading } =
     useSaveLeagueQuery(selectedSport?.id!);
 
-  const { openLeagueSettingModal, openSportsSettingModal } = useModalsStore();
+  const { openModal } = useModalActions();
 
   useEffect(() => {
     if (savedSports && savedSports?.length > 0) {
@@ -88,7 +88,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = ({
           setItem={selectSport}
           icon={selectedSport?.icon}
           name={selectedSport?.name}
-          moreAction={openSportsSettingModal}
+          moreAction={() => openModal("isOpenSportsSettingModal")}
         />
 
         {/* league Selector */}
@@ -102,7 +102,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = ({
           setItem={selectLeague}
           icon={selectedLeague?.logo}
           name={selectedLeague?.name}
-          moreAction={openLeagueSettingModal}
+          moreAction={() => openModal("isOpenLeagueSettingModal")}
         />
       </div>
 

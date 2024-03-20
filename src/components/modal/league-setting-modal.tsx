@@ -4,7 +4,6 @@ import { useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
 import { flattenedArray, isIncludeInArray } from "utils/util";
 
-import useModalsStore from "../../stores/modals-store";
 import useThemeStore from "../../stores/theme-store";
 import useSportStore from "stores/sports-store";
 
@@ -26,6 +25,7 @@ import {
 
 import Button from "../common/button";
 import toast from "react-hot-toast";
+import { useModalActions, useModals } from "stores/modals-store";
 
 interface ILeagueSettingModalProps {}
 
@@ -33,9 +33,12 @@ const LeagueSettingModal: React.FunctionComponent<
   ILeagueSettingModalProps
 > = () => {
   const queryClient = useQueryClient();
+  const isOpenLeagueSettingModal = useModals(
+    (state) => state.isOpenLeagueSettingModal,
+  );
 
-  const { isOpenLeagueSettingModal, closeLeagueSettingModal } =
-    useModalsStore();
+  const { closeModal } = useModalActions();
+
   const { theme } = useThemeStore();
   const { selectedSport } = useSportStore();
 
@@ -74,7 +77,7 @@ const LeagueSettingModal: React.FunctionComponent<
     });
     setTempSelectLeague(flattenedArray(saveLeagueData || [], "league"));
 
-    closeLeagueSettingModal();
+    closeModal("isOpenLeagueSettingModal");
   };
 
   const handleSave = async () => {
@@ -100,7 +103,7 @@ const LeagueSettingModal: React.FunctionComponent<
       queryKey: [leagueQueryKey.saveLeagueQuery],
     });
     setSaveLoading(false);
-    closeLeagueSettingModal();
+    closeModal("isOpenLeagueSettingModal");
   };
 
   useEffect(() => {
@@ -113,7 +116,7 @@ const LeagueSettingModal: React.FunctionComponent<
         title=""
         desc=""
         isOpen={isOpenLeagueSettingModal}
-        onClose={closeLeagueSettingModal}
+        onClose={() => closeModal("isOpenLeagueSettingModal")}
       >
         <div
           className={clsx(
@@ -134,7 +137,7 @@ const LeagueSettingModal: React.FunctionComponent<
         title=""
         desc=""
         isOpen={isOpenLeagueSettingModal}
-        onClose={closeLeagueSettingModal}
+        onClose={() => closeModal("isOpenLeagueSettingModal")}
       >
         <div
           className={clsx(
@@ -154,7 +157,7 @@ const LeagueSettingModal: React.FunctionComponent<
       title=""
       desc=""
       isOpen={isOpenLeagueSettingModal}
-      onClose={closeLeagueSettingModal}
+      onClose={() => closeModal("isOpenLeagueSettingModal")}
     >
       <div
         onClick={(e) => e.stopPropagation()}

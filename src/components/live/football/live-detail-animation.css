@@ -8,8 +8,8 @@
   opacity: 1;
   transform: translateX(0);
   transition:
-    opacity 300ms,
-    transform 500ms;
+    opacity 500ms,
+    transform 300ms;
 }
 
 .live-detail-exit {
@@ -21,6 +21,6 @@
   transform: scale(0.9);
   transform: translateY(-50px);
   transition:
-    opacity 300ms,
-    transform 500ms;
+    opacity 500ms,
+    transform 300ms;
 }

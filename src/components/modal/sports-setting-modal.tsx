@@ -1,7 +1,6 @@
 import { useState } from "react";
 import clsx from "clsx";
 
-import useModalsStore from "../../stores/modals-store";
 import useThemeStore from "../../stores/theme-store";
 
 import Modal from "./modal";
@@ -21,6 +20,7 @@ import {
 } from "hooks/services/apis/sports";
 import { useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { useModalActions, useModals } from "stores/modals-store";
 
 interface ISportsSettingModalProps {}
 
@@ -29,8 +29,10 @@ const SportsSettingModal: React.FunctionComponent<
 > = () => {
   const queryClient = useQueryClient();
 
-  const { isOpenSportsSettingModal, closeSportsSettingModal } =
-    useModalsStore();
+  const isOpenSportsSettingModal = useModals(
+    (state) => state.isOpenSportsSettingModal,
+  );
+  const { closeModal } = useModalActions();
 
   const [saveLoading, setSaveLoading] = useState(false);
   const { theme } = useThemeStore();
@@ -79,12 +81,12 @@ const SportsSettingModal: React.FunctionComponent<
     });
 
     setSaveLoading(false);
-    closeSportsSettingModal();
+    closeModal("isOpenSportsSettingModal");
     toast.success("🎉 Success sports setting! 🎉");
   };
 
   const handleCancle = () => {
-    closeSportsSettingModal();
+    closeModal("isOpenSportsSettingModal");
   };
 
   return (
@@ -92,7 +94,7 @@ const SportsSettingModal: React.FunctionComponent<
       title=""
       desc=""
       isOpen={isOpenSportsSettingModal}
-      onClose={() => closeSportsSettingModal()}
+      onClose={() => closeModal("isOpenSportsSettingModal")}
     >
       {isLoading ? (
         <ComponentStatusContainer height={"500"} state="loading">

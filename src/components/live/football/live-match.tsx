@@ -30,9 +30,6 @@ const LiveMatch: React.FunctionComponent<ILiveMatchProps> = ({ liveInfo }) => {
   const [isOpen, setIsOpen] = useState(false);
   const nodeRef = useRef(null);
 
-  // data fetch MatchInfo
-  const matchId = liveInfo.fixture.id;
-
   return (
     <li>
       <div
@@ -85,7 +82,7 @@ const LiveMatch: React.FunctionComponent<ILiveMatchProps> = ({ liveInfo }) => {
           classNames={"live-detail"}
           unmountOnExit
         >
-          <LiveDetail ref={nodeRef} />
+          <LiveDetail />
         </CSSTransition>
       </div>
     </li>

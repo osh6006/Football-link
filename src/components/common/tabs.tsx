@@ -10,11 +10,20 @@ const TabsContext = createContext<ITabsContextProps | undefined>(undefined);
 
 interface ITabContainerProps {
   children: ReactNode;
+  className?: string;
 }
 
-const TabContainer: React.FC<ITabContainerProps> = ({ children }) => {
+const TabContainer: React.FC<ITabContainerProps> = ({
+  children,
+  className,
+}) => {
   return (
-    <div className="flex items-center gap-x-4 overflow-hidden rounded-md ">
+    <div
+      className={clsx(
+        "flex items-center overflow-hidden rounded-md",
+        className,
+      )}
+    >
       {children}
     </div>
   );
@@ -23,9 +32,10 @@ const TabContainer: React.FC<ITabContainerProps> = ({ children }) => {
 interface ITabProps {
   id: string;
   children: ReactNode;
+  className?: string;
 }
 
-const Tab: React.FC<ITabProps> = ({ id, children }) => {
+const Tab: React.FC<ITabProps> = ({ id, children, className }) => {
   const { activeTab, selectTab } = useContext(TabsContext)!;
   const isActive = activeTab === id;
 
@@ -33,7 +43,8 @@ const Tab: React.FC<ITabProps> = ({ id, children }) => {
     <button
       onClick={() => selectTab(id)}
       className={clsx(
-        "flex-1 border-b-2 py-2 transition-colors hover:border-Main hover:text-Main",
+        "flex-1  py-2 transition-all hover:border-Main hover:text-Main",
+        className && className,
         isActive && "border-Main font-semibold text-Main",
       )}
     >

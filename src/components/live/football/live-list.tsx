@@ -1,8 +1,10 @@
-import { useLiveMathesQuery } from "hooks/services/quries/use-football-query";
-import useLeagueStore from "stores/league-store";
 import LiveMatch from "./live-match";
-import ComponentStatusContainer from "components/layouts/component-status-container";
+
+import useLeagueStore from "stores/league-store";
+import { useLiveMathesQuery } from "hooks/services/quries/use-football-query";
+
 import Loading from "components/common/loading";
+import ComponentStatusContainer from "components/layouts/component-status-container";
 
 interface ILiveListProps {}
 
@@ -39,6 +41,7 @@ const LiveList: React.FunctionComponent<ILiveListProps> = () => {
     <ul className="space-y-2">
       {[1, 2, 3, 4, 5, 6].map((el) => (
         <LiveMatch
+          key={el}
           liveInfo={{
             fixture: {
               id: 1159349,

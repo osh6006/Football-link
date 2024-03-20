@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
 import RootContainer from "./components/layouts/root-container";
+import { Helmet } from "react-helmet-async";
 
 function App() {
   const { selectedLeague } = useLeagueStore();

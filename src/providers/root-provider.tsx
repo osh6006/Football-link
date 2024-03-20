@@ -1,5 +1,6 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ModalProviders from "./modal-providers";
+import { HelmetProvider } from "react-helmet-async";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 interface IRootProviderProps {
   children: React.ReactNode;
@@ -12,10 +13,12 @@ const RootProvider: React.FunctionComponent<IRootProviderProps> = ({
   children,
 }) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ModalProviders />
-      {children}
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <ModalProviders />
+        {children}
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 };
 

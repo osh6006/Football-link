@@ -1,35 +1,45 @@
-import { create } from "zustand";
+import { SelectorHook, createStore } from "./root-store";
 
-interface IModalsState {
+type IModalName = "isOpenSportsSettingModal" | "isOpenLeagueSettingModal";
+
+interface IModalState {
   isOpenSportsSettingModal: boolean;
-  openSportsSettingModal: () => void;
-  closeSportsSettingModal: () => void;
-
   isOpenLeagueSettingModal: boolean;
-  openLeagueSettingModal: () => void;
-  closeLeagueSettingModal: () => void;
+
+  actions: {
+    openModal: (name: IModalName) => void;
+    closeModal: (name: IModalName) => void;
+  };
 }
 
-const useModalsStore = create<IModalsState>()((set) => ({
+const useModalStore = createStore<IModalState>((set) => ({
   isOpenSportsSettingModal: false,
-  openSportsSettingModal: () =>
-    set(() => {
-      return { isOpenSportsSettingModal: true };
-    }),
-  closeSportsSettingModal: () =>
-    set(() => {
-      return { isOpenSportsSettingModal: false };
-    }),
-
   isOpenLeagueSettingModal: false,
-  openLeagueSettingModal: () =>
-    set(() => {
-      return { isOpenLeagueSettingModal: true };
-    }),
-  closeLeagueSettingModal: () =>
-    set(() => {
-      return { isOpenLeagueSettingModal: false };
-    }),
+  actions: {
+    openModal: (name) => {
+      set((state) => {
+        return {
+          ...state,
+          [name]: true,
+        };
+      });
+    },
+    closeModal: (name) => {
+      set((state) => {
+        return {
+          ...state,
+          [name]: false,
+        };
+      });
+    },
+  },
 }));
 
-export default useModalsStore;
+// 여기서 새로운 Hook을 만들고, SelectorHook 타입으로 지정해줍니다.
+export const useModals: SelectorHook<
+  IModalState,
+  "isOpenSportsSettingModal"
+> = (selector = (state: IModalState) => state.isOpenSportsSettingModal) =>
+  useModalStore(selector);
+
+export const useModalActions = () => useModalStore((state) => state.actions);
