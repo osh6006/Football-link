@@ -1,4 +1,4 @@
-import useThemeStore from "stores/theme-store";
+import { useTheme } from "stores/theme-store";
 import { componentBackgroundChange } from "utils/util";
 
 interface IScheduleContainerProps {
@@ -8,7 +8,7 @@ interface IScheduleContainerProps {
 const ScheduleContainer: React.FunctionComponent<IScheduleContainerProps> = ({
   children,
 }) => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
 
   return (
     <div

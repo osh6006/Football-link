@@ -1,22 +1,22 @@
 import clsx from "clsx";
 
-import { LazyLoadComponent } from "react-lazy-load-image-component";
-import "react-multi-carousel/lib/styles.css";
-
 import Loading from "components/common/loading";
-
-import useLeagueStore from "stores/league-store";
-import useThemeStore from "stores/theme-store";
-import useSportStore from "stores/sports-store";
-import { useBannerQuery } from "hooks/services/quries/use-banner-query";
 import Carousel from "react-multi-carousel";
+
+import { useTheme } from "stores/theme-store";
+import useSportStore from "stores/sports-store";
+import useLeagueStore from "stores/league-store";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
+import { useBannerQuery } from "hooks/services/quries/use-banner-query";
+
+import "react-multi-carousel/lib/styles.css";
 
 interface IBannerProps {}
 
 const Banner: React.FunctionComponent<IBannerProps> = () => {
   const { selectedSport } = useSportStore();
   const { selectedLeague } = useLeagueStore();
-  const { theme } = useThemeStore();
+  const theme = useTheme();
 
   const {
     data: banners,

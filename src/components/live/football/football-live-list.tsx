@@ -6,9 +6,11 @@ import { useLiveMathesQuery } from "hooks/services/quries/use-football-query";
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
-interface ILiveListProps {}
+interface IFootballLiveListProps {}
 
-const LiveList: React.FunctionComponent<ILiveListProps> = () => {
+const FootballLiveList: React.FunctionComponent<
+  IFootballLiveListProps
+> = () => {
   const { selectedLeague } = useLeagueStore();
 
   // const { data, isLoading, isError } = useLiveMathesQuery(
@@ -164,4 +166,4 @@ const LiveList: React.FunctionComponent<ILiveListProps> = () => {
   );
 };
 
-export default LiveList;
+export default FootballLiveList;

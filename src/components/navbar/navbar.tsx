@@ -1,18 +1,18 @@
 import clsx from "clsx";
 import { useState } from "react";
 
-import useAuth from "../../hooks/use-auth";
-import usePath from "../../hooks/use-path";
-import useThemeStore from "../../stores/theme-store";
-
 import Button from "../common/button";
 import AvatarMenu from "./avatar-menu";
 import Logo from "components/common/logo";
 import { MenuIcon, SearchIcon } from "lucide-react";
 import MobileSideBar from "components/sidebar/mobile-side-bar";
 
+import useAuth from "../../hooks/use-auth";
+import usePath from "../../hooks/use-path";
+import { useTheme } from "stores/theme-store";
+
 const Navbar = () => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
   const { realPath } = usePath();
   const { signOut, user } = useAuth();
 

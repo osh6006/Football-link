@@ -1,13 +1,12 @@
 import clsx from "clsx";
+import { componentBackgroundChange } from "utils/util";
 
 import Avatar from "components/common/avatar";
 import Loading from "components/common/loading";
 
-import useThemeStore from "stores/theme-store";
-import { useTeamRankQuery } from "hooks/services/quries/use-football-query";
-
-import { componentBackgroundChange } from "utils/util";
+import { useTheme } from "stores/theme-store";
 import { useNavigate } from "react-router-dom";
+import { useTeamRankQuery } from "hooks/services/quries/use-football-query";
 
 interface ITeamRankTableProps {
   leagueId: string;
@@ -18,7 +17,7 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
   leagueId,
   season,
 }) => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
   const nav = useNavigate();
 
   const { data, isLoading, isError, isSuccess } = useTeamRankQuery(

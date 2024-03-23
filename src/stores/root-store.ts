@@ -1,5 +1,5 @@
-import { create, StateCreator } from "zustand";
 import { devtools } from "zustand/middleware";
+import { create, StateCreator } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
 // 스토어를 만들 때 미들웨어를 자동으로 사용하기
@@ -7,10 +7,10 @@ export const createStore = <T extends object>(
   initializer: StateCreator<
     T,
     [["zustand/devtools", never], ["zustand/immer", never]]
-  >
+  >,
 ) =>
   create<T, [["zustand/devtools", never], ["zustand/immer", never]]>(
-    devtools(immer(initializer))
+    devtools(immer(initializer)),
   );
 
 /**

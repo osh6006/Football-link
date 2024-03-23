@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import useThemeStore from "stores/theme-store";
+import { useTheme } from "stores/theme-store";
 
 interface IErrorContainerProps {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ interface IErrorContainerProps {
 const ErrorContainer: React.FunctionComponent<IErrorContainerProps> = ({
   children,
 }) => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
   return (
     <main
       className={clsx(

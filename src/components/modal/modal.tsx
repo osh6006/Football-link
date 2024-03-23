@@ -1,9 +1,9 @@
+import clsx from "clsx";
 import { useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 
 import "./modal.css";
-import useThemeStore from "../../stores/theme-store";
-import clsx from "clsx";
+import { useTheme } from "stores/theme-store";
 
 interface IModalProps {
   title: string;
@@ -22,8 +22,8 @@ const Modal: React.FunctionComponent<IModalProps> = ({
   onConfirm,
   children,
 }) => {
+  const theme = useTheme();
   const nodeRef = useRef(null);
-  const { theme } = useThemeStore();
 
   return (
     <>

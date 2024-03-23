@@ -1,4 +1,4 @@
-import useThemeStore from "stores/theme-store";
+import { useTheme } from "stores/theme-store";
 import { componentBackgroundChange } from "utils/util";
 
 interface ITeamRootContainerProps {
@@ -8,7 +8,7 @@ interface ITeamRootContainerProps {
 const TeamRootContainer: React.FunctionComponent<ITeamRootContainerProps> = ({
   children,
 }) => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
   return (
     <div
       className={componentBackgroundChange(

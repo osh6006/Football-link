@@ -1,18 +1,16 @@
 import clsx from "clsx";
-import LiveDetail from "./foot-live-detail";
+import dayjs from "dayjs";
 import { useRef, useState } from "react";
-
-import useThemeStore from "stores/theme-store";
-import { CSSTransition } from "react-transition-group";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { rapidFootballLiveMatchResponse } from "types/football";
 
 import { ChevronDown } from "lucide-react";
+import { useTheme } from "stores/theme-store";
+import FootballLiveDetail from "./foot-live-detail";
+import { CSSTransition } from "react-transition-group";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import "./live-detail-animation.css";
 
-import dayjs from "dayjs";
-import FootballLiveDetail from "./foot-live-detail";
 dayjs.locale("ko");
 
 interface IFootballLiveHeaderProps {
@@ -31,7 +29,7 @@ const TeamInfo = ({ imageUrl, name }: { imageUrl: string; name: string }) => {
 const FootballLiveHeader: React.FunctionComponent<IFootballLiveHeaderProps> = ({
   liveInfo,
 }) => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const nodeRef = useRef(null);
 

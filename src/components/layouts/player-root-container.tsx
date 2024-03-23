@@ -1,4 +1,4 @@
-import useThemeStore from "stores/theme-store";
+import { useTheme } from "stores/theme-store";
 import { componentBackgroundChange } from "utils/util";
 
 interface IPlayerRootContainerProps {
@@ -8,7 +8,8 @@ interface IPlayerRootContainerProps {
 const PlayerRootContainer: React.FunctionComponent<
   IPlayerRootContainerProps
 > = ({ children }) => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
+
   return (
     <div
       className={componentBackgroundChange(

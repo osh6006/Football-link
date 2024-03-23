@@ -1,11 +1,13 @@
 import clsx from "clsx";
+import { componentBackgroundChange } from "utils/util";
+
 import Avatar from "components/common/avatar";
 import Loading from "components/common/loading";
-import { useTopPlayerQuery } from "hooks/services/quries/use-football-query";
+
+import { useTheme } from "stores/theme-store";
 import { useNavigate } from "react-router-dom";
 import useLeagueStore from "stores/league-store";
-import useThemeStore from "stores/theme-store";
-import { componentBackgroundChange } from "utils/util";
+import { useTopPlayerQuery } from "hooks/services/quries/use-football-query";
 
 interface IPlayerRankTableProps {
   type: "assist" | "goal";
@@ -21,10 +23,11 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
   type,
   distance,
 }) => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
+  const nav = useNavigate();
+
   const { selectedLeague } = useLeagueStore();
   const season = new Date().getFullYear() - 1 + "";
-  const nav = useNavigate();
 
   const {
     data: topscorers,

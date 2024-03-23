@@ -1,26 +1,26 @@
-import { useState } from "react";
 import clsx from "clsx";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import {
+  deleteUserSupabaseSports,
+  insertAllSupabaseSports,
+} from "hooks/services/apis/sports";
 
-import useThemeStore from "../../stores/theme-store";
+import { ISport } from "types";
 
 import Modal from "./modal";
+import Loading from "components/common/loading";
 import Button from "components/common/button";
+
 import {
   sportsQueryKey,
   useServerSportsQuery,
   useSportsQuery,
 } from "hooks/services/quries/use-sports-query";
 import ComponentStatusContainer from "components/layouts/component-status-container";
-import Loading from "components/common/loading";
-
-import { ISport } from "types";
-import {
-  deleteUserSupabaseSports,
-  insertAllSupabaseSports,
-} from "hooks/services/apis/sports";
 import { useQueryClient } from "@tanstack/react-query";
-import toast from "react-hot-toast";
 import { useModalActions, useModals } from "stores/modals-store";
+import { useTheme } from "stores/theme-store";
 
 interface ISportsSettingModalProps {}
 
@@ -35,7 +35,7 @@ const SportsSettingModal: React.FunctionComponent<
   const { closeModal } = useModalActions();
 
   const [saveLoading, setSaveLoading] = useState(false);
-  const { theme } = useThemeStore();
+  const theme = useTheme();
 
   // 내가 선택한 스포츠 리그
   const { data: selectedSports, isLoading, isError } = useSportsQuery();

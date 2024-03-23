@@ -1,12 +1,12 @@
 import { ThemeColor } from "types";
-import { create } from "zustand";
+import { SelectorHook, createStore } from "./root-store";
 
-interface IThemeStore {
+interface IThemeState {
   theme: ThemeColor;
   setTheme: (mode: ThemeColor) => void;
 }
 
-export const useThemeStore = create<IThemeStore>()((set) => ({
+const useThemeStore = createStore<IThemeState>((set) => ({
   theme: (localStorage.getItem("theme") as ThemeColor) || "light",
   setTheme: (mode: ThemeColor) =>
     set(() => {
@@ -15,4 +15,8 @@ export const useThemeStore = create<IThemeStore>()((set) => ({
     }),
 }));
 
-export default useThemeStore;
+export const useTheme: SelectorHook<IThemeState, "theme"> = (
+  selector = (state: IThemeState) => state.theme,
+) => useThemeStore(selector);
+
+export const useThemeActions = () => useThemeStore((state) => state.setTheme);

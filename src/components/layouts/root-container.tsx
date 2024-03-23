@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import useThemeStore from "../../stores/theme-store";
+import { useTheme } from "stores/theme-store";
 
 interface IRootContainerProps {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ interface IRootContainerProps {
 const RootContainer: React.FunctionComponent<IRootContainerProps> = ({
   children,
 }) => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
 
   return (
     <div

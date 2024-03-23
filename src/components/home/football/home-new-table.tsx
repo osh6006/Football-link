@@ -1,19 +1,20 @@
 import { componentBackgroundChange } from "utils/util";
 
-import useThemeStore from "stores/theme-store";
+import Carousel from "react-multi-carousel";
+import HomeNewsCard from "../home-news-card";
+import Loading from "components/common/loading";
+import ComponentStatusContainer from "components/layouts/component-status-container";
+
+import { useTheme } from "stores/theme-store";
 import useLeagueStore from "stores/league-store";
 import { useGlobalNewsQuery } from "hooks/services/quries/use-football-query";
 
-import Loading from "components/common/loading";
-import ComponentStatusContainer from "components/layouts/component-status-container";
-import HomeNewsCard from "../home-news-card";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 interface IHomeNewTableProps {}
 
 const HomeNewTable: React.FunctionComponent<IHomeNewTableProps> = () => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
   const { selectedLeague } = useLeagueStore();
   const { data, isLoading, isError } = useGlobalNewsQuery(
     selectedLeague?.name!,

@@ -1,10 +1,12 @@
-import useThemeStore from "stores/theme-store";
+import { useTheme } from "stores/theme-store";
+import useSportStore from "stores/sports-store";
 import { componentBackgroundChange } from "utils/util";
 
 interface IPredictPageProps {}
 
 const PredictPage: React.FunctionComponent<IPredictPageProps> = () => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
+  const { selectedSport } = useSportStore();
 
   return (
     <main

@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useSportsQuery } from "../../hooks/services/quries/use-sports-query";
 import { useSaveLeagueQuery } from "hooks/services/quries/use-league-query";
 
-import useThemeStore from "../../stores/theme-store";
 import useSportStore from "../../stores/sports-store";
 import useLeagueStore from "stores/league-store";
 
@@ -15,6 +14,7 @@ import SideMenuList from "./side-menu-list";
 import SelectBox from "../navbar/select-box";
 import ThemeSwitch from "../navbar/theme-switch";
 import { useModalActions } from "stores/modals-store";
+import { useTheme } from "stores/theme-store";
 
 interface ISidebarProps {
   isMobile?: boolean;
@@ -25,7 +25,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = ({
   isMobile,
   onClose,
 }) => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
 
   const { selectSport, selectedSport } = useSportStore();
   const { data: savedSports, isLoading: isSavedSportsLoading } =
@@ -79,31 +79,15 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = ({
       <div className="px-2">
         {/* Sports Selector */}
         <p className="my-2 text-sm uppercase tracking-wider text-Main">
-          Sports
+          Country
         </p>
-        <SelectBox
-          type="sports"
-          isLoading={isSavedSportsLoading}
-          items={savedSports}
-          setItem={selectSport}
-          icon={selectedSport?.icon}
-          name={selectedSport?.name}
-          moreAction={() => openModal("isOpenSportsSettingModal")}
-        />
+        <SelectBox />
 
         {/* league Selector */}
         <p className="my-2 text-sm uppercase tracking-wider text-Main">
           Leagues
         </p>
-        <SelectBox
-          type="league"
-          isLoading={isSaveLeaguesLoading}
-          items={saveLeagues}
-          setItem={selectLeague}
-          icon={selectedLeague?.logo}
-          name={selectedLeague?.name}
-          moreAction={() => openModal("isOpenLeagueSettingModal")}
-        />
+        <SelectBox />
       </div>
 
       <p className="mx-2 my-2 text-sm uppercase tracking-wider text-Main">

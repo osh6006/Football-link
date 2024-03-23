@@ -1,13 +1,12 @@
+import { useTheme } from "stores/theme-store";
 import useSportStore from "stores/sports-store";
-import useThemeStore from "stores/theme-store";
-
-import LiveList from "components/live/football/live-list";
 import { componentBackgroundChange } from "utils/util";
+import FootballLiveList from "components/live/football/football-live-list";
 
 interface ILivePageProps {}
 
 const LivePage: React.FunctionComponent<ILivePageProps> = () => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
   const { selectedSport } = useSportStore();
 
   return (
@@ -17,7 +16,7 @@ const LivePage: React.FunctionComponent<ILivePageProps> = () => {
         "m-4 max-w-[1280px] rounded-xl p-8 text-MediumGrey shadow-md xl:mx-auto",
       )}
     >
-      {selectedSport?.value === "foot-ball" ? <LiveList /> : null}
+      {selectedSport?.value === "foot-ball" ? <FootballLiveList /> : null}
     </main>
   );
 };

@@ -32,11 +32,6 @@ const CustomRoutes = () => {
     {
       path: "/",
       element: <App />,
-      loader: async () => {
-        const { auth, hasSports } = await checkAuthSports();
-        if (!auth || !hasSports) return redirect("/auth");
-        return null;
-      },
       errorElement: <ErrorPage />,
       children: [
         {
@@ -128,11 +123,6 @@ const CustomRoutes = () => {
 
     {
       path: "/auth",
-      loader: async () => {
-        const { auth, hasSports } = await checkAuthSports();
-        if (auth && hasSports) return redirect("/");
-        return null;
-      },
       element: <AuthPage />,
       errorElement: <ErrorPage />,
     },

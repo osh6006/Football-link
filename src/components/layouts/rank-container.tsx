@@ -1,4 +1,4 @@
-import useThemeStore from "stores/theme-store";
+import { useTheme } from "stores/theme-store";
 import { componentBackgroundChange } from "utils/util";
 
 interface IRankContainerProps {
@@ -8,7 +8,7 @@ interface IRankContainerProps {
 const RankContainer: React.FunctionComponent<IRankContainerProps> = ({
   children,
 }) => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
 
   return (
     <div

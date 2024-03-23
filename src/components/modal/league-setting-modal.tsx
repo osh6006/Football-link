@@ -1,30 +1,26 @@
-import { useEffect, useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
-
 import clsx from "clsx";
+import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
+import { ISupabaseLeague } from "types/football/league";
 import { flattenedArray, isIncludeInArray } from "utils/util";
+import {
+  deleteAllSupabaseLeague,
+  insertAllSupabaseLeague,
+} from "hooks/services/apis/league";
 
-import useThemeStore from "../../stores/theme-store";
-import useSportStore from "stores/sports-store";
+import Modal from "./modal";
+import Button from "../common/button";
+import Loading from "components/common/loading";
+import MultiSelect from "components/auth/multi-select";
 
 import {
   leagueQueryKey,
   useLeagueQuery,
   useSaveLeagueQuery,
 } from "hooks/services/quries/use-league-query";
-
-import Modal from "./modal";
-import MultiSelect from "components/auth/multi-select";
-import Loading from "components/common/loading";
-
-import { ISupabaseLeague } from "types/football/league";
-import {
-  deleteAllSupabaseLeague,
-  insertAllSupabaseLeague,
-} from "hooks/services/apis/league";
-
-import Button from "../common/button";
-import toast from "react-hot-toast";
+import useSportStore from "stores/sports-store";
+import { useQueryClient } from "@tanstack/react-query";
+import { useTheme } from "stores/theme-store";
 import { useModalActions, useModals } from "stores/modals-store";
 
 interface ILeagueSettingModalProps {}
@@ -39,7 +35,7 @@ const LeagueSettingModal: React.FunctionComponent<
 
   const { closeModal } = useModalActions();
 
-  const { theme } = useThemeStore();
+  const theme = useTheme();
   const { selectedSport } = useSportStore();
 
   const {

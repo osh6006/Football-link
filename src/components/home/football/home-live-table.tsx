@@ -1,18 +1,19 @@
 import clsx from "clsx";
 import { componentBackgroundChange } from "utils/util";
 
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import Loading from "components/common/loading";
-import "react-lazy-load-image-component/src/effects/opacity.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
+import { useTheme } from "stores/theme-store";
 import useLeagueStore from "stores/league-store";
-import useThemeStore from "stores/theme-store";
 import { useLiveMathesQuery } from "hooks/services/quries/use-football-query";
+
+import "react-lazy-load-image-component/src/effects/opacity.css";
 
 interface IHomeLiveTableProps {}
 
 const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
-  const { theme } = useThemeStore();
+  const theme = useTheme();
   const { selectedLeague } = useLeagueStore();
 
   const {
