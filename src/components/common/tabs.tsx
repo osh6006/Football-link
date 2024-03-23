@@ -1,19 +1,18 @@
 import clsx from "clsx";
-import React, { createContext, useContext, useState, ReactNode } from "react";
-
-interface ITabsContextProps {
-  activeTab: string | null;
-  selectTab: (tab: string) => void;
-}
-
-const TabsContext = createContext<ITabsContextProps | undefined>(undefined);
+import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  matchRoutes,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 
 interface ITabContainerProps {
   children: ReactNode;
   className?: string;
 }
 
-const TabContainer: React.FC<ITabContainerProps> = ({
+const TabContainer: React.FunctionComponent<ITabContainerProps> = ({
   children,
   className,
 }) => {
@@ -35,13 +34,22 @@ interface ITabProps {
   className?: string;
 }
 
-const Tab: React.FC<ITabProps> = ({ id, children, className }) => {
+const Tab: React.FunctionComponent<ITabProps> = ({
+  id,
+  children,
+  className,
+}) => {
+  const nav = useNavigate();
+  const { pathname } = useLocation();
   const { activeTab, selectTab } = useContext(TabsContext)!;
   const isActive = activeTab === id;
 
   return (
     <button
-      onClick={() => selectTab(id)}
+      onClick={() => {
+        selectTab(id);
+        nav(`${pathname}?tabs=${id}`);
+      }}
       className={clsx(
         "flex-1  py-2 transition-all hover:border-Main hover:text-Main",
         className && className,
@@ -59,7 +67,10 @@ interface ITabPanelProps {
   children: ReactNode;
 }
 
-const TabPanel: React.FC<ITabPanelProps> = ({ id, children }) => {
+const TabPanel: React.FunctionComponent<ITabPanelProps> = ({
+  id,
+  children,
+}) => {
   const { activeTab } = useContext(TabsContext)!;
   return activeTab === id ? <div>{children}</div> : null;
 };
@@ -70,11 +81,18 @@ interface ITabsProps {
   defaultTab?: string;
 }
 
-interface TabsComponent extends React.FC<ITabsProps> {
-  Tab: React.FC<ITabProps>;
-  TabContainer: React.FC<ITabContainerProps>;
-  TabPanel: React.FC<ITabPanelProps>;
+interface TabsComponent extends React.FunctionComponent<ITabsProps> {
+  Tab: React.FunctionComponent<ITabProps>;
+  TabPanel: React.FunctionComponent<ITabPanelProps>;
+  TabContainer: React.FunctionComponent<ITabContainerProps>;
 }
+
+interface ITabsContextProps {
+  activeTab: string | null;
+  selectTab: (tab: string) => void;
+}
+
+const TabsContext = createContext<ITabsContextProps | undefined>(undefined);
 
 const Tabs: TabsComponent = ({ children, defaultTab }) => {
   const [activeTab, setActiveTab] = useState<string | null>(defaultTab || null);
@@ -87,7 +105,6 @@ const Tabs: TabsComponent = ({ children, defaultTab }) => {
   );
 };
 
-// Tabs 컴포넌트를 내보냅니다.
 Tabs.Tab = Tab;
 Tabs.TabPanel = TabPanel;
 Tabs.TabContainer = TabContainer;

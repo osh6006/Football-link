@@ -1,6 +1,6 @@
-import LiveMatch from "./live-match";
-
 import useLeagueStore from "stores/league-store";
+import FootballLiveHeader from "./football-live-header";
+
 import { useLiveMathesQuery } from "hooks/services/quries/use-football-query";
 
 import Loading from "components/common/loading";
@@ -21,10 +21,11 @@ const LiveList: React.FunctionComponent<ILiveListProps> = () => {
   //       <Loading size="lg" />
   //     </ComponentStatusContainer>
   //   );
+
   // if (isError)
   //   return (
   //     <ComponentStatusContainer state="error" height={750}>
-  //       <h1>Something Error! 🤮 </h1>
+  //       <h1>Something Error! 🤮</h1>
   //     </ComponentStatusContainer>
   //   );
 
@@ -40,7 +41,7 @@ const LiveList: React.FunctionComponent<ILiveListProps> = () => {
   return (
     <ul className="space-y-2">
       {[1, 2, 3, 4, 5, 6].map((el) => (
-        <LiveMatch
+        <FootballLiveHeader
           key={el}
           liveInfo={{
             fixture: {
@@ -118,8 +119,30 @@ const LiveList: React.FunctionComponent<ILiveListProps> = () => {
                 },
                 team: {
                   id: 21009,
-                  name: "AKAS",
-                  logo: "https://media.api-sports.io/football/teams/21009.png",
+                  name: "CD Real Sociedad",
+                  logo: "https://media.api-sports.io/football/teams/463.png",
+                },
+                player: {
+                  id: null,
+                  name: "D. Bitusupov",
+                },
+                assist: {
+                  id: null,
+                  name: null,
+                },
+                type: "Goal",
+                detail: "Normal Goal",
+                comments: null,
+              },
+              {
+                time: {
+                  elapsed: 14,
+                  extra: null,
+                },
+                team: {
+                  id: 21009,
+                  name: "Victoria",
+                  logo: "https://media.api-sports.io/football/teams/463.png",
                 },
                 player: {
                   id: null,

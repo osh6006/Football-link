@@ -1,18 +1,21 @@
-import { useRef, useState } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { CSSTransition } from "react-transition-group";
-import { rapidFootballLiveMatchResponse } from "types/football";
-import LiveDetail from "./live-detail";
 import clsx from "clsx";
+import LiveDetail from "./foot-live-detail";
+import { useRef, useState } from "react";
+
 import useThemeStore from "stores/theme-store";
+import { CSSTransition } from "react-transition-group";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { rapidFootballLiveMatchResponse } from "types/football";
+
 import { ChevronDown } from "lucide-react";
 
 import "./live-detail-animation.css";
 
 import dayjs from "dayjs";
+import FootballLiveDetail from "./foot-live-detail";
 dayjs.locale("ko");
 
-interface ILiveMatchProps {
+interface IFootballLiveHeaderProps {
   liveInfo: rapidFootballLiveMatchResponse;
 }
 
@@ -25,7 +28,9 @@ const TeamInfo = ({ imageUrl, name }: { imageUrl: string; name: string }) => {
   );
 };
 
-const LiveMatch: React.FunctionComponent<ILiveMatchProps> = ({ liveInfo }) => {
+const FootballLiveHeader: React.FunctionComponent<IFootballLiveHeaderProps> = ({
+  liveInfo,
+}) => {
   const { theme } = useThemeStore();
   const [isOpen, setIsOpen] = useState(false);
   const nodeRef = useRef(null);
@@ -82,11 +87,11 @@ const LiveMatch: React.FunctionComponent<ILiveMatchProps> = ({ liveInfo }) => {
           classNames={"live-detail"}
           unmountOnExit
         >
-          <LiveDetail />
+          <FootballLiveDetail liveInfo={liveInfo} />
         </CSSTransition>
       </div>
     </li>
   );
 };
 
-export default LiveMatch;
+export default FootballLiveHeader;
