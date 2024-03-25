@@ -6,10 +6,10 @@ import Loading from "components/common/loading";
 
 import { useTheme } from "stores/theme-store";
 import { useNavigate } from "react-router-dom";
-import useLeagueStore from "stores/league-store-te";
-import { useTopPlayerQuery } from "hooks/services/quries/use-football-query";
+import { useLeagueStore } from "stores/league-store";
+import { useTopPlayerQuery } from "hooks/services/quries/use-rank-query";
 
-interface IPlayerRankTableProps {
+interface IHomePlayerRankTableProps {
   type: "assist" | "goal";
   distance?: "short" | "long";
 }
@@ -19,15 +19,13 @@ const rankType = {
   assist: "topassists",
 };
 
-const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
-  type,
-  distance,
-}) => {
+const HomePlayerRankTable: React.FunctionComponent<
+  IHomePlayerRankTableProps
+> = ({ type, distance }) => {
   const theme = useTheme();
   const nav = useNavigate();
 
-  const { selectedLeague } = useLeagueStore();
-  const season = new Date().getFullYear() - 1 + "";
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 
   const {
     data: topscorers,
@@ -35,8 +33,8 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
     isError,
   } = useTopPlayerQuery(
     rankType[type],
-    season,
-    selectedLeague?.rapid_football_league_id!,
+    selectedLeague?.season!,
+    selectedLeague?.leagueId!,
   );
 
   if (isLoading) {
@@ -57,10 +55,10 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
       <div
         className={componentBackgroundChange(
           theme,
-          "flex min-h-[350px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
+          "flex min-h-[350px] w-full items-center justify-center rounded-md p-2 text-xl font-bold shadow-md",
         )}
       >
-        데이터를 불러오는 도중 오류가 발생했어요 🤮
+        An error occurred while trying to fetch data 🤮
       </div>
     );
   }
@@ -98,7 +96,7 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
                 className="cursor-pointer transition-colors hover:bg-MediumGrey hover:text-White"
                 onClick={() =>
                   nav(
-                    `/football/${selectedLeague?.rapid_football_league_id}/player/${item.player.id}/info`,
+                    `/football/${selectedLeague?.leagueId}/player/${item.player.id}/info`,
                   )
                 }
               >
@@ -130,4 +128,4 @@ const PlayerRankTable: React.FunctionComponent<IPlayerRankTableProps> = ({
   );
 };
 
-export default PlayerRankTable;
+export default HomePlayerRankTable;

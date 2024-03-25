@@ -10,11 +10,9 @@ import "react-lazy-load-image-component/src/effects/opacity.css";
 
 import { useState } from "react";
 import useLeagueStore from "stores/league-store-te";
-import {
-  useGlobalNewsQuery,
-  useLocalNewsQuery,
-} from "hooks/services/quries/use-football-query";
+import { useLocalNewsQuery } from "hooks/services/quries/use-football-query";
 import { useInfiniteScroll } from "hooks/use-infinite-scroll";
+import { useGlobalNewsQuery } from "hooks/services/quries/use-news-query";
 
 interface INewsListProps {
   type: "local" | "global";

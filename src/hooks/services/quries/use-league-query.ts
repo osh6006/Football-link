@@ -42,6 +42,7 @@ export const useLeagueQueryComboBox = (countryCode?: string) => {
           name: el.league.name,
           leagueId: el.league.id,
           flag: el.league.logo,
+          season: el.seasons.at(-1)?.year || new Date().getFullYear() - 1,
         };
       });
 

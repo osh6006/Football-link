@@ -5,9 +5,9 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 
-import { useGlobalNewsQuery } from "hooks/services/quries/use-football-query";
 import { usePlayerRoot } from "./player-root";
 import { useInfiniteScroll } from "hooks/use-infinite-scroll";
+import { useGlobalNewsQuery } from "hooks/services/quries/use-news-query";
 
 interface IPlayerNewsProps {}
 

@@ -6,23 +6,21 @@ import Loading from "components/common/loading";
 
 import { useTheme } from "stores/theme-store";
 import { useNavigate } from "react-router-dom";
-import { useTeamRankQuery } from "hooks/services/quries/use-football-query";
+import { useLeagueStore } from "stores/league-store";
+import { useTeamRankQuery } from "hooks/services/quries/use-rank-query";
 
-interface ITeamRankTableProps {
-  leagueId: string;
-  season: string;
-}
+interface IHomeTeamRankTableProps {}
 
-const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
-  leagueId,
-  season,
-}) => {
+const HomeTeamRankTable: React.FunctionComponent<
+  IHomeTeamRankTableProps
+> = () => {
   const theme = useTheme();
   const nav = useNavigate();
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 
   const { data, isLoading, isError, isSuccess } = useTeamRankQuery(
-    leagueId,
-    season,
+    selectedLeague?.leagueId!,
+    selectedLeague?.season!,
   );
 
   if (isLoading) {
@@ -43,10 +41,10 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
       <div
         className={componentBackgroundChange(
           theme,
-          "h flex min-h-[500px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
+          "h flex min-h-[500px] w-full items-center justify-center rounded-md p-2 text-xl font-bold shadow-md",
         )}
       >
-        데이터를 불러오던 도중 오류가 발생했어요 🤮
+        An error occurred while trying to fetch data 🤮
       </div>
     );
   }
@@ -94,7 +92,9 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
                 key={item.team.id}
                 className="cursor-pointer transition-colors hover:bg-MediumGrey hover:text-White"
                 onClick={() => {
-                  nav(`/football/${leagueId}/team/${item.team.id}/info`);
+                  nav(
+                    `/football/${selectedLeague?.leagueId}/team/${item.team.id}/info`,
+                  );
                 }}
               >
                 <td
@@ -156,4 +156,4 @@ const TeamRankTable: React.FunctionComponent<ITeamRankTableProps> = ({
   );
 };
 
-export default TeamRankTable;
+export default HomeTeamRankTable;

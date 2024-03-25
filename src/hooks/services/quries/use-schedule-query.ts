@@ -2,13 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 
 import { getHomeNextMatchSchedule } from "../apis/football";
 
-export const footballQueryKey = {
+export const scheduleQueryKey = {
   useNextMatchQuery: "homeNextMatchQuery",
 };
 
 export const useNextMatchQuery = (leagueId: number) => {
   return useQuery({
-    queryKey: [footballQueryKey.useNextMatchQuery, leagueId],
+    queryKey: [scheduleQueryKey.useNextMatchQuery, leagueId],
     queryFn: ({ queryKey }) => getHomeNextMatchSchedule(queryKey[1] as number),
     enabled: !!leagueId,
     select(data) {

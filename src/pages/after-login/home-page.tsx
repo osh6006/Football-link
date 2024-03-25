@@ -4,13 +4,13 @@ import Title from "components/home/title";
 import Banner from "components/home/banner";
 import MoreArrow from "components/common/more-arrow";
 import HomeContainer from "components/layouts/home-container";
-import HomeNewTable from "components/home/home-new-table";
-import TeamRankTable from "components/home/team-rank-table";
+import HomeNewTable from "components/home/home-news-table";
 import HomeLiveTable from "components/home/home-live-table";
 import HomeNextTable from "components/home/home-next-table";
-import PlayerRankTable from "components/home/player-rank-table";
+import HomeTeamRankTable from "components/home/home-team-rank-table";
 
 import { useLeagueStore } from "stores/league-store";
+import HomePlayerRankTable from "components/home/home-player-rank-table";
 
 interface IHomePageProps {}
 
@@ -47,7 +47,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
             News
             <MoreArrow path="/news" />
           </Title>
-          {/* <HomeNewTable /> */}
+          <HomeNewTable />
         </div>
 
         <div className="my-2 space-y-2">
@@ -55,21 +55,18 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
             Rank
             <MoreArrow path="/rank" />
           </Title>
-          {/* <TeamRankTable
-            season={new Date().getFullYear() - 1 + ""}
-            leagueId={selectedLeague?.rapid_football_league_id! + ""}
-          /> */}
+          <HomeTeamRankTable />
         </div>
       </div>
 
       {/* right */}
-      {/* <div className="mx-auto w-full max-w-[1100px] space-y-4">
+      <div className="mx-auto w-full max-w-[1100px] space-y-4">
         <div className="space-y-2">
           <Title>
             Top scorer
             <MoreArrow path="/rank" />
           </Title>
-          <PlayerRankTable distance="short" type="goal" />
+          <HomePlayerRankTable distance="short" type="goal" />
         </div>
 
         <div className="space-y-2">
@@ -77,9 +74,9 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
             Top assist
             <MoreArrow path="/rank" />
           </Title>
-          <PlayerRankTable distance="short" type="assist" />
+          <HomePlayerRankTable distance="short" type="assist" />
         </div>
-      </div> */}
+      </div>
     </HomeContainer>
   );
 };

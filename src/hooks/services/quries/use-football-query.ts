@@ -2,9 +2,6 @@ import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { getSports } from "../apis/sports";
 import { ISport } from "types";
 import {
-  getLiveMatches,
-  getTeamStandings,
-  getHomeNextMatchSchedule,
   getTopPlayers,
   getLeagueSchedule,
   getTeamInfo,
@@ -12,14 +9,11 @@ import {
   getPlayerInfo,
   getPlayerCareer,
 } from "hooks/services/apis/football";
-import { getGlobalNews, getNaverNews } from "../apis/news";
+import { getNaverNews } from "../apis/news";
 
 export const footballQueryKey = {
-  useTeamRankQuery: "footballTeamRankQuery",
   usePlayerRankQuery: "footballPlayerRankQuery",
-  useTopPlayerQuery: "footballTopScorerQuery",
   useLocalNewsQuery: "footballLocalNewsQuery",
-  useGlobalNewsQuery: "footballGlobalNewsQuery",
   useScheduleQuery: "footballScheduleQuery",
   useTeamInfoQuery: "footballTeamInfoQuery",
   useTeamSquadQuery: "footballTeamSquadQuery",
@@ -27,49 +21,10 @@ export const footballQueryKey = {
   usePlayerCareerQuery: "footballPlayerCareerQuery",
 };
 
-export const useTeamRankQuery = (league: string, season: string) => {
-  return useQuery({
-    queryKey: [footballQueryKey.useTeamRankQuery, league, season],
-    queryFn: ({ queryKey }) =>
-      getTeamStandings({ league: queryKey[1], season: queryKey[2] }),
-    enabled: !!league && !!season,
-    staleTime: Infinity,
-    gcTime: Infinity,
-  });
-};
-
 export const usePlayerRankQuery = () => {
   return useQuery<ISport[] | null>({
     queryKey: [footballQueryKey.usePlayerRankQuery],
     queryFn: getSports,
-    staleTime: Infinity,
-    gcTime: Infinity,
-  });
-};
-
-export const useTopPlayerQuery = (
-  type: string,
-  season: string,
-  leagueId: number,
-) => {
-  return useQuery({
-    queryKey: [
-      footballQueryKey.useTopPlayerQuery,
-      {
-        type: type,
-        season: season,
-        leagueId: leagueId,
-      },
-    ],
-    queryFn: ({ queryKey }) =>
-      getTopPlayers(
-        queryKey[1] as {
-          type: string;
-          season: string;
-          leagueId: number;
-        },
-      ),
-    enabled: !!type && !!season && !!leagueId,
     staleTime: Infinity,
     gcTime: Infinity,
   });
@@ -122,29 +77,6 @@ export const useLocalNewsQuery = (query: string, isUse: boolean) => {
     },
     select(data) {
       return data.pages.flatMap((data) => data.items);
-    },
-  });
-};
-
-export const useGlobalNewsQuery = (
-  query: string,
-  isUse: boolean,
-  filter?: string,
-) => {
-  return useInfiniteQuery({
-    queryKey: [footballQueryKey.useGlobalNewsQuery, query, filter],
-    queryFn: ({ pageParam, queryKey }) =>
-      getGlobalNews(queryKey[1]!, pageParam, queryKey[2]),
-    initialPageParam: 1,
-    enabled: !!query && !!isUse,
-    getNextPageParam: (lastPage, pages) => {
-      if (lastPage.status === "ok" && lastPage.articles.length > 0) {
-        return pages.length + 1;
-      }
-      return undefined;
-    },
-    select(data) {
-      return data.pages.flatMap((data) => data.articles);
     },
   });
 };

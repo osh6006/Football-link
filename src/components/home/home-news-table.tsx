@@ -6,16 +6,16 @@ import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
 import { useTheme } from "stores/theme-store";
-import useLeagueStore from "stores/league-store-te";
-import { useGlobalNewsQuery } from "hooks/services/quries/use-football-query";
+import { useGlobalNewsQuery } from "hooks/services/quries/use-news-query";
 
 import "react-multi-carousel/lib/styles.css";
+import { useLeagueStore } from "stores/league-store";
 
 interface IHomeNewTableProps {}
 
-const HomeNewTable: React.FunctionComponent<IHomeNewTableProps> = () => {
+const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
   const theme = useTheme();
-  const { selectedLeague } = useLeagueStore();
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
   const { data, isLoading, isError } = useGlobalNewsQuery(
     selectedLeague?.name!,
     true,
@@ -114,4 +114,4 @@ const HomeNewTable: React.FunctionComponent<IHomeNewTableProps> = () => {
   );
 };
 
-export default HomeNewTable;
+export default HomeNewsTable;

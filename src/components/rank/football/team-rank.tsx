@@ -11,9 +11,9 @@ import Avatar from "components/common/avatar";
 import { rapidFootballTeamStanding } from "types/football";
 import useTable from "hooks/use-table";
 import Table from "components/common/table";
-import { useTeamRankQuery } from "hooks/services/quries/use-football-query";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 import Loading from "components/common/loading";
+import { useTeamRankQuery } from "hooks/services/quries/use-rank-query";
 
 interface IFootballRankTableProps {
   league: string;

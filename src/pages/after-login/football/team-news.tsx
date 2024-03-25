@@ -7,7 +7,7 @@ import "react-lazy-load-image-component/src/effects/opacity.css";
 
 import { useTeamRoot } from "./team-root";
 import { useInfiniteScroll } from "hooks/use-infinite-scroll";
-import { useGlobalNewsQuery } from "hooks/services/quries/use-football-query";
+import { useGlobalNewsQuery } from "hooks/services/quries/use-news-query";
 
 interface ITeamNewsProps {}
 

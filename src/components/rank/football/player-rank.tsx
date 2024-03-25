@@ -6,13 +6,12 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { useTopPlayerQuery } from "hooks/services/quries/use-football-query";
-
 import TopPlayerSelector from "./top-player-selector";
 
 import { PlayerSelectType, rapidPlayerResponse } from "types/football";
 import Avatar from "components/common/avatar";
 import Table from "components/common/table";
+import { useTopPlayerQuery } from "hooks/services/quries/use-rank-query";
 
 interface IPlayerRankTableProps {
   league: number;

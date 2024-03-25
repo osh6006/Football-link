@@ -13,15 +13,15 @@ import { useLeagueStore } from "stores/league-store";
 
 interface IHomeNextTableProps {}
 
-const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = (props) => {
+const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = () => {
   const theme = useTheme();
-  const selectedLeague = useLeagueStore();
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 
   const {
     data: nextMatch,
     isLoading,
     isError,
-  } = useNextMatchQuery(selectedLeague?.selectedLeague?.leagueId!);
+  } = useNextMatchQuery(selectedLeague?.leagueId!);
 
   if (isLoading) {
     return (
@@ -41,7 +41,7 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = (props) => {
       <div
         className={componentBackgroundChange(
           theme,
-          "h flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
+          "h flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-xl font-bold shadow-md",
         )}
       >
         There's been an error on the server 🤮

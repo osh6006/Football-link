@@ -6,6 +6,7 @@ export interface ILeague {
   name: string;
   leagueId: number;
   flag: string;
+  season: string | number;
 }
 
 interface ISelectCounrtyState {
