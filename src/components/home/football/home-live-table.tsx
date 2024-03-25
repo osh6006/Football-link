@@ -5,7 +5,7 @@ import Loading from "components/common/loading";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { useTheme } from "stores/theme-store";
-import useLeagueStore from "stores/league-store";
+import useLeagueStore from "stores/league-store-te";
 import { useLiveMathesQuery } from "hooks/services/quries/use-football-query";
 
 import "react-lazy-load-image-component/src/effects/opacity.css";

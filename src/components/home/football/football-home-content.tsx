@@ -1,4 +1,4 @@
-import useLeagueStore from "stores/league-store";
+import useLeagueStore from "stores/league-store-te";
 
 import Banner from "../banner";
 import Title from "../title";

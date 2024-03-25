@@ -1,14 +1,12 @@
 import clsx from "clsx";
 import { Moon, Sun } from "lucide-react";
-import { useTheme, useThemeActions } from "stores/theme-store";
+import { useTheme } from "stores/theme-store";
 
 interface IThemeSwitchProps {}
 
 const ThemeSwitch: React.FunctionComponent<IThemeSwitchProps> = () => {
   const theme = useTheme();
   const setTheme = useTheme((state) => state.setTheme);
-
-  console.log(theme);
 
   const handleChange = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");

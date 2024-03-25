@@ -2,6 +2,8 @@ import toast from "react-hot-toast";
 import { supabase } from "libs/superbase-client";
 import { QueryFunction } from "@tanstack/react-query";
 import { ISupabaseLeague } from "types/football/league";
+import { LeagueResponse } from "types";
+import { rapidApi } from "libs/axios";
 
 export const getLeagues: QueryFunction<
   ISupabaseLeague[] | null,
@@ -145,4 +147,19 @@ export const insertAllSupabaseLeague = async (items: ISupabaseLeague[]) => {
       }
     }
   }
+};
+
+export const getLeaguesByCountryCode = async (
+  countryCode: string,
+): Promise<LeagueResponse[]> => {
+  return rapidApi
+    .get("/leagues", {
+      params: {
+        code: countryCode,
+      },
+    })
+    .then((res) => res.data.response)
+    .catch((error) => {
+      throw new Error("Get LeaguesByCountryCode Error", error);
+    });
 };

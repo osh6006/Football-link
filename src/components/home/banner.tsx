@@ -5,7 +5,7 @@ import Carousel from "react-multi-carousel";
 
 import { useTheme } from "stores/theme-store";
 import useSportStore from "stores/sports-store";
-import useLeagueStore from "stores/league-store";
+import useLeagueStore from "stores/league-store-te";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 import { useBannerQuery } from "hooks/services/quries/use-banner-query";
 

@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { ICountry } from "stores/country-store";
 import { ThemeColor } from "types";
 
 export const isIncludeInSelectedItem = (array: any[], id: string) => {
@@ -33,3 +34,12 @@ export const componentBackgroundChange = (
 };
 
 export const isToday = () => {};
+
+export const findItemUsingKeywordInArray = <T extends Record<string, any>>(
+  keyword: string,
+  value: string,
+  array?: T[],
+) => {
+  const result = array?.find((el) => el[keyword] === value) || null;
+  return result;
+};

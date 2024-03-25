@@ -6,7 +6,7 @@ import Loading from "components/common/loading";
 
 import { useTheme } from "stores/theme-store";
 import { useNavigate } from "react-router-dom";
-import useLeagueStore from "stores/league-store";
+import useLeagueStore from "stores/league-store-te";
 import { useTopPlayerQuery } from "hooks/services/quries/use-football-query";
 
 interface IPlayerRankTableProps {

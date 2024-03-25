@@ -1,104 +1,136 @@
-import "./select-box.css";
+import clsx from "clsx";
 import { useState, Fragment } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
 
-const people = [
-  { id: 1, name: "Durward Reynolds" },
-  { id: 2, name: "Kenton Towne" },
-  { id: 3, name: "Therese Wunsch" },
-  { id: 4, name: "Benedict Kessler" },
-  { id: 5, name: "Katelyn Rohan" },
-  { id: 6, name: "Katelyn Rohan" },
-  { id: 7, name: "Katelyn Rohan" },
-  { id: 8, name: "Katelyn Rohan" },
-  { id: 9, name: "Katelyn Rohan" },
-  { id: 10, name: "Katelyn Rohan" },
-];
+import { useTheme } from "stores/theme-store";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
-interface ISelectBoxProps {}
+interface ISelectBoxProps<T> {
+  items: T[];
+  label?: string;
+  filteredItems?: T[];
+  selectedItem?: T;
+  setSelectedItem?: () => void;
+  query: string;
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
+  isFocused: boolean;
+  setIsFocused: React.Dispatch<React.SetStateAction<boolean>>;
+  displayKey: string;
+  inputRender?: (item: T, index: number) => JSX.Element;
+}
 
-const SelectBox: React.FunctionComponent<ISelectBoxProps> = ({}) => {
-  const [selected, setSelected] = useState(people[0]);
-  const [query, setQuery] = useState("");
-
-  const filteredPeople =
-    query === ""
-      ? people
-      : people.filter((person) => {
-          return person.name.toLowerCase().includes(query.toLowerCase());
-        });
+const SelectBox = <T,>({
+  label,
+  items,
+  selectedItem,
+  setSelectedItem,
+  filteredItems,
+  query,
+  setQuery,
+  isFocused,
+  setIsFocused,
+  displayKey,
+}: ISelectBoxProps<T>) => {
+  const theme = useTheme();
 
   return (
-    <div className="mt-2">
-      <Combobox value={selected} onChange={setSelected}>
-        <div className="relative mt-1">
-          <div className="relative w-full cursor-default overflow-hidden rounded-lg border border-MediumGrey bg-white text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
-            <Combobox.Input
-              className="w-full  py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 ring-2 focus:outline-none focus:ring-2 focus:ring-Main"
-              displayValue={(person: { id: number; name: string }) =>
-                person.name
-              }
-              onChange={(event) => setQuery(event.target.value)}
+    <Combobox value={selectedItem} onChange={(e) => {}}>
+      <Combobox.Label
+        className={"mt-10 text-sm uppercase tracking-wider text-Main"}
+      >
+        {label}
+      </Combobox.Label>
+      <div className="relative mt-1">
+        <div
+          className={clsx(
+            "relative w-full cursor-default overflow-hidden rounded-lg border border-MediumGrey text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm",
+            isFocused ? "ring-2 ring-Main" : "",
+          )}
+        >
+          <Combobox.Input
+            className={clsx(
+              "w-full py-3 pl-3 pr-10 text-sm font-semibold leading-5 text-MediumGrey focus:outline-none",
+              theme === "dark" ? "bg-VeryDarkGreyDark" : "",
+              theme === "light" ? "bg-LightGreyLightBg" : "",
+            )}
+            placeholder={`Search ${label}`}
+            displayValue={(item: T) => ""}
+            onChange={(event) => {
+              return setQuery(event.target.value);
+            }}
+            onBlur={() => setIsFocused(false)}
+            onFocus={() => setIsFocused(true)}
+          />
+          <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
+            <ChevronsUpDownIcon
+              className="h-5 w-5 text-gray-400"
+              aria-hidden="true"
             />
-            <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
-              <ChevronsUpDownIcon
-                className="h-5 w-5 text-gray-400"
-                aria-hidden="true"
-              />
-            </Combobox.Button>
-          </div>
-          <Transition
-            as={Fragment}
-            leave="transition ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-            afterLeave={() => setQuery("")}
+          </Combobox.Button>
+        </div>
+        <Transition
+          as={Fragment}
+          leave="transition ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+          afterLeave={() => setQuery("")}
+        >
+          <Combobox.Options
+            className={clsx(
+              "absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm",
+              theme === "dark" ? "bg-VeryDarkGreyDark " : "",
+              theme === "light" ? "bg-LightGreyLightBg" : "",
+            )}
           >
-            <Combobox.Options className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-              {filteredPeople.length === 0 && query !== "" ? (
-                <div className="relative cursor-default select-none px-4 py-2 text-gray-700">
-                  Nothing found.
-                </div>
-              ) : (
-                filteredPeople.map((person) => (
-                  <Combobox.Option
-                    key={person.id}
-                    className={({ active }) =>
-                      `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                        active ? "bg-teal-600 text-white" : "text-gray-900"
-                      }`
-                    }
-                    value={person}
-                  >
-                    {({ selected, active }) => (
-                      <>
+            {filteredItems?.length === 0 && query !== "" ? (
+              <div className="relative cursor-default select-none px-4 py-2 text-MediumGrey">
+                Nothing found Item.
+              </div>
+            ) : (
+              filteredItems?.map((item: any) => (
+                <Combobox.Option
+                  key={item.alpha2}
+                  className={({ active }) =>
+                    `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                      active ? "bg-Main text-white" : "text-MediumGrey"
+                    }`
+                  }
+                  value={item}
+                >
+                  {({ selected, active }) => (
+                    <>
+                      <span
+                        className={`flex items-center gap-x-3 truncate text-sm ${
+                          selected ? "font-medium" : "font-normal"
+                        }`}
+                      >
+                        <LazyLoadImage
+                          src={item.flag}
+                          className="h-5 w-5 "
+                          alt={item[displayKey]}
+                        />
+                        {item[displayKey]}
+                      </span>
+                      {selected ? (
                         <span
-                          className={`block truncate ${
-                            selected ? "font-medium" : "font-normal"
+                          className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                            active ? "text-white" : "text-Main"
                           }`}
                         >
-                          {person.name}
+                          <CheckIcon className="h-5 w-5" aria-hidden="true" />
                         </span>
-                        {selected ? (
-                          <span
-                            className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                              active ? "text-white" : "text-teal-600"
-                            }`}
-                          >
-                            <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                          </span>
-                        ) : null}
-                      </>
-                    )}
-                  </Combobox.Option>
-                ))
-              )}
-            </Combobox.Options>
-          </Transition>
-        </div>
-      </Combobox>
-    </div>
+                      ) : null}
+                    </>
+                  )}
+                </Combobox.Option>
+              ))
+            )}
+          </Combobox.Options>
+        </Transition>
+      </div>
+    </Combobox>
   );
 };
+
 export default SelectBox;

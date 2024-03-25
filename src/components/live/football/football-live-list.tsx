@@ -1,4 +1,4 @@
-import useLeagueStore from "stores/league-store";
+import useLeagueStore from "stores/league-store-te";
 import FootballLiveHeader from "./football-live-header";
 
 import { useLiveMathesQuery } from "hooks/services/quries/use-football-query";

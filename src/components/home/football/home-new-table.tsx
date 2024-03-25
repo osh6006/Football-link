@@ -6,7 +6,7 @@ import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
 import { useTheme } from "stores/theme-store";
-import useLeagueStore from "stores/league-store";
+import useLeagueStore from "stores/league-store-te";
 import { useGlobalNewsQuery } from "hooks/services/quries/use-football-query";
 
 import "react-multi-carousel/lib/styles.css";

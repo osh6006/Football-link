@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import useLeagueStore from "stores/league-store";
+import useLeagueStore from "stores/league-store-te";
 import useScheduleStore from "stores/schedule-store";
 import { useScheduleQuery } from "hooks/services/quries/use-football-query";
 

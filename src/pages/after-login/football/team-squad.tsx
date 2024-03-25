@@ -8,7 +8,7 @@ import DetailTitle from "components/common/detail-title";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
 import { SquadPlayer } from "types/football/team";
-import useLeagueStore from "stores/league-store";
+import useLeagueStore from "stores/league-store-te";
 
 interface ITeamSquadProps {}
 

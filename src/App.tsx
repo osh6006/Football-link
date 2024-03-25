@@ -1,16 +1,9 @@
-import useLeagueStore from "stores/league-store";
-
-import iso from "iso-3166-1";
-
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
 import RootContainer from "./components/layouts/root-container";
 
 function App() {
-  const { selectedLeague } = useLeagueStore();
-  console.log(iso.all());
-
   return (
     <RootContainer>
       {/*  Side Bar */}
@@ -18,7 +11,7 @@ function App() {
       {/* Nav & Page*/}
       <div className="relative  h-fit w-[100dvw-280px] lg:ml-[280px] ">
         <Navbar />
-        {selectedLeague ? (
+        {true ? (
           <Outlet />
         ) : (
           <div className="flex h-[calc(100dvh-55px)] items-center justify-center p-5  ">

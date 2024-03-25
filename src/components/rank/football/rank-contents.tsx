@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import useLeagueStore from "stores/league-store";
+import useLeagueStore from "stores/league-store-te";
 
 import TeamRank from "./team-rank";
 import PlayerRank from "./player-rank";
