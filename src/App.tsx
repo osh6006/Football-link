@@ -3,7 +3,11 @@ import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
 import RootContainer from "./components/layouts/root-container";
 
+import { useLeagueStore } from "stores/league-store";
+
 function App() {
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
+
   return (
     <RootContainer>
       {/*  Side Bar */}
@@ -11,16 +15,21 @@ function App() {
       {/* Nav & Page*/}
       <div className="relative  h-fit w-[100dvw-280px] lg:ml-[280px] ">
         <Navbar />
-        {true ? (
+        {selectedLeague ? (
           <Outlet />
         ) : (
-          <div className="flex h-[calc(100dvh-55px)] items-center justify-center p-5  ">
+          <div className="flex h-[calc(100dvh-55px)] flex-col items-center justify-center gap-y-2 p-5 font-bold ">
             <h1
-              className="tex t-MediumGrey text-center
-            text-xl sm:text-2xl"
+              className="text-center text-xl
+            text-MediumGrey sm:text-2xl"
             >
-              아직 리그를 선택하지 않았습니다. <br />
-              리그를 선택해 주세요
+              You haven't selected a league yet.
+            </h1>
+            <h1
+              className="text-center text-xl
+            text-MediumGrey sm:text-2xl"
+            >
+              Please choose a league 🤔
             </h1>
           </div>
         )}

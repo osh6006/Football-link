@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { ICountry } from "stores/country-store";
 import { ThemeColor } from "types";
 
 export const isIncludeInSelectedItem = (array: any[], id: string) => {

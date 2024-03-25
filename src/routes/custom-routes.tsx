@@ -1,37 +1,35 @@
-import {
-  RouterProvider,
-  createBrowserRouter,
-  redirect,
-} from "react-router-dom";
-
-import { checkAuthSports } from "utils/auth";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import App from "../App";
-import AuthPage from "../pages/before-login/auth-page";
 import ErrorPage from "../pages/error-page";
+import AuthPage from "../pages/before-login/auth-page";
 import HomePage from "../pages/after-login/home-page";
 import RankPage from "../pages/after-login/rank-page";
-import SchedulePage from "../pages/after-login/schedule-page";
 import NewsPage from "../pages/after-login/news-page";
 import SearchPage from "pages/after-login/search-page";
+import SchedulePage from "../pages/after-login/schedule-page";
 import TeamRootPage from "pages/after-login/football/team-root";
 
+import LivePage from "pages/after-login/live-page";
+import PredictPage from "pages/after-login/predict-page";
 import TeamInfo from "pages/after-login/football/team-info";
 import TeamNews from "pages/after-login/football/team-news";
-import TeamSchedule from "pages/after-login/football/team-schedule";
 import TeamSquad from "pages/after-login/football/team-squad";
-import PlayerRootPage from "pages/after-login/football/player-root";
 import PlayerInfo from "pages/after-login/football/player-info";
 import PlayerNews from "pages/after-login/football/player-news";
+import PlayerRootPage from "pages/after-login/football/player-root";
 import PlayerCareer from "pages/after-login/football/player-career";
-import PredictPage from "pages/after-login/predict-page";
-import LivePage from "pages/after-login/live-page";
+import TeamSchedule from "pages/after-login/football/team-schedule";
+import { protectedLoginPage } from "utils/auth";
 
 const CustomRoutes = () => {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <App />,
+      loader: async () => {
+        return null;
+      },
       errorElement: <ErrorPage />,
       children: [
         {
@@ -123,6 +121,10 @@ const CustomRoutes = () => {
 
     {
       path: "/auth",
+      loader: async () => {
+        const result = await protectedLoginPage();
+        return result;
+      },
       element: <AuthPage />,
       errorElement: <ErrorPage />,
     },
