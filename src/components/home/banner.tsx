@@ -2,11 +2,11 @@ import clsx from "clsx";
 
 import Loading from "components/common/loading";
 import Carousel from "react-multi-carousel";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
 
 import { useTheme } from "stores/theme-store";
 import useSportStore from "stores/sports-store";
 import useLeagueStore from "stores/league-store-te";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
 import { useBannerQuery } from "hooks/services/quries/use-banner-query";
 
 import "react-multi-carousel/lib/styles.css";
@@ -38,7 +38,7 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
 
   if (isError) {
     return (
-      <div className="flex h-full min-h-[350px] items-center justify-center text-xl">
+      <div className="flex h-full min-h-[350px] min-w-[1000px] items-center justify-center text-xl">
         서버에서 데이터를 불러올 수 없습니다.
       </div>
     );
@@ -48,16 +48,16 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
   const sportsType = selectedSport?.value;
   const leagueId = selectedLeague?.rapid_football_league_id;
 
-  if (banners?.length === 0) {
+  if (true) {
     return (
       <div
         className={clsx(
-          `flex h-[350px] w-full items-center justify-center rounded-md bg-cover bg-center bg-no-repeat text-xl shadow-md`,
+          `flex h-[350px] w-full min-w-[1000px] items-center justify-center rounded-md bg-cover bg-center bg-no-repeat text-2xl font-bold shadow-md`,
           theme === "light" && "bg-White",
           theme === "dark" && "bg-DarkGrey",
         )}
       >
-        아직 배너 이미지가 추가되지 않았습니다.
+        Banner image has not been added yet. Sorry 😣
       </div>
     );
   }

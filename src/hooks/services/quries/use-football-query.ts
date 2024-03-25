@@ -17,7 +17,6 @@ import { getGlobalNews, getNaverNews } from "../apis/news";
 export const footballQueryKey = {
   useTeamRankQuery: "footballTeamRankQuery",
   usePlayerRankQuery: "footballPlayerRankQuery",
-  useLiveMathesQuery: "footballHomeLiveMathesQuery",
   useNextMatchQuery: "footballHomeNextMatchQuery",
   useTopPlayerQuery: "footballTopScorerQuery",
   useLocalNewsQuery: "footballLocalNewsQuery",
@@ -46,16 +45,6 @@ export const usePlayerRankQuery = () => {
     queryFn: getSports,
     staleTime: Infinity,
     gcTime: Infinity,
-  });
-};
-
-export const useLiveMathesQuery = (leagueId: number) => {
-  return useQuery({
-    queryKey: [footballQueryKey.useLiveMathesQuery, leagueId],
-    queryFn: ({ queryKey }) => getLiveMatches(queryKey[1] as number),
-    enabled: !!leagueId,
-    staleTime: 60000,
-    gcTime: 60000,
   });
 };
 

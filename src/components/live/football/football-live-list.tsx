@@ -1,8 +1,6 @@
 import useLeagueStore from "stores/league-store-te";
 import FootballLiveHeader from "./football-live-header";
 
-import { useLiveMathesQuery } from "hooks/services/quries/use-football-query";
-
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 

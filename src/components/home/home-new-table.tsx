@@ -1,7 +1,7 @@
 import { componentBackgroundChange } from "utils/util";
 
 import Carousel from "react-multi-carousel";
-import HomeNewsCard from "../home-news-card";
+import HomeNewsCard from "./home-news-card";
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
