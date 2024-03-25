@@ -39,7 +39,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
               Next Match
               <MoreArrow path="/schedule" />
             </Title>
-            {/* <HomeNextTable /> */}
+            <HomeNextTable />
           </div>
         </div>
         <div className="w-full">

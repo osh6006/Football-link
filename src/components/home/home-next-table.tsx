@@ -6,22 +6,22 @@ import { componentBackgroundChange } from "utils/util";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { useTheme } from "stores/theme-store";
-import useLeagueStore from "stores/league-store-te";
-import { useNextMatchQuery } from "hooks/services/quries/use-football-query";
 
 import "react-lazy-load-image-component/src/effects/opacity.css";
+import { useNextMatchQuery } from "hooks/services/quries/use-schedule-query";
+import { useLeagueStore } from "stores/league-store";
 
 interface IHomeNextTableProps {}
 
 const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = (props) => {
   const theme = useTheme();
-  const { selectedLeague } = useLeagueStore();
+  const selectedLeague = useLeagueStore();
 
   const {
     data: nextMatch,
     isLoading,
     isError,
-  } = useNextMatchQuery(selectedLeague?.rapid_football_league_id!);
+  } = useNextMatchQuery(selectedLeague?.selectedLeague?.leagueId!);
 
   if (isLoading) {
     return (

@@ -82,11 +82,11 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
         <div className="flex flex-col items-center justify-center gap-y-2">
           <LazyLoadImage
             effect="opacity"
-            src={liveMatch && liveMatch[0]?.teams.home.logo}
+            src={liveMatch ? liveMatch[0]?.teams.home.logo : ""}
             alt="home"
             className="rounded-full"
           />
-          <p>{liveMatch && liveMatch[0]?.teams.home.name}</p>
+          <p>{liveMatch ? liveMatch[0]?.teams.home.name : "unknown"}</p>
         </div>
         <span className="text-3xl">vs</span>
 
@@ -94,16 +94,16 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
         <div className="flex flex-col items-center justify-center gap-y-2">
           <LazyLoadImage
             effect="opacity"
-            src={liveMatch && liveMatch[0]?.teams.away.logo}
+            src={liveMatch ? liveMatch[0]?.teams.away.logo : ""}
             alt="away"
             className="rounded-full"
           />
-          <p>{liveMatch && liveMatch[0]?.teams.away.name}</p>
+          <p>{liveMatch ? liveMatch[0]?.teams.away.name : "unknown"}</p>
         </div>
       </div>
       <p className="text-center">{`${
-        liveMatch && liveMatch[0]?.fixture.venue.name
-      } / ${liveMatch && liveMatch[0]?.fixture.venue.city}`}</p>
+        liveMatch ? liveMatch[0]?.fixture.venue.name : "unknown"
+      } / ${liveMatch ? liveMatch[0]?.fixture.venue.city : "unknown"}`}</p>
     </div>
   );
 };
