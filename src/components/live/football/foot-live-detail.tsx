@@ -1,13 +1,8 @@
-import { useSearchParams } from "react-router-dom";
-
 import Tabs from "components/common/tabs";
-import Loading from "components/common/loading";
-import ComponentStatusContainer from "components/layouts/component-status-container";
 import { rapidFootballLiveMatchResponse } from "types/football";
 import Avatar from "components/common/avatar";
 import clsx from "clsx";
 import FootballLineUp from "./football-lineup";
-import FootballField from "./football-field";
 
 interface IFootballLiveDetailProps {
   liveInfo: rapidFootballLiveMatchResponse;
@@ -34,13 +29,13 @@ const FootballLiveDetail = ({ liveInfo }: IFootballLiveDetailProps) => {
     <div className="p-5">
       <Tabs defaultTab="event">
         <Tabs.TabContainer className="">
-          <Tabs.Tab id="event" className="mx-2 border p-5">
+          <Tabs.Tab id="event" className="mx-2 rounded-md  border-2 p-5">
             Events
           </Tabs.Tab>
-          <Tabs.Tab id="lineup" className="mx-2 border p-5">
+          <Tabs.Tab id="lineup" className="mx-2 rounded-md  border-2 p-5">
             LineUp
           </Tabs.Tab>
-          <Tabs.Tab id="stat" className="mx-2 border p-5">
+          <Tabs.Tab id="stat" className="mx-2 rounded-md border-2 p-5">
             Statistics
           </Tabs.Tab>
         </Tabs.TabContainer>
