@@ -2,8 +2,8 @@ import { useState } from "react";
 
 import DaySelector from "components/schedule/day-selector";
 import YearSelector from "components/schedule/year-selector";
-import FootballCalendar from "components/schedule/football-calendar";
 import ScheduleContainer from "components/layouts/schedule-container";
+import ScheduleResult from "components/schedule/schedule-result";
 
 interface ISchedulePageProps {}
 
@@ -14,7 +14,7 @@ const SchedulePage: React.FunctionComponent<ISchedulePageProps> = () => {
     <ScheduleContainer>
       <YearSelector setIsAll={setIsAll} />
       <DaySelector isAll={isAll} setIsAll={setIsAll} />
-      <FootballCalendar isAll={isAll} />
+      <ScheduleResult isAll={isAll} />
     </ScheduleContainer>
   );
 };

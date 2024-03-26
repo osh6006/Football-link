@@ -1,5 +1,4 @@
 import { Outlet, useLocation, useOutletContext } from "react-router-dom";
-import { useTeamInfoQuery } from "hooks/services/quries/use-football-query";
 
 import Loading from "components/common/loading";
 import TeamHeader from "components/team/football/team-header";
@@ -12,6 +11,7 @@ import {
   rapidFootballTeamInfoResponse,
 } from "types/football";
 import DetailMenuTabs from "components/common/detail-menu-tabs";
+import { useTeamInfoQuery } from "hooks/services/quries/use-team-query";
 
 type ContextType = {
   teamInfo?: rapidFootballTeamInfoResponse;

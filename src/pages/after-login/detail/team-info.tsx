@@ -10,7 +10,7 @@ const TeamInfo: React.FunctionComponent<ITeamInfoProps> = () => {
     <div className="space-y-4">
       <section>
         <DetailTitle>Team Info</DetailTitle>
-        <div className="mt-4 flex w-full rounded-md border p-4 sm:gap-x-4 sm:px-6 sm:py-8">
+        <div className="mt-4 flex w-full rounded-md border border-MediumGrey p-4 sm:gap-x-4 sm:px-6 sm:py-8">
           <div className="hidden flex-col gap-y-4 text-lg sm:flex">
             <span>Team</span>
             <hr />
@@ -61,7 +61,7 @@ const TeamInfo: React.FunctionComponent<ITeamInfoProps> = () => {
         {teamAllStanding?.map((el) => (
           <div
             key={el.league.id}
-            className="w-full space-y-2 rounded-md border p-4 sm:space-y-4 sm:px-6 sm:py-4"
+            className="w-full space-y-2 rounded-md border border-MediumGrey p-4 sm:space-y-4 sm:px-6 sm:py-4"
           >
             <span className="left-3 top-2 font-semibold">{el.league.name}</span>
             <div className="flex flex-col items-center gap-x-2 gap-y-4 sm:flex-row sm:gap-y-0">

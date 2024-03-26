@@ -6,11 +6,11 @@ import ComponentStatusContainer from "components/layouts/component-status-contai
 import { useLeagueStore } from "stores/league-store";
 import { useScheduleQuery } from "hooks/services/quries/use-schedule-query";
 
-interface IFootballCalendarProps {
+interface IScheduleResultProps {
   isAll: boolean;
 }
 
-const FootballCalendar: React.FunctionComponent<IFootballCalendarProps> = ({
+const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
   isAll,
 }) => {
   const { currentDate } = useScheduleStore();
@@ -78,7 +78,7 @@ const FootballCalendar: React.FunctionComponent<IFootballCalendarProps> = ({
                 alt="homeLogo"
                 className="max-w-8"
               />
-              <span className="flex items-center gap-x-2 rounded-md bg-blue-500 px-2 py-1 text-xs leading-[20px] text-White">
+              <span className="flex items-center gap-x-2 rounded-md bg-Main px-2 py-1 text-xs leading-[20px] text-White">
                 <span>{el.goals.home}</span>
                 <span>{el.fixture.status.long}</span>
                 <span>{el.goals.away}</span>
@@ -101,13 +101,13 @@ const FootballCalendar: React.FunctionComponent<IFootballCalendarProps> = ({
             onClick={() => {
               // TODO: 페이지 이동
             }}
-            className="absolute right-1 top-1 rounded-md border border-MediumGrey px-2 py-[2px] text-sm transition-colors hover:bg-Main  hover:text-White md:static"
+            className="absolute right-1 top-1 rounded-md border border-MediumGrey px-2 py-[2px] text-sm uppercase transition-colors hover:bg-Main  hover:text-White md:static"
           >
-            기록
+            result
           </button>
         </li>
       ))}
     </ul>
   );
 };
-export default FootballCalendar;
+export default ScheduleResult;

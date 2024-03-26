@@ -8,18 +8,18 @@ import RankPage from "../pages/after-login/rank-page";
 import NewsPage from "../pages/after-login/news-page";
 import SearchPage from "pages/after-login/search-page";
 import SchedulePage from "../pages/after-login/schedule-page";
-import TeamRootPage from "pages/after-login/football/team-root";
+import TeamRootPage from "pages/after-login/detail/team-root";
 
 import LivePage from "pages/after-login/live-page";
 import PredictPage from "pages/after-login/predict-page";
-import TeamInfo from "pages/after-login/football/team-info";
-import TeamNews from "pages/after-login/football/team-news";
-import TeamSquad from "pages/after-login/football/team-squad";
-import PlayerInfo from "pages/after-login/football/player-info";
-import PlayerNews from "pages/after-login/football/player-news";
-import PlayerRootPage from "pages/after-login/football/player-root";
-import PlayerCareer from "pages/after-login/football/player-career";
-import TeamSchedule from "pages/after-login/football/team-schedule";
+import TeamInfo from "pages/after-login/detail/team-info";
+import TeamNews from "pages/after-login/detail/team-news";
+import TeamSquad from "pages/after-login/detail/team-squad";
+import PlayerInfo from "pages/after-login/detail/player-info";
+import PlayerNews from "pages/after-login/detail/player-news";
+import PlayerRootPage from "pages/after-login/detail/player-root";
+import PlayerCareer from "pages/after-login/detail/player-career";
+import TeamSchedule from "pages/after-login/detail/team-schedule";
 import { protectedLoginPage } from "utils/auth";
 
 const CustomRoutes = () => {

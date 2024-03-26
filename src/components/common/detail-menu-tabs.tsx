@@ -22,7 +22,7 @@ const DetailMenuTabs: React.FunctionComponent<IDetailMenuTabsProps> = ({
         <li
           key={item.name}
           className={clsx(
-            "flex flex-1 cursor-pointer select-none items-center justify-center rounded-md border uppercase transition-colors  hover:bg-Main hover:text-White",
+            "flex flex-1 cursor-pointer select-none items-center justify-center rounded-md border border-MediumGrey uppercase transition-colors  hover:bg-Main hover:text-White",
             realPath === item.name
               ? "border-transparent bg-Main text-White"
               : "",
