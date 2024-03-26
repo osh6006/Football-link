@@ -19,13 +19,12 @@ const DD = ({ children }: { children: React.ReactNode }) => {
 
 const PlayerInfo: React.FunctionComponent<IPlayerInfoProps> = () => {
   const { playerInfo } = usePlayerRoot();
-  console.log(playerInfo);
 
   return (
     <div className="space-y-4">
       <section>
         <DetailTitle>Player Info</DetailTitle>
-        <div className="mt-4 grid w-full grid-cols-3 gap-4 rounded-md border sm:py-6">
+        <div className="mt-4 grid w-full grid-cols-3 gap-4 rounded-md border border-MediumGrey sm:py-6">
           <DL>
             <DT>Age</DT>
             <DD>
@@ -69,7 +68,7 @@ const PlayerInfo: React.FunctionComponent<IPlayerInfoProps> = () => {
         {playerInfo.statistics.map((el) => (
           <div
             key={el.league.id}
-            className="w-full space-y-2 rounded-md border p-4 sm:space-y-4 sm:px-6 sm:py-4"
+            className="w-full space-y-2 rounded-md border border-MediumGrey p-4 sm:space-y-4 sm:px-6 sm:py-4"
           >
             <span className="left-3 top-2 font-semibold">{el.league.name}</span>
             <div className="flex flex-col gap-x-2 gap-y-4 sm:flex-row sm:gap-y-0">

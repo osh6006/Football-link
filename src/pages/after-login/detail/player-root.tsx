@@ -1,11 +1,13 @@
 import { Outlet, useLocation, useOutletContext } from "react-router-dom";
 
+import Loading from "components/common/loading";
 import DetailMenuTabs from "components/common/detail-menu-tabs";
 import PlayerHeader from "components/player/football/player-header";
 import PlayerRootContainer from "components/layouts/player-root-container";
-import { usePlayerInfoQuery } from "hooks/services/quries/use-football-query";
 import ComponentStatusContainer from "components/layouts/component-status-container";
-import Loading from "components/common/loading";
+
+import { usePlayerInfoQuery } from "hooks/services/quries/use-player-query";
+
 import { rapidPlayerResponse } from "types/football";
 
 type ContextType = {

@@ -1,7 +1,9 @@
 import { useLocation } from "react-router-dom";
-import { usePlayerCareerQuery } from "hooks/services/quries/use-football-query";
-import ComponentStatusContainer from "components/layouts/component-status-container";
+
 import Loading from "components/common/loading";
+import ComponentStatusContainer from "components/layouts/component-status-container";
+
+import { usePlayerCareerQuery } from "hooks/services/quries/use-player-query";
 
 interface IPlayerCareerProps {}
 
@@ -9,8 +11,6 @@ const PlayerCareer: React.FunctionComponent<IPlayerCareerProps> = () => {
   const location = useLocation().pathname.split("/");
   const playerId = location[4];
   const { data, isLoading, isError } = usePlayerCareerQuery(playerId);
-
-  console.log(data);
 
   if (isLoading) {
     return (
@@ -31,7 +31,7 @@ const PlayerCareer: React.FunctionComponent<IPlayerCareerProps> = () => {
   return (
     <ul className="flex flex-col gap-y-2">
       {data?.map((el) => (
-        <li className="rounded-md border px-2 py-3">{`🏆 ${el.season} ${el.country} ${el.league} ${el.place}`}</li>
+        <li className="rounded-md border border-MediumGrey px-2 py-3">{`🏆 ${el.season} ${el.country} ${el.league} ${el.place}`}</li>
       ))}
     </ul>
   );
