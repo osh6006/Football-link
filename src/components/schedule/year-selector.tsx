@@ -5,6 +5,7 @@ import useScheduleStore from "stores/schedule-store";
 
 import { CSSTransition } from "react-transition-group";
 import useOutsideClick from "hooks/use-outside-click";
+import { useLeagueStore } from "stores/league-store";
 
 interface IYearSelectorProps {
   setIsAll: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,11 +19,12 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
     currentDate === dayjs(new Date()).locale("ko").format("YYYY-MM-DD");
   const { isOpen, setIsOpen, ref, nodeRef } = useOutsideClick();
 
-  const thisYear = new Date().getFullYear() - 1;
-  const firtYear = 2009;
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
+  const thisYear = selectedLeague?.possibleSeasons.at(-1)?.year;
+  const firstYear = selectedLeague?.possibleSeasons.at(1)?.year;
   const years = Array.from(
-    { length: thisYear - firtYear + 2 },
-    (_, index) => firtYear + index,
+    { length: thisYear! - firstYear! + 2 },
+    (_, index) => firstYear! + index,
   );
 
   return (

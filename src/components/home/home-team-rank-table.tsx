@@ -90,7 +90,7 @@ const HomeTeamRankTable: React.FunctionComponent<
             {data?.league.standings[0].map((item, index) => (
               <tr
                 key={item.team.id}
-                className="cursor-pointer transition-colors hover:bg-MediumGrey hover:text-White"
+                className="cursor-pointer transition-colors hover:bg-Main hover:text-White"
                 onClick={() => {
                   nav(
                     `/football/${selectedLeague?.leagueId}/team/${item.team.id}/info`,

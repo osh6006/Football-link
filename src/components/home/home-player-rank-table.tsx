@@ -93,7 +93,7 @@ const HomePlayerRankTable: React.FunctionComponent<
             return (
               <tr
                 key={index}
-                className="cursor-pointer transition-colors hover:bg-MediumGrey hover:text-White"
+                className="cursor-pointer transition-colors hover:bg-Main hover:text-White"
                 onClick={() =>
                   nav(
                     `/football/${selectedLeague?.leagueId}/player/${item.player.id}/info`,

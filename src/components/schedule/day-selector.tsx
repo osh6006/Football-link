@@ -3,8 +3,7 @@ import dayjs from "dayjs";
 
 import useScheduleStore from "stores/schedule-store";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import useHorizontalScroll from "hooks/use-horizontal-scroll";
+import Carousel from "react-multi-carousel";
 
 interface IDaySelectorProps {
   isAll: boolean;
@@ -17,65 +16,103 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = ({
 }) => {
   const { currentDate: selectedDate, controlDate } = useScheduleStore();
   const dayList = getAllDatesInMonth(selectedDate, selectedDate);
-  const { containerRef, handleScroll, handleItemClick } =
-    useHorizontalScroll(150);
+
+  const responsive = {
+    desktop: {
+      breakpoint: {
+        max: 3000,
+        min: 1024,
+      },
+      items: 20,
+    },
+    laptop: {
+      breakpoint: {
+        max: 1500,
+        min: 1024,
+      },
+      items: 15,
+    },
+    tablet: {
+      breakpoint: {
+        max: 1024,
+        min: 500,
+      },
+      items: 10,
+    },
+    mobile: {
+      breakpoint: {
+        max: 500,
+        min: 0,
+      },
+      items: 5,
+    },
+  };
 
   return (
     <div className="flex items-center justify-center gap-x-6">
-      <button onClick={() => handleScroll("left")}>
-        <ChevronLeft />
-      </button>
-      <ul
-        ref={containerRef}
-        className="flex items-center justify-between gap-x-6 overflow-hidden"
-      >
-        <li
-          role="button"
-          className={clsx(
-            " flex flex-col items-center justify-center rounded-md border px-3 py-2 font-semibold transition-colors hover:border-Main  hover:text-Main",
-            isAll
-              ? " border-2 border-Main font-semibold text-Main"
-              : "border-MediumGrey",
-          )}
-          onClick={() => {
-            setIsAll(true);
-          }}
+      <ul className="flex w-full items-center justify-between overflow-hidden">
+        <Carousel
+          additionalTransfrom={10}
+          arrows={true}
+          autoPlay={false}
+          containerClass="container"
+          dotListClass=""
+          draggable={false}
+          infinite={true}
+          itemClass=""
+          minimumTouchDrag={2}
+          responsive={responsive}
+          rtl={false}
+          showDots={false}
+          slidesToSlide={5}
+          centerMode={true}
+          focusOnSelect={true}
         >
-          <p>전</p>
-          <p>체</p>
-        </li>
-        {dayList.map((el, i) => (
-          <li
-            key={el.numberOfDay}
+          <div
             role="button"
             className={clsx(
-              "flex flex-col items-center justify-center rounded-md border  px-3 py-2 font-semibold transition-colors hover:border-Main  hover:text-Main",
-              !isAll && el.isActive
+              " mx-auto flex flex-col  items-center justify-center rounded-md border px-3 py-4 font-semibold transition-colors hover:border-Main  hover:text-Main",
+              isAll
                 ? " border-2 border-Main font-semibold text-Main"
                 : "border-MediumGrey",
-              el.numberOfDay === dayjs(new Date()).date()
-                ? "border-2 border-green-500 font-semibold text-green-500"
-                : "",
             )}
             onClick={() => {
-              handleItemClick(i);
-              controlDate(
-                "CUSTOM",
-                `${dayjs(selectedDate).year()}-${
-                  dayjs(selectedDate).month() + 1
-                }-${el.numberOfDay}`,
-              );
-              setIsAll(false);
+              setIsAll(true);
             }}
           >
-            <p>{el.stringOfDay}</p>
-            <p>{el.numberOfDay}</p>
-          </li>
-        ))}
+            <p>전</p>
+            <p>체</p>
+          </div>
+          {dayList?.map((el, i) => (
+            <div
+              key={el.numberOfDay}
+              role="button"
+              className={clsx(
+                "mx-1 flex flex-col items-center justify-center rounded-md border px-3 py-4 font-semibold transition-colors hover:border-Main  hover:text-Main",
+                !isAll && el.isActive
+                  ? " border-2 border-Main font-semibold text-Main"
+                  : "border-MediumGrey",
+                el.numberOfDay === dayjs(new Date()).date()
+                  ? "border-2 border-green-500 font-semibold text-green-500"
+                  : "",
+              )}
+              onClick={(e) => {
+                e.stopPropagation();
+                controlDate(
+                  "CUSTOM",
+                  `${dayjs(selectedDate).year()}-${
+                    dayjs(selectedDate).month() + 1
+                  }-${el.numberOfDay}`,
+                );
+                setIsAll(false);
+              }}
+            >
+              <p>{el.stringOfDay}</p>
+              <p>{el.numberOfDay}</p>
+            </div>
+          ))}
+        </Carousel>
       </ul>
-      <button>
-        <ChevronRight onClick={() => handleScroll("right")} />
-      </button>
     </div>
   );
 };

@@ -94,7 +94,7 @@ const Table: React.FunctionComponent<ITableProps> = ({
           return (
             <tr
               key={row.id}
-              className="relative cursor-pointer transition-colors hover:bg-MediumGrey hover:text-White"
+              className="relative cursor-pointer transition-colors hover:bg-Main hover:text-White"
               onClick={() => {
                 nav(`/football/${leagueId}/${type}/${id}/info`);
               }}

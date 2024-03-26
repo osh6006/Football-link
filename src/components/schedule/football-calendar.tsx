@@ -1,10 +1,10 @@
 import dayjs from "dayjs";
-import useLeagueStore from "stores/league-store-te";
 import useScheduleStore from "stores/schedule-store";
 import { useScheduleQuery } from "hooks/services/quries/use-football-query";
 
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
+import { useLeagueStore } from "stores/league-store";
 
 interface IFootballCalendarProps {
   isAll: boolean;
@@ -13,8 +13,8 @@ interface IFootballCalendarProps {
 const FootballCalendar: React.FunctionComponent<IFootballCalendarProps> = ({
   isAll,
 }) => {
-  const { selectedLeague } = useLeagueStore();
   const { currentDate } = useScheduleStore();
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 
   const formatDate = dayjs(currentDate);
   const season = formatDate.year() - 1;
@@ -27,7 +27,7 @@ const FootballCalendar: React.FunctionComponent<IFootballCalendarProps> = ({
     date: currentDate,
     end: lastDayOfMonth,
     start: firstDayOfMonth,
-    leagueId: selectedLeague?.rapid_football_league_id!,
+    leagueId: selectedLeague?.leagueId!,
   });
 
   if (isLoading) {
@@ -45,8 +45,6 @@ const FootballCalendar: React.FunctionComponent<IFootballCalendarProps> = ({
       </ComponentStatusContainer>
     );
   }
-
-  console.log(data);
 
   return (
     <ul className=" mt-6 w-full space-y-4 p-0 sm:px-8 md:block">
