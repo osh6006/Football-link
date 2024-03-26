@@ -1,3 +1,4 @@
+import { ILeagueSeason } from "types";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
@@ -7,6 +8,7 @@ export interface ILeague {
   leagueId: number;
   flag: string;
   season: string | number;
+  possibleSeasons: ILeagueSeason[];
 }
 
 interface ISelectCounrtyState {

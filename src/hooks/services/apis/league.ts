@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { supabase } from "libs/superbase-client";
 import { QueryFunction } from "@tanstack/react-query";
 import { ISupabaseLeague } from "types/football/league";
-import { LeagueResponse } from "types";
+import { ILeagueResponse } from "types";
 import { rapidApi } from "libs/axios";
 
 export const getLeagues: QueryFunction<
@@ -151,7 +151,7 @@ export const insertAllSupabaseLeague = async (items: ISupabaseLeague[]) => {
 
 export const getLeaguesByCountryCode = async (
   countryCode: string,
-): Promise<LeagueResponse[]> => {
+): Promise<ILeagueResponse[]> => {
   return rapidApi
     .get("/leagues", {
       params: {

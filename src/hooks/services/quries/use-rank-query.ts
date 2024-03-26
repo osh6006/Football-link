@@ -17,6 +17,10 @@ export const useTeamRankQuery = (
         league: (queryKey[1] + "") as string,
         season: queryKey[2] as string,
       }),
+    select: (data) => {
+      console.log(data);
+      return data;
+    },
     enabled: !!league && !!season,
     staleTime: Infinity,
     gcTime: Infinity,

@@ -6,6 +6,7 @@ import { CSSTransition } from "react-transition-group";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 import "./season-selector-animation.css";
+import { useLeagueStore } from "stores/league-store";
 
 interface ISeasonSelectorProps {
   season: number;
@@ -20,11 +21,13 @@ const SeasonSelector: React.FunctionComponent<ISeasonSelectorProps> = ({
   handleSeasonIncrese,
   handleSeasonDecrese,
 }) => {
-  const thisYear = new Date().getFullYear() - 1;
-  const firtYear = 2009;
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
+  const thisYear = selectedLeague?.possibleSeasons.at(-1)?.year;
+  const firstYear = selectedLeague?.possibleSeasons.at(1)?.year;
+
   const selecte_years = Array.from(
-    { length: thisYear - firtYear + 1 },
-    (_, index) => firtYear + index,
+    { length: thisYear! - firstYear! + 1 },
+    (_, index) => firstYear! + index,
   );
 
   const { isOpen, setIsOpen, ref, nodeRef } = useOutsideClick();
@@ -34,7 +37,7 @@ const SeasonSelector: React.FunctionComponent<ISeasonSelectorProps> = ({
       <button
         className={clsx(
           "mt-1",
-          season === firtYear ? "cursor-not-allowed" : "font-bold text-Main",
+          season === firstYear ? "cursor-not-allowed" : "font-bold text-Main",
         )}
         onClick={() => handleSeasonDecrese()}
       >
@@ -43,13 +46,13 @@ const SeasonSelector: React.FunctionComponent<ISeasonSelectorProps> = ({
       <div
         role="button"
         ref={ref}
-        className="relative select-none rounded-md border px-2 py-1 text-2xl shadow-sm transition-colors
+        className="relative select-none rounded-md border px-4 py-1 text-2xl shadow-sm transition-colors
        hover:border hover:text-Main"
         onClick={(e) => {
           setIsOpen(!isOpen);
         }}
       >
-        <p>{`${season} - ${season + 1}`}</p>
+        <p>{`${season}`}</p>
         <CSSTransition
           in={isOpen}
           nodeRef={nodeRef}

@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useLeagueStore } from "stores/league-store";
 
 export default function useSeasonSelector() {
-  const [season, setSeason] = useState(new Date().getFullYear() - 1);
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
+  const [season, setSeason] = useState(
+    Number(selectedLeague?.season) || new Date().getFullYear() - 1,
+  );
 
   const handleSeasonIncrese = () => {
-    if (new Date().getFullYear() - 1 === season) {
+    if (new Date().getFullYear() === season) {
       return;
     }
     setSeason(season + 1);

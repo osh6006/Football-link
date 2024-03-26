@@ -1,4 +1,4 @@
-interface Coverage {
+interface ICoverage {
   fixtures: {
     events: boolean;
     lineups: boolean;
@@ -15,29 +15,29 @@ interface Coverage {
   odds: boolean;
 }
 
-interface Season {
+export interface ILeagueSeason {
   year: number;
   start: string;
   end: string;
   current: boolean;
-  coverage: Coverage;
+  coverage: ICoverage;
 }
 
-interface Country {
+interface ICountry {
   name: string;
   code: string;
   flag: string;
 }
 
-interface League {
+interface ILeague {
   id: number;
   name: string;
   type: string;
   logo: string;
 }
 
-export interface LeagueResponse {
-  league: League;
-  country: Country;
-  seasons: Season[];
+export interface ILeagueResponse {
+  league: ILeague;
+  country: ICountry;
+  seasons: ILeagueSeason[];
 }

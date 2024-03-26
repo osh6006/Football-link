@@ -27,6 +27,8 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
   const { sorting, setSorting, columnHelper, emptyArray } =
     useTable<rapidFootballTeamStanding>();
 
+  const { data, isLoading, isError } = useTeamRankQuery(league, season);
+
   const columns = useMemo(() => {
     return [
       columnHelper.accessor((row) => row.rank, {
@@ -60,7 +62,7 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
         cell: (info) => (
           <div className=" flex items-center gap-x-3">
             <Avatar imgUrl={info.getValue().logo} size="md" />
-            <span>{info.getValue().name}</span>
+            <span className="truncate">{info.getValue().name}</span>
           </div>
         ),
         header: () => <span className="flex items-center">Team</span>,
@@ -112,22 +114,24 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
         id: "form",
         cell: (info) => (
           <div className="flex gap-x-1">
-            {info
-              .getValue()
-              .split("")
-              .map((el, i) => (
-                <div
-                  key={i}
-                  className={clsx(
-                    "flex h-5 w-5 items-center  justify-center rounded-full p-2 text-sm text-white shadow-md",
-                    el === "W" && "bg-green-500",
-                    el === "D" && "bg-gray-500",
-                    el === "L" && "bg-red-500",
-                  )}
-                >
-                  {el}
-                </div>
-              ))}
+            {info.getValue()
+              ? info
+                  .getValue()
+                  .split("")
+                  .map((el, i) => (
+                    <div
+                      key={i}
+                      className={clsx(
+                        "flex h-5 w-5 items-center  justify-center rounded-full p-2 text-sm text-white shadow-md",
+                        el === "W" && "bg-green-500",
+                        el === "D" && "bg-gray-500",
+                        el === "L" && "bg-red-500",
+                      )}
+                    >
+                      {el}
+                    </div>
+                  ))
+              : "Not Form"}
           </div>
         ),
         header: () => <span>Form</span>,
@@ -138,10 +142,8 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
     ];
   }, [columnHelper]);
 
-  const { data, isLoading, isError } = useTeamRankQuery(league, season);
-
   const table = useReactTable({
-    data: data?.league.standings[0] || emptyArray,
+    data: data?.league.standings.at(-1) || emptyArray,
     columns: columns || emptyArray,
     getCoreRowModel: getCoreRowModel(),
     state: {
@@ -167,24 +169,7 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
     );
   }
 
-  return (
-    <>
-      <Table tableData={table} leagueId={data?.league.id!} type="team" />
-      <div className="mt-4">
-        <p>- Rules</p>
-        <div className="mt-2 flex items-center gap-x-2 before:block before:h-4 before:w-4 before:bg-yellow-400 before:content-['']">
-          The first to fourth place teams qualify for the UEFA Champions.
-        </div>
-        <div className="mt-2 flex items-center gap-x-2 before:block before:h-4 before:w-4 before:bg-sky-300 before:content-['']">
-          The fifth-placed team will qualify for the Europa League (the
-          next-placed team qualifies based on the results of the cup tournament)
-        </div>
-        <div className="mt-2 flex items-center gap-x-2 before:block before:h-4 before:w-4 before:bg-red-500 before:content-['']">
-          The 18th-20th ranked teams will be relegated to the second division.
-        </div>
-      </div>
-    </>
-  );
+  return <Table tableData={table} leagueId={data?.league.id!} type="team" />;
 };
 
 export default TeamRank;
