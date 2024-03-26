@@ -3,10 +3,10 @@ import dayjs from "dayjs";
 import { useEffect } from "react";
 import { useMatches } from "react-router-dom";
 import useScheduleStore from "stores/schedule-store";
-import { useScheduleQuery } from "hooks/services/quries/use-football-query";
 
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
+import { useScheduleQuery } from "hooks/services/quries/use-schedule-query";
 
 interface IFootballTeamCalendarProps {
   isAll: boolean;

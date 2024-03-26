@@ -1,10 +1,10 @@
 import dayjs from "dayjs";
 import useScheduleStore from "stores/schedule-store";
-import { useScheduleQuery } from "hooks/services/quries/use-football-query";
 
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 import { useLeagueStore } from "stores/league-store";
+import { useScheduleQuery } from "hooks/services/quries/use-schedule-query";
 
 interface IFootballCalendarProps {
   isAll: boolean;

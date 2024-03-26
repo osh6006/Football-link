@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Button from "./button";
+import { useSearchParams } from "react-router-dom";
 
 interface IFilterProps {
   items: {
@@ -7,15 +8,13 @@ interface IFilterProps {
     icon?: string;
     value: string;
   }[];
-  selectFilter: string;
-  setFilter: (filter: string) => void;
 }
 
-const Filter: React.FunctionComponent<IFilterProps> = ({
-  items,
-  selectFilter,
-  setFilter,
-}) => {
+const Filter: React.FunctionComponent<IFilterProps> = ({ items }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tabsName = searchParams.get("tabs") || "";
+  const filterName = searchParams.get("filterName");
+
   return (
     <ul className="flex flex-wrap items-center gap-2 ">
       {items.map((item) => (
@@ -28,11 +27,13 @@ const Filter: React.FunctionComponent<IFilterProps> = ({
             size="sm"
             className={clsx(
               " border-2 uppercase tracking-widest hover:border-Main hover:text-Main",
-              item.value === selectFilter
+              item.value === filterName
                 ? "border border-Main font-semibold text-Main"
                 : "border border-MediumGrey",
             )}
-            onClick={() => setFilter(item.value)}
+            onClick={() =>
+              setSearchParams(`?${tabsName}&filterName=${item.value}`)
+            }
           >
             {item.imageURL && (
               <img

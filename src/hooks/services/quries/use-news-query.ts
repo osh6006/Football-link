@@ -1,9 +1,10 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { getGlobalNews } from "../apis/news";
+import { getGlobalNews, getNaverNews } from "../apis/news";
 
 export const newsQueryKey = {
-  useGlobalNewsQuery: "homeNextMatchQuery",
+  useGlobalNewsQuery: "globalNewsQuery",
+  useLocalNewsQuery: "localNewsQuery",
 };
 
 export const useGlobalNewsQuery = (
@@ -25,6 +26,22 @@ export const useGlobalNewsQuery = (
     },
     select(data) {
       return data.pages.flatMap((data) => data.articles);
+    },
+  });
+};
+
+export const useLocalNewsQuery = (query: string, isUse: boolean) => {
+  return useInfiniteQuery({
+    queryKey: [newsQueryKey.useLocalNewsQuery, query],
+    queryFn: ({ pageParam, queryKey }) => getNaverNews(queryKey[1], pageParam),
+    initialPageParam: 1,
+    enabled: !!query && !!isUse,
+    getNextPageParam: (lastPage) => {
+      const nextPage = lastPage.start + 1;
+      return lastPage.items.length === 0 ? undefined : nextPage;
+    },
+    select(data) {
+      return data.pages.flatMap((data) => data.items);
     },
   });
 };

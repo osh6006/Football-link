@@ -8,19 +8,22 @@ import { GLOBAL_NEWS_FILTERS } from "data/football/news";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 
-import { useState } from "react";
-import useLeagueStore from "stores/league-store-te";
-import { useLocalNewsQuery } from "hooks/services/quries/use-football-query";
+import { useLeagueStore } from "stores/league-store";
 import { useInfiniteScroll } from "hooks/use-infinite-scroll";
-import { useGlobalNewsQuery } from "hooks/services/quries/use-news-query";
+import {
+  useGlobalNewsQuery,
+  useLocalNewsQuery,
+} from "hooks/services/quries/use-news-query";
+import { useSearchParams } from "react-router-dom";
 
 interface INewsListProps {
   type: "local" | "global";
 }
 
 const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
-  const { selectedLeague } = useLeagueStore();
-  const [filterTerm, setFilterTerm] = useState("");
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
+  const [searchParams] = useSearchParams();
+  const filterName = searchParams.get("filterName") || "";
 
   const {
     data: localNewsData,
@@ -29,7 +32,7 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
     hasNextPage: localHasNextPage,
     fetchNextPage: localFetchNextPage,
     isFetching: isLocalFetching,
-  } = useLocalNewsQuery(selectedLeague?.kr_name!, type === "local");
+  } = useLocalNewsQuery(selectedLeague?.name!, type === "local");
 
   const {
     data: globalNewsData,
@@ -38,7 +41,7 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
     hasNextPage: globalHasNextPage,
     fetchNextPage: globalfetchNextPage,
     isFetching: isGlobalFetching,
-  } = useGlobalNewsQuery(selectedLeague?.name!, type === "global", filterTerm);
+  } = useGlobalNewsQuery(selectedLeague?.name!, type === "global", filterName);
 
   const { observerRef: localRef } = useInfiniteScroll({
     hasNextPage: localHasNextPage,
@@ -52,10 +55,6 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
 
   const openInNewTab = (url: string) => {
     window.open(url, "_blank", "noreferrer");
-  };
-
-  const handleFilter = (term: string) => {
-    setFilterTerm(term);
   };
 
   if (localLoading || globalLoading) {
@@ -76,7 +75,7 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
 
   return (
     <div className="py-2">
-      {type === "local" && (
+      {type === "local" ? (
         <>
           <ul className="grid grid-cols-1 gap-2 xl:grid-cols-2">
             {localNewsData?.map((el, i) => (
@@ -88,8 +87,8 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
                 <div className="mb-2 flex w-full text-sm">
                   <time>{formatPublicDay(el.pubDate)}</time>
                 </div>
-                <h2 className="font-semibold">{el.title}</h2>
-                <p className="mt-2 text-sm">{el.description}</p>
+                <h2 className="font-semibold">{parsingHTML(el.title)}</h2>
+                <p className="mt-2 text-sm">{parsingHTML(el.description)}</p>
               </li>
             ))}
           </ul>
@@ -106,14 +105,10 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
             )}
           </div>
         </>
-      )}
-      {type === "global" && (
+      ) : null}
+      {type === "global" ? (
         <>
-          <Filter
-            items={GLOBAL_NEWS_FILTERS}
-            selectFilter={filterTerm}
-            setFilter={handleFilter}
-          />
+          <Filter items={GLOBAL_NEWS_FILTERS} />
           {globalNewsData && globalNewsData?.length > 0 ? (
             <>
               <ul className="mt-4 grid grid-cols-1 gap-2 xl:grid-cols-2">
@@ -176,9 +171,13 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
             </>
           )}
         </>
-      )}
+      ) : null}
     </div>
   );
 };
 
 export default NewsList;
+
+function parsingHTML(contents: string) {
+  return <div dangerouslySetInnerHTML={{ __html: contents }} />;
+}

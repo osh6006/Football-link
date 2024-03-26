@@ -9,8 +9,12 @@ const NewsPage: React.FunctionComponent<INewsPageProps> = () => {
     <NewsContainer>
       <Tabs defaultTab="global">
         <Tabs.TabContainer>
-          <Tabs.Tab id="local">Local</Tabs.Tab>
-          <Tabs.Tab id="global">Global</Tabs.Tab>
+          <Tabs.Tab id="local" className="text-xl">
+            Local
+          </Tabs.Tab>
+          <Tabs.Tab id="global" className="text-xl">
+            Global
+          </Tabs.Tab>
         </Tabs.TabContainer>
         <Tabs.TabPanel id="local">
           <NewsList type="local" />
