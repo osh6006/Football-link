@@ -1,36 +1,35 @@
 import clsx from "clsx";
-import * as React from "react";
+import { useSearchParams } from "react-router-dom";
 
-interface IPlayerTeamSwitcherProps {
-  selectedTarget: "team" | "player";
-  setSelectedTarget: (target: "team" | "player") => void;
-}
+interface IPlayerTeamSwitcherProps {}
 
-const PlayerTeamSwitcher: React.FunctionComponent<IPlayerTeamSwitcherProps> = ({
-  selectedTarget,
-  setSelectedTarget,
-}) => {
+const PlayerTeamSwitcher: React.FunctionComponent<
+  IPlayerTeamSwitcherProps
+> = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tabName = searchParams.get("tab") || "team";
+
   return (
     <div className="rounded-md">
       <button
         className={clsx(
           "w-28 rounded-l-md py-2",
-          selectedTarget === "team"
+          tabName === "team"
             ? " border-2 border-Main font-semibold text-Main"
             : "border border-r-0 border-MediumGrey ",
         )}
-        onClick={() => setSelectedTarget("team")}
+        onClick={() => setSearchParams(`?tab=team`)}
       >
         Team
       </button>
       <button
         className={clsx(
           "w-28 rounded-r-md py-2",
-          selectedTarget === "player"
+          tabName === "player"
             ? "  border-2 border-Main font-semibold text-Main"
             : "ron border border-l-0 border-MediumGrey",
         )}
-        onClick={() => setSelectedTarget("player")}
+        onClick={() => setSearchParams(`?tab=player`)}
       >
         Player
       </button>
