@@ -1,17 +1,18 @@
+import { useMemo } from "react";
 import useTable from "hooks/use-table";
-import { useMemo, useState } from "react";
 import {
   getCoreRowModel,
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { useSearchParams } from "react-router-dom";
+import { useTopPlayerQuery } from "hooks/services/quries/use-rank-query";
 
+import Table from "components/common/table";
+import Avatar from "components/common/avatar";
 import TopPlayerSelector from "./top-player-selector";
 
-import { PlayerSelectType, rapidPlayerResponse } from "types/football";
-import Avatar from "components/common/avatar";
-import Table from "components/common/table";
-import { useTopPlayerQuery } from "hooks/services/quries/use-rank-query";
+import { rapidPlayerResponse } from "types/football";
 
 interface IPlayerRankTableProps {
   league: number;
@@ -22,15 +23,17 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
   league,
   season,
 }) => {
-  const [type, setType] = useState<PlayerSelectType>("topscorers");
+  const [searchParams] = useSearchParams();
+  const tabName = searchParams.get("playerType") || "topscorers";
+
   const { sorting, setSorting, columnHelper, emptyArray } =
     useTable<rapidPlayerResponse>();
 
-  const handleType = (type: PlayerSelectType) => {
-    setType(type);
-  };
-
-  const { data, isLoading, isError } = useTopPlayerQuery(type, season, league);
+  const { data, isLoading, isError } = useTopPlayerQuery(
+    tabName,
+    season,
+    league,
+  );
 
   const columns = useMemo(() => {
     return [
@@ -120,7 +123,7 @@ const PlayerRank: React.FunctionComponent<IPlayerRankTableProps> = ({
 
   return (
     <div className="space-y-4">
-      <TopPlayerSelector setType={handleType} type={type} />
+      <TopPlayerSelector />
       {/* table */}
       <Table
         type="player"

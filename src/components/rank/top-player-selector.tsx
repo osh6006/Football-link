@@ -1,11 +1,8 @@
 import clsx from "clsx";
 import { CheckCircle2 } from "lucide-react";
-import { PlayerSelectType } from "types/football";
+import { useSearchParams } from "react-router-dom";
 
-interface ITopPlayerSelectorProps {
-  type: PlayerSelectType;
-  setType: (type: PlayerSelectType) => void;
-}
+interface ITopPlayerSelectorProps {}
 
 interface ISelectItem {
   children: React.ReactNode;
@@ -28,33 +25,41 @@ const SelectItem = ({ children, selected, onClick }: ISelectItem) => {
   );
 };
 
-const TopPlayerSelector: React.FunctionComponent<ITopPlayerSelectorProps> = ({
-  type,
-  setType,
-}) => {
+const TopPlayerSelector: React.FunctionComponent<
+  ITopPlayerSelectorProps
+> = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const tabName = searchParams.get("tab") || "player";
+  const typeName = searchParams.get("playerType") || "topscorers";
+
   return (
     <ul className="grid w-full grid-cols-4 gap-3">
       <SelectItem
-        onClick={() => setType("topscorers")}
-        selected={type === "topscorers"}
+        onClick={() => setSearchParams(`?tab=${tabName}&playerType=topscorers`)}
+        selected={typeName === "topscorers"}
       >
         득점
       </SelectItem>
       <SelectItem
-        onClick={() => setType("topassists")}
-        selected={type === "topassists"}
+        onClick={() => setSearchParams(`?tab=${tabName}&playerType=topassists`)}
+        selected={typeName === "topassists"}
       >
         도움
       </SelectItem>
       <SelectItem
-        onClick={() => setType("topyellowcards")}
-        selected={type === "topyellowcards"}
+        onClick={() =>
+          setSearchParams(`?tab=${tabName}&playerType=topyellowcards`)
+        }
+        selected={typeName === "topyellowcards"}
       >
         경고
       </SelectItem>
       <SelectItem
-        onClick={() => setType("topredcards")}
-        selected={type === "topredcards"}
+        onClick={() =>
+          setSearchParams(`?tab=${tabName}&playerType=topredcards`)
+        }
+        selected={typeName === "topredcards"}
       >
         퇴장
       </SelectItem>
