@@ -12,6 +12,7 @@ interface IPredictActions {
   setHomeTeam: (team: rapidFootballTeamStanding | null) => void;
   setAwayTeam: (team: rapidFootballTeamStanding | null) => void;
   setTeamArr: (teamArr: rapidFootballTeamStanding[]) => void;
+  clear: () => void;
 }
 
 type IPredictType = IPredictState & IPredictActions;
@@ -38,6 +39,15 @@ const usePredictStore = createStore<IPredictType>((set) => ({
     set(
       produce((state) => {
         state.teamArr = teamArr;
+      }),
+    );
+  },
+  clear: () => {
+    set(
+      produce((state) => {
+        state.homeTeam = null;
+        state.awayTeam = null;
+        state.teamArr = null;
       }),
     );
   },

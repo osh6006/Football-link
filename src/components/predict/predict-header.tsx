@@ -20,7 +20,7 @@ const PredictHeader: React.FunctionComponent<IPredictHeaderProps> = (props) => {
     (state) => state,
   );
 
-  const { data, isLoading, isError } = useTeamRankQuery(
+  const { data } = useTeamRankQuery(
     selectedLeague?.leagueId!,
     selectedLeague?.season!,
   );
@@ -62,7 +62,7 @@ const PredictHeader: React.FunctionComponent<IPredictHeaderProps> = (props) => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-2">
+    <div className="mx-auto grid max-w-[1000px] grid-cols-1 gap-2 sm:grid-cols-2">
       <div className="">
         <ListBox
           items={items || []}
@@ -70,7 +70,7 @@ const PredictHeader: React.FunctionComponent<IPredictHeaderProps> = (props) => {
           setSelectedItem={handleSetHomeTeam}
           renderSelectedItem={(selectedItem) => {
             return (
-              <span className="flex items-center gap-x-2 truncate">
+              <span className="flex items-center justify-center gap-x-2 truncate text-lg">
                 {selectedItem?.team.logo ? (
                   <LazyLoadImage
                     src={selectedItem?.team.logo}
@@ -90,7 +90,7 @@ const PredictHeader: React.FunctionComponent<IPredictHeaderProps> = (props) => {
                 key={item?.team.id}
                 className={({ active }) =>
                   clsx(
-                    "relative cursor-default select-none py-2 pl-10 pr-4",
+                    "relative  cursor-default select-none py-2 pl-10 pr-4",
                     active ? "bg-Main text-white" : "text-MediumGrey",
                   )
                 }
@@ -120,7 +120,7 @@ const PredictHeader: React.FunctionComponent<IPredictHeaderProps> = (props) => {
               </Listbox.Option>
             );
           }}
-          className="py-4"
+          className="py-2 sm:py-3"
         />
       </div>
       <div className="">
@@ -130,7 +130,7 @@ const PredictHeader: React.FunctionComponent<IPredictHeaderProps> = (props) => {
           setSelectedItem={handleSetAwayTeam}
           renderSelectedItem={(selectedItem) => {
             return (
-              <span className="flex items-center gap-x-2 truncate">
+              <span className="flex items-center justify-center gap-x-2 truncate text-lg">
                 {selectedItem?.team.logo ? (
                   <LazyLoadImage
                     src={selectedItem?.team.logo}
@@ -180,7 +180,7 @@ const PredictHeader: React.FunctionComponent<IPredictHeaderProps> = (props) => {
               </Listbox.Option>
             );
           }}
-          className="py-4"
+          className="py-2 sm:py-3"
         />
       </div>
     </div>

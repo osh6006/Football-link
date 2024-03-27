@@ -54,7 +54,7 @@ const ListBox = <T,>({
         >
           <Listbox.Options
             className={clsx(
-              "absolute mt-1 max-h-60 w-full overflow-auto rounded-md py-1  text-base  shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm",
+              "absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md py-1  text-base  shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm",
               theme === "dark" ? "bg-VeryDarkGreyDark " : "",
               theme === "light" ? "bg-LightGreyLightBg" : "",
             )}

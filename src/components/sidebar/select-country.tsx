@@ -10,6 +10,7 @@ import clsx from "clsx";
 import { useTheme } from "stores/theme-store";
 import useSelectBox from "hooks/use-select-box";
 import { useLeagueStore } from "stores/league-store";
+import { usePredictActions } from "stores/predict-store";
 
 interface ISelectCountryProps {}
 
@@ -26,6 +27,7 @@ const SelectCountry: React.FunctionComponent<ISelectCountryProps> = (props) => {
   const country = useCountryStore((state) => state.selectedCountry);
   const selectCountry = useCountryStore((state) => state.selectCountry);
   const selectLeague = useLeagueStore((state) => state.selectLeague);
+  const predictClear = usePredictActions((state) => state.clear);
 
   const {
     query: countryQuery,
@@ -55,6 +57,7 @@ const SelectCountry: React.FunctionComponent<ISelectCountryProps> = (props) => {
         if (findCountry) {
           selectCountry(findCountry);
           selectLeague(null);
+          predictClear();
         }
       }}
       renderInput={(country) => (

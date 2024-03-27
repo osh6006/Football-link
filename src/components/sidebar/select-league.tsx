@@ -11,6 +11,7 @@ import useSelectBox from "hooks/use-select-box";
 import { useCountryStore } from "stores/country-store";
 import { ILeague, useLeagueStore } from "stores/league-store";
 import { useLeagueQueryComboBox } from "hooks/services/quries/use-league-query";
+import { usePredictActions } from "stores/predict-store";
 
 interface ISelectLeagueProps {}
 
@@ -31,6 +32,7 @@ const SelectLeague: React.FunctionComponent<ISelectLeagueProps> = () => {
 
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
   const selectLeague = useLeagueStore((state) => state.selectLeague);
+  const predictClear = usePredictActions((state) => state.clear);
 
   return (
     <ComboBox
@@ -49,7 +51,10 @@ const SelectLeague: React.FunctionComponent<ISelectLeagueProps> = () => {
           data,
         );
 
-        if (findLeague) selectLeague(findLeague);
+        if (findLeague) {
+          selectLeague(findLeague);
+          predictClear();
+        }
       }}
       renderInput={(league) => (
         <div className="flex items-center">
