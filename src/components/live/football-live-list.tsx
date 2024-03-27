@@ -1,18 +1,19 @@
-import useLeagueStore from "stores/league-store-te";
 import FootballLiveHeader from "./football-live-header";
 
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
+import { useLiveMathesQuery } from "hooks/services/quries/use-live-query";
+import { useLeagueStore } from "stores/league-store";
 
 interface IFootballLiveListProps {}
 
 const FootballLiveList: React.FunctionComponent<
   IFootballLiveListProps
 > = () => {
-  const { selectedLeague } = useLeagueStore();
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 
   // const { data, isLoading, isError } = useLiveMathesQuery(
-  //   selectedLeague?.rapid_football_league_id!,
+  //   selectedLeague?.leagueId!,
   // );
 
   // if (isLoading)

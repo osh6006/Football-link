@@ -18,7 +18,6 @@ export const useTeamRankQuery = (
         season: queryKey[2] as string,
       }),
     select: (data) => {
-      console.log(data);
       return data;
     },
     enabled: !!league && !!season,

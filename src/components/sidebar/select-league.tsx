@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { findItemUsingKeywordInArray } from "utils/util";
 
-import { CheckIcon } from "lucide-react";
+import { CheckIcon, ImageOffIcon } from "lucide-react";
 import { Combobox } from "@headlessui/react";
 import ComboBox from "components/navbar/combo-box";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -43,21 +43,25 @@ const SelectLeague: React.FunctionComponent<ISelectLeagueProps> = () => {
       isFocused={isLeagueFocused}
       setIsFocused={setLeagueFocused}
       onChange={(value) => {
-        const findCountry = findItemUsingKeywordInArray<ILeague>(
+        const findLeague = findItemUsingKeywordInArray<ILeague>(
           "name",
           value,
           data,
         );
 
-        if (findCountry) selectLeague(findCountry);
+        if (findLeague) selectLeague(findLeague);
       }}
-      renderInput={(country) => (
+      renderInput={(league) => (
         <div className="flex items-center">
-          <LazyLoadImage
-            className="absolute left-3 h-6 w-6 shadow-md"
-            src={country?.flag}
-            alt={country?.name}
-          />
+          {league ? (
+            <LazyLoadImage
+              className="absolute left-3 h-6 w-6 shadow-md"
+              src={league?.flag}
+              alt={league?.name}
+            />
+          ) : (
+            <ImageOffIcon className="absolute left-3 h-6 w-6 shadow-md" />
+          )}
           <Combobox.Input
             className={clsx(
               "w-full py-3 pl-12 pr-10 text-sm font-semibold leading-5 text-MediumGrey focus:outline-none",
@@ -67,7 +71,6 @@ const SelectLeague: React.FunctionComponent<ISelectLeagueProps> = () => {
             placeholder={`Search Country`}
             displayValue={() => selectedLeague?.name || ""}
             onChange={(event) => {
-              console.log(event.target.value);
               return setLeagueQuery(event.target.value);
             }}
             onBlur={() => setLeagueFocused(false)}

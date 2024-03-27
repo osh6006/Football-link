@@ -2,7 +2,7 @@ import { Outlet, useLocation, useOutletContext } from "react-router-dom";
 
 import Loading from "components/common/loading";
 import DetailMenuTabs from "components/common/detail-menu-tabs";
-import PlayerHeader from "components/player/football/player-header";
+import PlayerHeader from "components/player/player-header";
 import PlayerRootContainer from "components/layouts/player-root-container";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 

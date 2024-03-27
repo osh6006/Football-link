@@ -1,6 +1,6 @@
 import { useTheme } from "stores/theme-store";
 import { componentBackgroundChange } from "utils/util";
-import FootballLiveList from "components/live/football/football-live-list";
+import FootballLiveList from "components/live/football-live-list";
 
 interface ILivePageProps {}
 

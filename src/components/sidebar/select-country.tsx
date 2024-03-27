@@ -1,7 +1,7 @@
 import iso from "iso-3166-1";
 import { findItemUsingKeywordInArray } from "utils/util";
 
-import { CheckIcon } from "lucide-react";
+import { CheckIcon, ImageOffIcon } from "lucide-react";
 import { Combobox } from "@headlessui/react";
 import ComboBox from "components/navbar/combo-box";
 import { ICountry, useCountryStore } from "stores/country-store";
@@ -59,11 +59,15 @@ const SelectCountry: React.FunctionComponent<ISelectCountryProps> = (props) => {
       }}
       renderInput={(country) => (
         <div className="flex items-center">
-          <LazyLoadImage
-            className="absolute left-3 h-6 w-6 shadow-md"
-            src={country?.flag}
-            alt={country?.alpha2}
-          />
+          {country ? (
+            <LazyLoadImage
+              className="absolute left-3 h-6 w-6 shadow-md"
+              src={country?.flag}
+              alt={country?.alpha2}
+            />
+          ) : (
+            <ImageOffIcon className="absolute left-3 h-6 w-6 shadow-md" />
+          )}
           <Combobox.Input
             className={clsx(
               "w-full py-3 pl-12 pr-10 text-sm font-semibold leading-5 text-MediumGrey focus:outline-none",

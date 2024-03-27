@@ -132,7 +132,7 @@ const HomeTeamRankTable: React.FunctionComponent<
                 </td>
                 <td className="whitespace-no-wrap hidden  border-gray-200 px-6 py-4 sm:table-cell">
                   <div className="flex gap-x-1">
-                    {item.form.split("").map((el, i) => (
+                    {item?.form?.split("").map((el, i) => (
                       <div
                         key={i}
                         className={clsx(
