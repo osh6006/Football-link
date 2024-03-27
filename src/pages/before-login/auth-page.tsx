@@ -4,6 +4,7 @@ import AuthContainer from "../../components/layouts/auth-container";
 import StepOne from "../../components/auth/step-one";
 import StepThree from "../../components/auth/step-three";
 import StepTwo from "../../components/auth/step-two";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
 
 const AuthPage = () => {
   const { step } = useAuthStepStore();
@@ -22,10 +23,12 @@ const AuthPage = () => {
         {step === 1 && <StepOne />}
         {step === 2 && <StepTwo />}
         {step === 3 && <StepThree />}
-        <div
-          role="img"
-          className="absolute -bottom-28 -right-12 h-[200px] w-[200px] bg-[url('./assets/images/soccer-ball.png')] bg-cover"
-        />
+        <LazyLoadComponent>
+          <div
+            role="img"
+            className="absolute -bottom-28 -right-12 h-[200px] w-[200px] bg-[url('./assets/images/soccer-ball.png')] bg-cover"
+          />
+        </LazyLoadComponent>
       </section>
     </AuthContainer>
   );

@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { ButtonHTMLAttributes } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   // 추가적인 프롭스가 필요한 경우 여기에 정의
@@ -48,7 +49,7 @@ const Button: React.FunctionComponent<IButtonProps> = ({
       )}
       {...props}
     >
-      {iconSrc && <img src={iconSrc} alt="iconSrc" />}
+      {iconSrc && <LazyLoadImage src={iconSrc} alt="iconSrc" />}
       {children}
     </button>
   );

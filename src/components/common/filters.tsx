@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Button from "./button";
 import { useSearchParams } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface IFilterProps {
   items: {
@@ -36,7 +37,7 @@ const Filter: React.FunctionComponent<IFilterProps> = ({ items }) => {
             }
           >
             {item.imageURL && (
-              <img
+              <LazyLoadImage
                 src={item.imageURL}
                 alt="flag"
                 className="aspect-square h-6 w-6"

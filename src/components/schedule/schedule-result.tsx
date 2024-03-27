@@ -5,6 +5,7 @@ import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 import { useLeagueStore } from "stores/league-store";
 import { useScheduleQuery } from "hooks/services/quries/use-schedule-query";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface IScheduleResultProps {
   isAll: boolean;
@@ -17,18 +18,19 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 
   const formatDate = dayjs(currentDate);
-  const season = formatDate.year() - 1;
   const firstDayOfMonth = formatDate.startOf("month").format("YYYY-MM-DD");
   const lastDayOfMonth = formatDate.endOf("month").format("YYYY-MM-DD");
 
   const { data, isLoading, isError } = useScheduleQuery({
     isAll,
-    season,
     date: currentDate,
-    end: lastDayOfMonth,
     start: firstDayOfMonth,
+    end: lastDayOfMonth,
+    season: selectedLeague?.season!,
     leagueId: selectedLeague?.leagueId!,
   });
+
+  console.log(data);
 
   if (isLoading) {
     return (
@@ -41,7 +43,7 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
   if (isError) {
     return (
       <ComponentStatusContainer state="loading" height="500">
-        <p>데이터를 불러오던 도중 오류가 발생하였습니다.</p>
+        <p>An error occurred while trying to fetch data 🤮</p>
       </ComponentStatusContainer>
     );
   }
@@ -66,14 +68,14 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
             <div className="flex  items-center gap-x-2">
               <div>
                 <span className="flex items-center justify-center rounded-sm bg-green-500 px-[3px] text-xs leading-[20px] text-white">
-                  홈
+                  Home
                 </span>
               </div>
               <div>{el.teams.home.name}</div>
             </div>
 
             <div className="flex gap-x-3 font-semibold">
-              <img
+              <LazyLoadImage
                 src={el.teams.home.logo}
                 alt="homeLogo"
                 className="max-w-8"
@@ -83,7 +85,7 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
                 <span>{el.fixture.status.long}</span>
                 <span>{el.goals.away}</span>
               </span>
-              <img
+              <LazyLoadImage
                 src={el.teams.away.logo}
                 alt="homeLogo"
                 className="max-w-8"
@@ -91,6 +93,9 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
             </div>
             <div className="flex items-center">
               <div>{el.teams.away.name}</div>
+              <span className="ml-2 flex items-center justify-center rounded-sm bg-blue-500 px-[3px] text-xs leading-[20px] text-white">
+                Away
+              </span>
             </div>
           </div>
           <span className="absolute bottom-1 right-2 font-semibold sm:block md:static">{`${el.league.round.at(

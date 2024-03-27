@@ -1,4 +1,5 @@
 import ErrorContainer from "components/layouts/error-container";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface IErrorPageProps {}
 
@@ -13,10 +14,10 @@ const ErrorPage: React.FunctionComponent<IErrorPageProps> = () => {
           <p className="my-2 text-lg">다른 페이지 경로를 찾아주세요!</p>
         </div>
         <div>
-          <img src="https://i.ibb.co/ck1SGFJ/Group.png" alt="error" />
+          <LazyLoadImage src="https://i.ibb.co/ck1SGFJ/Group.png" alt="error" />
         </div>
         <div>
-          <img src="https://i.ibb.co/G9DC8S0/404-2.png" alt="error" />
+          <LazyLoadImage src="https://i.ibb.co/G9DC8S0/404-2.png" alt="error" />
         </div>
       </div>
     </ErrorContainer>

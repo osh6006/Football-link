@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { isIncludeInSelectedItem } from "../../utils/util";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface IMultiSelectProps {
   items: any[];
@@ -30,7 +31,11 @@ const MultiSelect: React.FunctionComponent<IMultiSelectProps> = ({
           onClick={() => handleSelect(item)}
         >
           {isImg ? (
-            <img src={item.logo} alt="logo" className="aspect-auto h-5 w-5" />
+            <LazyLoadImage
+              src={item.logo}
+              alt="logo"
+              className="aspect-auto h-5 w-5"
+            />
           ) : (
             <p>{item.icon}</p>
           )}

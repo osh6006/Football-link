@@ -42,7 +42,7 @@ const PredictResult: React.FunctionComponent<IPredictResultProps> = () => {
   const homeTeamStat = calTeamStats(data!, homeTeam?.team.name!);
   const awayTeamStat = calTeamStats(data!, awayTeam?.team.name!);
 
-  return (
+  return homeTeam && awayTeam ? (
     <div className="mx-auto mt-10 max-w-[1000px]">
       <div className="flex items-center justify-between sm:justify-around">
         <div className="flex flex-col items-center gap-y-2">
@@ -161,6 +161,11 @@ const PredictResult: React.FunctionComponent<IPredictResultProps> = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <div className="mt-10 flex h-full min-h-[500px] flex-col items-center justify-center">
+      <span className="text-xl capitalize">please select league</span>
+      <span className="text-xl capitalize">not data 😣</span>
+    </div>
   );
 };
 
@@ -240,7 +245,7 @@ function calculateAverageScores(
   let totalScore = 0;
   let totalMatches = 0;
 
-  fixtures.forEach((fixture) => {
+  fixtures?.forEach((fixture) => {
     if (
       fixture.teams.home.name === teamName ||
       fixture.teams.away.name === teamName
@@ -271,9 +276,6 @@ function determineUnderOverProbability(
   } else {
     prediction = "Under";
   }
-
-  console.log(`${teamName}의 평균 스코어: ${averageScore.toFixed(2)}`);
-  console.log(`- under/over 예측: ${prediction}`);
 
   return { averageScore: averageScore.toFixed(2), prediction };
 }

@@ -7,6 +7,7 @@ import useScheduleStore from "stores/schedule-store";
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 import { useScheduleQuery } from "hooks/services/quries/use-schedule-query";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface IFootballTeamCalendarProps {
   isAll: boolean;
@@ -82,7 +83,7 @@ const FootballTeamCalendar: React.FunctionComponent<
             </div>
 
             <div className="flex gap-x-3 font-semibold">
-              <img
+              <LazyLoadImage
                 src={el.teams.home.logo}
                 alt="homeLogo"
                 className="max-w-8"
@@ -92,7 +93,7 @@ const FootballTeamCalendar: React.FunctionComponent<
                 <span>{el.fixture.status.long}</span>
                 <span>{el.goals.away}</span>
               </span>
-              <img
+              <LazyLoadImage
                 src={el.teams.away.logo}
                 alt="homeLogo"
                 className="max-w-8"

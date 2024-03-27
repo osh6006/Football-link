@@ -198,6 +198,7 @@ export const getLeagueSchedule = async ({
           timezone: "Asia/Seoul",
         },
       });
+
       return response.data.response;
     } else {
       const response = await rapidApi.get("/fixtures", {

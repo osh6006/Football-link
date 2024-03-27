@@ -29,7 +29,7 @@ export const useScheduleQuery = ({
   date,
   teamId,
 }: {
-  season: number;
+  season: number | string;
   start: string;
   end: string;
   isAll: boolean;

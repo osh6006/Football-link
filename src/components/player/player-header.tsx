@@ -1,4 +1,5 @@
 import StatTable from "components/common/stat-table";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { rapidPlayerResponse } from "types/football";
 
 interface IPlayerHeaderProps {
@@ -155,7 +156,7 @@ const PlayerHeader: React.FunctionComponent<IPlayerHeaderProps> = ({
       <div className="flex flex-col items-center justify-between xl:flex-row xl:gap-x-8 ">
         <div className="flex  w-full flex-1 flex-col items-center justify-between gap-x-8 xl:flex-row">
           <div className="relative w-full rounded-md bg-MainHover p-4  xl:w-[250px] xl:rounded-full xl:p-8">
-            <img
+            <LazyLoadImage
               src={player?.player.photo}
               alt=""
               className="mx-auto aspect-square w-[150px] rounded-full sm:w-[200px] "
@@ -165,7 +166,7 @@ const PlayerHeader: React.FunctionComponent<IPlayerHeaderProps> = ({
                 Captain
               </span>
             ) : null}
-            <img
+            <LazyLoadImage
               src={player?.statistics[0].team.logo}
               alt=""
               className="absolute bottom-2 right-2 max-w-[60px] rounded-full"
