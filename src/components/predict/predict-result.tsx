@@ -162,9 +162,9 @@ const PredictResult: React.FunctionComponent<IPredictResultProps> = () => {
       </div>
     </div>
   ) : (
-    <div className="mt-10 flex h-full min-h-[500px] flex-col items-center justify-center">
-      <span className="text-xl capitalize">please select league</span>
-      <span className="text-xl capitalize">not data 😣</span>
+    <div className="mt-10 flex h-full min-h-[500px] flex-col items-center justify-center text-2xl font-bold ">
+      <span>Please choose 2 leagues</span>
+      <span>Not data 😣</span>
     </div>
   );
 };
