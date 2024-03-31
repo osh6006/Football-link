@@ -8,13 +8,13 @@ interface Player {
   grid: string | null;
 }
 
-interface IFootballLineUpProps {
+interface ILineUpProps {
   lineUp: Player[];
   formation: string;
   isHome: boolean;
 }
 
-const FootballLineUp: React.FunctionComponent<IFootballLineUpProps> = ({
+const LineUp: React.FunctionComponent<ILineUpProps> = ({
   formation,
   lineUp,
   isHome,
@@ -100,4 +100,4 @@ const FootballLineUp: React.FunctionComponent<IFootballLineUpProps> = ({
   );
 };
 
-export default FootballLineUp;
+export default LineUp;

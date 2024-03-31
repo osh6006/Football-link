@@ -1,16 +1,18 @@
 import clsx from "clsx";
+import { Disclosure } from "@headlessui/react";
+
+import LiveStat from "./live-stat";
+import LineUpField from "./lineup-field";
 import Tabs from "components/common/tabs";
 import Avatar from "components/common/avatar";
-import { Disclosure } from "@headlessui/react";
-import { rapidFootballLiveMatchResponse } from "types/football";
-import FootballLineUpTab from "./football-lineup-tab";
-import FootballStatTab from "./football-stat-tab";
 
-interface IFootballLiveDetailProps {
+import { rapidFootballLiveMatchResponse } from "types/football";
+
+interface ILiveDetailProps {
   liveInfo: rapidFootballLiveMatchResponse;
 }
 
-const FootballLiveDetail = ({ liveInfo }: IFootballLiveDetailProps) => {
+const LiveDetail = ({ liveInfo }: ILiveDetailProps) => {
   return (
     <Disclosure.Panel>
       <div className="p-5">
@@ -55,10 +57,10 @@ const FootballLiveDetail = ({ liveInfo }: IFootballLiveDetailProps) => {
             ))}
           </Tabs.TabPanel>
           <Tabs.TabPanel id={"lineup"}>
-            <FootballLineUpTab fixtureId={liveInfo.fixture.id} />
+            <LineUpField fixtureId={liveInfo.fixture.id} />
           </Tabs.TabPanel>
           <Tabs.TabPanel id={"stat"}>
-            <FootballStatTab />
+            <LiveStat />
           </Tabs.TabPanel>
         </Tabs>
       </div>
@@ -66,4 +68,4 @@ const FootballLiveDetail = ({ liveInfo }: IFootballLiveDetailProps) => {
   );
 };
 
-export default FootballLiveDetail;
+export default LiveDetail;

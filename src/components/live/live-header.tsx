@@ -1,16 +1,18 @@
 import clsx from "clsx";
 import dayjs from "dayjs";
-import { rapidFootballLiveMatchResponse } from "types/football";
 
+import LiveDetail from "./live-detail";
 import { ChevronDown } from "lucide-react";
-import { useTheme } from "stores/theme-store";
-import FootballLiveDetail from "./football-live-detail";
 import { Disclosure, Transition } from "@headlessui/react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
+import { useTheme } from "stores/theme-store";
+
+import { rapidFootballLiveMatchResponse } from "types/football";
+
 dayjs.locale("ko");
 
-interface IFootballLiveHeaderProps {
+interface ILiveHeaderProps {
   liveInfo: rapidFootballLiveMatchResponse;
 }
 
@@ -23,7 +25,7 @@ const TeamInfo = ({ imageUrl, name }: { imageUrl: string; name: string }) => {
   );
 };
 
-const FootballLiveHeader: React.FunctionComponent<IFootballLiveHeaderProps> = ({
+const LiveHeader: React.FunctionComponent<ILiveHeaderProps> = ({
   liveInfo,
 }) => {
   const theme = useTheme();
@@ -90,7 +92,7 @@ const FootballLiveHeader: React.FunctionComponent<IFootballLiveHeaderProps> = ({
                 leaveFrom="transform scale-100 opacity-100"
                 leaveTo="transform scale-95 opacity-0"
               >
-                <FootballLiveDetail liveInfo={liveInfo} />
+                <LiveDetail liveInfo={liveInfo} />
               </Transition>
             </div>
           </>
@@ -100,4 +102,4 @@ const FootballLiveHeader: React.FunctionComponent<IFootballLiveHeaderProps> = ({
   );
 };
 
-export default FootballLiveHeader;
+export default LiveHeader;

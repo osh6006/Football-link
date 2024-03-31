@@ -1,13 +1,14 @@
-import ComponentStatusContainer from "components/layouts/component-status-container";
-import FootballLineUp from "./football-lineup";
-import { useLiveLineUpQuery } from "hooks/services/quries/use-live-query";
+import LineUp from "./lineup";
 import Loading from "components/common/loading";
+import ComponentStatusContainer from "components/layouts/component-status-container";
 
-interface IFootballLineUpProps {
+import { useLiveLineUpQuery } from "hooks/services/quries/use-live-query";
+
+interface ILineUpFieldProps {
   fixtureId?: number;
 }
 
-const FootballLineUpTab: React.FunctionComponent<IFootballLineUpProps> = ({
+const LineUpField: React.FunctionComponent<ILineUpFieldProps> = ({
   fixtureId,
 }) => {
   const { data, isLoading, isError } = useLiveLineUpQuery(fixtureId);
@@ -45,14 +46,10 @@ const FootballLineUpTab: React.FunctionComponent<IFootballLineUpProps> = ({
   return (
     <div className=" rounded-md bg-green-400 p-4 text-white">
       <div className="relative grid w-full grid-cols-2 rounded-md border-4 border-white px-2 py-10">
-        <FootballLineUp
-          formation={homeData?.formation}
-          lineUp={homePlayerArr}
-          isHome
-        />
+        <LineUp formation={homeData?.formation} lineUp={homePlayerArr} isHome />
         <div className="absolute left-1/2 top-0 h-full w-1 bg-white py-4 "></div>
         <div className="absolute"></div>
-        <FootballLineUp
+        <LineUp
           formation={awayData?.formation}
           lineUp={awayPlayerArr}
           isHome={false}
@@ -62,4 +59,4 @@ const FootballLineUpTab: React.FunctionComponent<IFootballLineUpProps> = ({
   );
 };
 
-export default FootballLineUpTab;
+export default LineUpField;

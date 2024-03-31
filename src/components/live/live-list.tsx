@@ -1,16 +1,13 @@
-import FootballLiveHeader from "./football-live-header";
-
+import LiveHeader from "./live-header";
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
 import { useLeagueStore } from "stores/league-store";
 import { useLiveMathesQuery } from "hooks/services/quries/use-live-query";
 
-interface IFootballLiveListProps {}
+interface ILiveListProps {}
 
-const FootballLiveList: React.FunctionComponent<
-  IFootballLiveListProps
-> = () => {
+const LiveList: React.FunctionComponent<ILiveListProps> = () => {
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 
   const { data, isLoading, isError } = useLiveMathesQuery(
@@ -42,11 +39,9 @@ const FootballLiveList: React.FunctionComponent<
 
   return (
     <ul className="space-y-2">
-      {data?.map((el) => (
-        <FootballLiveHeader key={el.fixture.id} liveInfo={el} />
-      ))}
+      {data?.map((el) => <LiveHeader key={el.fixture.id} liveInfo={el} />)}
     </ul>
   );
 };
 
-export default FootballLiveList;
+export default LiveList;
