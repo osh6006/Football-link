@@ -49,7 +49,7 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
     return (
       <div
         className={clsx(
-          `flex h-[350px] w-full min-w-[1000px] items-center justify-center rounded-md bg-cover bg-center bg-no-repeat text-2xl font-bold shadow-md`,
+          `flex h-[350px] w-full max-w-[1200px] items-center justify-center rounded-md bg-cover bg-center bg-no-repeat text-2xl font-bold shadow-md`,
           theme === "light" && "bg-White",
           theme === "dark" && "bg-DarkGrey",
         )}

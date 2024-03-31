@@ -4,7 +4,7 @@ import { rapidFootballLiveMatchResponse } from "types/football";
 
 import { ChevronDown } from "lucide-react";
 import { useTheme } from "stores/theme-store";
-import FootballLiveDetail from "./foot-live-detail";
+import FootballLiveDetail from "./football-live-detail";
 import { Disclosure, Transition } from "@headlessui/react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 

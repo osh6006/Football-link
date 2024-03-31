@@ -1,4 +1,4 @@
-import * as React from "react";
+import clsx from "clsx";
 
 interface Player {
   id: number;
@@ -27,7 +27,14 @@ const FootballLineUp: React.FunctionComponent<IFootballLineUpProps> = ({
   const renderGrid = () => {
     const grid: any[] = [
       <div className="flex flex-col items-center justify-center ">
-        <div>{goalkeeper?.number}</div>
+        <div
+          className={clsx(
+            "relative flex aspect-square h-12 w-12 items-center justify-center rounded-full ",
+            isHome ? "bg-red-500" : "bg-blue-500",
+          )}
+        >
+          {goalkeeper?.number}
+        </div>
         <div>{goalkeeper?.name}</div>
       </div>,
     ];
@@ -37,18 +44,49 @@ const FootballLineUp: React.FunctionComponent<IFootballLineUpProps> = ({
 
       const tempEL = (
         <div className="flex flex-col items-center justify-center gap-5">
-          {newArr.map((el) => {
-            const player = newLineUp.shift();
-            return (
-              <div className="flex flex-col items-center justify-center whitespace-nowrap">
-                <div>{player?.number}</div>
-                <div>{player?.name}</div>
-              </div>
-            );
-          })}
+          {isHome
+            ? newArr
+                .map((el) => {
+                  const player = newLineUp.shift();
+                  return (
+                    <div
+                      key={el}
+                      className="flex flex-col items-center justify-center whitespace-nowrap"
+                    >
+                      <div
+                        className={clsx(
+                          "relative flex aspect-square h-12 w-12 items-center justify-center rounded-full ",
+                          isHome ? "bg-red-500" : "bg-blue-500",
+                        )}
+                      >
+                        <span className="absolute">{player?.number}</span>
+                      </div>
+                      <div>{player?.name}</div>
+                    </div>
+                  );
+                })
+                .reverse()
+            : newArr.map((el) => {
+                const player = newLineUp.shift();
+                return (
+                  <div
+                    key={el}
+                    className="flex flex-col items-center justify-center whitespace-nowrap"
+                  >
+                    <div
+                      className={clsx(
+                        "relative flex aspect-square h-12 w-12 items-center justify-center rounded-full ",
+                        isHome ? "bg-red-500" : "bg-blue-500",
+                      )}
+                    >
+                      <span className="absolute">{player?.number}</span>
+                    </div>
+                    <div>{player?.name}</div>
+                  </div>
+                );
+              })}
         </div>
       );
-
       grid.push(tempEL);
     });
 

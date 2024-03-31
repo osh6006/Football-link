@@ -2,7 +2,6 @@ import { rapidApi } from "libs/axios";
 
 import {
   rapidFootballCoachInfoResponse,
-  rapidFootballLiveMatchResponse,
   rapidFootballNextMatchesResponse,
   rapidFootballTeamDetailStandingResponse,
   rapidFootballTeamInfoResponse,
@@ -26,26 +25,6 @@ export const getTeamStandings = async (params: {
     })
     .then((res) => {
       return res.data.response[0];
-    })
-    .catch((error) => {
-      console.log(error);
-      throw new Error(error.response.data.message);
-    });
-};
-
-export const getLiveMatches = async (
-  leagueId: number,
-): Promise<rapidFootballLiveMatchResponse[]> => {
-  return await rapidApi
-    .get("fixtures", {
-      params: {
-        live: "all",
-        league: leagueId,
-        timezone: TIME_ZONE,
-      },
-    })
-    .then((res) => {
-      return res.data.response;
     })
     .catch((error) => {
       console.log(error);

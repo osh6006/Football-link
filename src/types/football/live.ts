@@ -1,103 +1,43 @@
-export interface rapidFootballLiveMatchResponse {
-  fixture: {
-    id: number;
-    referee: string | null;
-    timezone: string;
-    date: string;
-    timestamp: number;
+interface TeamColors {
+  player: {
+    primary: string;
+    number: string;
+    border: string;
   };
-
-  periods: {
-    first: number;
-    second: number;
+  goalkeeper: {
+    primary: string;
+    number: string;
+    border: string;
   };
+}
 
-  venue: {
-    id: number;
-    name: string;
-    city: string;
-  };
-
-  status: {
-    long: string;
-    short: string;
-    elapsed: number;
-  };
-
-  league: {
+interface Player {
+  player: {
     id: number;
     name: string;
-    country: string;
-    logo: string;
-    flag: string;
-    season: number;
-    round: string;
+    number: number;
+    pos: string;
+    grid: string | null;
   };
+}
 
-  teams: {
-    home: {
-      id: number;
-      name: string;
-      logo: string;
-      winner: boolean;
-    };
-    away: {
-      id: number;
-      name: string;
-      logo: string;
-      winner: boolean;
-    };
-  };
+interface Team {
+  id: number;
+  name: string;
+  logo: string;
+  colors: TeamColors;
+}
 
-  goals: {
-    home: number;
-    away: number;
-  };
+interface Coach {
+  id: number;
+  name: string;
+  photo: string;
+}
 
-  score: {
-    halftime: {
-      home: number | null;
-      away: number | null;
-    };
-
-    fulltime: {
-      home: number | null;
-      away: number | null;
-    };
-
-    extratime: {
-      home: number | null;
-      away: number | null;
-    };
-
-    penalty: {
-      home: number | null;
-      away: number | null;
-    };
-  };
-  events: {
-    time: {
-      elapsed: number | null;
-      extra: number | null;
-    };
-    team: {
-      id: number;
-      name: string;
-      logo: string;
-    };
-
-    player: {
-      id: null | number;
-      name: string | null;
-    };
-
-    assist: {
-      id: null | number;
-      name: null | string;
-    };
-
-    type: string;
-    detail: string;
-    comments: null | string;
-  }[];
+export interface rapidFootballLineUpResponse {
+  team: Team;
+  formation: string;
+  startXI: Player[];
+  substitutes: Player[];
+  coach: Coach;
 }
