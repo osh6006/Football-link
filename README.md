@@ -35,7 +35,7 @@
 <p align="center">
   <a href="#dart-소개">프로젝트 소개</a> &#xa0; | &#xa0; 
   <a href="#rocket-개발환경">개발 환경</a> &#xa0; | &#xa0;
-  <a href="#rocket-기술채택이유">기술 채택 이유</a> &#xa0; | &#xa0;
+  <a href="#rocket-채택기술전략">채택 기술 전략</a> &#xa0; | &#xa0;
   <a href="#sparkles-기능">제공 기능</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-필수사항">필수 사항</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-시작하기">시작하기</a> &#xa0; | &#xa0;
@@ -80,7 +80,7 @@
 
 ![vercel](https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-## 기술채택이유
+## :rocket: 채택기술전략
 
 ### React, styled-component
 
