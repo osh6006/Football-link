@@ -55,10 +55,10 @@ const CustomRoutes = () => {
         },
         {
           path: "/predict",
-          // loader: async () => {
-          //   const result = await protectedHomePage();
-          //   return result;
-          // },
+          loader: async () => {
+            const result = await protectedHomePage();
+            return result;
+          },
           element: <PredictPage />,
           errorElement: <ErrorPage />,
         },

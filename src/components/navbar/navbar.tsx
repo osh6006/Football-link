@@ -10,11 +10,13 @@ import MobileSideBar from "components/sidebar/mobile-side-bar";
 import useAuth from "../../hooks/use-auth";
 import usePath from "../../hooks/use-path";
 import { useTheme } from "stores/theme-store";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const theme = useTheme();
+  const nav = useNavigate();
+  const { user } = useAuth();
   const { realPath } = usePath();
-  const { signOut, user } = useAuth();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -37,7 +39,7 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-x-2">
-        {true ? (
+        {user ? (
           <>
             <button
               onClick={() => {}}
@@ -48,8 +50,8 @@ const Navbar = () => {
             <AvatarMenu user={user!} size="md" />
           </>
         ) : (
-          <Button onClick={() => signOut()} size="sm">
-            로그인
+          <Button color="main" onClick={() => nav("/auth")} size="sm">
+            Sign In
           </Button>
         )}
       </div>
