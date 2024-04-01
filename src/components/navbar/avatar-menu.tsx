@@ -1,12 +1,11 @@
 import clsx from "clsx";
-
+import { Fragment } from "react";
 import Avatar from "../common/avatar";
-import { CSSTransition } from "react-transition-group";
-
-import "./avatar-menu.css";
-import useOutsideClick from "../../hooks/use-outside-click";
-import useAuth from "../../hooks/use-auth";
 import { User } from "@supabase/supabase-js";
+
+import { Menu, Transition } from "@headlessui/react";
+
+import useAuth from "../../hooks/use-auth";
 
 interface IAvatarMenuProps {
   user: User;
@@ -17,55 +16,56 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({
   user,
   size,
 }) => {
-  const { isOpen, setIsOpen, ref, nodeRef } = useOutsideClick();
   const { signOut } = useAuth();
 
   return (
-    <div
-      ref={ref}
-      className="relative rounded-full border-2 border-transparent transition hover:border-Main"
-      onClick={() => setIsOpen(!isOpen)}
-    >
-      <Avatar size={size} imgUrl={user?.user_metadata?.avatar_url} />
-      <CSSTransition
-        in={isOpen}
-        nodeRef={nodeRef}
-        timeout={300}
-        classNames={"avatar-menu"}
-        unmountOnExit
+    <Menu as="div" className="relative ">
+      <Menu.Button>
+        <Avatar size={size} imgUrl={user?.user_metadata?.avatar_url} />
+      </Menu.Button>
+
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
       >
-        <ul
-          ref={nodeRef}
-          role="menu"
+        <Menu.Items
           className={clsx(
             `absolute right-0 z-10 mt-2 min-w-28 overflow-hidden rounded-md bg-White px-2
-            py-2 text-DarkGrey shadow-lg focus:outline-none `,
+            py-2 text-MediumGrey shadow-lg focus:outline-none `,
           )}
         >
-          <li
-            onClick={async () => signOut()}
-            className={clsx(
-              `
-                relative cursor-pointer select-none rounded-md p-1
-                transition-colors hover:bg-Main hover:text-White
-            `,
+          <Menu.Item>
+            {({ active }) => (
+              <button
+                onClick={async () => signOut()}
+                className={clsx(
+                  "relative w-full cursor-pointer select-none rounded-md px-2 py-1 text-left transition-colors hover:bg-Main hover:text-White",
+                )}
+              >
+                로그아웃
+              </button>
             )}
-          >
-            로그아웃
-          </li>
-          <li
-            className={clsx(
-              `
-                relative cursor-pointer select-none rounded-md p-1
-                transition-colors hover:bg-Main hover:text-White
-            `,
+          </Menu.Item>
+          <Menu.Item>
+            {({ active }) => (
+              <button
+                onClick={async () => signOut()}
+                className={clsx(
+                  "relative w-full cursor-pointer select-none rounded-md px-2 py-1 text-left transition-colors hover:bg-Main hover:text-White",
+                )}
+              >
+                프로필
+              </button>
             )}
-          >
-            마이 프로필
-          </li>
-        </ul>
-      </CSSTransition>
-    </div>
+          </Menu.Item>
+        </Menu.Items>
+      </Transition>
+    </Menu>
   );
 };
 
