@@ -46,17 +46,17 @@
 
 ## :dart: About
 
-이 웹 애플리케이션은 사용자가 원하는 나라와 해당 국가에 맞는 리그를 선택하여 다양한 축구 정보를 얻을 수 있습니다. 랭킹, 일정, 예측, 선수 정보, 팀 정보 등을 제공하여 축구 팬들에게 다양한 서비스를 제공합니다.
+이 웹 애플리케이션은 사용자가 원하는 나라와 해당 국가에 맞는 리그를 선택하여 다양한 축구 정보를 얻을 수 있습니다. 랭킹, 일정, 예측, 선수 정보, 팀 정보, 라이브 경기 정보 등을 제공하여 전 세계 축구 팬들에게 다양한 서비스를 제공합니다.
 
 ## :sparkles: Features
 
-:heavy_check_mark: 국가 및 리그 선택: 사용자는 나라와 해당 국가에 맞는 리그를 선택하여 정보를 얻을 수 있습니다.;\
-:heavy_check_mark: 일정: 경기 일정을 조회하고, 날짜와 시간을 확인할 수 있습니다.;\
-:heavy_check_mark: 실시간 경기 정보: 실시간 경기 정보를 확인할 수 있습니다.;\
-:heavy_check_mark: 예측: 경기 예측을 할 수 있는 기능을 제공합니다. (로그인 후 사용 가능);\
-:heavy_check_mark: 리그 순위: 실시간 팀 순위와 전적 정보를 알 수 있습니다.;\
-:heavy_check_mark: 팀 정보: 팀의 통계, 선수 명단 등을 확인할 수 있습니다.;\
-:heavy_check_mark: 선수 정보: 팀의 선수들에 대한 정보를 제공합니다.;\
+:heavy_check_mark: 국가 및 리그 선택: 사용자는 나라와 해당 국가에 맞는 리그를 선택하여 정보를 얻을 수 있습니다.\
+:heavy_check_mark: 일정: 경기 일정을 조회하고, 날짜와 시간을 확인할 수 있습니다.\
+:heavy_check_mark: 실시간 경기 정보: 실시간 경기 정보를 확인할 수 있습니다.\
+:heavy_check_mark: 예측: 경기 예측을 할 수 있는 기능을 제공합니다. (로그인 후 사용 가능)\
+:heavy_check_mark: 리그 순위: 실시간 팀 순위와 전적 정보를 알 수 있습니다.\
+:heavy_check_mark: 팀 정보: 팀의 통계, 선수 명단 등을 확인할 수 있습니다.\
+:heavy_check_mark: 선수 정보: 팀의 선수들에 대한 정보를 제공합니다.
 
 ## :rocket: Technologies
 
@@ -79,24 +79,24 @@
 
 ## :white_check_mark: Requirements
 
-프로젝트를 시작하기 전에 `Git`, `NodeJS`, Yarn을 설치해 주세요 ⭐
+⭐ 프로젝트를 시작하기 전에 `Git`와 `NodeJS`를 설치해 주세요 ⭐
 
 ## :checkered_flag: Starting
 
 ```bash
-# Clone this project
+# 프로젝트를 복제하세요
 $ git clone https://github.com/osh6006/football-link
 
-# Access
+# 폴더로 이동하세요
 $ cd football-link
 
-# Install dependencies
+# 필요한 디펜던시를 설치하세요
 $ npm install
 
-# Run the project
+# 프로젝트를 실행하세요
 $ npm start
 
-# The server will initialize in the <http://localhost:3000>
+# 이 프로젝트는 <http://localhost:3000>에서 실행됩니다!
 ```
 
 ## :memo: License
