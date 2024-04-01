@@ -20,10 +20,10 @@ const sizes = {
 };
 
 const colors = {
-  main: "border-Main bg-Main text-White",
-  secondary: "bg-Seondary text-Main",
+  main: "border-Main bg-Main text-White focus-visible:ring-Main ",
+  secondary: "bg-Seondary text-Main focus-visible:ring-Main ",
   destructive:
-    "border-Red bg-Red text-White hover:border-RedHover hover:bg-RedHover",
+    "border-Red bg-Red text-White hover:border-RedHover hover:bg-RedHover focus-visible:ring-Red ",
 };
 
 const Button: React.FunctionComponent<IButtonProps> = ({
@@ -39,7 +39,7 @@ const Button: React.FunctionComponent<IButtonProps> = ({
   return (
     <button
       className={clsx(
-        "flex transform select-none items-center justify-center gap-2 rounded-md text-lg transition-all active:scale-95",
+        "flex transform select-none items-center justify-center gap-2 rounded-md text-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-95",
         disabled
           ? "pointer-events-none border-transparent bg-Disabled text-DisabledColor"
           : color && colors[color],

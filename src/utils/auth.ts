@@ -47,7 +47,7 @@ export const protectedHomePage = async () => {
   if (error) return toast.error("로그인 체크 중 에러가 발생하였습니다.");
   if (session) return null;
 
-  return redirect("/login");
+  return redirect("/auth");
 };
 
 export const protectedLoginPage = async () => {

@@ -20,7 +20,8 @@ import PlayerNews from "pages/after-login/detail/player-news";
 import PlayerRootPage from "pages/after-login/detail/player-root";
 import PlayerCareer from "pages/after-login/detail/player-career";
 import TeamSchedule from "pages/after-login/detail/team-schedule";
-import { protectedLoginPage } from "utils/auth";
+
+import { protectedHomePage, protectedLoginPage } from "utils/auth";
 
 const CustomRoutes = () => {
   const router = createBrowserRouter([
@@ -54,6 +55,10 @@ const CustomRoutes = () => {
         },
         {
           path: "/predict",
+          // loader: async () => {
+          //   const result = await protectedHomePage();
+          //   return result;
+          // },
           element: <PredictPage />,
           errorElement: <ErrorPage />,
         },
@@ -110,11 +115,6 @@ const CustomRoutes = () => {
               errorElement: <ErrorPage />,
             },
           ],
-        },
-        {
-          path: "/search",
-          element: <SearchPage />,
-          errorElement: <ErrorPage />,
         },
       ],
     },

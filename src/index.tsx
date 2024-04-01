@@ -1,21 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
 import RootProvider from "./providers/root-provider";
-import CustomRoutes from "./routes/custom-routes";
-import { Toaster } from "react-hot-toast";
+
+import "./index.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
 );
 root.render(
   <React.StrictMode>
-    <RootProvider>
-      <Toaster />
-      <CustomRoutes />
-    </RootProvider>
+    <RootProvider></RootProvider>
   </React.StrictMode>,
 );
 

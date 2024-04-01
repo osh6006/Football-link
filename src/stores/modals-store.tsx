@@ -1,9 +1,9 @@
 import { SelectorHook, createStore } from "./root-store";
 
-type IModalName = "isOpenSportsSettingModal" | "isOpenLeagueSettingModal";
+type IModalName = "isOpenPrivateModal" | "isOpenLeagueSettingModal";
 
 interface IModalState {
-  isOpenSportsSettingModal: boolean;
+  isOpenPrivateModal: boolean;
   isOpenLeagueSettingModal: boolean;
 
   actions: {
@@ -13,7 +13,7 @@ interface IModalState {
 }
 
 const useModalStore = createStore<IModalState>((set) => ({
-  isOpenSportsSettingModal: false,
+  isOpenPrivateModal: false,
   isOpenLeagueSettingModal: false,
   actions: {
     openModal: (name) => {
@@ -36,10 +36,8 @@ const useModalStore = createStore<IModalState>((set) => ({
 }));
 
 // 여기서 새로운 Hook을 만들고, SelectorHook 타입으로 지정해줍니다.
-export const useModals: SelectorHook<
-  IModalState,
-  "isOpenSportsSettingModal"
-> = (selector = (state: IModalState) => state.isOpenSportsSettingModal) =>
-  useModalStore(selector);
+export const useModals: SelectorHook<IModalState, "isOpenPrivateModal"> = (
+  selector = (state: IModalState) => state.isOpenPrivateModal,
+) => useModalStore(selector);
 
 export const useModalActions = () => useModalStore((state) => state.actions);

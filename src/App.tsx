@@ -4,12 +4,14 @@ import Sidebar from "./components/sidebar/sidebar";
 import RootContainer from "./components/layouts/root-container";
 
 import { useLeagueStore } from "stores/league-store";
+import ModalProviders from "providers/modal-providers";
 
 function App() {
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 
   return (
     <RootContainer>
+      <ModalProviders />
       {/*  Side Bar */}
       <Sidebar />
       {/* Nav & Page*/}

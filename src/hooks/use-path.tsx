@@ -19,24 +19,28 @@ export default function usePath() {
       path: "/",
       icon: <LayoutDashboardIcon />,
       isNew: false,
+      isPrivate: false,
     },
     {
       name: "Predict",
       path: "/predict",
       icon: <Eye />,
       isNew: true,
+      isPrivate: true,
     },
     {
       name: "Live",
       path: "/live",
       icon: <RadioTower />,
       isNew: false,
+      isPrivate: false,
     },
     {
       name: "Rank",
       path: "/rank",
       icon: <MedalIcon />,
       isNew: false,
+      isPrivate: false,
     },
 
     {
@@ -44,12 +48,14 @@ export default function usePath() {
       path: "/schedule",
       icon: <CalendarCheck />,
       isNew: false,
+      isPrivate: false,
     },
     {
       name: "News",
       path: "/news",
       icon: <Newspaper />,
       isNew: false,
+      isPrivate: false,
     },
   ];
 
