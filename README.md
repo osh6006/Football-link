@@ -33,7 +33,7 @@
 <hr> -->
 
 <p align="center">
-  <a href="#dart-프로젝트 소개">프로젝트 소개</a> &#xa0; | &#xa0; 
+  <a href="#dart-프로젝트%20소개">프로젝트 소개</a> &#xa0; | &#xa0; 
   <a href="#rocket-개발 환경">개발 환경</a> &#xa0; | &#xa0;
   <a href="#rocket-기술 채택 이유">기술 채택 이유</a> &#xa0; | &#xa0;
   <a href="#sparkles-제공 기능">제공 기능</a> &#xa0; | &#xa0;
