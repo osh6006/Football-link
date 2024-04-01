@@ -2,7 +2,6 @@ import clsx from "clsx";
 
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
-import "./season-selector-animation.css";
 import { useLeagueStore } from "stores/league-store";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";

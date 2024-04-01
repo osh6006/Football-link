@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import {
+  Fragment,
   ReactNode,
   RefObject,
   createContext,
@@ -10,9 +11,7 @@ import {
   useState,
 } from "react";
 
-import { CSSTransition } from "react-transition-group";
-
-import "./season-selector-animation.css";
+import { Transition } from "@headlessui/react";
 
 interface IMenuButtonProps {
   children: ReactNode;
@@ -51,18 +50,17 @@ const MenuItemContainer: React.FC<IMenuContainerProps> = ({
   children,
   className,
 }) => {
-  const { isOpen, nodeRef } = useContext(MenuContext)!;
-
   return (
-    <CSSTransition
-      in={isOpen}
-      nodeRef={nodeRef}
-      timeout={300}
-      classNames={"select-season"}
-      unmountOnExit
+    <Transition
+      as={Fragment}
+      enter="transition ease-out duration-100"
+      enterFrom="transform opacity-0 scale-95"
+      enterTo="transform opacity-100 scale-100"
+      leave="transition ease-in duration-75"
+      leaveFrom="transform opacity-100 scale-100"
+      leaveTo="transform opacity-0 scale-95"
     >
       <ul
-        ref={nodeRef}
         className={clsx(
           "absolute right-0 z-20 mt-2 flex w-full flex-col rounded-md bg-white p-2 shadow-md",
           className,
@@ -70,7 +68,7 @@ const MenuItemContainer: React.FC<IMenuContainerProps> = ({
       >
         {children}
       </ul>
-    </CSSTransition>
+    </Transition>
   );
 };
 
