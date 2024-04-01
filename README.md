@@ -3,31 +3,31 @@
 
 &#xa0;
 
-  <!-- <a href="https://spolink.netlify.app">Demo</a> -->
+  <!-- <a href="https://football-link.netlify.app">Demo</a> -->
 </div>
 
 <h1 align="center">⚽ Football Link ⚽</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/osh6006/spolink?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/osh6006/football-link?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/osh6006/spolink?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/osh6006/football-link?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/osh6006/spolink?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/osh6006/football-link?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/osh6006/spolink?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/osh6006/football-link?color=56BEB8">
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/osh6006/spolink?color=56BEB8" /> -->
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/osh6006/football-link?color=56BEB8" /> -->
 
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/osh6006/spolink?color=56BEB8" /> -->
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/osh6006/football-link?color=56BEB8" /> -->
 
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/osh6006/spolink?color=56BEB8" /> -->
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/osh6006/football-link?color=56BEB8" /> -->
 </p>
 
 <!-- Status -->
 
 <!-- <h4 align="center">
-	🚧  Spolink 🚀 Under construction...  🚧
+	🚧  football-link 🚀 Under construction...  🚧
 </h4>
 
 <hr> -->
@@ -88,7 +88,7 @@
 $ git clone https://github.com/osh6006/football-link
 
 # Access
-$ cd spolink
+$ cd football-link
 
 # Install dependencies
 $ npm install
