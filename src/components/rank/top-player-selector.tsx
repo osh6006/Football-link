@@ -15,12 +15,12 @@ const SelectItem = ({ children, selected, onClick }: ISelectItem) => {
     <li
       onClick={onClick}
       className={clsx(
-        "flex cursor-pointer select-none items-center justify-center rounded-md border-2 px-3 py-3 sm:justify-between",
-        selected && "border-Main text-Main",
+        "flex cursor-pointer select-none items-center justify-center rounded-md border-2  px-3 py-3 sm:justify-between",
+        selected ? "border-Main text-Main" : "border-MediumGrey",
       )}
     >
       {children}
-      {selected && <CheckCircle2 className="hidden sm:block" />}
+      {selected ? <CheckCircle2 className="hidden sm:block" /> : null}
     </li>
   );
 };
