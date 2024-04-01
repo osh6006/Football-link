@@ -52,7 +52,7 @@
 
 ## :sparkles: Features
 
-:heavy_check_mark: 로그인: SNS (Google, Github) 로그인 기능
+:heavy_check_mark: 로그인: SNS (Google, Github) 로그인 기능\
 :heavy_check_mark: 국가 및 리그 선택: 사용자는 나라와 해당 국가에 맞는 리그를 선택하여 정보를 얻을 수 있습니다.\
 :heavy_check_mark: 일정: 경기 일정을 조회하고, 날짜와 시간을 확인할 수 있습니다.\
 :heavy_check_mark: 실시간 경기 정보: 실시간 경기 정보(라인업, 이벤트, 통계)를 확인할 수 있습니다.\
