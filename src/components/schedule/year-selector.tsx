@@ -1,11 +1,12 @@
 import clsx from "clsx";
 import dayjs from "dayjs";
-import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import useScheduleStore from "stores/schedule-store";
+import { Fragment } from "react";
 
-import { CSSTransition } from "react-transition-group";
-import useOutsideClick from "hooks/use-outside-click";
+import { Menu, Transition } from "@headlessui/react";
+import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+
 import { useLeagueStore } from "stores/league-store";
+import useScheduleStore from "stores/schedule-store";
 
 interface IYearSelectorProps {
   setIsAll: React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,7 +18,6 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
   const { currentDate, controlDate } = useScheduleStore();
   const isToday =
     currentDate === dayjs(new Date()).locale("ko").format("YYYY-MM-DD");
-  const { isOpen, setIsOpen, ref, nodeRef } = useOutsideClick();
 
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
   const thisYear = selectedLeague?.possibleSeasons.at(-1)?.year;
@@ -31,8 +31,8 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
     <div className="mb-5 flex items-center justify-center ">
       <button
         className={clsx(
-          "mr-2 rounded-xl border px-2 text-xs leading-10 sm:mr-4 sm:text-sm",
-          isToday && "bg-Main text-white",
+          "mr-2 rounded-xl border border-MediumGrey px-2 text-xs leading-10 sm:mr-4 sm:text-sm",
+          isToday ? "bg-Main text-white" : "",
         )}
         onClick={() => {
           controlDate("TODAY", "asdf");
@@ -58,56 +58,48 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
           <ChevronRightIcon size={25} />
         </button>
       </div>
-      <div className="relative" ref={ref}>
-        <button
-          onClick={(e) => {
-            setIsOpen(!isOpen);
-          }}
-          className="ml-2 mt-2 hover:text-Main "
-        >
+      <Menu as="div" className="relative">
+        <Menu.Button className="relative ml-2 mt-2 hover:text-Main ">
           <CalendarIcon />
-        </button>
-        <CSSTransition
-          in={isOpen}
-          nodeRef={nodeRef}
-          timeout={100}
-          classNames={"select-season"}
-          unmountOnExit
+        </Menu.Button>
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
         >
-          <ul
-            ref={nodeRef}
-            role="grid"
+          <Menu.Items
             onClick={(e) => {
               e.stopPropagation();
             }}
             className={clsx(
-              `absolute left-[50%] top-[30px] z-10 mt-4 grid w-[300px] -translate-x-[50%] grid-cols-3  items-center justify-center gap-2 overflow-hidden rounded-md bg-white
+              `absolute z-10 mt-4 grid w-[300px] -translate-x-[50%] grid-cols-3 items-center justify-center gap-2 overflow-hidden rounded-md bg-white
             p-2 text-DarkGrey shadow-lg focus:outline-none sm:text-sm md:w-[380px]`,
             )}
           >
             {years.map((el) => (
-              <li
-                key={el}
-                role="gridcell"
-                className="flex select-none items-center justify-center rounded-md border px-3  py-1
-              text-lg transition-colors hover:text-Main
-              "
-                onClick={() => {
-                  setIsOpen(!isOpen);
-                  controlDate(
-                    "CUSTOM",
-                    `${el}-${dayjs(currentDate).month() + 1}-${dayjs(
-                      currentDate,
-                    ).date()}`,
-                  );
-                }}
-              >
-                {el}
-              </li>
+              <Menu.Item key={el}>
+                <button
+                  className="flex select-none items-center justify-center rounded-md border border-MediumGrey px-3 py-1 text-lg text-MediumGrey transition-colors hover:bg-Main hover:text-white"
+                  onClick={() => {
+                    controlDate(
+                      "CUSTOM",
+                      `${el}-${dayjs(currentDate).month() + 1}-${dayjs(
+                        currentDate,
+                      ).date()}`,
+                    );
+                  }}
+                >
+                  {el}
+                </button>
+              </Menu.Item>
             ))}
-          </ul>
-        </CSSTransition>
-      </div>
+          </Menu.Items>
+        </Transition>
+      </Menu>
     </div>
   );
 };
