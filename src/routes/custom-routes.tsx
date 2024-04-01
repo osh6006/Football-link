@@ -6,7 +6,6 @@ import AuthPage from "../pages/before-login/auth-page";
 import HomePage from "../pages/after-login/home-page";
 import RankPage from "../pages/after-login/rank-page";
 import NewsPage from "../pages/after-login/news-page";
-import SearchPage from "pages/after-login/search-page";
 import SchedulePage from "../pages/after-login/schedule-page";
 import TeamRootPage from "pages/after-login/detail/team-root";
 
