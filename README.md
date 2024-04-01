@@ -33,25 +33,25 @@
 <hr> -->
 
 <p align="center">
-  <a href="#dart-프로젝트%20소개">프로젝트 소개</a> &#xa0; | &#xa0; 
-  <a href="#rocket-개발 환경">개발 환경</a> &#xa0; | &#xa0;
-  <a href="#rocket-기술 채택 이유">기술 채택 이유</a> &#xa0; | &#xa0;
-  <a href="#sparkles-제공 기능">제공 기능</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-필수 사항">필수 사항</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-프로젝트 시작하기">프로젝트 시작하기</a> &#xa0; | &#xa0;
+  <a href="#dart-소개">프로젝트 소개</a> &#xa0; | &#xa0; 
+  <a href="#rocket-개발환경">개발 환경</a> &#xa0; | &#xa0;
+  <a href="#rocket-기술채택이유">기술 채택 이유</a> &#xa0; | &#xa0;
+  <a href="#sparkles-기능">제공 기능</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-필수사항">필수 사항</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-시작하기">시작하기</a> &#xa0; | &#xa0;
   <a href="#memo-라이센스">라이센스</a> &#xa0; | &#xa0;
   <a href="https://github.com/osh6006" target="_blank">작성자</a>
 </p>
 
 <br>
 
-## :dart: 프로젝트%20소개
+## :dart: 소개
 
 환영합니다! 축구는 세계적으로 가장 인기 있는 스포츠 중 하나로, 수많은 팬들에게 열정과 즐거움을 안겨주고 있습니다. **Football Link** 웹 사이트는 축구를 사랑하는 여러분들을 위한 통합 정보 플랫폼으로, 다양한 나라와 해당 국가에 맞는 리그의 축구 정보를 제공합니다.
 
 사용자가 원하는 나라와 해당 국가에 맞는 리그를 선택하여 다양한 축구 정보를 얻을 수 있으며, 주요 리그부터 소수의 작은 국가 리그까지 다양한 리그의 랭킹, 일정, 예측, 선수 정보, 팀 정보, 라이브 경기 정보 등을 제공하여 전 세계 축구 팬들에게 다양한 서비스를 제공합니다!
 
-## :rocket: 개발 환경
+## :rocket: 개발환경
 
 이 프로젝트에는 다음의 기술 및 도구가 활용 되었습니다.
 
@@ -80,7 +80,7 @@
 
 ![vercel](https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-## 기술 채택 이유
+## 기술채택이유
 
 ### React, styled-component
 
@@ -109,7 +109,7 @@
 
 ### Rapid API, Supabase
 
-## :sparkles: 제공 기능
+## :sparkles: 기능
 
 :heavy_check_mark: 로그인: SNS (Google, Github) 로그인 및 로그아웃 기능\
 :heavy_check_mark: 국가 및 리그 선택: 사용자는 나라와 해당 국가에 맞는 리그를 선택하여 정보를 얻을 수 있습니다.\
@@ -120,11 +120,11 @@
 :heavy_check_mark: 팀 정보: 팀의 통계, 선수 명단 등을 확인할 수 있습니다.\
 :heavy_check_mark: 선수 정보: 팀의 선수들에 대한 정보를 제공합니다.
 
-## :white_check_mark: 필수 사항
+## :white_check_mark: 필수사항
 
 ⭐ 프로젝트를 시작하기 전에 `Git`와 `NodeJS`를 설치해 주세요 ⭐
 
-## :checkered_flag: 프로젝트 시작하기
+## :checkered_flag: 시작하기
 
 ```bash
 # 프로젝트를 복제하세요
