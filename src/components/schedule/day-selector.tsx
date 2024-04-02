@@ -50,7 +50,7 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = ({
 
   return (
     <div className="flex items-center justify-center gap-x-6">
-      <ul className="flex w-full items-center justify-between overflow-hidden">
+      <ul className="z-10 flex w-full items-center justify-between overflow-hidden">
         <Carousel
           additionalTransfrom={10}
           arrows={true}

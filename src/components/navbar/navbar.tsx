@@ -11,6 +11,7 @@ import useAuth from "../../hooks/use-auth";
 import usePath from "../../hooks/use-path";
 import { useTheme } from "stores/theme-store";
 import { useNavigate } from "react-router-dom";
+import SearchBar from "./search-bar";
 
 const Navbar = () => {
   const theme = useTheme();
@@ -19,6 +20,11 @@ const Navbar = () => {
   const { realPath } = usePath();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSearchbarOpen, setIsSearchbarOpen] = useState(false);
+
+  const toggleSearchBar = () => {
+    setIsSearchbarOpen(!isSearchbarOpen);
+  };
 
   return (
     <nav
@@ -40,15 +46,15 @@ const Navbar = () => {
 
       <div className="flex items-center gap-x-2">
         {user ? (
-          <>
+          <div className="flex items-center gap-x-2">
             <button
-              onClick={() => {}}
+              onClick={toggleSearchBar}
               className="transition-colors hover:text-Main"
             >
-              <SearchIcon />
+              <SearchIcon className="mb-1" />
             </button>
             <AvatarMenu user={user!} size="md" />
-          </>
+          </div>
         ) : (
           <Button color="main" onClick={() => nav("/auth")} size="sm">
             Sign In
@@ -59,6 +65,12 @@ const Navbar = () => {
         <MobileSideBar
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
+        />
+      ) : null}
+      {isSearchbarOpen ? (
+        <SearchBar
+          isSearchbarOpen={isSearchbarOpen}
+          setIsSearchbarOpen={setIsSearchbarOpen}
         />
       ) : null}
     </nav>
