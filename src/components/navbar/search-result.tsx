@@ -1,10 +1,14 @@
+import clsx from "clsx";
 import Loading from "components/common/loading";
 import {
   usePlayerSearchQuery,
   useTeamSearchQuery,
 } from "hooks/services/quries/use-search-query";
 import useDebounce from "hooks/use-debounce";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useLeagueStore } from "stores/league-store";
+import { useSearch } from "stores/search-store";
+import { useTheme } from "stores/theme-store";
 
 interface SearchResultListProps<T> {
   list: T[];
@@ -13,7 +17,7 @@ interface SearchResultListProps<T> {
 
 const SearchResultList = <T,>({ list, render }: SearchResultListProps<T>) => {
   return (
-    <ul className="grid grid-cols-2 ">
+    <ul className="grid grid-cols-1 gap-2 md:grid-cols-2 ">
       {list.map((item, index) => render(item, index))}
     </ul>
   );
@@ -22,63 +26,122 @@ const SearchResultList = <T,>({ list, render }: SearchResultListProps<T>) => {
 interface ISearchResultProps {}
 
 const SearchResult: React.FunctionComponent<ISearchResultProps> = () => {
-  const debouncedSearch = useDebounce("", 300);
-  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
-
-  const teamSearchResult = useTeamSearchQuery(
-    selectedLeague?.leagueId,
-    debouncedSearch,
-  );
-
-  const playerSearchResult = usePlayerSearchQuery(
-    selectedLeague?.leagueId,
-    debouncedSearch,
-  );
+  const theme = useTheme();
+  const keyword = useSearch((state) => state.keyword);
+  const filter = useSearch((state) => state.filter);
 
   return (
-    <div className="mt-10 max-h-[calc(100dvh-300px)] overflow-y-scroll rounded-md bg-white p-10">
-      {/* team Result */}
-      <h1 className="text-lg font-bold xl:text-xl">Team Result</h1>
-
-      {teamSearchResult.isLoading ? (
-        <div className="mx-auto my-2">
-          <Loading size="md" />
-        </div>
-      ) : teamSearchResult.isError ? (
-        <div>Something Error from Server!</div>
-      ) : teamSearchResult.data && teamSearchResult.data.length <= 0 ? (
-        <div className="my-10 text-center">{`No search results for "${debouncedSearch}"`}</div>
-      ) : (
-        <SearchResultList
-          list={teamSearchResult.data || []}
-          render={(item) => <li key={item?.team?.id}>{item?.team?.name}</li>}
-        />
+    <div
+      className={clsx(
+        "mx-auto mt-5 max-h-[calc(100dvh-220px)] max-w-[1000px] overflow-y-auto rounded-md p-10 sm:mt-5 sm:max-h-[calc(100dvh-250px)]",
+        theme === "light" ? "bg-White" : "",
+        theme === "dark" ? "bg-DarkGrey" : "",
       )}
-
-      {/* player Result */}
-      <h1 className="text-lg font-bold xl:text-xl">Player Result</h1>
-      <p className="text-right text-sm font-semibold text-Red">
-        *The player is searched only for the currently selected league.
-      </p>
-
-      {playerSearchResult.isLoading ? (
-        <div className="mx-auto my-2">
-          <Loading size="md" />
-        </div>
-      ) : playerSearchResult.isError ? (
-        <div>Something Error from Server!</div>
-      ) : playerSearchResult.data && playerSearchResult.data.length <= 0 ? (
-        <div className="my-10 text-center">{`No search results for "${debouncedSearch}"`}</div>
-      ) : (
-        <SearchResultList
-          list={playerSearchResult.data || []}
-          render={(item) => (
-            <li key={item?.player?.id}>{item?.player?.name}</li>
-          )}
-        />
+    >
+      {keyword ? null : (
+        <p className="text-center text-lg font-semibold">Search Something!</p>
       )}
+      {filter === "team" ? <TeamSearchResult /> : null}
+      {filter === "player" ? <PlayerSearchResult /> : null}
     </div>
   );
 };
 
 export default SearchResult;
+
+function TeamSearchResult() {
+  const keyword = useSearch((state) => state.keyword);
+  const debouncedSearch = useDebounce(keyword, 300);
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
+
+  const { data, isLoading, isError } = useTeamSearchQuery(
+    selectedLeague?.leagueId,
+    debouncedSearch,
+  );
+
+  return (
+    <>
+      {isLoading ? (
+        <div className="mx-auto my-2 flex w-full items-center justify-center">
+          <Loading size="md" />
+        </div>
+      ) : isError ? (
+        <div>Something Error from Server!</div>
+      ) : data && data.length <= 0 ? (
+        <div className="my-10 text-center">{`No search results for "${debouncedSearch}"`}</div>
+      ) : (
+        <SearchResultList
+          list={data || []}
+          render={(item) => (
+            <li
+              key={item.team.id}
+              onClick={() => {}}
+              className="flex cursor-pointer select-none items-center justify-between truncate rounded-sm border border-MediumGrey p-2 transition hover:border-Main hover:bg-Main hover:text-White active:scale-95"
+            >
+              <div className="flex items-center gap-x-2 ">
+                <LazyLoadImage
+                  src={item.team.logo}
+                  alt={item.team.name}
+                  className="w-12"
+                />
+                {item.team.name}
+              </div>
+              <div className="hidden gap-x-2 text-sm capitalize sm:flex md:text-base">
+                <p>{item.team.country}</p>
+              </div>
+            </li>
+          )}
+        />
+      )}
+    </>
+  );
+}
+function PlayerSearchResult() {
+  const keyword = useSearch((state) => state.keyword);
+  const debouncedSearch = useDebounce(keyword, 300);
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
+
+  const { data, isLoading, isError } = usePlayerSearchQuery(
+    selectedLeague?.leagueId,
+    debouncedSearch,
+  );
+
+  return (
+    <>
+      {isLoading ? (
+        <div className="mx-auto my-2 flex w-full items-center justify-center">
+          <Loading size="md" />
+        </div>
+      ) : isError ? (
+        <div>Something Error from Server!</div>
+      ) : data && data.length <= 0 ? (
+        <div className="my-10 text-center">{`No search results for "${debouncedSearch}"`}</div>
+      ) : (
+        <SearchResultList
+          list={data || []}
+          render={(item) => (
+            <li
+              onClick={() => {}}
+              className="flex cursor-pointer  select-none items-center justify-between truncate rounded-sm border border-MediumGrey p-2 transition hover:border-Main hover:bg-Main hover:text-White active:scale-95 md:text-lg"
+              key={item.player.id}
+            >
+              <div className="flex items-center gap-x-4 ">
+                <LazyLoadImage
+                  src={item.player.photo}
+                  alt={item.player.name}
+                  className="w-12 rounded-md"
+                />
+                {item.player.name}
+              </div>
+              <div className="hidden gap-x-2 text-sm lowercase sm:flex md:text-base">
+                <p>{item.player.age}year</p>
+                <p>{item.player.height}</p>
+                <p>{item.player.weight}</p>
+              </div>
+            </li>
+          )}
+        />
+      )}
+    </>
+  );
+}
