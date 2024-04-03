@@ -8,7 +8,10 @@ import {
   rapidFootballTeamStandingResponse,
   rapidPlayerResponse,
 } from "types/football";
-import { rapidFootballTeamSquadStandingResponse } from "types/football/team";
+import {
+  rapidFootballTeamLeaguesResponse,
+  rapidFootballTeamSquadStandingResponse,
+} from "types/football/team";
 
 const TIME_ZONE = "Asia/Seoul";
 
@@ -198,10 +201,12 @@ export const getLeagueSchedule = async ({
 
 export const getTeamInfo = async (
   teamId: string,
+  season: string,
 ): Promise<{
   teamInfo: rapidFootballTeamInfoResponse;
   coachInfo: rapidFootballCoachInfoResponse;
   teamAllStanding: rapidFootballTeamDetailStandingResponse[];
+  teamPlayLeagues: rapidFootballTeamLeaguesResponse[];
 }> => {
   try {
     const teamInfo = await rapidApi
@@ -227,16 +232,26 @@ export const getTeamInfo = async (
     const teamAllStanding = await rapidApi
       .get("standings", {
         params: {
-          season: new Date().getFullYear() - 1,
+          season: season,
           team: teamId,
         },
       })
       .then((res) => {
-        console.log(res);
         return res.data.response;
       });
 
-    return { teamInfo, coachInfo, teamAllStanding };
+    const teamPlayLeagues = await rapidApi
+      .get("leagues", {
+        params: {
+          season: season,
+          team: teamId,
+        },
+      })
+      .then((res) => {
+        return res.data.response;
+      });
+
+    return { teamInfo, coachInfo, teamAllStanding, teamPlayLeagues };
   } catch (error) {
     console.log(error);
     throw new Error("getTeamInfo");

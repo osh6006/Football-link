@@ -5,13 +5,17 @@ type Filter = "player" | "team";
 interface ISearchState {
   filter: Filter;
   keyword: string;
+  isOpen: boolean;
+
   setFilter: (option: Filter) => void;
   setKeyWord: (value: string) => void;
+  setIsOpen: (value: boolean) => void;
 }
 
 const useSearchStore = createStore<ISearchState>((set) => ({
   keyword: "",
   filter: "team",
+  isOpen: false,
 
   setFilter: (option: Filter) =>
     set(() => {
@@ -20,6 +24,10 @@ const useSearchStore = createStore<ISearchState>((set) => ({
   setKeyWord: (value: string) =>
     set(() => {
       return { keyword: value };
+    }),
+  setIsOpen: (value: boolean) =>
+    set(() => {
+      return { isOpen: value };
     }),
 }));
 

@@ -6,18 +6,16 @@ import SearchHeader from "./search-header";
 import { X } from "lucide-react";
 import { useSearch } from "stores/search-store";
 
-interface ISearchBarProps {
-  isSearchbarOpen: boolean;
-  setIsSearchbarOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+interface ISearchBarProps {}
 
-const SearchBar: React.FunctionComponent<ISearchBarProps> = ({
-  isSearchbarOpen,
-  setIsSearchbarOpen,
-}) => {
+const SearchBar: React.FunctionComponent<ISearchBarProps> = () => {
   const setkeyword = useSearch((state) => state.setKeyWord);
+
+  const isSearchBarOpen = useSearch((state) => state.isOpen);
+  const setIsSearchbarOpen = useSearch((state) => state.setIsOpen);
+
   return (
-    <Transition.Root appear show={isSearchbarOpen}>
+    <Transition.Root appear show={isSearchBarOpen}>
       <Transition.Child
         as={Fragment}
         enter="ease-out duration-300"

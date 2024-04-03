@@ -6,11 +6,12 @@ export const teamQueryKey = {
   useTeamSquadQuery: "teamSquadQuery",
 };
 
-export const useTeamInfoQuery = (teamId: string) => {
+export const useTeamInfoQuery = (teamId: string, season: string) => {
   return useQuery({
-    queryKey: [teamQueryKey.useTeamInfoQuery, teamId],
-    queryFn: ({ queryKey }) => getTeamInfo(queryKey[1] as string),
-    enabled: !!teamId,
+    queryKey: [teamQueryKey.useTeamInfoQuery, teamId, season],
+    queryFn: ({ queryKey }) =>
+      getTeamInfo(queryKey[1] as string, queryKey[2] as string),
+    enabled: !!teamId && !!season,
     staleTime: Infinity,
     gcTime: Infinity,
   });

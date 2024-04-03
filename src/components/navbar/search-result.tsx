@@ -6,6 +6,7 @@ import {
 } from "hooks/services/quries/use-search-query";
 import useDebounce from "hooks/use-debounce";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useNavigate } from "react-router-dom";
 import { useLeagueStore } from "stores/league-store";
 import { useSearch } from "stores/search-store";
 import { useTheme } from "stores/theme-store";
@@ -50,8 +51,12 @@ const SearchResult: React.FunctionComponent<ISearchResultProps> = () => {
 export default SearchResult;
 
 function TeamSearchResult() {
+  const nav = useNavigate();
+
   const keyword = useSearch((state) => state.keyword);
+  const setIsSearchbarOpen = useSearch((state) => state.setIsOpen);
   const debouncedSearch = useDebounce(keyword, 300);
+
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 
   const { data, isLoading, isError } = useTeamSearchQuery(
@@ -75,7 +80,10 @@ function TeamSearchResult() {
           render={(item) => (
             <li
               key={item.team.id}
-              onClick={() => {}}
+              onClick={() => {
+                nav(`/football/${item.team.country}/team/${item.team.id}/info`);
+                setIsSearchbarOpen(false);
+              }}
               className="flex cursor-pointer select-none items-center justify-between truncate rounded-sm border border-MediumGrey p-2 transition hover:border-Main hover:bg-Main hover:text-White active:scale-95"
             >
               <div className="flex items-center gap-x-2 ">
@@ -97,8 +105,12 @@ function TeamSearchResult() {
   );
 }
 function PlayerSearchResult() {
+  const nav = useNavigate();
+
   const keyword = useSearch((state) => state.keyword);
+  const setIsSearchbarOpen = useSearch((state) => state.setIsOpen);
   const debouncedSearch = useDebounce(keyword, 300);
+
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 
   const { data, isLoading, isError } = usePlayerSearchQuery(
@@ -121,7 +133,12 @@ function PlayerSearchResult() {
           list={data || []}
           render={(item) => (
             <li
-              onClick={() => {}}
+              onClick={() => {
+                nav(
+                  `/football/${selectedLeague?.leagueId}/player/${item.player.id}/info`,
+                );
+                setIsSearchbarOpen(false);
+              }}
               className="flex cursor-pointer  select-none items-center justify-between truncate rounded-sm border border-MediumGrey p-2 transition hover:border-Main hover:bg-Main hover:text-White active:scale-95 md:text-lg"
               key={item.player.id}
             >
@@ -134,7 +151,7 @@ function PlayerSearchResult() {
                 {item.player.name}
               </div>
               <div className="hidden gap-x-2 text-sm lowercase sm:flex md:text-base">
-                <p>{item.player.age}year</p>
+                <p>{item.player.age} year</p>
                 <p>{item.player.height}</p>
                 <p>{item.player.weight}</p>
               </div>

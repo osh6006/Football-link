@@ -13,6 +13,7 @@ export type {
   rapidFootballTeamInfoResponse,
   rapidFootballCoachInfoResponse,
   rapidFootballTeamDetailStandingResponse,
+  rapidFootballTeamLeaguesResponse,
 } from "./team";
 
 export type {

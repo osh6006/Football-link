@@ -12,6 +12,7 @@ import usePath from "../../hooks/use-path";
 import { useTheme } from "stores/theme-store";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "./search-bar";
+import { useSearch } from "stores/search-store";
 
 const Navbar = () => {
   const theme = useTheme();
@@ -20,10 +21,12 @@ const Navbar = () => {
   const { realPath } = usePath();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isSearchbarOpen, setIsSearchbarOpen] = useState(false);
+
+  const isSearchBarOpen = useSearch((state) => state.isOpen);
+  const setIsSearchbarOpen = useSearch((state) => state.setIsOpen);
 
   const toggleSearchBar = () => {
-    setIsSearchbarOpen(!isSearchbarOpen);
+    setIsSearchbarOpen(!isSearchBarOpen);
   };
 
   return (
@@ -67,12 +70,7 @@ const Navbar = () => {
           setIsSidebarOpen={setIsSidebarOpen}
         />
       ) : null}
-      {isSearchbarOpen ? (
-        <SearchBar
-          isSearchbarOpen={isSearchbarOpen}
-          setIsSearchbarOpen={setIsSearchbarOpen}
-        />
-      ) : null}
+      {isSearchBarOpen ? <SearchBar /> : null}
     </nav>
   );
 };

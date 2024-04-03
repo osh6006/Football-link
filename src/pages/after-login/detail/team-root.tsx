@@ -12,6 +12,7 @@ import {
 } from "types/football";
 import DetailMenuTabs from "components/common/detail-menu-tabs";
 import { useTeamInfoQuery } from "hooks/services/quries/use-team-query";
+import { useLeagueStore } from "stores/league-store";
 
 type ContextType = {
   teamInfo?: rapidFootballTeamInfoResponse;
@@ -23,15 +24,21 @@ interface ITeamPageProps {}
 
 const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
   const location = useLocation().pathname.split("/");
-  const leagueId = location[2];
   const teamId = location[4];
+  const season = useLeagueStore((state) => state.selectedLeague?.season);
 
-  const { data, isLoading, isError } = useTeamInfoQuery(teamId);
+  const { data, isLoading, isError } = useTeamInfoQuery(
+    teamId,
+    season as string,
+  );
 
   const teamInfo = data?.teamInfo;
   const coachInfo = data?.coachInfo;
+  const league = data?.teamPlayLeagues.filter(
+    (el) => el.league.type === "League",
+  )[0];
   const teamData = data?.teamAllStanding.filter(
-    (el) => el.league.id + "" === leagueId,
+    (el) => el.league.id === league?.league.id,
   );
 
   if (isLoading) {
@@ -45,7 +52,7 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
   if (isError) {
     return (
       <ComponentStatusContainer height="500" state="error">
-        <h1>데이터를 불러오던 도중 오류가 발생하였습니다.</h1>
+        <h1>An error occurred while trying to fetch data 🤮</h1>
       </ComponentStatusContainer>
     );
   }
@@ -57,7 +64,7 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
         coach={coachInfo?.name!}
         name={teamInfo?.team.name!}
         venue={teamInfo?.venue.name!}
-        teamStanding={teamData!}
+        teamStanding={teamData || []}
       />
 
       <DetailMenuTabs

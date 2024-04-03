@@ -16,7 +16,7 @@ const TeamHeader: React.FunctionComponent<ITeamHeaderProps> = ({
   name,
   teamStanding,
 }) => {
-  const teamData = teamStanding[0].league;
+  const teamData = teamStanding[0]?.league;
 
   return (
     <div className="rounded-md bg-Main p-2 text-White sm:p-10 ">
