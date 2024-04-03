@@ -11,14 +11,14 @@ const ScheduleContainer: React.FunctionComponent<IScheduleContainerProps> = ({
   const theme = useTheme();
 
   return (
-    <div
+    <main
       className={componentBackgroundChange(
         theme,
         "m-4 max-w-[1280px] rounded-md p-4 text-MediumGrey sm:p-8 2xl:mx-auto",
       )}
     >
       {children}
-    </div>
+    </main>
   );
 };
 

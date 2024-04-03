@@ -6,6 +6,7 @@ import ComponentStatusContainer from "components/layouts/component-status-contai
 import { useLeagueStore } from "stores/league-store";
 import { useScheduleQuery } from "hooks/services/quries/use-schedule-query";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useNavigate } from "react-router-dom";
 
 interface IScheduleResultProps {
   isAll: boolean;
@@ -14,6 +15,7 @@ interface IScheduleResultProps {
 const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
   isAll,
 }) => {
+  const nav = useNavigate();
   const { currentDate } = useScheduleStore();
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 
@@ -29,8 +31,6 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
     season: selectedLeague?.season!,
     leagueId: selectedLeague?.leagueId!,
   });
-
-  console.log(data);
 
   if (isLoading) {
     return (
@@ -104,7 +104,7 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
 
           <button
             onClick={() => {
-              // TODO: 페이지 이동
+              nav(`/match-result/${el.fixture.id}`);
             }}
             className="absolute right-1 top-1 rounded-md border border-MediumGrey px-2 py-[2px] text-sm uppercase transition-colors hover:bg-Main  hover:text-White md:static"
           >

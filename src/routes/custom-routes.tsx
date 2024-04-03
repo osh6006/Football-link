@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import App from "../App";
+
 import ErrorPage from "../pages/public-page/error-page";
 import AuthPage from "../pages/public-page/auth-page";
 import HomePage from "../pages/public-page/home-page";
@@ -8,7 +9,6 @@ import RankPage from "../pages/public-page/rank-page";
 import NewsPage from "../pages/public-page/news-page";
 import SchedulePage from "../pages/public-page/schedule-page";
 import TeamRootPage from "pages/public-page/detail/team-root";
-
 import LivePage from "pages/public-page/live-page";
 import PredictPage from "pages/private-page/predict-page";
 import TeamInfo from "pages/public-page/detail/team-info";
@@ -19,9 +19,9 @@ import PlayerNews from "pages/public-page/detail/player-news";
 import PlayerRootPage from "pages/public-page/detail/player-root";
 import PlayerCareer from "pages/public-page/detail/player-career";
 import TeamSchedule from "pages/public-page/detail/team-schedule";
+import MatchResultPage from "pages/public-page/match-result-page";
 
 import { protectedHomePage, protectedLoginPage } from "utils/auth";
-import ResultPage from "pages/public-page/result-page";
 
 const CustomRoutes = () => {
   const router = createBrowserRouter([
@@ -68,8 +68,8 @@ const CustomRoutes = () => {
           errorElement: <ErrorPage />,
         },
         {
-          path: "/result/:matchId",
-          element: <ResultPage />,
+          path: "/match-result/:matchId",
+          element: <MatchResultPage />,
           errorElement: <ErrorPage />,
         },
         {
