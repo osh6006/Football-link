@@ -61,15 +61,13 @@ const MatchResultLineUp: React.FunctionComponent<IMatchResultLineUpProps> = ({
   return (
     <div className="">
       <h2 className="my-2 text-xl font-bold">Start XI</h2>
-      <div className=" rounded-md bg-green-400 p-4 text-white">
-        <div className="relative grid w-full grid-cols-2 rounded-md border-4 border-white px-2 py-10">
+      <div className="rounded-md bg-green-400 p-4  text-white">
+        <div className="relative grid w-full grid-cols-1 divide-y-2 rounded-md border-4 border-white">
           <LineUp
             formation={homeData?.formation || ""}
             lineUp={homeStartXI}
             isHome
           />
-          <div className="absolute left-1/2 top-0 h-full w-1 bg-white py-4 "></div>
-          <div className="absolute"></div>
           <LineUp
             formation={awayData?.formation || ""}
             lineUp={awayStartXI}

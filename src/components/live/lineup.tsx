@@ -43,7 +43,7 @@ const LineUp: React.FunctionComponent<ILineUpProps> = ({
       const newArr = Array.from({ length: el }, (el, i) => i + 1);
 
       const tempEL = (
-        <div className="flex flex-col items-center justify-center gap-5">
+        <div className="flex items-center justify-center gap-5">
           {isHome
             ? newArr
                 .map((el) => {
@@ -51,7 +51,7 @@ const LineUp: React.FunctionComponent<ILineUpProps> = ({
                   return (
                     <div
                       key={el}
-                      className="flex flex-col items-center justify-center whitespace-nowrap"
+                      className="flex flex-1 flex-col items-center justify-center truncate"
                     >
                       <div
                         className={clsx(
@@ -71,7 +71,7 @@ const LineUp: React.FunctionComponent<ILineUpProps> = ({
                 return (
                   <div
                     key={el}
-                    className="flex flex-col items-center justify-center whitespace-nowrap"
+                    className="flex flex-1 flex-col items-center justify-center truncate"
                   >
                     <div
                       className={clsx(
@@ -93,11 +93,7 @@ const LineUp: React.FunctionComponent<ILineUpProps> = ({
     return isHome ? grid : grid.reverse();
   };
 
-  return (
-    <div className={`grid grid-cols-${parseFormation.length + 1} gap-4`}>
-      {renderGrid()}
-    </div>
-  );
+  return <div className={`grid grid-cols-1 gap-4 sm:p-5`}>{renderGrid()}</div>;
 };
 
 export default LineUp;
