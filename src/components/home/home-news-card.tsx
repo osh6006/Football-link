@@ -25,7 +25,7 @@ const HomeNewsCard: React.FunctionComponent<IHomeNewsCardProps> = ({
   };
 
   return (
-    <li
+    <div
       className="flex h-full w-full min-w-[350px] cursor-pointer flex-col justify-between overflow-hidden rounded-md p-2 shadow-md transition-all hover:scale-105"
       onClick={() => openInNewTab(url)}
     >
@@ -42,7 +42,7 @@ const HomeNewsCard: React.FunctionComponent<IHomeNewsCardProps> = ({
         <time>{dayjs(date).format("YYYY-MM-DD, HH:MM")}</time>
         <span>{author || "unknown"}</span>
       </div>
-    </li>
+    </div>
   );
 };
 

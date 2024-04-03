@@ -105,7 +105,7 @@ const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
               url={el.url}
               desc={el.description}
               date={el.publishedAt}
-              key={el.url}
+              key={el.title + el.description}
             />
           );
         })}

@@ -29,7 +29,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
           <div className="flex-1 space-y-2">
             <Title>
               Live Match
-              <MoreArrow path="/" />
+              <MoreArrow path="/live" />
             </Title>
             <HomeLiveTable />
           </div>
