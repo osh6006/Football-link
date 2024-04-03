@@ -1,26 +1,27 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import App from "../App";
-import ErrorPage from "../pages/error-page";
-import AuthPage from "../pages/before-login/auth-page";
-import HomePage from "../pages/after-login/home-page";
-import RankPage from "../pages/after-login/rank-page";
-import NewsPage from "../pages/after-login/news-page";
-import SchedulePage from "../pages/after-login/schedule-page";
-import TeamRootPage from "pages/after-login/detail/team-root";
+import ErrorPage from "../pages/public-page/error-page";
+import AuthPage from "../pages/public-page/auth-page";
+import HomePage from "../pages/public-page/home-page";
+import RankPage from "../pages/public-page/rank-page";
+import NewsPage from "../pages/public-page/news-page";
+import SchedulePage from "../pages/public-page/schedule-page";
+import TeamRootPage from "pages/public-page/detail/team-root";
 
-import LivePage from "pages/after-login/live-page";
-import PredictPage from "pages/after-login/predict-page";
-import TeamInfo from "pages/after-login/detail/team-info";
-import TeamNews from "pages/after-login/detail/team-news";
-import TeamSquad from "pages/after-login/detail/team-squad";
-import PlayerInfo from "pages/after-login/detail/player-info";
-import PlayerNews from "pages/after-login/detail/player-news";
-import PlayerRootPage from "pages/after-login/detail/player-root";
-import PlayerCareer from "pages/after-login/detail/player-career";
-import TeamSchedule from "pages/after-login/detail/team-schedule";
+import LivePage from "pages/public-page/live-page";
+import PredictPage from "pages/private-page/predict-page";
+import TeamInfo from "pages/public-page/detail/team-info";
+import TeamNews from "pages/public-page/detail/team-news";
+import TeamSquad from "pages/public-page/detail/team-squad";
+import PlayerInfo from "pages/public-page/detail/player-info";
+import PlayerNews from "pages/public-page/detail/player-news";
+import PlayerRootPage from "pages/public-page/detail/player-root";
+import PlayerCareer from "pages/public-page/detail/player-career";
+import TeamSchedule from "pages/public-page/detail/team-schedule";
 
 import { protectedHomePage, protectedLoginPage } from "utils/auth";
+import ResultPage from "pages/public-page/result-page";
 
 const CustomRoutes = () => {
   const router = createBrowserRouter([
@@ -64,6 +65,11 @@ const CustomRoutes = () => {
         {
           path: "/live",
           element: <LivePage />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: "/result/:matchId",
+          element: <ResultPage />,
           errorElement: <ErrorPage />,
         },
         {
