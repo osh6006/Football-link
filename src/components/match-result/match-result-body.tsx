@@ -70,7 +70,7 @@ const MatchResultBody: React.FunctionComponent<IMatchResultBodyProps> = ({
           />
         </Tab.Panel>
         <Tab.Panel>
-          <MatchResultStat />
+          <MatchResultStat stat={matchInfo?.statistics} />
         </Tab.Panel>
       </Tab.Panels>
     </Tab.Group>

@@ -70,7 +70,7 @@ interface Player {
   };
 }
 
-interface Statistic {
+export interface IMatchResultStatistic {
   team: {
     id: number;
     name: string;
@@ -178,7 +178,7 @@ export interface rapidFootballTeamLeaguesResponse {
   fixture: Fixture;
   events: Event[];
   lineups: IMatchResultLineUp[];
-  statistics: Statistic[];
+  statistics: IMatchResultStatistic[];
   players: Player[];
   teams: IMatchResultTeams;
   league: {

@@ -8,4 +8,5 @@ export type {
   rapidFootballTeamLeaguesResponse,
   IMatchResultLineUp,
   IMatchResultTeams,
+  IMatchResultStatistic,
 } from "./match-result";
