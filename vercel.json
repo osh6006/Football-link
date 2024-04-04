@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/globalNews/api/:path*",
-      "destination": "https://openapi.naver.com/v1/search/news.json/:path*/"
+      "destination": "https://newsapi.org/v2/:path*/"
     },
     {
       "source": "/localNews/api/:path*/",
-      "destination": "https://openapi.naver.com/:path*/"
+      "destination": "https://openapi.naver.com/v1/search/news.json/:path*/"
     }
   ]
 }
