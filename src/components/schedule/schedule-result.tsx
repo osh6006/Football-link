@@ -78,7 +78,7 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
               <LazyLoadImage
                 src={el.teams.home.logo}
                 alt="homeLogo"
-                className="max-w-8"
+                className="aspect-square w-8 max-w-8"
               />
               <span className="flex items-center gap-x-2 rounded-md bg-Main px-2 py-1 text-xs leading-[20px] text-White">
                 <span>{el.goals.home}</span>
@@ -88,7 +88,7 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
               <LazyLoadImage
                 src={el.teams.away.logo}
                 alt="homeLogo"
-                className="max-w-8"
+                className="aspect-square w-8 max-w-8"
               />
             </div>
             <div className="flex items-center">

@@ -3,7 +3,6 @@ import { Disclosure, Tab } from "@headlessui/react";
 
 import LiveStat from "./live-stat";
 import LineUpField from "./lineup-field";
-import Avatar from "components/common/avatar";
 
 import { rapidFootballLiveMatchResponse } from "types/football";
 import MatchResultEvent from "components/match-result/match-result-event";
