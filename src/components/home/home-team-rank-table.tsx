@@ -60,28 +60,28 @@ const HomeTeamRankTable: React.FunctionComponent<
         <table className="min-w-full divide-gray-200 ">
           <thead className="text-base font-semibold">
             <tr>
-              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+              <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 Rank
               </th>
-              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+              <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 Team
               </th>
-              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+              <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 Played
               </th>
-              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+              <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 Win
               </th>
-              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+              <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 Draw
               </th>
-              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+              <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 Lose
               </th>
-              <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+              <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
                 Points
               </th>
-              <th className="hidden whitespace-nowrap  px-6 py-3 text-left  uppercase leading-4 tracking-wider text-gray-500 sm:table-cell">
+              <th className="hidden whitespace-nowrap  px-2 py-3 text-left  uppercase leading-4 tracking-wider text-gray-500 sm:table-cell">
                 Form
               </th>
             </tr>
@@ -109,28 +109,28 @@ const HomeTeamRankTable: React.FunctionComponent<
                 >
                   {index + 1}
                 </td>
-                <td className="whitespace-no-wrap border-gray-200 px-6 py-4">
-                  <div className="flex  items-center gap-x-3">
+                <td className="whitespace-no-wrap border-gray-200 px-2 py-4">
+                  <div className="flex items-center gap-x-3 truncate">
                     <Avatar imgUrl={item.team.logo} size="md" />
                     <span>{item.team.name}</span>
                   </div>
                 </td>
-                <td className="whitespace-no-wrap  border-gray-200 px-6 py-4 ">
+                <td className="whitespace-no-wrap  border-gray-200 px-2 py-4 ">
                   {item.all.played}
                 </td>
-                <td className="whitespace-no-wrap  border-gray-200 px-6 py-4 ">
+                <td className="whitespace-no-wrap  border-gray-200 px-2 py-4 ">
                   {item.all.win}
                 </td>
-                <td className="whitespace-no-wrap border-gray-200 px-6 py-4 ">
+                <td className="whitespace-no-wrap border-gray-200 px-2 py-4 ">
                   {item.all.draw}
                 </td>
-                <td className="whitespace-no-wrap border-gray-200 px-6 py-4 ">
+                <td className="whitespace-no-wrap border-gray-200 px-2 py-4 ">
                   {item.all.lose}
                 </td>
-                <td className="whitespace-no-wrap  border-gray-200 px-6 py-4 ">
+                <td className="whitespace-no-wrap  border-gray-200 px-2 py-4 ">
                   {item.points}
                 </td>
-                <td className="whitespace-no-wrap hidden  border-gray-200 px-6 py-4 sm:table-cell">
+                <td className="whitespace-no-wrap hidden  border-gray-200 px-2 py-4 sm:table-cell">
                   <div className="flex gap-x-1">
                     {item?.form?.split("").map((el, i) => (
                       <div

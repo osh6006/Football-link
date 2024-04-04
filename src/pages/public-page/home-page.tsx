@@ -23,7 +23,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
         <title>{`Home | ${selectedLeague?.name}`}</title>
       </Helmet>
       {/* left */}
-      <div className="mx-4 max-w-[1100px] xl:mx-auto">
+      <div className="max-w-[1100px] xl:mx-auto">
         <Banner />
         <div className="my-4 flex w-full flex-col justify-between gap-x-4 xl:flex-row">
           <div className="flex-1 space-y-2">
@@ -34,7 +34,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
             <HomeLiveTable />
           </div>
 
-          <div className="flex-1 space-y-2">
+          <div className="mt-2 flex-1 space-y-2 sm:mt-0">
             <Title>
               Next Match
               <MoreArrow path="/schedule" />

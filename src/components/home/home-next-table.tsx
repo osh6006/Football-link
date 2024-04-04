@@ -71,11 +71,13 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = () => {
             effect="opacity"
             src={nextMatch?.teams.home.logo}
             alt="home"
-            className=""
+            className="w-32 sm:w-40"
           />
-          <h2 className="text-lg font-bold">{nextMatch?.teams.home.name}</h2>
+          <h2 className="text-center font-bold sm:text-lg">
+            {nextMatch?.teams.home.name}
+          </h2>
         </div>
-        <span className="text-3xl">vs</span>
+        <span className="text-lg sm:text-3xl">vs</span>
 
         {/* away */}
         <div className="flex flex-col items-center justify-center gap-y-2">
@@ -83,12 +85,14 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = () => {
             effect="opacity"
             src={nextMatch?.teams.away.logo}
             alt="away"
-            className=""
+            className="w-32 sm:w-40"
           />
-          <h1 className="text-lg font-bold">{nextMatch?.teams.away.name}</h1>
+          <h1 className="text-center font-bold sm:text-lg">
+            {nextMatch?.teams.away.name}
+          </h1>
         </div>
       </div>
-      <p className="text-center text-lg font-bold">{`${nextMatch?.fixture.venue.name} / ${nextMatch?.fixture.venue.city}`}</p>
+      <p className="text-center font-bold sm:text-lg">{`${nextMatch?.fixture.venue.name} / ${nextMatch?.fixture.venue.city}`}</p>
     </div>
   );
 };

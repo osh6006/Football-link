@@ -74,14 +74,14 @@ const HomePlayerRankTable: React.FunctionComponent<
       <table className="min-w-full  divide-gray-200 ">
         <thead className="text-base font-semibold">
           <tr>
-            <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+            <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500 sm:px-4">
               Rank
             </th>
-            <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+            <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500 sm:px-4">
               Name
             </th>
 
-            <th className="whitespace-nowrap px-6 py-3 text-left uppercase leading-4 tracking-wider text-gray-500">
+            <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500 sm:px-4">
               {type === "goal" && "Goal"}
               {type === "assist" && "Assist"}
             </th>
@@ -102,12 +102,12 @@ const HomePlayerRankTable: React.FunctionComponent<
               >
                 <td
                   className={clsx(
-                    "whitespace-nowrap border-gray-200 px-6 py-4",
+                    "whitespace-nowrap border-gray-200 px-2 py-4 sm:px-4",
                   )}
                 >
                   {index + 1}
                 </td>
-                <td className="whitespace-nowrap  border-gray-200 px-6 py-4">
+                <td className="whitespace-nowrap  border-gray-200 px-2 py-4 sm:px-4">
                   <div className=" flex items-center gap-x-3">
                     <div className="flex cursor-pointer items-center gap-x-2 whitespace-nowrap ">
                       <Avatar imgUrl={item.player.photo} size="md" />
