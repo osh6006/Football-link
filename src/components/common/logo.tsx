@@ -11,7 +11,7 @@ const Logo: React.FunctionComponent<ILogoProps> = ({ path }) => {
       to={"/"}
       className="w-fit cursor-pointer select-none text-2xl font-semibold uppercase text-Main"
     >
-      Spolink
+      Football Link
     </Link>
   );
 };

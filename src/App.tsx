@@ -5,6 +5,7 @@ import RootContainer from "./components/layouts/root-container";
 
 import { useLeagueStore } from "stores/league-store";
 import ModalProviders from "providers/modal-providers";
+import HowToLeague from "components/home/how-to-league";
 
 function App() {
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
@@ -21,7 +22,7 @@ function App() {
           <Outlet />
         ) : (
           <div className="flex h-[calc(100dvh-55px)] flex-col items-center justify-center gap-y-2 p-5 font-bold ">
-            <h1
+            {/* <h1
               className="text-center text-xl
             text-MediumGrey sm:text-2xl"
             >
@@ -32,7 +33,8 @@ function App() {
             text-MediumGrey sm:text-2xl"
             >
               Please choose a league 🤔
-            </h1>
+            </h1> */}
+            <HowToLeague />
           </div>
         )}
       </div>
