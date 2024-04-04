@@ -127,13 +127,12 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
                       </time>
                     </div>
 
-                    <div className="flex justify-between gap-x-4">
+                    <div className="flex flex-col justify-between gap-x-4 gap-y-2 sm:flex-row">
                       <LazyLoadImage
                         effect="opacity"
                         src={el.urlToImage}
                         alt="thumbnail"
-                        width={200}
-                        className="aspect-square h-32 max-w-[150px] rounded-md"
+                        className="h-40 w-full rounded-md sm:aspect-square sm:h-32 sm:max-w-[150px]"
                       />
                       <div className="">
                         <h2 className="font-semibold">{el.title}</h2>
