@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/globalNews/api/:path*",
+      "destination": "https://openapi.naver.com/v1/search/news.json/:path*/"
+    },
+    {
+      "source": "/localNews/api/:path*/",
+      "destination": "https://openapi.naver.com/:path*/"
+    }
+  ]
+}

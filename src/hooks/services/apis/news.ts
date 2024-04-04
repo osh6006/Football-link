@@ -25,7 +25,7 @@ export const getGlobalNews = async (
   filter?: string,
 ): Promise<GlobalNewsResponse> => {
   return newsApi
-    .get("/everything", {
+    .get(`/everything`, {
       params: {
         q: query,
         pageSize: 20,
