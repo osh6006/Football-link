@@ -1,6 +1,6 @@
 import { componentBackgroundChange } from "utils/util";
 
-import Carousel from "react-multi-carousel";
+import Carousel, { ResponsiveType } from "react-multi-carousel";
 import HomeNewsCard from "./home-news-card";
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
@@ -39,7 +39,7 @@ const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
     );
   }
 
-  const responsive = {
+  const responsive: ResponsiveType = {
     desktop: {
       breakpoint: { max: 3000, min: 1400 },
       items: 3,
@@ -53,21 +53,25 @@ const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
     },
 
     tablet: {
-      breakpoint: { max: 1024, min: 640 },
+      breakpoint: { max: 1024, min: 430 },
       items: 2,
       slidesToSlide: 2, // optional, default to 1.
     },
 
-    tablet2: {
-      breakpoint: { max: 350, min: 640 },
+    mobile: {
+      breakpoint: { max: 430, min: 350 },
       items: 1,
       slidesToSlide: 1, // optional, default to 1.
+      partialVisibilityGutter: 1,
+      paritialVisibilityGutter: 1,
     },
 
-    mobile: {
+    test: {
       breakpoint: { max: 350, min: 0 },
       items: 1,
       slidesToSlide: 1, // optional, default to 1.
+      partialVisibilityGutter: 1,
+      paritialVisibilityGutter: 1,
     },
   };
 
@@ -114,6 +118,7 @@ const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
             <ChevronRightIcon />
           </ArrowFix>
         }
+        className="w-full overflow-hidden"
       >
         {data?.map((el, i) => {
           return (

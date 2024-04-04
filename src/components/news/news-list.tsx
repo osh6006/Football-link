@@ -1,5 +1,3 @@
-import { formatPublicDay } from "libs/day";
-
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 import Filter from "components/common/filters";

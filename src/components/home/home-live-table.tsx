@@ -27,7 +27,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
       <div
         className={componentBackgroundChange(
           theme,
-          "flex min-h-[290px] w-full min-w-[500px] items-center justify-center rounded-md p-2 text-xl shadow-md",
+          "flex min-h-[290px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md sm:min-w-[500px]",
         )}
       >
         <Loading size="md" />

@@ -9,7 +9,7 @@ const Logo: React.FunctionComponent<ILogoProps> = ({ path }) => {
   return (
     <Link
       to={"/"}
-      className="w-fit cursor-pointer select-none text-2xl font-semibold uppercase text-Main"
+      className="w-fit  cursor-pointer select-none text-xl font-bold uppercase text-Main sm:text-2xl"
     >
       Football Link
     </Link>
