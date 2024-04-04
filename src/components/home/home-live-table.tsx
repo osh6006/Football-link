@@ -53,7 +53,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
       <div
         className={componentBackgroundChange(
           theme,
-          "relative flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-xl font-bold shadow-md",
+          "relative flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-center text-xl font-bold shadow-md",
         )}
       >
         There are no matches in progress 🤔

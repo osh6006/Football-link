@@ -15,6 +15,7 @@ import {
   useLocalNewsQuery,
 } from "hooks/services/quries/use-news-query";
 import { useSearchParams } from "react-router-dom";
+import dayjs from "dayjs";
 
 interface INewsListProps {
   type: "local" | "global";
@@ -68,7 +69,7 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
   if (localError || globalNewsError) {
     return (
       <ComponentStatusContainer state="loading" height="500">
-        데이터를 불러오던 도중 오류가 발생했어요 🤮
+        There's been an error on the server 🤮
       </ComponentStatusContainer>
     );
   }
@@ -85,7 +86,7 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
                 className="cursor-pointer rounded-md border-2  border-MediumGrey p-5  transition-colors hover:border-Main hover:bg-Main hover:text-White"
               >
                 <div className="mb-2 flex w-full text-sm">
-                  <time>{formatPublicDay(el.pubDate)}</time>
+                  <time>{dayjs(el.pubDate).format("MM DD HH, YYYY")}</time>
                 </div>
                 <h2 className="font-semibold">{parsingHTML(el.title)}</h2>
                 <p className="mt-2 text-sm">{parsingHTML(el.description)}</p>
@@ -121,7 +122,9 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
                     <div className="mb-2 flex  flex-col justify-end text-sm">
                       {/* <p>{el.author}</p>
                   <p>{el.source.name}</p> */}
-                      <time>{formatPublicDay(el.publishedAt)}</time>
+                      <time>
+                        {dayjs(el.publishedAt).format("MM DD HH, YYYY")}
+                      </time>
                     </div>
 
                     <div className="flex justify-between gap-x-4">

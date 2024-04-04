@@ -36,7 +36,7 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
   if (isError) {
     return (
       <div className="flex h-full min-h-[350px] min-w-[1000px] items-center justify-center text-xl">
-        서버에서 데이터를 불러올 수 없습니다.
+        There's been an error on the server 🤮
       </div>
     );
   }
@@ -49,7 +49,7 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
     return (
       <div
         className={clsx(
-          `flex h-[350px] w-full max-w-[1200px] items-center justify-center rounded-md bg-cover bg-center bg-no-repeat text-2xl font-bold shadow-md`,
+          `flex h-[350px] w-full max-w-[1200px] items-center justify-center rounded-md bg-cover bg-center bg-no-repeat text-center text-2xl font-bold shadow-md`,
           theme === "light" && "bg-White",
           theme === "dark" && "bg-DarkGrey",
         )}
