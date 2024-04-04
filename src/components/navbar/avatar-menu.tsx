@@ -47,7 +47,7 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({
                   "relative w-full cursor-pointer select-none rounded-md px-2 py-1 text-left transition-colors hover:bg-Main hover:text-White",
                 )}
               >
-                로그아웃
+                SignOut
               </button>
             )}
           </Menu.Item>
@@ -59,7 +59,7 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({
                   "relative w-full cursor-pointer select-none rounded-md px-2 py-1 text-left transition-colors hover:bg-Main hover:text-White",
                 )}
               >
-                프로필
+                Profile
               </button>
             )}
           </Menu.Item>

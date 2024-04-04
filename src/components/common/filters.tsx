@@ -27,7 +27,7 @@ const Filter: React.FunctionComponent<IFilterProps> = ({ items }) => {
           <Button
             size="sm"
             className={clsx(
-              " border-2 uppercase tracking-widest hover:border-Main hover:text-Main",
+              " border-2 uppercase tracking-widest hover:border-Main hover:bg-Main hover:text-White",
               item.value === filterName
                 ? "border border-Main font-semibold text-Main"
                 : "border border-MediumGrey",

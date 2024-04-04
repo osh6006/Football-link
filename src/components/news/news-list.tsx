@@ -82,7 +82,7 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
               <li
                 onClick={() => openInNewTab(el.link)}
                 key={i}
-                className="cursor-pointer rounded-md border-2  border-MediumGrey p-5  transition-colors hover:border-Main hover:text-Main"
+                className="cursor-pointer rounded-md border-2  border-MediumGrey p-5  transition-colors hover:border-Main hover:bg-Main hover:text-White"
               >
                 <div className="mb-2 flex w-full text-sm">
                   <time>{formatPublicDay(el.pubDate)}</time>
@@ -116,7 +116,7 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
                   <li
                     onClick={() => openInNewTab(el.url)}
                     key={i}
-                    className="flex cursor-pointer flex-col justify-around rounded-md border-2  border-MediumGrey px-5 py-3  transition-colors hover:border-Main hover:text-Main"
+                    className="flex cursor-pointer flex-col justify-around rounded-md border-2  border-MediumGrey px-5 py-3  transition-colors hover:border-Main hover:bg-Main hover:text-White"
                   >
                     <div className="mb-2 flex  flex-col justify-end text-sm">
                       {/* <p>{el.author}</p>
@@ -166,7 +166,7 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
                 state="error"
                 classNames="mt-10 h-[350px]"
               >
-                해당 키워드 기사가 존재하지 않습니다.
+                This keyword article does not exist.
               </ComponentStatusContainer>
             </>
           )}
