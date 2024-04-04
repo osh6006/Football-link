@@ -28,7 +28,7 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = () => {
       <div
         className={componentBackgroundChange(
           theme,
-          "h flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-xl shadow-md",
+          "h flex min-h-[285px] w-full min-w-[500px] items-center justify-center rounded-md p-2 text-xl shadow-md",
         )}
       >
         <Loading size="md" />
@@ -41,7 +41,7 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = () => {
       <div
         className={componentBackgroundChange(
           theme,
-          "h flex min-h-[285px] w-full items-center justify-center rounded-md p-2 text-xl font-bold shadow-md",
+          "h flex min-h-[285px] w-full min-w-[500px] items-center justify-center rounded-md p-2 text-xl font-bold shadow-md",
         )}
       >
         There's been an error on the server 🤮

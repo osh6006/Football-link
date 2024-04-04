@@ -3,10 +3,10 @@ import { Helmet } from "react-helmet-async";
 import Title from "components/home/title";
 import Banner from "components/home/banner";
 import MoreArrow from "components/common/more-arrow";
-import HomeContainer from "components/layouts/home-container";
 import HomeNewTable from "components/home/home-news-table";
 import HomeLiveTable from "components/home/home-live-table";
 import HomeNextTable from "components/home/home-next-table";
+import HomeContainer from "components/layouts/home-container";
 import HomeTeamRankTable from "components/home/home-team-rank-table";
 
 import { useLeagueStore } from "stores/league-store";
