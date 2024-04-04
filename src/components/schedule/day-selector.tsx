@@ -4,6 +4,8 @@ import dayjs from "dayjs";
 import useScheduleStore from "stores/schedule-store";
 
 import Carousel from "react-multi-carousel";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { ArrowFix } from "components/common/util";
 
 interface IDaySelectorProps {
   isAll: boolean;
@@ -52,26 +54,36 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = ({
     <div className="flex items-center justify-center gap-x-6">
       <ul className="z-10 flex w-full items-center justify-between overflow-hidden">
         <Carousel
-          additionalTransfrom={10}
-          arrows={true}
-          autoPlay={false}
-          containerClass="container"
-          dotListClass=""
-          draggable={false}
-          infinite={true}
-          itemClass=""
-          minimumTouchDrag={2}
-          responsive={responsive}
+          arrows
+          infinite
           rtl={false}
+          itemClass=""
+          dotListClass=""
           showDots={false}
+          autoPlay={false}
           slidesToSlide={5}
+          draggable={false}
           centerMode={true}
           focusOnSelect={true}
+          minimumTouchDrag={2}
+          responsive={responsive}
+          additionalTransfrom={10}
+          containerClass="container"
+          customLeftArrow={
+            <ArrowFix className="absolute left-4 cursor-pointer rounded-full bg-black/40 p-1.5 text-white transition-colors hover:bg-black/80">
+              <ChevronLeftIcon />
+            </ArrowFix>
+          }
+          customRightArrow={
+            <ArrowFix className="absolute right-4 cursor-pointer rounded-full bg-black/40 p-1.5 text-white transition-colors hover:bg-black/80">
+              <ChevronRightIcon />
+            </ArrowFix>
+          }
         >
           <div
             role="button"
             className={clsx(
-              " mx-auto flex flex-col  items-center justify-center rounded-md border px-3 py-4 font-semibold transition-colors hover:border-Main  hover:text-Main",
+              " mx-auto flex flex-col  items-center justify-center rounded-md border px-3 py-4 font-semibold transition-colors hover:border-Main hover:bg-Main hover:text-White",
               isAll
                 ? " border-2 border-Main font-semibold text-Main"
                 : "border-MediumGrey",
@@ -88,12 +100,12 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = ({
               key={el.numberOfDay}
               role="button"
               className={clsx(
-                "mx-1 flex flex-col items-center justify-center rounded-md border px-3 py-4 font-semibold transition-colors hover:border-Main  hover:text-Main",
+                "mx-1 flex flex-col items-center justify-center rounded-md border px-3 py-4 font-semibold transition-colors  hover:border-Main hover:bg-Main hover:text-White",
                 !isAll && el.isActive
-                  ? " border-2 border-Main font-semibold text-Main"
-                  : "border-MediumGrey",
+                  ? " border-2 border-red-800   font-semibold text-White"
+                  : "border-MediumGrey ",
                 el.numberOfDay === dayjs(new Date()).date()
-                  ? "border-2 border-green-500 font-semibold text-green-500"
+                  ? "border-2 border-green-500 font-semibold text-green-500 hover:border-green-500 hover:bg-green-500 hover:text-White"
                   : "",
               )}
               onClick={(e) => {

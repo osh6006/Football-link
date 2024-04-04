@@ -12,6 +12,22 @@ export const useScheduleStore = create<IScheduleStoreState>()((set) => ({
   controlDate: (action, type) =>
     set(({ currentDate }) => {
       switch (action) {
+        case "TODAY":
+          return {
+            currentDate: dayjs(new Date()).format("YYYY-MM-DD"),
+          };
+        case "PREV":
+          return {
+            currentDate: dayjs(currentDate)
+              .subtract(1, "month")
+              .format("YYYY-MM-DD"),
+          };
+        case "NEXT":
+          return {
+            currentDate: dayjs(currentDate)
+              .add(1, "month")
+              .format("YYYY-MM-DD"),
+          };
         case "CUSTOM":
           return {
             currentDate: dayjs(type).format("YYYY-MM-DD"),

@@ -28,7 +28,7 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
     date: currentDate,
     start: firstDayOfMonth,
     end: lastDayOfMonth,
-    season: selectedLeague?.season!,
+    season: formatDate.year() - 1,
     leagueId: selectedLeague?.leagueId!,
   });
 

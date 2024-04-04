@@ -20,10 +20,10 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
     currentDate === dayjs(new Date()).locale("ko").format("YYYY-MM-DD");
 
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
-  const thisYear = selectedLeague?.possibleSeasons.at(-1)?.year;
+  const lastYear = selectedLeague?.possibleSeasons.at(-1)?.year;
   const firstYear = selectedLeague?.possibleSeasons.at(1)?.year;
   const years = Array.from(
-    { length: thisYear! - firstYear! + 2 },
+    { length: lastYear! - firstYear! + 2 },
     (_, index) => firstYear! + index,
   );
 
@@ -44,7 +44,9 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
       <div className="flex items-center gap-x-4">
         <button
           className="mt-1 hover:text-Main"
-          onClick={() => controlDate("PREV", "month")}
+          onClick={() => {
+            if (currentDate) controlDate("PREV", "month");
+          }}
         >
           <ChevronLeftIcon size={25} />
         </button>
@@ -76,7 +78,7 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
               e.stopPropagation();
             }}
             className={clsx(
-              `absolute z-10 mt-4 grid w-[300px] -translate-x-[50%] grid-cols-3 items-center justify-center gap-2 overflow-hidden rounded-md bg-white
+              `absolute z-20 mt-4 grid w-[300px] -translate-x-[50%] grid-cols-3 items-center justify-center gap-2 overflow-hidden rounded-md bg-white
             p-2 text-DarkGrey shadow-lg focus:outline-none sm:text-sm md:w-[380px]`,
             )}
           >

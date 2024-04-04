@@ -10,6 +10,8 @@ import { useGlobalNewsQuery } from "hooks/services/quries/use-news-query";
 
 import "react-multi-carousel/lib/styles.css";
 import { useLeagueStore } from "stores/league-store";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { ArrowFix } from "components/common/util";
 
 interface IHomeNewTableProps {}
 
@@ -70,31 +72,41 @@ const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
       )}
     >
       <Carousel
-        additionalTransfrom={0}
         arrows
-        autoPlaySpeed={3000}
-        centerMode={false}
-        containerClass="container-with-dots"
-        dotListClass=""
-        draggable
-        focusOnSelect={false}
         infinite
-        itemClass=""
-        keyBoardControl
-        minimumTouchDrag={80}
+        swipeable
+        draggable
+        rtl={false}
         pauseOnHover
+        itemClass=""
+        sliderClass=""
+        rewind={false}
+        keyBoardControl
+        dotListClass=""
+        showDots={false}
+        slidesToSlide={1}
+        centerMode={false}
+        shouldResetAutoplay
+        autoPlaySpeed={3000}
+        focusOnSelect={false}
+        minimumTouchDrag={80}
+        additionalTransfrom={0}
+        responsive={responsive}
+        renderDotsOutside={false}
+        rewindWithAnimation={false}
         renderArrowsWhenDisabled={false}
         renderButtonGroupOutside={false}
-        renderDotsOutside={false}
-        responsive={responsive}
-        rewind={false}
-        rewindWithAnimation={false}
-        rtl={false}
-        shouldResetAutoplay
-        showDots={false}
-        sliderClass=""
-        slidesToSlide={1}
-        swipeable
+        containerClass="container-with-dots"
+        customLeftArrow={
+          <ArrowFix className="absolute left-4 cursor-pointer rounded-full bg-black/40 p-1.5 text-white transition-colors hover:bg-black/80">
+            <ChevronLeftIcon />
+          </ArrowFix>
+        }
+        customRightArrow={
+          <ArrowFix className="absolute right-4 cursor-pointer rounded-full bg-black/40 p-1.5 text-white transition-colors hover:bg-black/80">
+            <ChevronRightIcon />
+          </ArrowFix>
+        }
       >
         {data?.map((el, i) => {
           return (
