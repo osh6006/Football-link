@@ -168,6 +168,8 @@ export const getLeagueSchedule = async ({
   leagueId?: number;
   teamId?: string;
 }): Promise<rapidFootballNextMatchesResponse[]> => {
+  console.log(start, end, leagueId, season);
+
   try {
     if (isAll) {
       const response = await rapidApi.get("/fixtures", {

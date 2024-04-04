@@ -85,7 +85,7 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = ({
             className={clsx(
               " mx-auto flex flex-col  items-center justify-center rounded-md border px-3 py-4 font-semibold transition-colors hover:border-Main hover:bg-Main hover:text-White",
               isAll
-                ? " border-2 border-Main font-semibold text-Main"
+                ? " border-2 border-Main bg-Main font-semibold text-White"
                 : "border-MediumGrey",
             )}
             onClick={() => {
@@ -102,7 +102,7 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = ({
               className={clsx(
                 "mx-1 flex flex-col items-center justify-center rounded-md border px-3 py-4 font-semibold transition-colors  hover:border-Main hover:bg-Main hover:text-White",
                 !isAll && el.isActive
-                  ? " border-2 border-red-800   font-semibold text-White"
+                  ? " border-2 border-Main bg-Main font-semibold text-White"
                   : "border-MediumGrey ",
                 el.numberOfDay === dayjs(new Date()).date()
                   ? "border-2 border-green-500 font-semibold text-green-500 hover:border-green-500 hover:bg-green-500 hover:text-White"

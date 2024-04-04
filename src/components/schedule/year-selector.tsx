@@ -23,7 +23,7 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
   const lastYear = selectedLeague?.possibleSeasons.at(-1)?.year;
   const firstYear = selectedLeague?.possibleSeasons.at(1)?.year;
   const years = Array.from(
-    { length: lastYear! - firstYear! + 2 },
+    { length: lastYear! - firstYear! + 1 },
     (_, index) => firstYear! + index,
   );
 

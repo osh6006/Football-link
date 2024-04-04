@@ -23,12 +23,16 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
   const firstDayOfMonth = formatDate.startOf("month").format("YYYY-MM-DD");
   const lastDayOfMonth = formatDate.endOf("month").format("YYYY-MM-DD");
 
+  const lastYear =
+    selectedLeague?.possibleSeasons.at(-1)?.year || new Date().getFullYear();
+  const season = formatDate.year() > lastYear ? lastYear : formatDate.year();
+
   const { data, isLoading, isError } = useScheduleQuery({
     isAll,
     date: currentDate,
     start: firstDayOfMonth,
     end: lastDayOfMonth,
-    season: formatDate.year() - 1,
+    season: season,
     leagueId: selectedLeague?.leagueId!,
   });
 
