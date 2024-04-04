@@ -51,7 +51,7 @@ const HowToLeague: React.FunctionComponent<IHowToLeagueProps> = () => {
       <div>
         <h3 className="my-2 flex flex-col items-center justify-center gap-x-2 sm:flex-row sm:items-start sm:justify-start">
           That's it! Now enjoy
-          <strong className="text-Main">Football Link</strong>
+          <strong className="text-Main">Football Link 😎</strong>
         </h3>
         <div></div>
       </div>
