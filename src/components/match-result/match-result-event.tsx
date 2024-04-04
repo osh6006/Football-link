@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Avatar from "components/common/avatar";
+import ComponentStatusContainer from "components/layouts/component-status-container";
 
 interface IMatchResultEventProps {
   events?: any[];
@@ -12,6 +13,16 @@ const MatchResultEvent: React.FunctionComponent<IMatchResultEventProps> = ({
   homeName,
   awayName,
 }) => {
+  if (events && events.length <= 0) {
+    return (
+      <ComponentStatusContainer state="loading" height={450}>
+        <h1 className="text-2xl font-semibold text-gray-400">
+          Not Event This Match 😣
+        </h1>
+      </ComponentStatusContainer>
+    );
+  }
+
   return (
     <ul className="space-y-2">
       {events?.map((el) => (

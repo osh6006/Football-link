@@ -1,12 +1,12 @@
 import clsx from "clsx";
-import { Disclosure } from "@headlessui/react";
+import { Disclosure, Tab } from "@headlessui/react";
 
 import LiveStat from "./live-stat";
 import LineUpField from "./lineup-field";
-import Tabs from "components/common/tabs";
 import Avatar from "components/common/avatar";
 
 import { rapidFootballLiveMatchResponse } from "types/football";
+import MatchResultEvent from "components/match-result/match-result-event";
 
 interface ILiveDetailProps {
   liveInfo: rapidFootballLiveMatchResponse;
@@ -16,7 +16,66 @@ const LiveDetail = ({ liveInfo }: ILiveDetailProps) => {
   return (
     <Disclosure.Panel>
       <div className="p-5">
-        <Tabs defaultTab="event">
+        <Tab.Group>
+          <Tab.List className="mt-10 flex items-center justify-between gap-x-2 sm:justify-around">
+            <Tab
+              className={({ selected }) =>
+                clsx(
+                  "w-full rounded-md border-2 border-MediumGrey py-3 font-medium uppercase leading-5",
+                  "ring-MainHover  transition focus:outline-none focus:ring-4",
+                  selected
+                    ? "border-transparent bg-Main text-white shadow"
+                    : "text-MediumGrey hover:bg-Main hover:text-white",
+                )
+              }
+            >
+              Events
+            </Tab>
+            <Tab
+              className={({ selected }) =>
+                clsx(
+                  "w-full rounded-md border-2 border-MediumGrey py-3 font-medium uppercase leading-5",
+                  "ring-MainHover  transition focus:outline-none focus:ring-4",
+                  selected
+                    ? "border-transparent bg-Main text-white shadow"
+                    : "text-MediumGrey hover:bg-Main hover:text-white",
+                )
+              }
+            >
+              Line Up
+            </Tab>
+            <Tab
+              className={({ selected }) =>
+                clsx(
+                  "w-full rounded-md border-2 border-MediumGrey py-3 font-medium uppercase leading-5",
+                  "ring-MainHover  transition focus:outline-none focus:ring-4",
+                  selected
+                    ? "border-transparent bg-Main text-white shadow"
+                    : "text-MediumGrey hover:bg-Main hover:text-white",
+                )
+              }
+            >
+              Statistic
+            </Tab>
+          </Tab.List>
+          <Tab.Panels className={"mt-10"}>
+            <Tab.Panel>
+              <MatchResultEvent
+                events={liveInfo?.events}
+                homeName={liveInfo?.teams.home.name}
+                awayName={liveInfo?.teams.away.name}
+              />
+            </Tab.Panel>
+            <Tab.Panel>
+              <LineUpField fixtureId={liveInfo.fixture.id} />
+            </Tab.Panel>
+            <Tab.Panel>
+              <LiveStat />
+            </Tab.Panel>
+          </Tab.Panels>
+        </Tab.Group>
+
+        {/* <Tabs defaultTab="event">
           <Tabs.TabContainer className="">
             <Tabs.Tab id="event" className="mx-2 rounded-md  border-2 p-5">
               Events
@@ -62,7 +121,7 @@ const LiveDetail = ({ liveInfo }: ILiveDetailProps) => {
           <Tabs.TabPanel id={"stat"}>
             <LiveStat />
           </Tabs.TabPanel>
-        </Tabs>
+        </Tabs> */}
       </div>
     </Disclosure.Panel>
   );

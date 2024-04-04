@@ -15,22 +15,22 @@ const LineUpField: React.FunctionComponent<ILineUpFieldProps> = ({
 
   if (isLoading)
     return (
-      <ComponentStatusContainer state="loading" height={750}>
+      <ComponentStatusContainer state="loading" height={450}>
         <Loading size="lg" />
       </ComponentStatusContainer>
     );
 
   if (isError)
     return (
-      <ComponentStatusContainer state="error" height={750}>
+      <ComponentStatusContainer state="error" height={450}>
         <h1>Something Error! 🤮</h1>
       </ComponentStatusContainer>
     );
 
   if (!data?.length)
     return (
-      <ComponentStatusContainer state="loading" height={750}>
-        <h1 className="text-2xl font-semibold text-gray-400">
+      <ComponentStatusContainer state="loading" height={450}>
+        <h1 className="text-center text-2xl font-semibold text-gray-400">
           We can't check the lineup yet The lineup of matches will be updated
           15-20 minutes before the start of the match. 😣
         </h1>

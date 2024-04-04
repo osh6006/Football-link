@@ -11,9 +11,6 @@ const MatchResultStat: React.FunctionComponent<IMatchResultStatProps> = ({
   const homeStat = stat ? stat[0] : null;
   const awayStat = stat ? stat[1] : null;
 
-  console.log(homeStat);
-  console.log(awayStat);
-
   return (
     <div className="grid grid-cols-1 divide-y-2 divide-MediumGrey border-2 border-MediumGrey sm:grid-cols-2 sm:divide-x-2 sm:divide-y-0 ">
       <div>
