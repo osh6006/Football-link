@@ -28,10 +28,14 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
   );
 
   return (
-    <div className="mb-5 flex items-center justify-center ">
+    <div
+      className={clsx(
+        "sticky top-[55px] z-40 mb-5 flex items-center justify-center p-1.5 backdrop-blur-md sm:p-4",
+      )}
+    >
       <button
         className={clsx(
-          "mr-2 rounded-xl border border-MediumGrey px-2 text-xs leading-10 sm:mr-4 sm:text-sm",
+          "mr-2 whitespace-nowrap rounded-xl border border-MediumGrey px-2 text-xs leading-10 sm:mr-4 sm:text-sm",
           isToday ? "bg-Main text-white" : "",
         )}
         onClick={() => {
@@ -39,7 +43,7 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
           setIsAll(false);
         }}
       >
-        오늘
+        Today
       </button>
       <div className="flex items-center gap-x-4">
         <button
@@ -50,7 +54,7 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
         >
           <ChevronLeftIcon size={25} />
         </button>
-        <h2 className="text-2xl font-semibold text-Main sm:text-3xl">
+        <h2 className="whitespace-nowrap text-center text-2xl font-semibold text-Main sm:text-3xl">
           {currentDate}
         </h2>
         <button
@@ -78,14 +82,19 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
               e.stopPropagation();
             }}
             className={clsx(
-              `absolute z-20 mt-4 grid w-[300px] -translate-x-[50%] grid-cols-3 items-center justify-center gap-2 overflow-hidden rounded-md bg-white
-            p-2 text-DarkGrey shadow-lg focus:outline-none sm:text-sm md:w-[380px]`,
+              `absolute -left-[120px] mt-4 grid w-[300px] -translate-x-[50%] grid-cols-3 items-center justify-center gap-2 overflow-hidden rounded-md bg-white p-2
+            text-DarkGrey shadow-lg focus:outline-none sm:left-0 sm:text-sm md:w-[380px]`,
             )}
           >
             {years.map((el) => (
               <Menu.Item key={el}>
                 <button
-                  className="flex select-none items-center justify-center rounded-md border border-MediumGrey px-3 py-1 text-lg text-MediumGrey transition-colors hover:bg-Main hover:text-white"
+                  className={clsx(
+                    "flex select-none items-center justify-center rounded-md border border-MediumGrey px-3 py-1 text-lg text-MediumGrey transition-colors hover:bg-Main hover:text-white",
+                    el === dayjs(currentDate).year()
+                      ? "bg-Main text-White"
+                      : "",
+                  )}
                   onClick={() => {
                     controlDate(
                       "CUSTOM",

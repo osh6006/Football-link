@@ -38,7 +38,7 @@ const MobileSideBar: React.FunctionComponent<IMobileSideBarProps> = ({
       leaveFrom="transform"
       leaveTo="transform -translate-x-[300px]"
     >
-      <div className="fixed inset-0 z-50 flex lg:hidden">
+      <div className="fixed inset-0 z-[100] flex lg:hidden">
         <div ref={nodeRef} className="h-full">
           <Sidebar isMobile={true} onClose={onClose} />
         </div>

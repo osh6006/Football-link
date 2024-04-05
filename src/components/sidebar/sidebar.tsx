@@ -27,14 +27,14 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = ({
   return (
     <aside
       className={clsx(
-        `fixed inset-y-0 h-full w-[280px] flex-col border-r border-MediumGrey   
+        `fixed inset-y-0 z-[100] h-full w-[280px] flex-col border-r border-MediumGrey   
       text-MediumGrey `,
         theme === "light" ? "bg-White " : "bg-DarkGrey ",
         isMobile ? "flex flex-col" : "hidden lg:flex lg:flex-col",
       )}
     >
       {/* logo */}
-      <div className="flex h-[55px] items-center justify-between px-4">
+      <div className=" flex h-[55px] items-center justify-between px-4">
         <Logo path="/" />
         <button
           className={clsx("hover:text-Main", isMobile ? "block" : "hidden")}

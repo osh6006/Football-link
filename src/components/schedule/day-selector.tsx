@@ -51,8 +51,8 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = ({
   };
 
   return (
-    <div className="flex items-center justify-center gap-x-6">
-      <ul className="z-10 flex w-full items-center justify-between overflow-hidden">
+    <div className="sticky top-[110px] z-30 flex items-center justify-center gap-x-6 backdrop-blur-lg sm:top-[125px]">
+      <ul className="flex w-full items-center justify-between overflow-hidden ">
         <Carousel
           arrows
           infinite
@@ -100,7 +100,7 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = ({
               key={el.numberOfDay}
               role="button"
               className={clsx(
-                "mx-1 flex flex-col items-center justify-center rounded-md border px-3 py-4 font-semibold transition-colors  hover:border-Main hover:bg-Main hover:text-White",
+                "mx-1 flex flex-col  items-center justify-center rounded-md border px-3 py-4 font-semibold transition-colors  hover:border-Main hover:bg-Main hover:text-White",
                 !isAll && el.isActive
                   ? " border-2 border-Main bg-Main font-semibold text-White"
                   : "border-MediumGrey ",

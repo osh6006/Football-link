@@ -110,7 +110,7 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
             onClick={() => {
               nav(`/match-result/${el.fixture.id}`);
             }}
-            className="absolute right-1 top-1 rounded-md border border-MediumGrey px-2 py-[2px] text-sm uppercase transition-colors hover:bg-Main  hover:text-White md:static"
+            className="absolute right-1 top-1 rounded-md border border-MediumGrey px-2 py-[2px] text-xs uppercase transition-colors hover:bg-Main hover:text-White  sm:text-sm md:static"
           >
             result
           </button>

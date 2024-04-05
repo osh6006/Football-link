@@ -14,7 +14,7 @@ const ScheduleContainer: React.FunctionComponent<IScheduleContainerProps> = ({
     <main
       className={componentBackgroundChange(
         theme,
-        "m-4 max-w-[1280px] rounded-md p-4 text-MediumGrey sm:p-8 2xl:mx-auto",
+        " m-2 max-w-[1280px] rounded-md p-4 text-MediumGrey sm:p-8 2xl:mx-auto",
       )}
     >
       {children}
