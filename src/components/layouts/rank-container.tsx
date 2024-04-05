@@ -14,7 +14,7 @@ const RankContainer: React.FunctionComponent<IRankContainerProps> = ({
     <div
       className={componentBackgroundChange(
         theme,
-        "m-4 max-w-[1280px] rounded-xl p-8 text-MediumGrey shadow-md xl:mx-auto",
+        "m-4 max-w-[1280px] rounded-xl p-2 text-MediumGrey shadow-md sm:p-8 xl:mx-auto",
       )}
     >
       {children}

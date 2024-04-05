@@ -31,7 +31,7 @@ const LiveList: React.FunctionComponent<ILiveListProps> = () => {
   if (!data?.length)
     return (
       <ComponentStatusContainer state="loading" height={750}>
-        <h1 className="text-2xl font-semibold text-gray-400">
+        <h1 className="text-center text-2xl font-semibold text-gray-400">
           No live matches are currently in progress 😣
         </h1>
       </ComponentStatusContainer>

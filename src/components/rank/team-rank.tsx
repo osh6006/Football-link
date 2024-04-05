@@ -60,7 +60,7 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
       columnHelper.accessor((row) => row.team, {
         id: "team",
         cell: (info) => (
-          <div className=" flex items-center gap-x-3">
+          <div className=" flex flex-col items-end gap-x-3 sm:flex-row sm:items-center">
             <Avatar imgUrl={info.getValue().logo} size="md" />
             <span className="truncate">{info.getValue().name}</span>
           </div>
@@ -106,14 +106,14 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
           </div>
         ),
         header: () => <span>Winrate</span>,
-        meta: {
-          className: "hidden xl:table-cell",
-        },
+        // meta: {
+        //   className: "hidden xl:table-cell",
+        // },
       }),
       columnHelper.accessor((row) => row.form, {
         id: "form",
         cell: (info) => (
-          <div className="flex gap-x-1">
+          <div className="flex justify-end gap-x-1 sm:justify-start">
             {info.getValue()
               ? info
                   .getValue()
@@ -135,9 +135,9 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
           </div>
         ),
         header: () => <span>Form</span>,
-        meta: {
-          className: "hidden lg:table-cell",
-        },
+        // meta: {
+        //   className: "hidden lg:table-cell",
+        // },
       }),
     ];
   }, [columnHelper]);
@@ -164,7 +164,7 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
   if (isError) {
     return (
       <ComponentStatusContainer state="error" height="500">
-        <h1>An error occurred while fetching data from the server. </h1>
+        <h1>There's been an error on the server 🤮</h1>
       </ComponentStatusContainer>
     );
   }
