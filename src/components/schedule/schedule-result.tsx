@@ -1,13 +1,12 @@
 import dayjs from "dayjs";
-import useScheduleStore from "stores/schedule-store";
 
 import Loading from "components/common/loading";
+import ScheduleCard from "./schedule.card";
 import ComponentStatusContainer from "components/layouts/component-status-container";
+
+import useScheduleStore from "stores/schedule-store";
 import { useLeagueStore } from "stores/league-store";
 import { useScheduleQuery } from "hooks/services/quries/use-schedule-query";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useNavigate } from "react-router-dom";
-import ScheduleCard from "./schedule.card";
 
 interface IScheduleResultProps {
   isAll: boolean;
@@ -16,7 +15,6 @@ interface IScheduleResultProps {
 const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
   isAll,
 }) => {
-  const nav = useNavigate();
   const { currentDate } = useScheduleStore();
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 

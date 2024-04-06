@@ -9,8 +9,6 @@ interface IPlayerHeaderProps {
 const PlayerHeader: React.FunctionComponent<IPlayerHeaderProps> = ({
   player,
 }) => {
-  console.log(player);
-
   const attakerStat = [
     {
       name: "Position",

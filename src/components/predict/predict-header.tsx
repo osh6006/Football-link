@@ -54,7 +54,6 @@ const PredictHeader: React.FunctionComponent<IPredictHeaderProps> = (props) => {
     });
 
   const handleSetHomeTeam = (teamName: string) => {
-    console.log(items?.find((el) => el.team.name === teamName));
     setHomeTeam(items?.find((el) => el.team.name === teamName) || null);
   };
   const handleSetAwayTeam = (teamName: string) => {

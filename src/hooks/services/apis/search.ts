@@ -23,8 +23,6 @@ export const getPlayerSearch = async (
   value: string,
   league: number,
 ): Promise<IPlayerSearchResult[]> => {
-  console.log(league, value);
-
   return await rapidApi
     .get("players", {
       params: {

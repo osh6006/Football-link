@@ -21,8 +21,6 @@ const PredictResult: React.FunctionComponent<IPredictResultProps> = () => {
     awayTeam?.team.id,
   );
 
-  console.log(data);
-
   if (isLoading) {
     return (
       <ComponentStatusContainer height={400} state="loading">
