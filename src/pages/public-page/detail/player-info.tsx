@@ -24,7 +24,7 @@ const PlayerInfo: React.FunctionComponent<IPlayerInfoProps> = () => {
     <div className="space-y-4">
       <section>
         <DetailTitle>Player Info</DetailTitle>
-        <div className="mt-4 grid w-full grid-cols-3 gap-4 rounded-md border border-MediumGrey sm:py-6">
+        <div className="mt-4 grid w-full grid-cols-3 gap-4 rounded-md border border-MediumGrey p-2 sm:py-6">
           <DL>
             <DT>Age</DT>
             <DD>

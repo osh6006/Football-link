@@ -1,20 +1,20 @@
-import Loading from "components/common/loading";
-import ComponentStatusContainer from "components/layouts/component-status-container";
-import Filter from "components/common/filters";
+import dayjs from "dayjs";
 import { GLOBAL_NEWS_FILTERS } from "data/football/news";
 
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/opacity.css";
+import NewsCard from "./news-card";
+import Filter from "components/common/filters";
+import Loading from "components/common/loading";
+import ComponentStatusContainer from "components/layouts/component-status-container";
 
+import { useSearchParams } from "react-router-dom";
 import { useLeagueStore } from "stores/league-store";
 import { useInfiniteScroll } from "hooks/use-infinite-scroll";
 import {
   useGlobalNewsQuery,
   useLocalNewsQuery,
 } from "hooks/services/quries/use-news-query";
-import { useSearchParams } from "react-router-dom";
-import dayjs from "dayjs";
-import NewsCard from "./news-card";
+
+import "react-lazy-load-image-component/src/effects/opacity.css";
 
 interface INewsListProps {
   type: "local" | "global";
