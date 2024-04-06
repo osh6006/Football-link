@@ -6,10 +6,12 @@ import { useModalActions } from "stores/modals-store";
 
 interface ISideMenuListProps {
   label?: string;
+  onClose: () => void;
 }
 
 const SideMenuList: React.FunctionComponent<ISideMenuListProps> = ({
   label,
+  onClose,
 }) => {
   const nav = useNavigate();
   const { user } = useAuth();
@@ -31,9 +33,11 @@ const SideMenuList: React.FunctionComponent<ISideMenuListProps> = ({
                   openModal("isOpenPrivateModal");
                 } else {
                   nav(item.path);
+                  onClose();
                 }
               } else {
                 nav(item.path);
+                onClose();
               }
             }}
             className={clsx(

@@ -14,7 +14,7 @@ function App() {
     <RootContainer>
       <ModalProviders />
       {/*  Side Bar */}
-      <Sidebar />
+      <Sidebar onClose={() => {}} />
       {/* Nav & Page*/}
       <div className="relative  h-fit w-[100dvw-280px] lg:ml-[280px] ">
         <Navbar />

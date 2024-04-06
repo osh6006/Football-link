@@ -12,7 +12,7 @@ import SelectLeague from "./select-league";
 
 interface ISidebarProps {
   isMobile?: boolean;
-  onClose?: () => void;
+  onClose: () => void;
 }
 
 const Sidebar: React.FunctionComponent<ISidebarProps> = ({
@@ -54,7 +54,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = ({
         <SelectLeague />
       </div>
 
-      <SideMenuList label="Menus" />
+      <SideMenuList label="Menus" onClose={() => onClose()} />
 
       {/* DarkMode change */}
       <p className="mx-2 text-sm uppercase tracking-wider text-Main">Theme</p>
