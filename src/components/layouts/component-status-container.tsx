@@ -16,7 +16,7 @@ const ComponentStatusContainer: React.FunctionComponent<
         height: +height,
       }}
       className={clsx(
-        "h flex w-full items-center justify-center rounded-md p-2 text-xl",
+        " flex w-full items-center justify-center rounded-md p-2 text-xl",
         state === "error" && "border-2 border-Red bg-RedHover/25",
         classNames,
       )}

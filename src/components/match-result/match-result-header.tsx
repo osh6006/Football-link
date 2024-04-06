@@ -30,12 +30,14 @@ const MatchResultHeader: React.FunctionComponent<IMatchResultHeaderProps> = ({
           alt="homelogo"
           className="h-10 w-10 sm:h-14 sm:w-14 md:h-20 md:w-20 xl:h-28 xl:w-28"
         />
-        <h2 className="truncate text-base font-semibold sm:text-xl">
+        <h2 className="text-center text-base font-semibold sm:text-xl">
           {homeName}
         </h2>
       </div>
       <div className="flex flex-col items-center justify-center text-sm sm:text-base ">
-        <time>{dayjs(date).format("YYYY DD MM - HH:mm")}</time>
+        <time className="text-center">
+          {dayjs(date).format("YYYY DD MM HH:mm")}
+        </time>
         <div className="flex items-center justify-center gap-x-4 text-3xl font-bold">
           <span className="">{homeGoal}</span>
           <p className="text-base">VS</p>
@@ -49,7 +51,7 @@ const MatchResultHeader: React.FunctionComponent<IMatchResultHeaderProps> = ({
           alt="homelogo"
           className="h-10 w-10 sm:h-14 sm:w-14 md:h-20 md:w-20 xl:h-28 xl:w-28"
         />
-        <h2 className="truncate text-base font-semibold sm:text-xl">
+        <h2 className="text-center text-base font-semibold sm:text-xl">
           {awayName}
         </h2>
       </div>

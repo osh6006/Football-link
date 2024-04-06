@@ -51,7 +51,7 @@ const DaySelector: React.FunctionComponent<IDaySelectorProps> = ({
   };
 
   return (
-    <div className="sticky top-[110px] z-30 flex items-center justify-center gap-x-6 backdrop-blur-lg sm:top-[125px]">
+    <div className="sticky top-[110px] z-30 flex items-center justify-center gap-x-6 bg-inherit sm:top-[125px]">
       <ul className="flex w-full items-center justify-between overflow-hidden ">
         <Carousel
           arrows

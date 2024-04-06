@@ -1,3 +1,4 @@
+import ComponentStatusContainer from "components/layouts/component-status-container";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { IMatchResultStatistic } from "types";
 
@@ -10,6 +11,14 @@ const MatchResultStat: React.FunctionComponent<IMatchResultStatProps> = ({
 }) => {
   const homeStat = stat ? stat[0] : null;
   const awayStat = stat ? stat[1] : null;
+
+  if (!stat || stat?.length <= 0) {
+    return (
+      <ComponentStatusContainer state="loading" height={400}>
+        Statistics data for that match does not exist on the server. 🤔
+      </ComponentStatusContainer>
+    );
+  }
 
   return (
     <div className="grid grid-cols-1 divide-y-2 divide-MediumGrey border-2 border-MediumGrey sm:grid-cols-2 sm:divide-x-2 sm:divide-y-0 ">
