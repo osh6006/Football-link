@@ -1,13 +1,12 @@
-import { formatPublicDay } from "libs/day";
-
 import Loading from "components/common/loading";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import NewsCard from "components/news/news-card";
 import ComponentStatusContainer from "components/layouts/component-status-container";
-import "react-lazy-load-image-component/src/effects/opacity.css";
 
 import { useTeamRoot } from "./team-root";
 import { useInfiniteScroll } from "hooks/use-infinite-scroll";
 import { useGlobalNewsQuery } from "hooks/services/quries/use-news-query";
+
+import "react-lazy-load-image-component/src/effects/opacity.css";
 
 interface ITeamNewsProps {}
 
@@ -22,10 +21,6 @@ const TeamNews: React.FunctionComponent<ITeamNewsProps> = () => {
     fetchNextPage,
   });
 
-  const openInNewTab = (url: string) => {
-    window.open(url, "_blank", "noreferrer");
-  };
-
   if (isLoading) {
     return (
       <ComponentStatusContainer state="loading" height="500">
@@ -37,7 +32,7 @@ const TeamNews: React.FunctionComponent<ITeamNewsProps> = () => {
   if (isError) {
     return (
       <ComponentStatusContainer state="error" height="500">
-        <h1>서버에서 데이터를 불러오던 도중 에러가 발생하였습니다.</h1>
+        <h1>An error occurred while trying to fetch data 🤮</h1>
       </ComponentStatusContainer>
     );
   }
@@ -48,35 +43,7 @@ const TeamNews: React.FunctionComponent<ITeamNewsProps> = () => {
         <>
           <ul className="mt-4 grid grid-cols-1 gap-2 xl:grid-cols-2">
             {data?.map((el, i) => (
-              <li
-                onClick={() => openInNewTab(el.url)}
-                key={i}
-                className="flex cursor-pointer flex-col justify-around rounded-md border-2  border-MediumGrey px-5 py-3  transition-colors hover:border-Main hover:text-Main"
-              >
-                <div className="mb-2 flex  flex-col justify-end text-sm">
-                  {/* <p>{el.author}</p>
-                  <p>{el.source.name}</p> */}
-                  <time>{formatPublicDay(el.publishedAt)}</time>
-                </div>
-
-                <div className="flex justify-between gap-x-4">
-                  <LazyLoadImage
-                    effect="opacity"
-                    src={el.urlToImage}
-                    alt="thumbnail"
-                    width={200}
-                    className="aspect-square h-32 max-w-[150px] rounded-md"
-                  />
-                  <div className="">
-                    <h2 className="font-semibold">{el.title}</h2>
-                    <p className="mt-2 text-sm">{el.description}</p>
-                  </div>
-                </div>
-                <div className="mt-2 flex items-end justify-between text-sm">
-                  <p>{el.author}</p>
-                  <p>{el.source.name}</p>
-                </div>
-              </li>
+              <NewsCard newsItem={el} key={el.url + el.publishedAt} />
             ))}
           </ul>
           <div

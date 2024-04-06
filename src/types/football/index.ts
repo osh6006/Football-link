@@ -25,4 +25,8 @@ export type { rapidFootballLineUpResponse } from "./live";
 
 export type { rapidPlayerResponse, Player, PlayerSelectType } from "./player";
 
-export type { LocalNewsResponse, GlobalNewsResponse } from "./news";
+export type {
+  LocalNewsResponse,
+  GlobalNewsResponse,
+  GlobalNewsItem,
+} from "./news";

@@ -21,7 +21,7 @@ interface Source {
   id: string;
   name: string;
 }
-interface GlobalNewsItem {
+export interface GlobalNewsItem {
   source: Source;
   author: "BBC News";
   title: string;

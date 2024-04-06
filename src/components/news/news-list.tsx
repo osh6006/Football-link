@@ -14,6 +14,7 @@ import {
 } from "hooks/services/quries/use-news-query";
 import { useSearchParams } from "react-router-dom";
 import dayjs from "dayjs";
+import NewsCard from "./news-card";
 
 interface INewsListProps {
   type: "local" | "global";
@@ -111,37 +112,8 @@ const NewsList: React.FunctionComponent<INewsListProps> = ({ type }) => {
           {globalNewsData && globalNewsData?.length > 0 ? (
             <>
               <ul className="mt-4 grid grid-cols-1 gap-2 xl:grid-cols-2">
-                {globalNewsData?.map((el, i) => (
-                  <li
-                    onClick={() => openInNewTab(el.url)}
-                    key={i}
-                    className="flex cursor-pointer flex-col justify-around rounded-md border-2  border-MediumGrey px-5 py-3  transition-colors hover:border-Main hover:bg-Main hover:text-White"
-                  >
-                    <div className="mb-2 flex  flex-col justify-end text-sm">
-                      {/* <p>{el.author}</p>
-                  <p>{el.source.name}</p> */}
-                      <time>
-                        {dayjs(el.publishedAt).format("MM DD HH, YYYY")}
-                      </time>
-                    </div>
-
-                    <div className="flex flex-col justify-between gap-x-4 gap-y-2 sm:flex-row">
-                      <LazyLoadImage
-                        effect="opacity"
-                        src={el.urlToImage}
-                        alt="thumbnail"
-                        className="h-40 w-full rounded-md sm:aspect-square sm:h-32 sm:max-w-[150px]"
-                      />
-                      <div className="">
-                        <h2 className="font-semibold">{el.title}</h2>
-                        <p className="mt-2 text-sm">{el.description}</p>
-                      </div>
-                    </div>
-                    <div className="mt-2 flex items-end justify-between text-sm">
-                      <p>{el.author}</p>
-                      <p>{el.source.name}</p>
-                    </div>
-                  </li>
+                {globalNewsData?.map((el) => (
+                  <NewsCard newsItem={el} key={el.url + el.publishedAt} />
                 ))}
               </ul>
               <div
