@@ -42,8 +42,8 @@ const SeasonSelector: React.FunctionComponent<ISeasonSelectorProps> = ({
 
       <Menu as="div">
         <Menu.Button
-          className="lea relative flex select-none items-center gap-x-2 rounded-md border border-MediumGrey px-4 py-1 text-[24px]
-        leading-normal transition-colors hover:border-Main hover:bg-Main hover:text-white"
+          className="lea relative flex select-none items-center gap-x-2 rounded-md border border-MediumGrey px-4 py-1 text-lg leading-normal
+        transition-colors hover:border-Main hover:bg-Main hover:text-white sm:text-[24px]"
         >
           <CalendarIcon size={26} />
           <span>{season}</span>

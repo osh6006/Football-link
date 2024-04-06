@@ -32,7 +32,7 @@ const Navbar = () => {
   return (
     <nav
       className={clsx(
-        `sticky left-0 top-0 z-50 flex h-[55px] w-full items-center border-b border-MediumGrey px-4 capitalize text-MediumGrey`,
+        `sticky left-0 top-0 z-50 flex h-[55px] w-full items-center border-none border-MediumGrey px-4 capitalize text-MediumGrey shadow-md sm:border-b sm:shadow-none`,
         theme === "light" ? "bg-White " : "bg-DarkGrey",
       )}
     >
