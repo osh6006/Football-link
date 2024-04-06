@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import YearSelector from "components/schedule/year-selector";
 import DaySelector from "components/schedule/day-selector";
+import YearSelector from "components/schedule/year-selector";
 import FootballTeamCalendar from "components/team/football/football-team-calendar";
 
-import "./calendar.css"; // css import
+import "./calendar.css";
 
 interface ITeamScheduleProps {}
 

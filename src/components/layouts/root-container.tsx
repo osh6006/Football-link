@@ -1,4 +1,5 @@
 import clsx from "clsx";
+
 import { useTheme } from "stores/theme-store";
 
 interface IRootContainerProps {
@@ -15,6 +16,7 @@ const RootContainer: React.FunctionComponent<IRootContainerProps> = ({
       className={clsx(
         `h-[100dvh] overflow-y-auto overflow-x-hidden text-MediumGrey `,
         theme === "light" ? "bg-LightGreyLightBg" : "bg-VeryDarkGreyDark",
+        "main",
       )}
     >
       {children}

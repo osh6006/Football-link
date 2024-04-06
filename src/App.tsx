@@ -1,14 +1,52 @@
+import clsx from "clsx";
 import { Outlet } from "react-router-dom";
+import { Fragment, useEffect, useState } from "react";
+
+import { Transition } from "@headlessui/react";
 import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
+import TopButton from "components/common/top-button";
+import HowToLeague from "components/home/how-to-league";
 import RootContainer from "./components/layouts/root-container";
 
-import { useLeagueStore } from "stores/league-store";
 import ModalProviders from "providers/modal-providers";
-import HowToLeague from "components/home/how-to-league";
+
+import { useLeagueStore } from "stores/league-store";
 
 function App() {
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleScroll = (e: Event) => {
+    const container = document.querySelector(".main");
+    const scrollTop = container?.scrollTop || 0;
+
+    if (scrollTop >= 400) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const debounce = (func: Function, delay: number) => {
+    let timer: ReturnType<typeof setTimeout>;
+    return (...args: any[]) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const debouncedHandleScroll = debounce(handleScroll, 100);
+
+  useEffect(() => {
+    const container = document.querySelector(".main");
+    container?.addEventListener("scroll", debouncedHandleScroll, false);
+    return () =>
+      container?.removeEventListener("scroll", debouncedHandleScroll);
+  }, [debouncedHandleScroll]);
 
   return (
     <RootContainer>
@@ -22,22 +60,24 @@ function App() {
           <Outlet />
         ) : (
           <div className="flex h-[calc(100dvh-55px)] flex-col items-center justify-center gap-y-2 p-5 font-bold ">
-            {/* <h1
-              className="text-center text-xl
-            text-MediumGrey sm:text-2xl"
-            >
-              You haven't selected a league yet.
-            </h1>
-            <h1
-              className="text-center text-xl
-            text-MediumGrey sm:text-2xl"
-            >
-              Please choose a league 🤔
-            </h1> */}
             <HowToLeague />
           </div>
         )}
       </div>
+
+      <Transition
+        show={isVisible}
+        as={Fragment}
+        enterTo="opacity-100"
+        enterFrom="opacity-0"
+        enter="transition ease-in duration-100"
+        leaveFrom="opacity-0"
+        leaveTo="opacity-0"
+      >
+        <div>
+          <TopButton />
+        </div>
+      </Transition>
     </RootContainer>
   );
 }

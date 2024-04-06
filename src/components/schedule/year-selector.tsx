@@ -30,7 +30,7 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
   return (
     <div
       className={clsx(
-        "sticky top-[55px] z-40 mb-5 flex  items-center justify-center bg-inherit p-1.5 sm:p-4",
+        "sticky top-[55px] z-40 mb-5 flex items-center justify-center bg-inherit p-1.5 sm:p-4",
       )}
     >
       <button

@@ -77,7 +77,7 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
       />
 
       {/* Child */}
-      <div className="mt-4">
+      <div className="mt-4 bg-inherit">
         <Outlet
           context={
             {
