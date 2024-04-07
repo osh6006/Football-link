@@ -8,6 +8,7 @@ import { useTheme } from "stores/theme-store";
 import { useNavigate } from "react-router-dom";
 import { useLeagueStore } from "stores/league-store";
 import { useTeamRankQuery } from "hooks/services/quries/use-rank-query";
+import LatestForm from "components/common/latest-form";
 
 interface IHomeTeamRankTableProps {}
 
@@ -132,19 +133,7 @@ const HomeTeamRankTable: React.FunctionComponent<
                 </td>
                 <td className="whitespace-no-wrap hidden  border-gray-200 px-2 py-4 sm:table-cell">
                   <div className="flex gap-x-1">
-                    {item?.form?.split("").map((el, i) => (
-                      <div
-                        key={i}
-                        className={clsx(
-                          "flex h-5 w-5 items-center justify-center rounded-full  p-2 text-sm text-white",
-                          el === "W" && "bg-green-500",
-                          el === "D" && "bg-gray-500",
-                          el === "L" && "bg-red-500",
-                        )}
-                      >
-                        {el}
-                      </div>
-                    ))}
+                    <LatestForm form={item.form} />
                   </div>
                 </td>
               </tr>

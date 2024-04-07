@@ -9,6 +9,7 @@ import { usePredicts } from "stores/predict-store";
 import { usePredictQuery } from "hooks/services/quries/use-pedict-query";
 
 import { PredictResponse } from "types";
+import LatestForm from "components/common/latest-form";
 
 interface IPredictResultProps {}
 
@@ -39,6 +40,11 @@ const PredictResult: React.FunctionComponent<IPredictResultProps> = () => {
 
   const homeTeamStat = calTeamStats(data!, homeTeam?.team.name!);
   const awayTeamStat = calTeamStats(data!, awayTeam?.team.name!);
+  const latest5MatchesForm = calLatestForm(
+    data!,
+    homeTeam?.team.name || "",
+    awayTeam?.team.name || "",
+  );
 
   return homeTeam && awayTeam ? (
     <div className="mx-auto mt-10 max-w-[1000px]">
@@ -155,6 +161,36 @@ const PredictResult: React.FunctionComponent<IPredictResultProps> = () => {
           >
             <dd>{homeTeamStat.averageScore}</dd>
             <dd>{homeTeamStat.prediction}</dd>
+          </dl>
+        </div>
+
+        <div className="">
+          <div
+            className={clsx(
+              "w-full rounded-tl-md rounded-tr-md p-2 text-center",
+              theme === "dark" ? "bg-VeryDarkGreyDark " : "",
+              theme === "light" ? "bg-LightGreyLightBg" : "",
+            )}
+          >
+            Latest 5 Match Form
+          </div>
+          <dl
+            className={clsx(
+              "flex items-center justify-between rounded-bl-md rounded-br-md px-2 py-4 sm:justify-around",
+              theme === "dark"
+                ? "border-2 border-t-0 border-VeryDarkGreyDark "
+                : "",
+              theme === "light"
+                ? "border-2 border-t-0 border-LightGreyLightBg"
+                : "",
+            )}
+          >
+            <dd>
+              <LatestForm form={latest5MatchesForm?.home || ""} />
+            </dd>
+            <dd>
+              <LatestForm form={latest5MatchesForm?.away || ""} />
+            </dd>
           </dl>
         </div>
       </div>
@@ -276,4 +312,75 @@ function determineUnderOverProbability(
   }
 
   return { averageScore: averageScore.toFixed(2), prediction };
+}
+
+function calLatestForm(
+  fixtures?: PredictResponse[],
+  homeTeamName?: string,
+  awayTeamName?: string,
+) {
+  if (fixtures && homeTeamName && awayTeamName) {
+    const latest5Matches = fixtures.slice(-5);
+
+    const result = latest5Matches.reduce(
+      (prev, curr) => {
+        const homeTeam = curr.teams.home.name;
+        const awayTeam = curr.teams.away.name;
+        const homeWinner = curr.teams.home.winner;
+        const awayWinner = curr.teams.away.winner;
+
+        prev.home =
+          prev.home +
+          calWhoWinner(
+            homeTeam,
+            awayTeam,
+            homeTeamName,
+            homeWinner,
+            awayWinner,
+          );
+        prev.away =
+          prev.away +
+          calWhoWinner(
+            homeTeam,
+            awayTeam,
+            awayTeamName,
+            homeWinner,
+            awayWinner,
+          );
+
+        return prev;
+      },
+      {
+        home: "",
+        away: "",
+      },
+    );
+
+    return result;
+  }
+
+  return null;
+}
+
+function calWhoWinner(
+  homeTeam: string,
+  awayTeam: string,
+  teamName: string,
+  homeWinner: boolean,
+  awayWinner: boolean,
+) {
+  let result = "";
+  if (homeTeam === teamName && homeWinner) {
+    result = "W";
+  } else if (awayTeam === teamName && awayWinner) {
+    result = "W";
+  } else if (homeTeam === teamName && awayWinner) {
+    result = "L";
+  } else if (awayTeam === teamName && homeWinner) {
+    result = "L";
+  } else {
+    result = "D";
+  }
+
+  return result;
 }

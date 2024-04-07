@@ -14,6 +14,7 @@ import Table from "components/common/table";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 import Loading from "components/common/loading";
 import { useTeamRankQuery } from "hooks/services/quries/use-rank-query";
+import LatestForm from "components/common/latest-form";
 
 interface IFootballRankTableProps {
   league: string;
@@ -113,25 +114,12 @@ const TeamRank: React.FunctionComponent<IFootballRankTableProps> = ({
       columnHelper.accessor((row) => row.form, {
         id: "form",
         cell: (info) => (
-          <div className="flex justify-end gap-x-1 sm:justify-start">
-            {info.getValue()
-              ? info
-                  .getValue()
-                  .split("")
-                  .map((el, i) => (
-                    <div
-                      key={i}
-                      className={clsx(
-                        "flex h-5 w-5 items-center  justify-center rounded-full p-2 text-sm text-white shadow-md",
-                        el === "W" && "bg-green-500",
-                        el === "D" && "bg-gray-500",
-                        el === "L" && "bg-red-500",
-                      )}
-                    >
-                      {el}
-                    </div>
-                  ))
-              : "Not Form"}
+          <div className="">
+            {info.getValue() ? (
+              <LatestForm form={info.getValue()} />
+            ) : (
+              <span>Not Form</span>
+            )}
           </div>
         ),
         header: () => <span>Form</span>,
