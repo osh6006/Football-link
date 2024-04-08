@@ -53,12 +53,12 @@ function App() {
       {/*  Side Bar */}
       <Sidebar onClose={() => {}} />
       {/* Nav & Page*/}
-      <div className="relative  h-fit w-[100dvw-280px] lg:ml-[280px] ">
+      <div className="relative h-fit w-[100dvw-280px] lg:ml-[280px] ">
         <Navbar />
         {selectedLeague ? (
           <Outlet />
         ) : (
-          <div className="flex h-[calc(100dvh-55px)] flex-col items-center justify-center gap-y-2 p-5 font-bold ">
+          <div className="my-24 flex h-[calc(100dvh-55px)] flex-col items-center justify-center gap-y-2 p-5 font-bold sm:my-0 ">
             <HowToLeague />
           </div>
         )}
@@ -73,9 +73,7 @@ function App() {
         leaveFrom="opacity-0"
         leaveTo="opacity-0"
       >
-        <div>
-          <TopButton />
-        </div>
+        <TopButton />
       </Transition>
     </RootContainer>
   );

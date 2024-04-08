@@ -31,7 +31,8 @@ const HowToLeague: React.FunctionComponent<IHowToLeagueProps> = () => {
               "https://res.cloudinary.com/dxesudkxn/image/upload/v1712223761/footballLink/pvmqjyppinmfmmtjade3.gif"
             }
             alt="step1"
-            className="max-w-[300px] rounded-md border border-MediumGrey"
+            className="w-[300px] rounded-md border border-MediumGrey"
+            threshold={100}
           />
         </div>
         <div className="my-2 flex w-full flex-1 flex-col items-center justify-center gap-y-2 sm:flex-row sm:items-start sm:justify-around">
@@ -44,7 +45,8 @@ const HowToLeague: React.FunctionComponent<IHowToLeagueProps> = () => {
               "https://res.cloudinary.com/dxesudkxn/image/upload/v1712223761/footballLink/lsr28d7hvi4lheab8tuj.gif"
             }
             alt="step2"
-            className="max-w-[300px] rounded-md border border-MediumGrey"
+            className="w-[300px] rounded-md border border-MediumGrey"
+            threshold={100}
           />
         </div>
       </div>

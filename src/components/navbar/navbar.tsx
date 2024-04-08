@@ -37,7 +37,11 @@ const Navbar = () => {
       )}
     >
       <div className="flex flex-1 items-center justify-between lg:hidden">
-        <button className="text-Main" onClick={() => setIsSidebarOpen(true)}>
+        <button
+          className="text-Main"
+          aria-label="Menu-Button"
+          onClick={() => setIsSidebarOpen(true)}
+        >
           <MenuIcon size={25} />
         </button>
         <Logo path="/" />
