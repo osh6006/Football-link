@@ -25,6 +25,7 @@
     "react-multi-carousel": "^2.8.4",
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
+    "react-snap": "^1.23.0",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
     "zustand": "^4.4.7"
@@ -45,6 +46,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "postbuild": "react-snap",
     "gen-types": "npx supabase gen types typescript --project-id tieazcjyjeloknlhqdbq > src/types/supabase.ts"
   },
   "eslintConfig": {

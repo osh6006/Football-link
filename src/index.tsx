@@ -6,14 +6,23 @@ import RootProvider from "./providers/root-provider";
 
 import "./index.css";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement,
-);
-root.render(
-  <React.StrictMode>
-    <RootProvider></RootProvider>
-  </React.StrictMode>,
-);
+const container = document.getElementById("root") as HTMLElement;
+const root = ReactDOM.createRoot(container);
+
+if (container.hasChildNodes()) {
+  ReactDOM.hydrateRoot(
+    container,
+    <React.StrictMode>
+      <RootProvider></RootProvider>
+    </React.StrictMode>,
+  );
+} else {
+  root.render(
+    <React.StrictMode>
+      <RootProvider></RootProvider>
+    </React.StrictMode>,
+  );
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -28,14 +28,24 @@ const SEO: React.FunctionComponent<ISEOProps> = ({
       <meta property="og:image" content={metaImage} />
       <meta property="og:url" content={pageUrl} />
 
+      {/* google */}
+      <meta itemProp="name" content="Football Link" />
+      <meta itemProp="description" content={desc} />
+      <meta itemProp="image" content={metaImage} />
+
+      {/* facebook */}
+      <meta property="og:url" content="https://football-link.vercel.app" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={desc} />
+      <meta property="og:image" content={metaImage} />
+
       {/* twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={pageUrl} />
+      <meta name="twitter:description" content={desc} />
       <meta name="twitter:image" content={metaImage} />
 
-      {/* face book */}
-      {/* google */}
-      {/* kakao */}
       <title>{title}</title>
     </Helmet>
   );
