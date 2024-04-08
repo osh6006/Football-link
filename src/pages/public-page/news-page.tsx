@@ -1,3 +1,4 @@
+import SEO from "components/seo/seo";
 import Tabs from "components/common/tabs";
 import NewsList from "components/news/news-list";
 import NewsContainer from "components/layouts/news-container";
@@ -7,6 +8,7 @@ interface INewsPageProps {}
 const NewsPage: React.FunctionComponent<INewsPageProps> = () => {
   return (
     <NewsContainer>
+      <SEO pageUrl="/news" title={`Football Link | News`} />
       <Tabs defaultTab="global">
         <Tabs.TabContainer>
           <Tabs.Tab id="local" className="text-xl">

@@ -9,6 +9,7 @@ import ComponentStatusContainer from "components/layouts/component-status-contai
 import { usePlayerInfoQuery } from "hooks/services/quries/use-player-query";
 
 import { rapidPlayerResponse } from "types/football";
+import SEO from "components/seo/seo";
 
 type ContextType = {
   playerInfo: rapidPlayerResponse;
@@ -40,6 +41,8 @@ const PlayerRootPage: React.FunctionComponent<IPlayerRootPageProps> = () => {
 
   return (
     <PlayerRootContainer>
+      <SEO pageUrl="/player" title={`Football Link | Player`} />
+
       <PlayerHeader player={data!} />
       <DetailMenuTabs
         items={[

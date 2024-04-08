@@ -8,6 +8,7 @@ import { useMatchResultQuery } from "hooks/services/quries/use-match-result-quer
 
 import MatchResultBody from "components/match-result/match-result-body";
 import MatchResultHeader from "components/match-result/match-result-header";
+import SEO from "components/seo/seo";
 
 interface IResultPageProps {}
 
@@ -66,6 +67,7 @@ const MatchResultPage: React.FunctionComponent<IResultPageProps> = () => {
         "m-2 max-w-[1000px] rounded-md p-4 text-MediumGrey sm:m-10 sm:p-8 lg:mx-auto",
       )}
     >
+      <SEO pageUrl="/match-result" title={`Football Link | Match Result`} />
       <MatchResultHeader
         date={data.fixture.date}
         venue={data.fixture.venue.name}
@@ -76,6 +78,7 @@ const MatchResultPage: React.FunctionComponent<IResultPageProps> = () => {
         awayName={data.teams.away.name}
         awayGoal={data.goals.away}
       />
+
       <MatchResultBody matchInfo={data} />
     </main>
   );

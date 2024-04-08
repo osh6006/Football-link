@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { Transition } from "@headlessui/react";
 import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
 import TopButton from "components/common/top-button";
@@ -64,17 +63,7 @@ function App() {
         )}
       </div>
 
-      <Transition
-        show={isVisible}
-        as={Fragment}
-        enterTo="opacity-100"
-        enterFrom="opacity-0"
-        enter="transition ease-in duration-100"
-        leaveFrom="opacity-0"
-        leaveTo="opacity-0"
-      >
-        <TopButton />
-      </Transition>
+      <TopButton isVisible={isVisible} />
     </RootContainer>
   );
 }

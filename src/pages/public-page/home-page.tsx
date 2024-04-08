@@ -1,5 +1,3 @@
-import { Helmet } from "react-helmet-async";
-
 import Title from "components/home/title";
 import Banner from "components/home/banner";
 import MoreArrow from "components/common/more-arrow";
@@ -10,18 +8,14 @@ import HomeContainer from "components/layouts/home-container";
 import HomeTeamRankTable from "components/home/home-team-rank-table";
 import HomePlayerRankTable from "components/home/home-player-rank-table";
 
-import { useLeagueStore } from "stores/league-store";
+import SEO from "components/seo/seo";
 
 interface IHomePageProps {}
 
 const HomePage: React.FunctionComponent<IHomePageProps> = () => {
-  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
-
   return (
     <HomeContainer>
-      <Helmet>
-        <title>{`Home | ${selectedLeague?.name}`}</title>
-      </Helmet>
+      <SEO pageUrl="/" title={`Football Link | Home`} />
       {/* left */}
       <div className="max-w-[1100px] xl:mx-auto">
         <Banner />

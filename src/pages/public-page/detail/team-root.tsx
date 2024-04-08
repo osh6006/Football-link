@@ -13,6 +13,7 @@ import {
 import DetailMenuTabs from "components/common/detail-menu-tabs";
 import { useTeamInfoQuery } from "hooks/services/quries/use-team-query";
 import { useLeagueStore } from "stores/league-store";
+import SEO from "components/seo/seo";
 
 type ContextType = {
   teamInfo?: rapidFootballTeamInfoResponse;
@@ -59,6 +60,7 @@ const TeamRootPage: React.FunctionComponent<ITeamPageProps> = () => {
 
   return (
     <TeamRootContainer>
+      <SEO pageUrl="/team" title={`Football Link | Team`} />
       <TeamHeader
         teamLogo={teamInfo?.team.logo!}
         coach={coachInfo?.name!}

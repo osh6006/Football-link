@@ -3,6 +3,7 @@ import AuthContainer from "../../components/layouts/auth-container";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 
 import useAuth from "../../hooks/use-auth";
+import SEO from "components/seo/seo";
 
 const AuthPage = () => {
   const { signIn } = useAuth();
@@ -17,6 +18,7 @@ const AuthPage = () => {
 
   return (
     <AuthContainer>
+      <SEO pageUrl="/" title={`Football Link | Login`} />
       <section className="relative h-fit w-full max-w-xl overflow-hidden rounded-md bg-White p-8 shadow-md">
         <div
           className="flex flex-col items-center text-xl font-semibold
