@@ -32,6 +32,8 @@ const HowToLeague: React.FunctionComponent<IHowToLeagueProps> = () => {
             }
             alt="step1"
             className="w-[300px] rounded-md border border-MediumGrey"
+            width={300}
+            height={300}
           />
         </div>
         <div className="my-2 flex w-full flex-1 flex-col items-center justify-center gap-y-2 sm:flex-row sm:items-start sm:justify-around">
@@ -45,6 +47,8 @@ const HowToLeague: React.FunctionComponent<IHowToLeagueProps> = () => {
             }
             alt="step2"
             className="w-[300px] rounded-md border border-MediumGrey"
+            width={300}
+            height={300}
           />
         </div>
       </div>
