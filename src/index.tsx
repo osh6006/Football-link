@@ -1,27 +1,22 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { hydrate, render } from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 
 import RootProvider from "./providers/root-provider";
 
 import "./index.css";
 
-const container = document.getElementById("root") as HTMLElement;
-const root = ReactDOM.createRoot(container);
+const rootElement = document.getElementById("root") as HTMLElement;
+const app = (
+  <React.StrictMode>
+    <RootProvider />
+  </React.StrictMode>
+);
 
-if (container.hasChildNodes()) {
-  ReactDOM.hydrateRoot(
-    container,
-    <React.StrictMode>
-      <RootProvider></RootProvider>
-    </React.StrictMode>,
-  );
+if (rootElement.hasChildNodes()) {
+  hydrate(app, rootElement);
 } else {
-  root.render(
-    <React.StrictMode>
-      <RootProvider></RootProvider>
-    </React.StrictMode>,
-  );
+  render(app, rootElement);
 }
 
 // If you want to start measuring performance in your app, pass a function
