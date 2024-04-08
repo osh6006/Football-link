@@ -28,7 +28,7 @@ const HowToLeague: React.FunctionComponent<IHowToLeagueProps> = () => {
           </h3>
           <LazyLoadImage
             src={
-              "https://res.cloudinary.com/dxesudkxn/image/upload/v1712223761/footballLink/pvmqjyppinmfmmtjade3.gif"
+              "https://res.cloudinary.com/dxesudkxn/image/upload/v1712541752/footballLink/wkbor2pycasfjq3srkma.webp"
             }
             alt="step1"
             className="w-[300px] rounded-md border border-MediumGrey"
@@ -43,7 +43,7 @@ const HowToLeague: React.FunctionComponent<IHowToLeagueProps> = () => {
           </h3>
           <LazyLoadImage
             src={
-              "https://res.cloudinary.com/dxesudkxn/image/upload/v1712223761/footballLink/lsr28d7hvi4lheab8tuj.gif"
+              "https://res.cloudinary.com/dxesudkxn/image/upload/v1712541752/footballLink/pcekvqi9ouysnv9zdvif.webp"
             }
             alt="step2"
             className="w-[300px] rounded-md border border-MediumGrey"
