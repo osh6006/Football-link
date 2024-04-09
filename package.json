@@ -58,11 +58,7 @@
       "/predict",
       "/news",
       "/football"
-    ],
-    "exclude": [
-      "/auth"
-    ],
-    "concurrency": 1
+    ]
   },
   "puppeteerArgs": [
     "--no-sandbox",
