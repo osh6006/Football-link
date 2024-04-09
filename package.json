@@ -46,7 +46,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postbuild": "react-snap",
     "gen-types": "npx supabase gen types typescript --project-id tieazcjyjeloknlhqdbq > src/types/supabase.ts"
   },
   "eslintConfig": {
