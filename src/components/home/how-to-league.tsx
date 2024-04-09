@@ -1,6 +1,9 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useTheme } from "stores/theme-store";
 import { componentBackgroundChange } from "utils/util";
+
+import SEO from "components/seo/seo";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
+import { useTheme } from "stores/theme-store";
 
 interface IHowToLeagueProps {}
 
@@ -14,6 +17,25 @@ const HowToLeague: React.FunctionComponent<IHowToLeagueProps> = () => {
         "h flex w-full max-w-[1000px] flex-col gap-y-2 rounded-md p-5 text-xl shadow-md",
       )}
     >
+      <SEO pageUrl="/" title={`Football Link | Home`}>
+        <link
+          rel="preload"
+          as="image"
+          fetchPriority="high"
+          href="https://res.cloudinary.com/dxesudkxn/image/upload/v1712541752/footballLink/wkbor2pycasfjq3srkma.webp"
+          type="image/webp"
+          imageSizes="300px"
+        />
+
+        <link
+          rel="preload"
+          as="image"
+          fetchPriority="high"
+          href="https://res.cloudinary.com/dxesudkxn/image/upload/v1712541752/footballLink/pcekvqi9ouysnv9zdvif.webp"
+          type="image/webp"
+          imageSizes="300px"
+        />
+      </SEO>
       <div className="text-center sm:text-left">
         <h2 className=" font-bold ">Please choose your favorite league!</h2>
         <p className="text-base font-normal">

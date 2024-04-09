@@ -6,6 +6,7 @@ interface ISEOProps {
   title: string;
   desc?: string;
   keywords?: string;
+  children?: React.ReactNode;
 }
 
 const SEO: React.FunctionComponent<ISEOProps> = ({
@@ -14,6 +15,7 @@ const SEO: React.FunctionComponent<ISEOProps> = ({
   title,
   desc = "Football Link is your ultimate destination for the latest football news, match highlights, scores, and analysis. Stay updated with all the action from the world of football with Football Link.",
   keywords,
+  children,
 }) => {
   return (
     <Helmet>
@@ -46,6 +48,7 @@ const SEO: React.FunctionComponent<ISEOProps> = ({
       <meta name="twitter:image" content={metaImage} />
 
       <title>{title}</title>
+      {children}
     </Helmet>
   );
 };

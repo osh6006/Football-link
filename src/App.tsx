@@ -62,7 +62,6 @@ function App() {
           </div>
         )}
       </div>
-
       <TopButton isVisible={isVisible} />
     </RootContainer>
   );
