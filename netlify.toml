@@ -6,6 +6,6 @@
 
 [[redirects]]
   from = "/localNews/api/*"
-  to = "https://openapi.naver.com/v1/search/news.json/:splat"
+  to = "https://openapi.naver.com/v1/search/news.json/"
   status = 200
   force = true
