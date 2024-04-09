@@ -20,7 +20,7 @@ export const useGlobalNewsQuery = (
     enabled: !!query && !!isUse,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.status === "ok" && lastPage.articles.length > 0) {
-        return pages.length + 1;
+        return pages?.length + 1;
       }
       return undefined;
     },
