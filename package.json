@@ -49,24 +49,6 @@
     "postbuild": "react-snap",
     "gen-types": "npx supabase gen types typescript --project-id tieazcjyjeloknlhqdbq > src/types/supabase.ts"
   },
-  "reactSnap": {
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
-    ],
-    "include": [
-      "/",
-      "/live",
-      "/schedule",
-      "/rank",
-      "/predict",
-      "/news",
-      "/football"
-    ],
-    "exclude": [
-      "/auth"
-    ]
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
