@@ -1,11 +1,6 @@
 import clsx from "clsx";
 import { createContext, useContext, useState, ReactNode } from "react";
-import {
-  matchRoutes,
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface ITabContainerProps {
   children: ReactNode;

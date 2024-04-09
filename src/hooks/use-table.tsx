@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { SortingState, createColumnHelper } from "@tanstack/react-table";
 
 const emptyArray: any = [];

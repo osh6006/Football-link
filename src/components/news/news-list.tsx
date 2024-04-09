@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { GLOBAL_NEWS_FILTERS } from "data/football/news";
+import { GLOBAL_NEWS_FILTERS } from "data/news";
 
 import NewsCard from "./news-card";
 import Filter from "components/common/filters";

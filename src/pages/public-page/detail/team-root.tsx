@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useOutletContext } from "react-router-dom";
 
 import Loading from "components/common/loading";
-import TeamHeader from "components/team/football/team-header";
+import TeamHeader from "components/team/team-header";
 import TeamRootContainer from "components/layouts/team-root-container";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
