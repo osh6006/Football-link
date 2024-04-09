@@ -13,7 +13,7 @@ const app = (
   </React.StrictMode>
 );
 
-if (rootElement.hasChildNodes()) {
+if (rootElement?.hasChildNodes()) {
   hydrate(app, rootElement);
 } else {
   render(app, rootElement);

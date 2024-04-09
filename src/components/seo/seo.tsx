@@ -41,7 +41,7 @@ const SEO: React.FunctionComponent<ISEOProps> = ({
       <meta property="og:image" content={metaImage} />
 
       {/* twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content={desc} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={desc} />
       <meta name="twitter:image" content={metaImage} />

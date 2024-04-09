@@ -58,12 +58,17 @@
       "/predict",
       "/news",
       "/football"
+    ],
+    "exclude": [
+      "/auth"
+    ],
+    "concurrency": 1,
+    "puppeteerArgs": [
+      "--use-gl=egl",
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
     ]
   },
-  "puppeteerArgs": [
-    "--no-sandbox",
-    "--disable-setuid-sandbox"
-  ],
   "eslintConfig": {
     "extends": [
       "react-app",
