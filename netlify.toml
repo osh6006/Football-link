@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/globalNews/api*"
+  to = "https://newsapi.org/v2/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/localNews/api*"
+  to = "https://newsapi.org/v2/:splat"
+  status = 200
+  force = true
