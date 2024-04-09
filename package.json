@@ -50,6 +50,11 @@
     "gen-types": "npx supabase gen types typescript --project-id tieazcjyjeloknlhqdbq > src/types/supabase.ts"
   },
   "reactSnap": {
+    "source": "./dist",
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ],
     "include": [
       "/",
       "/live",
@@ -60,10 +65,6 @@
       "/football"
     ]
   },
-  "puppeteerArgs": [
-    "--no-sandbox",
-    "--disable-setuid-sandbox"
-  ],
   "eslintConfig": {
     "extends": [
       "react-app",
