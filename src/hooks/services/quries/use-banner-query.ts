@@ -5,12 +5,10 @@ export const bannerQueryKey = {
   useBannerQuery: "bannerQuery",
 };
 
-export const useBannerQuery = (sports: string, leagueId: number) => {
+export const useBannerQuery = () => {
   return useQuery({
-    queryKey: [bannerQueryKey.useBannerQuery, sports, leagueId],
-    queryFn: ({ queryKey }) =>
-      getBanner(queryKey[1] as string, queryKey[2] as number),
-    enabled: !!sports && !!leagueId,
+    queryKey: [bannerQueryKey.useBannerQuery],
+    queryFn: ({ queryKey }) => getBanner(),
     staleTime: Infinity,
     gcTime: Infinity,
   });

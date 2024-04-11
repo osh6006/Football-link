@@ -18,12 +18,7 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
   const theme = useTheme();
 
-  const {
-    data: banners,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useBannerQuery(selectedSport?.value!, selectedLeague?.leagueId!);
+  const { data: banners, isLoading, isError, isSuccess } = useBannerQuery();
 
   if (isLoading) {
     return (
@@ -45,7 +40,7 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
   const sportsType = selectedSport?.value;
   const leagueId = selectedLeague?.leagueId;
 
-  if (true) {
+  if (banners && banners.length <= 0) {
     return (
       <div
         className={clsx(
@@ -108,7 +103,7 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
           rewind={false}
           rewindWithAnimation={false}
           rtl={false}
-          showDots
+          showDots={true}
           shouldResetAutoplay
           renderDotsOutside
           slidesToSlide={1}
@@ -117,7 +112,7 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
           {banners?.map((banner) => (
             <div
               style={{
-                backgroundImage: `url("${BASE_URL}/storage/v1/object/public/spolink/banner_images/${sportsType}/${leagueId}/${banner.name}")`,
+                backgroundImage: `url("${BASE_URL}/storage/v1/object/public/spolink/banner_images/${banner.name}")`,
               }}
               key={banner.id}
               className={
