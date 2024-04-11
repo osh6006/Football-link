@@ -5,17 +5,13 @@ import Carousel from "react-multi-carousel";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 
 import { useTheme } from "stores/theme-store";
-import useSportStore from "stores/sports-store";
 import { useBannerQuery } from "hooks/services/quries/use-banner-query";
 
 import "react-multi-carousel/lib/styles.css";
-import { useLeagueStore } from "stores/league-store";
 
 interface IBannerProps {}
 
 const Banner: React.FunctionComponent<IBannerProps> = () => {
-  const { selectedSport } = useSportStore();
-  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
   const theme = useTheme();
 
   const { data: banners, isLoading, isError, isSuccess } = useBannerQuery();
@@ -37,8 +33,6 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
   }
 
   const BASE_URL = process.env.REACT_APP_SUPERBASE_API_URL;
-  const sportsType = selectedSport?.value;
-  const leagueId = selectedLeague?.leagueId;
 
   if (banners && banners.length <= 0) {
     return (

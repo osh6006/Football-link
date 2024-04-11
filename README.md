@@ -36,7 +36,7 @@
   <a href="#dart-소개">프로젝트 소개</a> &#xa0; | &#xa0; 
   <a href="#rocket-개발환경">개발 환경</a> &#xa0; | &#xa0;
   <a href="#rocket-채택기술전략">채택 기술 전략</a> &#xa0; | &#xa0;
-  <a href="#sparkles-기능">제공 기능</a> &#xa0; | &#xa0;
+  <a href="#sparkles-기능">페이지별 기능</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-필수사항">필수 사항</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-시작하기">시작하기</a> &#xa0; | &#xa0;
   <a href="#memo-라이센스">라이센스</a> &#xa0; | &#xa0;
@@ -132,7 +132,7 @@
   - 또한 데이터베이스, 인증, 파일 스토리지 등의 기능을 클라우드에서 제공하여 개발 과정을 간소화 하였습니다.
   - 현 웹사이트에서는 Supabase를 통해 SNS 로그인 및 로그아웃, 배너 사진의 스토리지, 로그인을 한 유저에게만 주어지는 특별한 기능(두 팀의 승리예측 기능)에 사용되고 있습니다.
 
-## :sparkles: 기능
+## :sparkles: 페이지별 기능
 
 :heavy_check_mark: 로그인: SNS (Google, Github) 로그인 및 로그아웃 기능\
 :heavy_check_mark: 국가 및 리그 선택: 사용자는 나라와 해당 국가에 맞는 리그를 선택하여 정보를 얻을 수 있습니다.\
