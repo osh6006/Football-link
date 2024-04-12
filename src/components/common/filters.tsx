@@ -29,8 +29,8 @@ const Filter: React.FunctionComponent<IFilterProps> = ({ items }) => {
             className={clsx(
               " border-2 uppercase tracking-widest hover:border-Main hover:bg-Main hover:text-White",
               item.value === filterName
-                ? "border border-Main font-semibold text-Main"
-                : "border border-MediumGrey",
+                ? "border border-Main bg-Main font-semibold text-white"
+                : "border border-MediumGrey text-MediumGrey",
             )}
             onClick={() =>
               setSearchParams(`?${tabsName}&filterName=${item.value}`)
