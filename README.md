@@ -224,11 +224,11 @@
 
 ## :rocket: 트러블 슈팅
 
-## :roller_coaster: 개선해야할 사항
+## :roller_coaster: 개선 사항
 
 ## :white_check_mark: 필수사항
 
-⭐ 프로젝트를 시작하기 전에 `Git`와 `NodeJS`를 설치해 주세요 ⭐
+⭐ 프로젝트를 시작하기 전에 `Git`와 `NodeJS`를 설치해 주세요 ⭐\
 ⭐ env 파일을 확인해 주세요 ⭐
 
 ## :checkered_flag: 시작하기
