@@ -143,7 +143,7 @@
   - 국가는 iso-3166-1 국가 코드를 기준으로 국가를 선택할 수 있습니다.
   - 해당 국가의 리그가 존재하지 않으면 리그가 표시되지 않습니다.
 
-[국가 & 리그 선택.webm](https://github.com/osh6006/football-link/assets/56256924/ea069c20-f66d-401f-a8d1-d7f0f1b986ae)
+[국가 & 리그 선택.webm](https://github.com/osh6006/football-link/assets/56256924/d56bb15a-c5b3-4687-b696-53ee8e2c0b06)
 
 
 ### :heavy_check_mark: 메인 페이지
@@ -155,7 +155,7 @@
 - Rank 블록은 현재 리그와 현재 시즌을 기준으로 한 순위 표를 알 수 있습니다.
 - Top Scorer블록과 Top assist 블록은 현재 리그와 현재 시즌을 기준으로 플레이어의 골 수 와 도움 수를 순위로 나타내 줍니다.
 
-[메인 페이지.webm](https://github.com/osh6006/football-link/assets/56256924/e5e09d75-df50-46f9-b38e-68cffb9f58f6)
+[메인 페이지.webm](https://github.com/osh6006/football-link/assets/56256924/1e6f1451-a8e3-456a-bb09-4afcad7a6af7)
 
 
 ### :heavy_check_mark: Predict 페이지
@@ -164,7 +164,12 @@
   - 로그인을 하지 않으면 modal로 경고창이 뜨며, 접근이 제한 됩니다.
 - 두 팀을 선택하면 두 팀간의 역대 전적 정보를 가지고, 승률, 승리 예측, 언더 오버 예측, 최근 경기 폼을 볼 수 있습니다.
 
+[Predict-페이지.webm](https://github.com/osh6006/football-link/assets/56256924/91b8bb3f-e25c-455d-980d-540bbc529fd3)
+
+
 ### :heavy_check_mark: Live 페이지
+
+라이브 경기가 진행 되면 업데이트
 
 - Live 페이지는 현재 리그에서 진행되고 있는 경기들의 목록을 불러옵니다. rapid api 에서 제공하는 데이터로, 15분마다 갱신되는 데이터 입니다.
 - 각 경기마다 event, lineup, statistics 3개의 탭을 가지고 있습니다.
@@ -174,21 +179,29 @@
 
 ### :heavy_check_mark: Rank 페이지
 
+[Rank-페이지.webm](https://github.com/osh6006/football-link/assets/56256924/43190a5f-15c1-4500-a80b-f8317bdf206a)
+
 - Rank 페이지 에서는 팀 순위와 선수별 순위를 확인하실 수 있습니다. Team과 Player를 선택할 수 있는 탭과 시즌별로 팀과 선수별 순위를 확인하실 수 있습니다.
   - Team 탭에서는 팀 순위를 확인할 수 있고 각 팀을 클릭하면 팀 상세 페이지로 이동합니다. 또 테이블의 헤더를 클릭하면 각 헤더별 오름차순 내림차순으로 순위를 볼 수 있습니다.
   - Player 탭에서는 득점, 도움, 경고, 퇴장 별로 순위를 확인하실 수 있으며 Team 탭과 마찬가지로 선수를 클릭하면 선수 상세 페이지로 이동하고 테이블 헤더를 클릭하면 정렬된 순위를 볼 수있습니다.
-
+ 
 ### :heavy_check_mark: Schedule 페이지
+
+버그 수정 후 업로그
 
 - Schedule 페이지 에서는 각 리그에 해당하는 경기의 일정을 볼 수 있습니다. 제일 상단에서 시즌 및 날짜를 선택할 수 있고 해당 날짜에 따라 경기 일정을 보실 수 있습니다.
 - 하단 부분에는 경기 일정 및 결과가 나오며, result 버튼을 누르면 경기 상세 조회 페이지로 이동 합니다.
 
 ### :heavy_check_mark: News 페이지
 
+[News-페이지.webm](https://github.com/osh6006/football-link/assets/56256924/0215e5ae-d96e-454f-965e-9c7a6119a22c)
+
 - News 페이지 에서는 각 리그에 해당하는 뉴스 게시물을 볼 수 있습니다. 상단의 필터를 통해 다양한 뉴스들을 필터링 하여 볼 수 있습니다.
 - News 카드를 클릭시 새탭이 열리고 해당 뉴스 기사로 이동합니다.
 
 ### :heavy_check_mark: 팀 상세 페이지
+
+
 
 - Home 페이지의 순위 테이블에서 팀을 클릭 하거나 Rank 페이지의 테이블에서 팀을 클릭하면 팀 상세페이지로 이동합니다.
 - 팀 상세 페이지 에서는 헤더에서 현재 시즌에서의 팀 정보를 보여 주며, 각각 Info, Squad, News, Schedule 탭이 있습니다
