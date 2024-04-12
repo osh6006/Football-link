@@ -138,12 +138,13 @@
 
 ### :heavy_check_mark: 국가 & 리그 선택
 
-[국가 & 리그 선택 webm](https://github.com/osh6006/football-link/assets/56256924/3e371073-71cc-4b6b-9ea3-23449ce30c18)
-
 - 화면 왼쪽의 사이드바에서 국가를 선택 한 후 리그를 선택하면 메인 화면을 보실 수 있습니다.
   - 국가와 리그는 타이핑 혹은 셀렉트 박스를 통해 선택하실 수 있습니다.
   - 국가는 iso-3166-1 국가 코드를 기준으로 국가를 선택할 수 있습니다.
   - 해당 국가의 리그가 존재하지 않으면 리그가 표시되지 않습니다.
+
+[국가 & 리그 선택.webm](https://github.com/osh6006/football-link/assets/56256924/ea069c20-f66d-401f-a8d1-d7f0f1b986ae)
+
 
 ### :heavy_check_mark: 메인 페이지
 
@@ -153,6 +154,9 @@
 - News 블록은 현재 리그의 이름을 기준으로 해당 뉴스카드를 볼 수 있고 뉴스 카드를 클릭하면 새 탭으로 해당 뉴스 기사의 url로 이동합니다.
 - Rank 블록은 현재 리그와 현재 시즌을 기준으로 한 순위 표를 알 수 있습니다.
 - Top Scorer블록과 Top assist 블록은 현재 리그와 현재 시즌을 기준으로 플레이어의 골 수 와 도움 수를 순위로 나타내 줍니다.
+
+[메인 페이지.webm](https://github.com/osh6006/football-link/assets/56256924/e5e09d75-df50-46f9-b38e-68cffb9f58f6)
+
 
 ### :heavy_check_mark: Predict 페이지
 
