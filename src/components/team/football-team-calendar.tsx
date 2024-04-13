@@ -30,7 +30,6 @@ const FootballTeamCalendar: React.FunctionComponent<
   const lastDayOfMonth = formatDate.endOf("month").format("YYYY-MM-DD");
 
   const { data, isLoading, isError } = useScheduleQuery({
-    isAll,
     season,
     date: currentDate,
     end: lastDayOfMonth,
@@ -57,7 +56,7 @@ const FootballTeamCalendar: React.FunctionComponent<
   return (
     <ul className=" mt-6 w-full space-y-4 p-0 sm:px-8 md:block">
       {data?.map((el) => (
-        <ScheduleCard isAll={isAll} scheduleItem={el} key={el.fixture.id} />
+        <ScheduleCard scheduleItem={el} key={el.fixture.id} />
       ))}
     </ul>
   );

@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import { findItemUsingKeywordInArray } from "utils/util";
+import {
+  findItemUsingKeywordInArray,
+  getFirstAndLastDayOfMonth,
+} from "utils/util";
 
 import { CheckIcon, ImageOffIcon } from "lucide-react";
 import { Combobox } from "@headlessui/react";
@@ -12,6 +15,8 @@ import { useCountryStore } from "stores/country-store";
 import { ILeague, useLeagueStore } from "stores/league-store";
 import { useLeagueQueryComboBox } from "hooks/services/quries/use-league-query";
 import { usePredictActions } from "stores/predict-store";
+import useScheduleStore from "stores/schedule-store";
+import dayjs from "dayjs";
 
 interface ISelectLeagueProps {}
 
@@ -33,6 +38,8 @@ const SelectLeague: React.FunctionComponent<ISelectLeagueProps> = () => {
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
   const selectLeague = useLeagueStore((state) => state.selectLeague);
   const predictClear = usePredictActions((state) => state.clear);
+  const selectSeason = useScheduleStore((state) => state.setSeason);
+  const setDateRagne = useScheduleStore((state) => state.setDateRange);
 
   return (
     <ComboBox
@@ -52,8 +59,19 @@ const SelectLeague: React.FunctionComponent<ISelectLeagueProps> = () => {
         );
 
         if (findLeague) {
+          const lastPossibleSeason = findLeague.possibleSeasons.at(-1) || null;
+          const dataRange = getFirstAndLastDayOfMonth(
+            lastPossibleSeason?.start || "",
+          );
+
           selectLeague(findLeague);
           predictClear();
+          selectSeason(lastPossibleSeason);
+
+          setDateRagne({
+            from: new Date(dataRange.firstDay),
+            to: new Date(dataRange.lastDay),
+          });
         }
       }}
       renderInput={(league) => (

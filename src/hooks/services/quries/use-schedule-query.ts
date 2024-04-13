@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getHomeNextMatchSchedule, getLeagueSchedule } from "../apis/football";
+import { getHomeNextMatchSchedule } from "../apis/football";
+import { getLeagueSchedule, getSeasonSchedule } from "../apis/schedule";
 
 export const scheduleQueryKey = {
   useNextMatchQuery: "homeNextMatchQuery",
   useScheduleQuery: "scheduleQuery",
+  useSeasonQuery: "seasonQuery",
 };
 
 export const useNextMatchQuery = (leagueId: number) => {
@@ -20,27 +22,44 @@ export const useNextMatchQuery = (leagueId: number) => {
   });
 };
 
+export const useSeasonScheduleQuery = (season: number, leagueId: number) => {
+  console.log(season, leagueId);
+
+  return useQuery({
+    queryKey: [scheduleQueryKey.useSeasonQuery, season, leagueId],
+    queryFn: ({ queryKey }) => getSeasonSchedule(+queryKey[1], +queryKey[2]),
+    select(data) {
+      return data.sort((a, b) => {
+        const dateA = new Date(a.fixture.date) as any;
+        const dateB = new Date(b.fixture.date) as any;
+        return dateA - dateB;
+      });
+    },
+    enabled: !!season && !!leagueId,
+    staleTime: Infinity,
+    gcTime: Infinity,
+  });
+};
+
 export const useScheduleQuery = ({
   leagueId,
   season,
   start,
   end,
-  isAll,
   date,
   teamId,
 }: {
   season: number | string;
   start: string;
   end: string;
-  isAll: boolean;
-  date: string;
+  date?: string;
   leagueId?: number;
   teamId?: string;
 }) => {
   return useQuery({
     queryKey: [
       scheduleQueryKey.useScheduleQuery,
-      { leagueId, season, start, end, isAll, date, teamId },
+      { leagueId, season, start, end, date, teamId },
     ],
     queryFn: ({ queryKey }) =>
       getLeagueSchedule(
@@ -50,7 +69,6 @@ export const useScheduleQuery = ({
           season: number;
           start: string;
           end: string;
-          isAll: boolean;
           date: string;
         },
       ),

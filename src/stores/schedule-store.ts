@@ -1,14 +1,22 @@
 import dayjs from "dayjs";
+import { DateRange } from "react-day-picker";
+import { ILeagueSeason } from "types";
 import { create } from "zustand";
 
 interface IScheduleStoreState {
   currentDate: string;
+  currentRange: DateRange | undefined;
+  currentSeason: null | ILeagueSeason;
   controlDate: (action: string, type: string) => void;
   initDate: () => void;
+  setSeason: (season: ILeagueSeason | null) => void;
+  setDateRange: (range: DateRange | undefined) => void;
 }
 
 export const useScheduleStore = create<IScheduleStoreState>()((set) => ({
   currentDate: dayjs().format("YYYY-MM-DD"),
+  currentSeason: null,
+  currentRange: undefined,
   controlDate: (action, type) =>
     set(({ currentDate }) => {
       switch (action) {
@@ -40,6 +48,15 @@ export const useScheduleStore = create<IScheduleStoreState>()((set) => ({
   initDate: () =>
     set(() => {
       return { currentDate: dayjs().format("YYYY-MM-DD") };
+    }),
+  setSeason: (season) =>
+    set(() => {
+      return { currentSeason: season };
+    }),
+
+  setDateRange: (range) =>
+    set(() => {
+      return { currentRange: range };
     }),
 }));
 

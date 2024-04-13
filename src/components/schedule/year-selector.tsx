@@ -15,17 +15,11 @@ interface IYearSelectorProps {
 const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
   setIsAll,
 }) => {
-  const { currentDate, controlDate } = useScheduleStore();
+  const { currentDate, controlDate, setSeason } = useScheduleStore();
   const isToday =
     currentDate === dayjs(new Date()).locale("ko").format("YYYY-MM-DD");
 
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
-  const lastYear = selectedLeague?.possibleSeasons.at(-1)?.year;
-  const firstYear = selectedLeague?.possibleSeasons.at(1)?.year;
-  const years = Array.from(
-    { length: lastYear! - firstYear! + 1 },
-    (_, index) => firstYear! + index,
-  );
 
   return (
     <div
@@ -82,29 +76,32 @@ const YearSelector: React.FunctionComponent<IYearSelectorProps> = ({
               e.stopPropagation();
             }}
             className={clsx(
-              `absolute -left-[120px] mt-4 grid w-[300px] -translate-x-[50%] grid-cols-3 items-center justify-center gap-2 overflow-hidden rounded-md bg-white p-2
-            text-DarkGrey shadow-lg focus:outline-none sm:left-0 sm:text-sm md:w-[380px]`,
+              `absolute -left-[120px] mt-4 grid w-[300px] -translate-x-[50%] grid-cols-2 items-center justify-center gap-2 overflow-hidden rounded-md bg-white p-2 text-DarkGrey
+            shadow-lg focus:outline-none sm:left-0 sm:text-sm md:w-[500px]`,
             )}
           >
-            {years.map((el) => (
-              <Menu.Item key={el}>
+            {selectedLeague?.possibleSeasons.map((el) => (
+              <Menu.Item key={el.year}>
                 <button
                   className={clsx(
-                    "flex select-none items-center justify-center rounded-md border border-MediumGrey px-3 py-1 text-lg text-MediumGrey transition-colors hover:bg-Main hover:text-white",
-                    el === dayjs(currentDate).year()
+                    "flex select-none items-center justify-center rounded-md border border-MediumGrey px-3 py-1 text-sm text-MediumGrey transition-colors hover:bg-Main hover:text-white sm:text-lg",
+                    el.year === dayjs(currentDate).year()
                       ? "bg-Main text-White"
                       : "",
                   )}
                   onClick={() => {
                     controlDate(
                       "CUSTOM",
-                      `${el}-${dayjs(currentDate).month() + 1}-${dayjs(
+                      `${el.year}-${dayjs(currentDate).month() + 1}-${dayjs(
                         currentDate,
                       ).date()}`,
                     );
+                    // setSeason(el.year + "");
                   }}
                 >
-                  {el}
+                  {`${dayjs(el.start).format("YYYY")} ~ ${dayjs(el.end).format(
+                    "YYYY",
+                  )}`}
                 </button>
               </Menu.Item>
             ))}

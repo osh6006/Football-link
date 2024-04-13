@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import dayjs from "dayjs";
 import { ThemeColor } from "types";
 
 export const isIncludeInSelectedItem = (array: any[], id: string) => {
@@ -41,4 +42,15 @@ export const findItemUsingKeywordInArray = <T extends Record<string, any>>(
 ) => {
   const result = array?.find((el) => el[keyword] === value) || null;
   return result;
+};
+
+export const getFirstAndLastDayOfMonth = (dateString: string) => {
+  const date = dayjs(dateString);
+  const firstDayOfMonth = date.format("YYYY-MM-DD");
+  const lastDayOfMonth = date.add(30, "day").format("YYYY-MM-DD");
+
+  return {
+    firstDay: firstDayOfMonth,
+    lastDay: lastDayOfMonth,
+  };
 };

@@ -1,39 +1,32 @@
 import dayjs from "dayjs";
 
-import Loading from "components/common/loading";
 import ScheduleCard from "./schedule.card";
+import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
 import useScheduleStore from "stores/schedule-store";
 import { useLeagueStore } from "stores/league-store";
 import { useScheduleQuery } from "hooks/services/quries/use-schedule-query";
 
-interface IScheduleResultProps {
-  isAll: boolean;
-}
+interface IScheduleResultProps {}
 
-const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
-  isAll,
-}) => {
-  const { currentDate } = useScheduleStore();
+const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = () => {
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 
-  const formatDate = dayjs(currentDate);
-  const firstDayOfMonth = formatDate.startOf("month").format("YYYY-MM-DD");
-  const lastDayOfMonth = formatDate.endOf("month").format("YYYY-MM-DD");
+  const currentSeason = useScheduleStore((state) => state.currentSeason);
+  const currentRange = useScheduleStore((state) => state.currentRange);
 
-  const lastYear =
-    selectedLeague?.possibleSeasons.at(-1)?.year || new Date().getFullYear();
-  const season = formatDate.year() > lastYear ? lastYear : formatDate.year();
+  const start = dayjs(currentRange?.from).format("YYYY-MM-DD");
+  const end = dayjs(currentRange?.to).format("YYYY-MM-DD");
 
   const { data, isLoading, isError } = useScheduleQuery({
-    isAll,
-    date: currentDate,
-    start: firstDayOfMonth,
-    end: lastDayOfMonth,
-    season: season,
+    start: start!,
+    end: end!,
+    season: currentSeason?.year!,
     leagueId: selectedLeague?.leagueId!,
   });
+
+  console.log(data);
 
   if (isLoading) {
     return (
@@ -54,7 +47,7 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
   return (
     <ul className=" mt-6 w-full space-y-4 p-0 sm:px-8 md:block">
       {data?.map((el) => (
-        <ScheduleCard isAll={isAll} scheduleItem={el} key={el.fixture.id} />
+        <ScheduleCard scheduleItem={el} key={el.fixture.id} />
       ))}
     </ul>
   );

@@ -5,12 +5,10 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { rapidFootballNextMatchesResponse } from "types/football";
 
 interface IScheduleCardProps {
-  isAll: boolean;
   scheduleItem: rapidFootballNextMatchesResponse;
 }
 
 const ScheduleCard: React.FunctionComponent<IScheduleCardProps> = ({
-  isAll,
   scheduleItem,
 }) => {
   const nav = useNavigate();
@@ -22,9 +20,9 @@ const ScheduleCard: React.FunctionComponent<IScheduleCardProps> = ({
     >
       <div className="absolute left-1 top-1 flex gap-x-4 md:static ">
         <time className="text-xs font-semibold sm:text-sm">
-          {isAll
+          {/* {isAll
             ? `${dayjs(scheduleItem.fixture.date).format("MM-DD HH:mm")}`
-            : `${dayjs(scheduleItem.fixture.date).format("HH:mm")}`}
+            : `${dayjs(scheduleItem.fixture.date).format("HH:mm")}`} */}
         </time>
         <span className="hidden text-sm ">
           {scheduleItem.fixture.venue.name}
