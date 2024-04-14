@@ -30,7 +30,7 @@ const TopButton: React.FunctionComponent<ITopButtonProps> = ({ isVisible }) => {
       <button
         onClick={() => scrollToTop()}
         className={clsx(
-          "fixed bottom-4 right-4 flex  items-center justify-center rounded-full bg-Main p-4 text-White shadow-md",
+          "fixed bottom-4 right-4 flex  items-center justify-center rounded-full bg-Main p-4 text-White shadow-md sm:bottom-10 sm:right-16",
         )}
       >
         <Triangle size={20} />

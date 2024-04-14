@@ -7,16 +7,25 @@ import { Menu, Transition } from "@headlessui/react";
 import { useLeagueStore } from "stores/league-store";
 import useScheduleStore from "stores/schedule-store";
 import { getFirstAndLastDayOfMonth } from "utils/util";
+import { useTheme } from "stores/theme-store";
 
 interface ISeasonSelecorProps {}
 
 const SeasonSelecor: React.FunctionComponent<ISeasonSelecorProps> = (props) => {
+  const theme = useTheme();
+
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
   const { setSeason, currentSeason, setDateRange } = useScheduleStore();
 
   return (
     <Menu as="div" className="relative ">
-      <Menu.Button className="relative flex gap-x-4 rounded-xl bg-White px-4 py-4 text-Main shadow-xl transition-colors hover:bg-Main hover:text-White">
+      <Menu.Button
+        className={clsx(
+          "relative flex gap-x-4 rounded-xl  px-4 py-4 text-Main shadow-xl transition-colors hover:bg-Main hover:text-White",
+          theme === "light" ? "bg-white" : "",
+          theme === "dark" ? "bg-DarkGrey" : "",
+        )}
+      >
         <div className=" flex flex-col text-sm font-bold ">
           <div className="text-left">Season</div>
           <time className="text-left text-base font-normal">
@@ -49,8 +58,10 @@ const SeasonSelecor: React.FunctionComponent<ISeasonSelecorProps> = (props) => {
             e.stopPropagation();
           }}
           className={clsx(
-            `absolute left-32 z-50 mt-4 grid w-[300px] -translate-x-[50%] grid-cols-2 items-center justify-center gap-2 overflow-hidden rounded-md bg-white p-2
+            `absolute left-32 z-50 mt-4 grid w-[300px] -translate-x-[50%] grid-cols-2 items-center justify-center gap-2 overflow-hidden rounded-md  p-2
       text-DarkGrey shadow-lg focus:outline-none sm:text-sm md:w-[500px]`,
+            theme === "light" ? "bg-white" : "",
+            theme === "dark" ? "bg-DarkGrey" : "",
           )}
         >
           {selectedLeague?.possibleSeasons.map((el) => (
