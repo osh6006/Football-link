@@ -84,6 +84,29 @@
 
 ![vercel](https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
+## :white_check_mark: 필수사항
+
+⭐ 프로젝트를 시작하기 전에 `Git`와 `NodeJS`를 설치해 주세요 ⭐\
+⭐ env 파일을 확인해 주세요 ⭐
+
+## :checkered_flag: 시작하기
+
+```bash
+# 프로젝트를 복제하세요
+$ git clone https://github.com/osh6006/football-link
+
+# 폴더로 이동하세요
+$ cd football-link
+
+# 필요한 디펜던시를 설치하세요
+$ npm install
+
+# 프로젝트를 실행하세요
+$ npm start
+
+# 이 프로젝트는 <http://localhost:3000>에서 실행됩니다!
+```
+
 ## :rocket: 채택기술
 
 ### React, tailwindcss
@@ -187,10 +210,11 @@
  
 ### :heavy_check_mark: Schedule 페이지
 
-버그 수정 후 업로그
+- Schedule 페이지 에서는 각 리그에 해당하는 경기의 일정을 볼 수 있습니다. 제일 상단에서 시즌과 시즌 마감일을 볼 수 있고 시즌을 선택할 수 있습니다. 또한 마감일을 기준으로 사용자가 원하는 기간 동안 캘린더를 통해 일정을 확인하실 수 있습니다.
+- 하단 부분에는 경기 일정 및 결과가 나오며, result 버튼을 누르면 경기 결과 상세 조회 페이지로 이동 합니다.
 
-- Schedule 페이지 에서는 각 리그에 해당하는 경기의 일정을 볼 수 있습니다. 제일 상단에서 시즌 및 날짜를 선택할 수 있고 해당 날짜에 따라 경기 일정을 보실 수 있습니다.
-- 하단 부분에는 경기 일정 및 결과가 나오며, result 버튼을 누르면 경기 상세 조회 페이지로 이동 합니다.
+[Schedule-페이지.webm](https://github.com/osh6006/football-link/assets/56256924/d2c4a399-411a-49e5-a5c8-dbd2fb1607e1)
+
 
 ### :heavy_check_mark: News 페이지
 
@@ -199,16 +223,17 @@
 - News 페이지 에서는 각 리그에 해당하는 뉴스 게시물을 볼 수 있습니다. 상단의 필터를 통해 다양한 뉴스들을 필터링 하여 볼 수 있습니다.
 - News 카드를 클릭시 새탭이 열리고 해당 뉴스 기사로 이동합니다.
 
+
 ### :heavy_check_mark: 팀 상세 페이지
-
-
-
 - Home 페이지의 순위 테이블에서 팀을 클릭 하거나 Rank 페이지의 테이블에서 팀을 클릭하면 팀 상세페이지로 이동합니다.
 - 팀 상세 페이지 에서는 헤더에서 현재 시즌에서의 팀 정보를 보여 주며, 각각 Info, Squad, News, Schedule 탭이 있습니다
   - Info 탭 에서는 팀의 지역 정보와 구장에 대한 정보, 그리고 현재 참여하고 있는 리그(리그, FA컵등)의 성적을 볼 수 있습니다.
   - Squad 탭 에서는 팀의 스쿼드를 감독, 공격수, 미드필더, 수비수, 골키퍼 순으로 확인하실 수 있습니다. 그리고 선수를 클릭하면 선수 상세 페이지로 이동합니다.
   - News 탭 에서는 News 페이지와 동일하게 팀에 대한 뉴스를 확인하실 수 있습니다.
   - Schedule 탭 에서는 Schedule 페이지와 동일하게 팀의 일정을 확인하실 수 있습니다.
+[Team-Detail-페이지.webm](https://github.com/osh6006/football-link/assets/56256924/c66fa607-53f4-4fa7-aa2f-b02fb578364f)
+
+
 
 ### :heavy_check_mark: 선수 상세 페이지
 
@@ -216,61 +241,53 @@
 - 선수 상세 페이지 에서는 헤더에서 현재 시즌에서의 선수 정보를 보여 주며, 각각 Info, Career, News 탭이 있습니다.
   - Info 탭 에서는 선수의 신체 정보 혹은 선수의 생년월일, 그리고 현재 참여하고 있는 리그(리그, FA컵등)의 성적을 볼 수 있습니다.
   - Carreer 탭에서는 선수의 수상내역을 볼 수 있고, News 탭 에서는 선수 관련 뉴스를 확인하실 수 있습니다.
+[Player-Detail-페이지.webm](https://github.com/osh6006/football-link/assets/56256924/bd9e80c7-6ae4-4bce-a660-ebd2b0af930b)
+
 
 ### :heavy_check_mark: 검색
 
 - 상단 네비게이션 바의 검색 아이콘을 클릭 후 검색 모달에서 팀 혹은 플레이어에 대한 검색을 하실 수 있습니다.
   - 팀은 리그에상관 없이 검색하실 수 있지만 선수는 현재 해당하는 리그의 선수만 검색이 가능합니다.
+ 
+[Search.webm](https://github.com/osh6006/football-link/assets/56256924/43f90fb8-ca3c-4ee1-9bba-9dd1f9e75a0d)
+
 
 ### :heavy_check_mark: 반응형 레이아웃
 
 - 현 웹 사이트에서 제공하는 모든 페이지는 반응형 레이아웃을 지원합니다. 브레이크 포인트는 크게 모바일 350px 태블릿 768px 데스크탑 1024px 로 구현했고, 페이지마다 세부 브레이크 포인트가 다를 수 있습니다.
 
+[Responsive.webm](https://github.com/osh6006/football-link/assets/56256924/c00a422c-e099-4b7e-90ef-2444bfa1909e)
+
+
 ### :heavy_check_mark: 테마 선택
 
 - 사이드 바의 하단의 스위치를 통해 light테마 혹은 dark테마를 설정할 수 있습니다.
+  - 테마 정보는 localStorage에 저장되며, 새로고침 후에도 적용됩니다.
+ 
+[Theme.webm](https://github.com/osh6006/football-link/assets/56256924/ea578274-030f-4a47-ac4c-27694cd06251)
+
 
 ### :heavy_check_mark: 로그인 & 회원가입
 
-- 상단 바에서 로그인 페이지로 이동한 후
-- SNS (Google, Github)를 이용하여 로그인 및 회원가입이 가능합니다./
+- 상단 바에서 로그인 페이지로 이동한 후 SNS (Google, Github)를 이용하여 로그인 및 회원가입이 가능합니다./
   - 로그인이 되어있을 경우 리그 팀들 간의 승리 예측 페이지인 **Predict** 페이지에 접근이 가능합니다.
+ 
+[Login.webm](https://github.com/osh6006/football-link/assets/56256924/d6432fdf-cbff-4bba-b201-a0859b66345f)
+
 
 ### :heavy_check_mark: 로그아웃
 
 - 상단 바(Navigation bar)에서 아바타 메뉴를 클릭 후 로그아웃이 가능합니다.
-  - 테마 정보는 localStorage에 저장되며, 새로고침 후에도 적용됩니다.
+- 
+[logout.webm](https://github.com/osh6006/football-link/assets/56256924/081d76ab-4781-4b9e-8589-6cc4ab3bcefc)
+
 
 ## :rocket: 트러블 슈팅
 
 ## :roller_coaster: 개선 사항
 
-## :white_check_mark: 필수사항
-
-⭐ 프로젝트를 시작하기 전에 `Git`와 `NodeJS`를 설치해 주세요 ⭐\
-⭐ env 파일을 확인해 주세요 ⭐
-
-## :checkered_flag: 시작하기
-
-```bash
-# 프로젝트를 복제하세요
-$ git clone https://github.com/osh6006/football-link
-
-# 폴더로 이동하세요
-$ cd football-link
-
-# 필요한 디펜던시를 설치하세요
-$ npm install
-
-# 프로젝트를 실행하세요
-$ npm start
-
-# 이 프로젝트는 <http://localhost:3000>에서 실행됩니다!
-```
 
 ## :memo: 라이센스
-
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
 Made with :heart: by <a href="https://github.com/osh6006" target="_blank">osh6006</a>
 
