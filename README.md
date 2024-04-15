@@ -33,12 +33,14 @@
 <hr> -->
 
 <p align="center">
-  <a href="#dart-소개">프로젝트 소개</a> &#xa0; | &#xa0; 
-  <a href="#rocket-개발환경">개발 환경</a> &#xa0; | &#xa0;
-  <a href="#rocket-채택기술">채택 기술</a> &#xa0; | &#xa0;
-  <a href="#sparkles-기능">페이지 별 기능</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-필수사항">필수 사항</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-시작하기">시작하기</a> &#xa0; | &#xa0;
+  <a href="#dart">프로젝트 소개</a> &#xa0; | &#xa0; 
+  <a href="#rocket">개발 환경</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark">필수 사항</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag">시작하기</a> &#xa0; | &#xa0;
+  <a href="#hammer">채택 기술</a> &#xa0; | &#xa0;
+  <a href="#sparkles">페이지 별 기능</a> &#xa0; | &#xa0;
+  <a href="#construction">트러블 슈팅</a> &#xa0; | &#xa0;
+  <a href="#roller_coaster">개선해야 할 사항</a> &#xa0; | &#xa0;
   <a href="#memo-라이센스">라이센스</a> &#xa0; | &#xa0;
   <a href="https://github.com/osh6006" target="_blank">작성자</a>
 </p>
@@ -84,7 +86,7 @@
 
 ![vercel](https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-## :white_check_mark: 필수사항
+## :white_check_mark: 필수 사항
 
 ⭐ 프로젝트를 시작하기 전에 `Git`와 `NodeJS`를 설치해 주세요 ⭐\
 ⭐ env 파일을 확인해 주세요 ⭐
@@ -107,7 +109,7 @@ $ npm start
 # 이 프로젝트는 <http://localhost:3000>에서 실행됩니다!
 ```
 
-## :rocket: 채택기술
+## :hammer: 채택기술
 
 ### React, tailwindcss
 
@@ -156,6 +158,8 @@ $ npm start
   - Supabase는 서버리스 백엔드를 제공하여 개발자가 별도의 서버 구축 없이도 애플리케이션을 빠르게 개발할 수 있었습니다.
   - 또한 데이터베이스, 인증, 파일 스토리지 등의 기능을 클라우드에서 제공하여 개발 과정을 간소화 하였습니다.
   - 현 웹사이트에서는 Supabase를 통해 SNS 로그인 및 로그아웃, 배너 사진의 스토리지, 로그인을 한 유저에게만 주어지는 특별한 기능(두 팀의 승리예측 기능)에 사용되고 있습니다.
+
+## :pencil2: 프로젝트를 통해 배운 점
 
 ## :sparkles: 페이지별 기능
 
@@ -273,9 +277,9 @@ $ npm start
 
 [logout.webm](https://github.com/osh6006/football-link/assets/56256924/081d76ab-4781-4b9e-8589-6cc4ab3bcefc)
 
-## :rocket: 트러블 슈팅
+## :construction: 트러블 슈팅
 
-## :roller_coaster: 개선 사항
+## :roller_coaster: 개선해야 할 사항
 
 ## :memo: 라이센스
 
