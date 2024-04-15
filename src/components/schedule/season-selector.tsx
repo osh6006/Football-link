@@ -2,20 +2,27 @@ import clsx from "clsx";
 import dayjs from "dayjs";
 
 import { Fragment } from "react";
+import { ILeagueSeason } from "types";
 import { Menu, Transition } from "@headlessui/react";
 
 import { useLeagueStore } from "stores/league-store";
-import useScheduleStore from "stores/schedule-store";
 import { getFirstAndLastDayOfMonth } from "utils/util";
 import { useTheme } from "stores/theme-store";
+import { DateRange } from "react-day-picker";
 
-interface ISeasonSelecorProps {}
+interface ISeasonSelecorProps {
+  currentSeason: ILeagueSeason | null;
+  setSeason: (season: ILeagueSeason | null) => void;
+  setDateRange: (range: DateRange | undefined) => void;
+}
 
-const SeasonSelecor: React.FunctionComponent<ISeasonSelecorProps> = (props) => {
+const SeasonSelecor: React.FunctionComponent<ISeasonSelecorProps> = ({
+  currentSeason,
+  setDateRange,
+  setSeason,
+}) => {
   const theme = useTheme();
-
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
-  const { setSeason, currentSeason, setDateRange } = useScheduleStore();
 
   return (
     <Menu as="div" className="relative ">

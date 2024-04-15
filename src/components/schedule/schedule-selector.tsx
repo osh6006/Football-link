@@ -1,34 +1,30 @@
 import clsx from "clsx";
 import dayjs from "dayjs";
+import { DateRange } from "react-day-picker";
 
 import SeasonSelecor from "./season-selector";
 import DateSelector from "./date-seletor";
 
 import { useTheme } from "stores/theme-store";
-import { useLeagueStore } from "stores/league-store";
+import { ILeagueSeason } from "types";
 
-import useScheduleStore from "stores/schedule-store";
+interface IScheduleSelectorProps {
+  currentRange: DateRange | undefined;
+  currentSeason: ILeagueSeason | null;
 
-interface IScheduleSelectorProps {}
+  hadleToday: () => void;
+  setSeason: (season: ILeagueSeason | null) => void;
+  setDateRange: (range: DateRange | undefined) => void;
+}
 
-const ScheduleSelector: React.FunctionComponent<
-  IScheduleSelectorProps
-> = () => {
+const ScheduleSelector: React.FunctionComponent<IScheduleSelectorProps> = ({
+  currentRange,
+  currentSeason,
+  hadleToday,
+  setSeason,
+  setDateRange,
+}) => {
   const theme = useTheme();
-
-  const leagueStore = useLeagueStore((state) => state.selectedLeague);
-  const setSeason = useScheduleStore((state) => state.setSeason);
-  const currentRange = useScheduleStore((state) => state.currentRange);
-  const setDateRange = useScheduleStore((state) => state.setDateRange);
-
-  const handleToday = () => {
-    const today = dayjs().format("YYYY-MM-DD");
-    setSeason(leagueStore?.possibleSeasons.at(-1) || null);
-    setDateRange({
-      from: new Date(today),
-      to: new Date(today),
-    });
-  };
 
   return (
     <div
@@ -38,10 +34,18 @@ const ScheduleSelector: React.FunctionComponent<
         theme === "dark" ? "bg-VeryDarkGreyDark" : "",
       )}
     >
-      <SeasonSelecor />
-      <DateSelector />
+      <SeasonSelecor
+        currentSeason={currentSeason}
+        setDateRange={setDateRange}
+        setSeason={setSeason}
+      />
+      <DateSelector
+        currentRange={currentRange}
+        currentSeason={currentSeason}
+        setDateRange={setDateRange}
+      />
       <button
-        onClick={handleToday}
+        onClick={hadleToday}
         className={clsx(
           "flex items-center justify-center rounded-xl  px-4 py-2 text-sm font-bold  shadow-xl transition-colors hover:bg-Main hover:text-White",
           dayjs(currentRange?.from).format("YYYY-MM-DD") ===

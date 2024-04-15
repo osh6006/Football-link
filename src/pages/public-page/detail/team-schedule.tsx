@@ -1,21 +1,47 @@
-import { useState } from "react";
+import dayjs from "dayjs";
+import { useLocation } from "react-router-dom";
 
-import DaySelector from "components/schedule/day-selector";
-import YearSelector from "components/schedule/year-selector";
-import FootballTeamCalendar from "components/team/football-team-calendar";
+import ScheduleResult from "components/schedule/schedule-result";
+import ScheduleSelector from "components/schedule/schedule-selector";
 
-import "./calendar.css";
+import useTeamScheduleStore from "stores/team-schedule-store";
+import { useLeagueStore } from "stores/league-store";
 
 interface ITeamScheduleProps {}
 
 const TeamSchedule: React.FunctionComponent<ITeamScheduleProps> = () => {
-  const [isAll, setIsAll] = useState(true);
+  const location = useLocation().pathname.split("/");
+  const teamId = location[4];
+  const selectedLeague = useLeagueStore((state) => state.selectedLeague);
+
+  const currentRange = useTeamScheduleStore((state) => state.currentRange);
+  const currentSeason = useTeamScheduleStore((state) => state.currentSeason);
+  const setSeason = useTeamScheduleStore((state) => state.setSeason);
+  const setDateRange = useTeamScheduleStore((state) => state.setDateRange);
+
+  const handleToday = () => {
+    const today = dayjs().format("YYYY-MM-DD");
+    setSeason(selectedLeague?.possibleSeasons.at(-1) || null);
+    setDateRange({
+      from: new Date(today),
+      to: new Date(today),
+    });
+  };
 
   return (
     <>
-      <YearSelector setIsAll={setIsAll} />
-      <DaySelector isAll={isAll} setIsAll={setIsAll} />
-      <FootballTeamCalendar isAll={isAll} />
+      <ScheduleSelector
+        currentRange={currentRange}
+        currentSeason={currentSeason}
+        hadleToday={handleToday}
+        setSeason={setSeason}
+        setDateRange={setDateRange}
+      />
+      <ScheduleResult
+        currentRange={currentRange}
+        currentSeason={currentSeason}
+        teamId={teamId}
+      />
     </>
   );
 };

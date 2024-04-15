@@ -1,20 +1,27 @@
 import dayjs from "dayjs";
+import { DateRange } from "react-day-picker";
 
 import ScheduleCard from "./schedule.card";
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
-import useScheduleStore from "stores/schedule-store";
 import { useLeagueStore } from "stores/league-store";
 import { useScheduleQuery } from "hooks/services/quries/use-schedule-query";
 
-interface IScheduleResultProps {}
+import { ILeagueSeason } from "types";
 
-const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = () => {
+interface IScheduleResultProps {
+  currentSeason: ILeagueSeason | null;
+  currentRange: DateRange | undefined;
+  teamId?: string;
+}
+
+const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = ({
+  currentRange,
+  currentSeason,
+  teamId,
+}) => {
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
-
-  const currentSeason = useScheduleStore((state) => state.currentSeason);
-  const currentRange = useScheduleStore((state) => state.currentRange);
 
   const start = dayjs(currentRange?.from).format("YYYY-MM-DD");
   const end = dayjs(currentRange?.to).format("YYYY-MM-DD");
@@ -24,9 +31,8 @@ const ScheduleResult: React.FunctionComponent<IScheduleResultProps> = () => {
     end: end!,
     season: currentSeason?.year!,
     leagueId: selectedLeague?.leagueId!,
+    teamId: teamId,
   });
-
-  console.log(data);
 
   if (isLoading) {
     return (

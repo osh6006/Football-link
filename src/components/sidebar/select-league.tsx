@@ -17,6 +17,7 @@ import { useLeagueQueryComboBox } from "hooks/services/quries/use-league-query";
 import { usePredictActions } from "stores/predict-store";
 import useScheduleStore from "stores/schedule-store";
 import dayjs from "dayjs";
+import useTeamScheduleStore from "stores/team-schedule-store";
 
 interface ISelectLeagueProps {}
 
@@ -40,6 +41,8 @@ const SelectLeague: React.FunctionComponent<ISelectLeagueProps> = () => {
   const predictClear = usePredictActions((state) => state.clear);
   const selectSeason = useScheduleStore((state) => state.setSeason);
   const setDateRagne = useScheduleStore((state) => state.setDateRange);
+  const selectTeamSeason = useTeamScheduleStore((state) => state.setSeason);
+  const setTeamDateRagne = useTeamScheduleStore((state) => state.setDateRange);
 
   return (
     <ComboBox
@@ -66,9 +69,15 @@ const SelectLeague: React.FunctionComponent<ISelectLeagueProps> = () => {
 
           selectLeague(findLeague);
           predictClear();
-          selectSeason(lastPossibleSeason);
 
+          selectSeason(lastPossibleSeason);
           setDateRagne({
+            from: new Date(dataRange.firstDay),
+            to: new Date(dataRange.lastDay),
+          });
+
+          selectTeamSeason(lastPossibleSeason);
+          setTeamDateRagne({
             from: new Date(dataRange.firstDay),
             to: new Date(dataRange.lastDay),
           });

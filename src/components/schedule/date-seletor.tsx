@@ -1,28 +1,34 @@
+import { Fragment, useMemo } from "react";
 import clsx from "clsx";
 import dayjs from "dayjs";
-import { Fragment } from "react";
-import { ClassNames, DayPicker } from "react-day-picker";
-
-import { Menu, Transition } from "@headlessui/react";
-
-import { useTheme } from "stores/theme-store";
-import useScheduleStore from "stores/schedule-store";
-
 import styles from "./date-calendar.module.css";
 
-interface IDateSelecotrProps {}
+import { Menu, Transition } from "@headlessui/react";
+import { ClassNames, DateRange, DayPicker } from "react-day-picker";
 
-const DateSelector: React.FunctionComponent<IDateSelecotrProps> = () => {
+import { useTheme } from "stores/theme-store";
+
+import { ILeagueSeason } from "types";
+
+interface IDateSelecotrProps {
+  currentSeason: ILeagueSeason | null;
+  currentRange: DateRange | undefined;
+  setDateRange: (range: DateRange | undefined) => void;
+}
+
+const DateSelector: React.FunctionComponent<IDateSelecotrProps> = ({
+  currentRange,
+  currentSeason,
+  setDateRange,
+}) => {
   const theme = useTheme();
 
-  const currentSeason = useScheduleStore((state) => state.currentSeason);
-  const currentRange = useScheduleStore((state) => state.currentRange);
-  const setDateRange = useScheduleStore((state) => state.setDateRange);
-
-  const classNames: ClassNames = {
-    ...styles,
-    caption: "custom-caption",
-  };
+  const classNames = useMemo<ClassNames>(() => {
+    return {
+      ...styles,
+      caption: "custom-caption",
+    };
+  }, []);
 
   return (
     <Menu as="div" className="relative">
@@ -72,7 +78,7 @@ const DateSelector: React.FunctionComponent<IDateSelecotrProps> = () => {
           `}</style>
           <DayPicker
             mode="range"
-            defaultMonth={new Date(currentSeason?.end || "")}
+            defaultMonth={currentRange?.to}
             selected={currentRange}
             numberOfMonths={2}
             pagedNavigation
