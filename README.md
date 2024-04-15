@@ -208,7 +208,7 @@ $ npm start
   - Team 탭에서는 팀 순위를 확인할 수 있고 각 팀을 클릭하면 팀 상세 페이지로 이동합니다. 또 테이블의 헤더를 클릭하면 각 헤더별 오름차순 내림차순으로 순위를 볼 수 있습니다.
   - Player 탭에서는 득점, 도움, 경고, 퇴장 별로 순위를 확인하실 수 있으며 Team 탭과 마찬가지로 선수를 클릭하면 선수 상세 페이지로 이동하고 테이블 헤더를 클릭하면 정렬된 순위를 볼 수있습니다.
 
-  [Rank-페이지.webm](https://github.com/osh6006/football-link/assets/56256924/43190a5f-15c1-4500-a80b-f8317bdf206a)
+[Rank-페이지.webm](https://github.com/osh6006/football-link/assets/56256924/43190a5f-15c1-4500-a80b-f8317bdf206a)
 
 ### :heavy_check_mark: Schedule 페이지
 
