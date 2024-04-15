@@ -39,13 +39,13 @@ const TopPlayerSelector: React.FunctionComponent<
         onClick={() => setSearchParams(`?tab=${tabName}&playerType=topscorers`)}
         selected={typeName === "topscorers"}
       >
-        득점
+        Goal
       </SelectItem>
       <SelectItem
         onClick={() => setSearchParams(`?tab=${tabName}&playerType=topassists`)}
         selected={typeName === "topassists"}
       >
-        도움
+        Assist
       </SelectItem>
       <SelectItem
         onClick={() =>
@@ -53,7 +53,7 @@ const TopPlayerSelector: React.FunctionComponent<
         }
         selected={typeName === "topyellowcards"}
       >
-        경고
+        Yellow Card
       </SelectItem>
       <SelectItem
         onClick={() =>
@@ -61,7 +61,7 @@ const TopPlayerSelector: React.FunctionComponent<
         }
         selected={typeName === "topredcards"}
       >
-        퇴장
+        Red Card
       </SelectItem>
     </ul>
   );
