@@ -9,19 +9,20 @@
 <h1 align="center">⚽ Football Link ⚽</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/osh6006/football-link?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/osh6006/Football-link?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/osh6006/football-link?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/osh6006/Football-link?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/osh6006/football-link?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/osh6006/Football-link?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/osh6006/football-link?color=56BEB8">
+  <!-- <img alt="License" src="https://img.shields.io/github/license/osh6006/Football-link?color=56BEB8">  -->
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/osh6006/football-link?color=56BEB8" /> -->
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{YOUR_GITHUB_USERNAME}}/food-truck-area?color=56BEB8" />
 
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/osh6006/football-link?color=56BEB8" /> -->
+  <img alt="Github forks" src="https://img.shields.io/github/forks/{{YOUR_GITHUB_USERNAME}}/food-truck-area?color=56BEB8" />
 
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/osh6006/football-link?color=56BEB8" /> -->
+  <img alt="Github stars" src="https://img.shields.io/github/stars/{{YOUR_GITHUB_USERNAME}}/food-truck-area?color=56BEB8" /> -->
+
 </p>
 
 <!-- Status -->
@@ -49,7 +50,7 @@
 
 ![screely-1712852886252](https://github.com/osh6006/football-link/assets/56256924/c47f75bb-56f7-4fdd-a014-a7e7abde97d1)
 
-## :dart: 소개
+## :dart: 프로젝트 소개
 
 [Demo <-여기에서 Football-link를 확인하세요]()
 
