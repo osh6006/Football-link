@@ -1,9 +1,11 @@
+import clsx from "clsx";
+
+
 import Menu from "components/common/menu";
 import { Menu as HeadlessMenu } from "@headlessui/react";
 import { SearchIcon } from "lucide-react";
 import { useSearch } from "stores/search-store";
 import { useTheme } from "stores/theme-store";
-import clsx from "clsx";
 
 interface ISearchHeaderProps {}
 

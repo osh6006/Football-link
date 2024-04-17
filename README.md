@@ -40,6 +40,7 @@
   <a href="#checkered_flag">시작하기</a> &#xa0; | &#xa0;
   <a href="#hammer">채택 기술</a> &#xa0; | &#xa0;
   <a href="#sparkles">페이지 별 기능</a> &#xa0; | &#xa0;
+  <a href="#lightbulb">프로젝트를 통해 배운 부분</a> &#xa0; | &#xa0;
   <a href="#construction">트러블 슈팅</a> &#xa0; | &#xa0;
   <a href="#roller_coaster">개선해야 할 사항</a> &#xa0; | &#xa0;
   <a href="#memo-라이센스">라이센스</a> &#xa0; | &#xa0;
@@ -278,9 +279,24 @@ $ npm start
 
 [logout.webm](https://github.com/osh6006/football-link/assets/56256924/081d76ab-4781-4b9e-8589-6cc4ab3bcefc)
 
+## :lightbulb: 프로젝트를 통해 배운 부분
+
+- [react에서 debounce 기능 구현하기](https://osh6006.github.io/posts/react%EC%97%90%EC%84%9C-debounce-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0/)
+- [react에서 seo 최적화 해보기](https://osh6006.github.io/posts/react%EB%A1%9C-SEO-%EC%B5%9C%EC%A0%81%ED%99%94-%ED%95%98%EA%B8%B0/)
+- [react로 제네릭 컴포넌트 만들기](https://osh6006.github.io/posts/react-%EC%A0%9C%EB%84%A4%EB%A6%AD-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/)
+- [react와 react-router V6로 protected 경로 만들기](https://osh6006.github.io/posts/react%EC%99%80-react-router%EB%A1%9C-protected-%EA%B2%BD%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/)
+- [react와-zustand로 더 완벽한 modal 만들기](https://osh6006.github.io/posts/react%EC%99%80-zustand%EB%A1%9C-%EB%8D%94-%EC%99%84%EB%B2%BD%ED%95%9C-modal-%EB%A7%8C%EB%93%A4%EA%B8%B0/)
+- [React와 Zustand로 완벽한 다크모드 만들기](https://osh6006.github.io/posts/react%EC%99%80-zustand%EB%A1%9C-%EC%99%84%EB%B2%BD%ED%95%9C-%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0-with-tailwind-clsx/)
+
 ## :construction: 트러블 슈팅
 
+- [CORS Error 해결하기](https://osh6006.github.io/posts/react%EC%97%90%EC%84%9C-cors-%EC%97%90%EB%9F%AC-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0/)
+
+- [Lighthouse 점수 개선하기]()
+
 ## :roller_coaster: 개선해야 할 사항
+
+- PWA 설정
 
 ## :memo: 라이센스
 
