@@ -1,3 +1,4 @@
+import SEO from "components/seo/seo";
 import Title from "components/home/title";
 import Banner from "components/home/banner";
 import MoreArrow from "components/common/more-arrow";
@@ -7,8 +8,6 @@ import HomeNextTable from "components/home/home-next-table";
 import HomeContainer from "components/layouts/home-container";
 import HomeTeamRankTable from "components/home/home-team-rank-table";
 import HomePlayerRankTable from "components/home/home-player-rank-table";
-
-import SEO from "components/seo/seo";
 
 interface IHomePageProps {}
 

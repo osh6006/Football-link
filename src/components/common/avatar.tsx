@@ -23,6 +23,7 @@ const Avatar: React.FunctionComponent<IAvatarProps> = ({ imgUrl, size }) => {
             alt="avatar"
             className={clsx(`aspect-square rounded-full`)}
             width={sizeObj[size]}
+            height={sizeObj[size]}
           />
         </>
       ) : (
