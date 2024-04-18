@@ -35,12 +35,12 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
             <HomeNextTable />
           </div>
         </div>
-        <div className="h-[460px] w-full">
+        <div className="">
           <Title>
             News
             <MoreArrow path="/news" />
           </Title>
-          {/* <HomeNewsTable /> */}
+          <HomeNewsTable />
         </div>
 
         <div className="mt-12 space-y-2">
