@@ -64,7 +64,7 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = () => {
                 effect="opacity"
                 src={nextMatch?.teams.home.logo}
                 alt="home"
-                className="w-32 sm:w-40"
+                className="aspect-square w-32 sm:w-40"
               />
               <h2 className="text-center font-bold sm:text-lg">
                 {nextMatch?.teams.home.name}
@@ -78,7 +78,7 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = () => {
                 effect="opacity"
                 src={nextMatch?.teams.away.logo}
                 alt="away"
-                className="w-32 sm:w-40"
+                className="aspect-square w-32 sm:w-40"
               />
               <h1 className="text-center font-bold sm:text-lg">
                 {nextMatch?.teams.away.name}

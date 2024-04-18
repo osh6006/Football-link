@@ -64,7 +64,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
                 effect="opacity"
                 src={liveMatch ? liveMatch[0]?.teams.home.logo : ""}
                 alt="home"
-                className="rounded-full"
+                className="aspect-square w-32 rounded-full sm:w-40"
               />
               <p>{liveMatch ? liveMatch[0]?.teams.home.name : "unknown"}</p>
             </div>
@@ -76,7 +76,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
                 effect="opacity"
                 src={liveMatch ? liveMatch[0]?.teams.away.logo : ""}
                 alt="away"
-                className="rounded-full"
+                className="aspect-square w-32 rounded-full sm:w-40"
               />
               <p>{liveMatch ? liveMatch[0]?.teams.away.name : "unknown"}</p>
             </div>

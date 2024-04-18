@@ -23,22 +23,6 @@ const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
     true,
   );
 
-  if (isLoading) {
-    return (
-      <ComponentStatusContainer height="300" state="loading">
-        <Loading size="md" />
-      </ComponentStatusContainer>
-    );
-  }
-
-  if (isError) {
-    return (
-      <ComponentStatusContainer height="300" state="loading">
-        <Loading size="md" />
-      </ComponentStatusContainer>
-    );
-  }
-
   const responsive: ResponsiveType = {
     desktop: {
       breakpoint: { max: 3000, min: 1400 },
@@ -75,11 +59,27 @@ const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
     },
   };
 
+  if (isLoading) {
+    return (
+      <ComponentStatusContainer height="300" state="loading">
+        <Loading size="md" />
+      </ComponentStatusContainer>
+    );
+  }
+
+  if (isError) {
+    return (
+      <ComponentStatusContainer height="300" state="loading">
+        <Loading size="md" />
+      </ComponentStatusContainer>
+    );
+  }
+
   return (
     <div
       className={componentBackgroundChange(
         theme,
-        "mt-2 w-full rounded-md p-4 shadow-md",
+        "mt-2 h-full w-full rounded-md p-4 shadow-md ",
       )}
     >
       <Carousel
