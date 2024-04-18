@@ -53,7 +53,7 @@
 
 ## :dart: 프로젝트 소개
 
-[Demo <-여기에서 Football-link를 확인하세요]()
+[Demo <-여기에서 Football-link를 확인하세요](https://football-link.vercel.app/)
 
 환영합니다! 축구는 세계적으로 가장 인기 있는 스포츠 중 하나로, 수많은 팬들에게 열정과 즐거움을 안겨주고 있습니다. **Football Link** 웹 사이트는 축구를 사랑하는 여러분들을 위한 통합 정보 플랫폼으로, 다양한 나라와 해당 국가에 맞는 리그의 축구 정보를 제공합니다.
 
@@ -297,6 +297,7 @@ $ npm start
 ## :roller_coaster: 개선해야 할 사항
 
 - PWA 설정
+- 배팅 사이트 예측 추가
 
 ## :memo: 라이센스
 
