@@ -1,15 +1,14 @@
 import clsx from "clsx";
 import { componentBackgroundChange } from "utils/util";
 
-import Loading from "components/common/loading";
+import HomeSkeleton from "./home-skeleton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { useTheme } from "stores/theme-store";
-
-import "react-lazy-load-image-component/src/effects/opacity.css";
 import { useLeagueStore } from "stores/league-store";
 import { useLiveMathesQuery } from "hooks/services/quries/use-live-query";
-import HomeSkeleton from "./home-skeleton";
+
+import "react-lazy-load-image-component/src/effects/opacity.css";
 
 interface IHomeLiveTableProps {}
 
@@ -47,7 +46,9 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
         <div className="flex h-full w-full items-center justify-center p-2 text-xl font-bold">
           There are no matches in progress 🤔
         </div>
-      ) : (
+      ) : null}
+
+      {isSuccess && liveMatch && liveMatch.length !== 0 ? (
         <>
           -
           <div className="flex w-fit select-none items-center gap-x-2 rounded-md px-2 py-1 uppercase shadow-md">
@@ -86,7 +87,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
             liveMatch ? liveMatch[0]?.fixture.venue.name : "unknown"
           } / ${liveMatch ? liveMatch[0]?.fixture.venue.city : "unknown"}`}</p>
         </>
-      )}
+      ) : null}
     </div>
   );
 };

@@ -1,16 +1,13 @@
 import clsx from "clsx";
 import dayjs from "dayjs";
-import Loading from "components/common/loading";
-import { componentBackgroundChange } from "utils/util";
 
+import HomeSkeleton from "./home-skeleton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { useTheme } from "stores/theme-store";
-
+import { useLeagueStore } from "stores/league-store";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 import { useNextMatchQuery } from "hooks/services/quries/use-schedule-query";
-import { useLeagueStore } from "stores/league-store";
-import HomeSkeleton from "./home-skeleton";
 
 interface IHomeNextTableProps {}
 
@@ -36,10 +33,9 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = () => {
       {isLoading ? <HomeSkeleton /> : null}
       {isError ? (
         <div
-          className={componentBackgroundChange(
-            theme,
-            "flex min-h-[290px] w-full items-center justify-center rounded-md p-2 text-xl font-bold shadow-md sm:min-w-[500px]",
-          )}
+          className={
+            "flex min-h-[290px] w-full items-center justify-center rounded-md p-2 text-xl font-bold sm:min-w-[500px]"
+          }
         >
           {error?.message || "Something Error"}
         </div>
@@ -48,7 +44,8 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = () => {
         <div className="flex h-full w-full items-center justify-center p-2 text-xl font-bold">
           There are not next matches 🤔
         </div>
-      ) : (
+      ) : null}
+      {isSuccess && nextMatch ? (
         <>
           <time className="text-lg">
             {dayjs(nextMatch?.fixture.date).format("YYYY-MM-DD HH:mm")}
@@ -87,7 +84,7 @@ const HomeNextTable: React.FunctionComponent<IHomeNextTableProps> = () => {
           </div>
           <p className="text-center font-bold sm:text-lg">{`${nextMatch?.fixture.venue.name} / ${nextMatch?.fixture.venue.city}`}</p>
         </>
-      )}
+      ) : null}
     </div>
   );
 };

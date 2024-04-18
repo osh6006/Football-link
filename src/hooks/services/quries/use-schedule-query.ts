@@ -23,8 +23,6 @@ export const useNextMatchQuery = (leagueId: number) => {
 };
 
 export const useSeasonScheduleQuery = (season: number, leagueId: number) => {
-  console.log(season, leagueId);
-
   return useQuery({
     queryKey: [scheduleQueryKey.useSeasonQuery, season, leagueId],
     queryFn: ({ queryKey }) => getSeasonSchedule(+queryKey[1], +queryKey[2]),
