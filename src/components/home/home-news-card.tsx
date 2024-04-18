@@ -33,6 +33,7 @@ const HomeNewsCard: React.FunctionComponent<IHomeNewsCardProps> = ({
         <LazyLoadImage
           alt="news-thumbnail"
           src={imgUrl}
+          height={200}
           className="aspect-video w-full rounded-md object-fill"
         />
         <h2 className="text-xl font-bold">{title}</h2>
