@@ -20,6 +20,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
     data: liveMatch,
     isLoading,
     isError,
+    isSuccess,
     error,
   } = useLiveMathesQuery(selectedLeague?.leagueId!);
 
@@ -42,7 +43,7 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
         </div>
       ) : null}
 
-      {!isLoading && !isError && liveMatch && liveMatch.length === 0 ? (
+      {isSuccess && liveMatch && liveMatch.length === 0 ? (
         <div className="flex h-full w-full items-center justify-center p-2 text-xl font-bold">
           There are no matches in progress 🤔
         </div>

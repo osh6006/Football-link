@@ -12,13 +12,15 @@ import "react-multi-carousel/lib/styles.css";
 import { useLeagueStore } from "stores/league-store";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { ArrowFix } from "components/common/util";
+import HomeNewsSkeleton from "./home-news-skeleton";
+import { error } from "console";
 
 interface IHomeNewTableProps {}
 
 const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
   const theme = useTheme();
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
-  const { data, isLoading, isError } = useGlobalNewsQuery(
+  const { data, isLoading, isError, isSuccess } = useGlobalNewsQuery(
     selectedLeague?.name!,
     true,
   );
@@ -59,81 +61,73 @@ const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
     },
   };
 
-  if (isLoading) {
-    return (
-      <ComponentStatusContainer height="300" state="loading">
-        <Loading size="md" />
-      </ComponentStatusContainer>
-    );
-  }
-
-  if (isError) {
-    return (
-      <ComponentStatusContainer height="300" state="loading">
-        <Loading size="md" />
-      </ComponentStatusContainer>
-    );
-  }
-
   return (
     <div
       className={componentBackgroundChange(
         theme,
-        "mt-2 h-full w-full rounded-md p-4 shadow-md ",
+        "mt-2 min-h-[400px] w-full rounded-md p-4 shadow-md ",
       )}
     >
-      <Carousel
-        arrows
-        infinite
-        swipeable
-        draggable
-        rtl={false}
-        pauseOnHover
-        itemClass=""
-        sliderClass=""
-        rewind={false}
-        keyBoardControl
-        dotListClass=""
-        showDots={false}
-        slidesToSlide={1}
-        centerMode={false}
-        shouldResetAutoplay
-        autoPlaySpeed={3000}
-        focusOnSelect={false}
-        minimumTouchDrag={80}
-        additionalTransfrom={0}
-        responsive={responsive}
-        renderDotsOutside={false}
-        rewindWithAnimation={false}
-        renderArrowsWhenDisabled={false}
-        renderButtonGroupOutside={false}
-        containerClass="container-with-dots"
-        customLeftArrow={
-          <ArrowFix className="absolute left-4 cursor-pointer rounded-full bg-black/40 p-1.5 text-white transition-colors hover:bg-black/80">
-            <ChevronLeftIcon />
-          </ArrowFix>
-        }
-        customRightArrow={
-          <ArrowFix className="absolute right-4 cursor-pointer rounded-full bg-black/40 p-1.5 text-white transition-colors hover:bg-black/80">
-            <ChevronRightIcon />
-          </ArrowFix>
-        }
-        className="w-full overflow-hidden"
-      >
-        {data?.map((el, i) => {
-          return (
-            <HomeNewsCard
-              author={el.author}
-              imgUrl={el.urlToImage}
-              title={el.title}
-              url={el.url}
-              desc={el.description}
-              date={el.publishedAt}
-              key={el.title + el.description}
-            />
-          );
-        })}
-      </Carousel>
+      {isLoading ? <HomeNewsSkeleton /> : null}
+      {isError ? (
+        <div className="flex h-[300px] w-full items-center justify-center text-xl font-bold ">
+          There's been an error on the server 🤮
+        </div>
+      ) : null}
+      {isSuccess ? (
+        <Carousel
+          arrows
+          infinite
+          swipeable
+          draggable
+          rtl={false}
+          pauseOnHover
+          itemClass=""
+          sliderClass=""
+          rewind={false}
+          keyBoardControl
+          dotListClass=""
+          showDots={false}
+          slidesToSlide={1}
+          centerMode={false}
+          shouldResetAutoplay
+          autoPlaySpeed={3000}
+          focusOnSelect={false}
+          minimumTouchDrag={80}
+          additionalTransfrom={0}
+          responsive={responsive}
+          renderDotsOutside={false}
+          rewindWithAnimation={false}
+          renderArrowsWhenDisabled={false}
+          renderButtonGroupOutside={false}
+          containerClass="container-with-dots"
+          customLeftArrow={
+            <ArrowFix className="absolute left-4 cursor-pointer rounded-full bg-black/40 p-1.5 text-white transition-colors hover:bg-black/80">
+              <ChevronLeftIcon />
+            </ArrowFix>
+          }
+          customRightArrow={
+            <ArrowFix className="absolute right-4 cursor-pointer rounded-full bg-black/40 p-1.5 text-white transition-colors hover:bg-black/80">
+              <ChevronRightIcon />
+            </ArrowFix>
+          }
+          className="w-full overflow-hidden"
+        >
+          {data?.map((el, i) => {
+            return (
+              <HomeNewsCard
+                author={el.author}
+                imgUrl={el.urlToImage}
+                title={el.title}
+                url={el.url}
+                desc={el.description}
+                date={el.publishedAt}
+                key={el.title + el.description}
+              />
+            );
+          })}
+        </Carousel>
+      ) : null}
     </div>
   );
 };
