@@ -40,7 +40,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
             News
             <MoreArrow path="/news" />
           </Title>
-          <HomeNewsTable />
+          {/* <HomeNewsTable /> */}
         </div>
 
         <div className="mt-12 space-y-2">
