@@ -49,11 +49,11 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
         </div>
       ) : (
         <>
+          -
           <div className="flex w-fit select-none items-center gap-x-2 rounded-md px-2 py-1 uppercase shadow-md">
             <p className="text-lg font-bold">live</p>
-            <div className="h-3 w-3 rounded-full bg-green-500"></div>
+            <div className="bggreen-500 h-3 w-3 rounded-full"></div>
           </div>
-
           <div
             className={clsx(
               `flex min-h-[200px] w-full items-center justify-around rounded-md border-MediumGrey text-MediumGrey`,

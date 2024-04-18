@@ -19,7 +19,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
       {/* left */}
       <div className="max-w-[1100px] xl:mx-auto">
         <Banner />
-        <div className="my-4 flex w-full flex-col justify-between gap-x-4 xl:flex-row">
+        <div className="my-4 flex w-full flex-col justify-between gap-4 xl:flex-row">
           <div className="flex-1 space-y-2">
             <Title>
               Live Match
@@ -36,7 +36,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
             <HomeNextTable />
           </div>
         </div>
-        <div className="w-full">
+        <div className="h-[460px] w-full">
           <Title>
             News
             <MoreArrow path="/news" />
@@ -44,7 +44,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
           <HomeNewsTable />
         </div>
 
-        <div className="my-2 space-y-2">
+        <div className="mt-12 space-y-2">
           <Title>
             Rank
             <MoreArrow path="/rank" />
@@ -54,7 +54,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
       </div>
 
       {/* right */}
-      <div className="mx-auto w-full max-w-[1100px] space-y-4">
+      <div className="mx-auto w-full max-w-[1100px] space-y-4 py-2">
         <div className="space-y-2">
           <Title>
             Top scorer

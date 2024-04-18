@@ -1,19 +1,16 @@
 import { componentBackgroundChange } from "utils/util";
 
-import Carousel, { ResponsiveType } from "react-multi-carousel";
 import HomeNewsCard from "./home-news-card";
-import Loading from "components/common/loading";
-import ComponentStatusContainer from "components/layouts/component-status-container";
+import { ArrowFix } from "components/common/util";
+import HomeNewsSkeleton from "./home-news-skeleton";
+import Carousel, { ResponsiveType } from "react-multi-carousel";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 import { useTheme } from "stores/theme-store";
 import { useGlobalNewsQuery } from "hooks/services/quries/use-news-query";
+import { useLeagueStore } from "stores/league-store";
 
 import "react-multi-carousel/lib/styles.css";
-import { useLeagueStore } from "stores/league-store";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { ArrowFix } from "components/common/util";
-import HomeNewsSkeleton from "./home-news-skeleton";
-import { error } from "console";
 
 interface IHomeNewTableProps {}
 
@@ -65,12 +62,12 @@ const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
     <div
       className={componentBackgroundChange(
         theme,
-        "mt-2 min-h-[400px] w-full rounded-md p-4 shadow-md ",
+        "mt-2 h-full w-full rounded-md p-4 shadow-md ",
       )}
     >
       {isLoading ? <HomeNewsSkeleton /> : null}
       {isError ? (
-        <div className="flex h-[300px] w-full items-center justify-center text-xl font-bold ">
+        <div className="flex h-full w-full items-center justify-center text-xl font-bold ">
           There's been an error on the server 🤮
         </div>
       ) : null}

@@ -26,7 +26,7 @@ const HomeNewsCard: React.FunctionComponent<IHomeNewsCardProps> = ({
 
   return (
     <div
-      className="flex h-full w-full cursor-pointer flex-col justify-between overflow-hidden rounded-md p-2 shadow-md transition-all hover:scale-105"
+      className="flex h-full w-full cursor-pointer flex-col justify-between overflow-hidden rounded-md p-2 transition-all hover:scale-105"
       onClick={() => openInNewTab(url)}
     >
       <div className="space-y-2">
