@@ -25,14 +25,16 @@ const HomeNewsCard: React.FunctionComponent<IHomeNewsCardProps> = ({
 
   return (
     <div
-      className="flex h-full w-full cursor-pointer flex-col justify-between overflow-hidden rounded-md p-2 transition-all hover:scale-105"
+      className="flex h-full w-full cursor-pointer flex-col justify-between overflow-hidden rounded-md  p-2 transition-all hover:scale-105"
       onClick={() => openInNewTab(url)}
     >
       <div className="space-y-2">
-        <img
-          alt="news-thumbnail"
-          src={imgUrl}
-          className="aspect-video rounded-md object-fill"
+        <div
+          style={{
+            backgroundImage: `url(${imgUrl})`,
+            backgroundRepeat: "no-repeat",
+          }}
+          className="h-[200px] w-full rounded-md bg-cover bg-center "
         />
         <h2 className="text-xl font-bold">{title}</h2>
         <p>{desc.length > 150 ? desc.slice(0, 150) + "..." : desc}</p>

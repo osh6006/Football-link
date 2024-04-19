@@ -61,7 +61,7 @@ const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
   };
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <Title>
         News
         <MoreArrow path="/news" />
@@ -69,7 +69,7 @@ const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
       <div
         className={componentBackgroundChange(
           theme,
-          "mt-2 h-full w-full rounded-md p-4 shadow-md ",
+          "mt-2 w-full rounded-md p-4 shadow-md ",
         )}
       >
         {isLoading ? <HomeNewsSkeleton /> : null}
@@ -115,7 +115,6 @@ const HomeNewsTable: React.FunctionComponent<IHomeNewTableProps> = () => {
                 <ChevronRightIcon />
               </ArrowFix>
             }
-            className="w-full overflow-hidden"
           >
             {data?.map((el, i) => {
               return (
