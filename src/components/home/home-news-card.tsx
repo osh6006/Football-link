@@ -30,7 +30,7 @@ const HomeNewsCard: React.FunctionComponent<IHomeNewsCardProps> = ({
       onClick={() => openInNewTab(url)}
     >
       <div className="space-y-2">
-        <LazyLoadImage
+        <img
           alt="news-thumbnail"
           src={imgUrl}
           height={200}
