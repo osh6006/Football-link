@@ -33,8 +33,7 @@ const HomeNewsCard: React.FunctionComponent<IHomeNewsCardProps> = ({
         <img
           alt="news-thumbnail"
           src={imgUrl}
-          height={200}
-          className="aspect-video w-full rounded-md object-fill"
+          className="aspect-video rounded-md object-fill"
         />
         <h2 className="text-xl font-bold">{title}</h2>
         <p>{desc.length > 150 ? desc.slice(0, 150) + "..." : desc}</p>
