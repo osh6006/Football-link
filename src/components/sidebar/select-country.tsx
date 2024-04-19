@@ -21,7 +21,7 @@ const SelectCountry: React.FunctionComponent<ISelectCountryProps> = (props) => {
   const countries = iso.all().map((el) => {
     return {
       ...el,
-      flag: `http://purecatamphetamine.github.io/country-flag-icons/3x2/${el.alpha2.toUpperCase()}.svg`,
+      flag: `https://purecatamphetamine.github.io/country-flag-icons/3x2/${el.alpha2.toUpperCase()}.svg`,
     };
   });
   const country = useCountryStore((state) => state.selectedCountry);
@@ -63,7 +63,7 @@ const SelectCountry: React.FunctionComponent<ISelectCountryProps> = (props) => {
       renderInput={(country) => (
         <div className="flex items-center">
           {country ? (
-            <LazyLoadImage
+            <img
               className="absolute left-3 h-6 w-6 shadow-md"
               src={country?.flag}
               alt={country?.alpha2}
