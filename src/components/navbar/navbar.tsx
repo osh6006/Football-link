@@ -58,7 +58,7 @@ const Navbar = () => {
               onClick={toggleSearchBar}
               className="transition-colors hover:text-Main"
             >
-              <SearchIcon className="mb-1" />
+              <SearchIcon className="mb-1" size={25} />
             </button>
             <AvatarMenu user={user!} size="md" />
           </div>

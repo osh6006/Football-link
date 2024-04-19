@@ -1,8 +1,7 @@
 import clsx from "clsx";
 
-import Loading from "components/common/loading";
 import Carousel from "react-multi-carousel";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
+import Loading from "components/common/loading";
 
 import { useTheme } from "stores/theme-store";
 import { useBannerQuery } from "hooks/services/quries/use-banner-query";
@@ -74,48 +73,44 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
 
   if (isSuccess) {
     return (
-      <LazyLoadComponent>
-        <Carousel
-          additionalTransfrom={0}
-          arrows={false}
-          autoPlay
-          autoPlaySpeed={3000}
-          centerMode={false}
-          className="rounded-md"
-          containerClass="container"
-          dotListClass=""
-          draggable
-          focusOnSelect={false}
-          infinite
-          itemClass=""
-          keyBoardControl
-          minimumTouchDrag={80}
-          pauseOnHover
-          renderArrowsWhenDisabled={false}
-          renderButtonGroupOutside={false}
-          responsive={responsive}
-          rewind={false}
-          rewindWithAnimation={false}
-          rtl={false}
-          showDots={true}
-          shouldResetAutoplay
-          renderDotsOutside
-          slidesToSlide={1}
-          swipeable
-        >
-          {banners?.map((banner) => (
-            <div
-              style={{
-                backgroundImage: `url("${BASE_URL}/storage/v1/object/public/spolink/banner_images/${banner.name}")`,
-              }}
-              key={banner.id}
-              className={
-                "flex h-[350px] w-full bg-cover bg-center bg-no-repeat"
-              }
-            />
-          ))}
-        </Carousel>
-      </LazyLoadComponent>
+      <Carousel
+        additionalTransfrom={0}
+        arrows={false}
+        autoPlay
+        autoPlaySpeed={3000}
+        centerMode={false}
+        className="rounded-md"
+        containerClass="container"
+        dotListClass=""
+        draggable
+        focusOnSelect={false}
+        infinite
+        itemClass=""
+        keyBoardControl
+        minimumTouchDrag={80}
+        pauseOnHover
+        renderArrowsWhenDisabled={false}
+        renderButtonGroupOutside={false}
+        responsive={responsive}
+        rewind={false}
+        rewindWithAnimation={false}
+        rtl={false}
+        showDots={true}
+        shouldResetAutoplay
+        renderDotsOutside
+        slidesToSlide={1}
+        swipeable
+      >
+        {banners?.map((banner) => (
+          <div
+            style={{
+              backgroundImage: `url("${BASE_URL}/storage/v1/object/public/spolink/banner_images/${banner.name}")`,
+            }}
+            key={banner.id}
+            className={"flex h-[350px] w-full bg-cover bg-center bg-no-repeat"}
+          />
+        ))}
+      </Carousel>
     );
   }
 

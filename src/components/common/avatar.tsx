@@ -3,7 +3,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const sizeObj = {
   sm: 20,
-  md: 32,
+  md: 30,
   lg: 40,
   xl: 50,
 };

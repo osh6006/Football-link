@@ -8,6 +8,8 @@ import { useTheme } from "stores/theme-store";
 import { useNavigate } from "react-router-dom";
 import { useLeagueStore } from "stores/league-store";
 import { useTopPlayerQuery } from "hooks/services/quries/use-rank-query";
+import MoreArrow from "components/common/more-arrow";
+import Title from "./title";
 
 interface IHomePlayerRankTableProps {
   type: "assist" | "goal";
@@ -64,66 +66,72 @@ const HomePlayerRankTable: React.FunctionComponent<
   }
 
   return (
-    <div
-      className={clsx(
-        `overflow-x-auto rounded-lg border-b border-r border-MediumGrey shadow-md`,
-        theme === "light" && "bg-White",
-        theme === "dark" && "bg-VeryDarkGreyDark",
-      )}
-    >
-      <table className="min-w-full  divide-gray-200 ">
-        <thead className="text-base font-semibold">
-          <tr>
-            <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500 sm:px-4">
-              Rank
-            </th>
-            <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500 sm:px-4">
-              Name
-            </th>
+    <div className="space-y-2">
+      <Title>
+        {type === "goal" ? "Top Scorers" : "Top Assists"}
+        <MoreArrow path="/rank" />
+      </Title>
+      <div
+        className={clsx(
+          `overflow-x-auto rounded-lg border-b border-r border-MediumGrey shadow-md`,
+          theme === "light" && "bg-White",
+          theme === "dark" && "bg-VeryDarkGreyDark",
+        )}
+      >
+        <table className="min-w-full  divide-gray-200 ">
+          <thead className="text-base font-semibold">
+            <tr>
+              <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500 sm:px-4">
+                Rank
+              </th>
+              <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500 sm:px-4">
+                Name
+              </th>
 
-            <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500 sm:px-4">
-              {type === "goal" && "Goal"}
-              {type === "assist" && "Assist"}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {topscorers?.map((item, index) => {
-            if (index > 5) return null;
-            return (
-              <tr
-                key={index}
-                className="cursor-pointer transition-colors hover:bg-Main hover:text-White"
-                onClick={() =>
-                  nav(
-                    `/football/${selectedLeague?.leagueId}/player/${item.player.id}/info`,
-                  )
-                }
-              >
-                <td
-                  className={clsx(
-                    "whitespace-nowrap border-gray-200 px-2 py-4 sm:px-4",
-                  )}
+              <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500 sm:px-4">
+                {type === "goal" && "Goal"}
+                {type === "assist" && "Assist"}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {topscorers?.map((item, index) => {
+              if (index > 5) return null;
+              return (
+                <tr
+                  key={index}
+                  className="cursor-pointer transition-colors hover:bg-Main hover:text-White"
+                  onClick={() =>
+                    nav(
+                      `/football/${selectedLeague?.leagueId}/player/${item.player.id}/info`,
+                    )
+                  }
                 >
-                  {index + 1}
-                </td>
-                <td className="whitespace-nowrap  border-gray-200 px-2 py-4 sm:px-4">
-                  <div className=" flex items-center gap-x-3">
-                    <div className="flex cursor-pointer items-center gap-x-2 whitespace-nowrap ">
-                      <Avatar imgUrl={item.player.photo} size="md" />
-                      <span>{item.player?.name}</span>
+                  <td
+                    className={clsx(
+                      "whitespace-nowrap border-gray-200 px-2 py-4 sm:px-4",
+                    )}
+                  >
+                    {index + 1}
+                  </td>
+                  <td className="whitespace-nowrap  border-gray-200 px-2 py-4 sm:px-4">
+                    <div className=" flex items-center gap-x-3">
+                      <div className="flex cursor-pointer items-center gap-x-2 whitespace-nowrap ">
+                        <Avatar imgUrl={item.player.photo} size="md" />
+                        <span>{item.player?.name}</span>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td className="whitespace-nowrap border-gray-200 px-6 py-4 ">
-                  {type === "goal" && item?.statistics[0].goals.total}
-                  {type === "assist" && item?.statistics[0].goals.assists}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                  </td>
+                  <td className="whitespace-nowrap border-gray-200 px-6 py-4 ">
+                    {type === "goal" && item?.statistics[0].goals.total}
+                    {type === "assist" && item?.statistics[0].goals.assists}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
