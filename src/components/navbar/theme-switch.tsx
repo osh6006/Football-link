@@ -25,6 +25,7 @@ const ThemeSwitch: React.FunctionComponent<IThemeSwitchProps> = () => {
           <input
             type="checkbox"
             value=""
+            aria-label="theme-switcher"
             className="peer sr-only"
             onChange={handleChange}
             checked={theme === "dark"}

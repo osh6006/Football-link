@@ -55,6 +55,7 @@ const Navbar = () => {
         {user ? (
           <div className="flex items-center gap-x-2">
             <button
+              aria-label="search-button"
               onClick={toggleSearchBar}
               className="transition-colors hover:text-Main"
             >
@@ -63,7 +64,12 @@ const Navbar = () => {
             <AvatarMenu user={user!} size="md" />
           </div>
         ) : (
-          <Button color="main" onClick={() => nav("/auth")} size="sm">
+          <Button
+            color="main"
+            aria-label="login-btn"
+            onClick={() => nav("/auth")}
+            size="sm"
+          >
             Sign In
           </Button>
         )}
