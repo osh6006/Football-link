@@ -37,6 +37,8 @@ const SelectCountry: React.FunctionComponent<ISelectCountryProps> = (props) => {
     filteredItems: countryFilterItems,
   } = useSelectBox<ICountry>("country", countries);
 
+  console.log(countries);
+
   return (
     <ComboBox
       label="Country"

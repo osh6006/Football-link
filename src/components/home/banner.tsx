@@ -1,18 +1,19 @@
 import clsx from "clsx";
+import Autoplay from "embla-carousel-autoplay";
 
-import Carousel from "react-multi-carousel";
 import Loading from "components/common/loading";
 
 import { useTheme } from "stores/theme-store";
+import useEmblaCarousel from "embla-carousel-react";
 import { useBannerQuery } from "hooks/services/quries/use-banner-query";
 
-import "react-multi-carousel/lib/styles.css";
+import styles from "./banner.module.css";
 
 interface IBannerProps {}
 
 const Banner: React.FunctionComponent<IBannerProps> = () => {
   const theme = useTheme();
-
+  const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
   const { data: banners, isLoading, isError, isSuccess } = useBannerQuery();
 
   if (isLoading) {
@@ -47,70 +48,23 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
     );
   }
 
-  const responsive = {
-    desktop: {
-      breakpoint: {
-        max: 3000,
-        min: 1024,
-      },
-      items: 1,
-    },
-    mobile: {
-      breakpoint: {
-        max: 464,
-        min: 0,
-      },
-      items: 1,
-    },
-    tablet: {
-      breakpoint: {
-        max: 1024,
-        min: 464,
-      },
-      items: 1,
-    },
-  };
-
   if (isSuccess) {
     return (
-      <Carousel
-        additionalTransfrom={0}
-        arrows={false}
-        autoPlay
-        autoPlaySpeed={3000}
-        centerMode={false}
-        className="rounded-md"
-        containerClass="container"
-        dotListClass=""
-        draggable
-        focusOnSelect={false}
-        infinite
-        itemClass=""
-        keyBoardControl
-        minimumTouchDrag={80}
-        pauseOnHover
-        renderArrowsWhenDisabled={false}
-        renderButtonGroupOutside={false}
-        responsive={responsive}
-        rewind={false}
-        rewindWithAnimation={false}
-        rtl={false}
-        showDots={true}
-        shouldResetAutoplay
-        renderDotsOutside
-        slidesToSlide={1}
-        swipeable
-      >
-        {banners?.map((banner) => (
-          <div
-            style={{
-              backgroundImage: `url("${BASE_URL}/storage/v1/object/public/spolink/banner_images/${banner.name}")`,
-            }}
-            key={banner.id}
-            className={"flex h-[350px] w-full bg-cover bg-center bg-no-repeat"}
-          />
-        ))}
-      </Carousel>
+      <section className={styles.embla}>
+        <div className={styles.embla__viewport} ref={emblaRef}>
+          <div className={styles.embla__container}>
+            {banners.map((el) => (
+              <div className={styles.embla__slide} key={el.id}>
+                <img
+                  className={styles.embla__slide__img}
+                  src={`${BASE_URL}/storage/v1/object/public/spolink/banner_images/${el.name}`}
+                  alt="Your alt text"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     );
   }
 
