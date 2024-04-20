@@ -291,8 +291,7 @@ $ npm start
 ## :construction: 트러블 슈팅
 
 - [CORS Error 해결하기](https://osh6006.github.io/posts/react%EC%97%90%EC%84%9C-cors-%EC%97%90%EB%9F%AC-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0/)
-
-- [Lighthouse 점수 개선하기]()
+- [Lighthouse 점수 개선하기](https://osh6006.github.io/posts/react%EB%A1%9C-lighthouse-%EC%A0%90%EC%88%98-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0/)
 
 ## :roller_coaster: 개선해야 할 사항
 
