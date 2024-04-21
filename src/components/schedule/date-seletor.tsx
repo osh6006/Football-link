@@ -1,4 +1,4 @@
-import { Fragment, useMemo } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 import dayjs from "dayjs";
 import styles from "./date-calendar.module.css";
@@ -6,6 +6,7 @@ import styles from "./date-calendar.module.css";
 import { Menu, Transition } from "@headlessui/react";
 import { ClassNames, DateRange, DayPicker } from "react-day-picker";
 
+import useDebounce from "hooks/use-debounce";
 import { useTheme } from "stores/theme-store";
 
 import { ILeagueSeason } from "types";
@@ -22,6 +23,7 @@ const DateSelector: React.FunctionComponent<IDateSelecotrProps> = ({
   setDateRange,
 }) => {
   const theme = useTheme();
+  const [isMobile, setIsMobile] = useState(false);
 
   const classNames = useMemo<ClassNames>(() => {
     return {
@@ -30,11 +32,23 @@ const DateSelector: React.FunctionComponent<IDateSelecotrProps> = ({
     };
   }, []);
 
+  const handleResize = () => {
+    const width = window.innerWidth;
+    setIsMobile(width >= 0 && width <= 840);
+  };
+
+  const handleDebouncedResized = useDebounce(handleResize, 200);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleDebouncedResized);
+    return () => window.removeEventListener("resize", handleDebouncedResized);
+  }, [handleDebouncedResized]);
+
   return (
     <Menu as="div" className="relative">
       <Menu.Button
         className={clsx(
-          "flex h-full items-center justify-center gap-x-2 truncate rounded-xl  px-4 py-2 text-Main shadow-xl transition-colors hover:bg-Main hover:text-White",
+          "flex h-full w-full  items-center justify-center gap-x-2 truncate rounded-xl px-4 py-2 text-Main shadow-xl transition-colors hover:bg-Main hover:text-White",
           theme === "light" ? "bg-white" : "",
           theme === "dark" ? "bg-DarkGrey" : "",
         )}
@@ -66,8 +80,8 @@ const DateSelector: React.FunctionComponent<IDateSelecotrProps> = ({
             e.stopPropagation();
           }}
           className={clsx(
-            `absolute left-24 z-50 mt-4 hidden -translate-x-[50%] overflow-hidden rounded-md  px-8 
-       text-MediumGrey shadow-lg focus:outline-none sm:block sm:text-sm`,
+            `absolute  z-50 mt-4 flex w-full min-w-[300px] items-center justify-center overflow-hidden rounded-md px-8  text-MediumGrey  shadow-lg 
+       focus:outline-none  sm:block sm:w-fit sm:-translate-x-[50%] sm:text-sm`,
             theme === "light" ? "bg-white" : "",
             theme === "dark" ? "bg-DarkGrey" : "",
           )}
@@ -80,7 +94,7 @@ const DateSelector: React.FunctionComponent<IDateSelecotrProps> = ({
             mode="range"
             defaultMonth={currentRange?.to}
             selected={currentRange}
-            numberOfMonths={2}
+            numberOfMonths={isMobile ? 1 : 2}
             pagedNavigation
             classNames={classNames}
             weekStartsOn={0}

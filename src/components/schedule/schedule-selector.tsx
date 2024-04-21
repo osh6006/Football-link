@@ -29,7 +29,7 @@ const ScheduleSelector: React.FunctionComponent<IScheduleSelectorProps> = ({
   return (
     <div
       className={clsx(
-        "sticky top-[55px] z-50  mx-auto flex w-[95%] justify-center gap-x-4 rounded-md bg-LightGreyLightBg p-5",
+        "sticky top-[55px] z-50  mx-auto flex w-[95%] flex-col justify-center gap-4 rounded-md bg-LightGreyLightBg p-5 sm:flex-row ",
         theme === "light" ? "bg-LightGreyLightBg" : "",
         theme === "dark" ? "bg-VeryDarkGreyDark" : "",
       )}

@@ -1,15 +1,17 @@
 import clsx from "clsx";
+import { useNavigate } from "react-router-dom";
 import Loading from "components/common/loading";
 import {
   usePlayerSearchQuery,
   useTeamSearchQuery,
 } from "hooks/services/quries/use-search-query";
-import useDebounce from "hooks/use-debounce";
+
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useNavigate } from "react-router-dom";
-import { useLeagueStore } from "stores/league-store";
-import { useSearch } from "stores/search-store";
+
 import { useTheme } from "stores/theme-store";
+import { useSearch } from "stores/search-store";
+import { useLeagueStore } from "stores/league-store";
+import useSearchDebounce from "hooks/use-search-debounce";
 
 interface SearchResultListProps<T> {
   list: T[];
@@ -55,7 +57,7 @@ function TeamSearchResult() {
 
   const keyword = useSearch((state) => state.keyword);
   const setIsSearchbarOpen = useSearch((state) => state.setIsOpen);
-  const debouncedSearch = useDebounce(keyword, 300);
+  const debouncedSearch = useSearchDebounce(keyword, 300);
 
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 
@@ -109,7 +111,7 @@ function PlayerSearchResult() {
 
   const keyword = useSearch((state) => state.keyword);
   const setIsSearchbarOpen = useSearch((state) => state.setIsOpen);
-  const debouncedSearch = useDebounce(keyword, 300);
+  const debouncedSearch = useSearchDebounce(keyword, 300);
 
   const selectedLeague = useLeagueStore((state) => state.selectedLeague);
 

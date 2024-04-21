@@ -28,7 +28,7 @@ const SeasonSelecor: React.FunctionComponent<ISeasonSelecorProps> = ({
     <Menu as="div" className="relative ">
       <Menu.Button
         className={clsx(
-          "relative flex gap-x-4 rounded-xl  px-4 py-4 text-Main shadow-xl transition-colors hover:bg-Main hover:text-White",
+          "relative flex w-full justify-center gap-x-4 rounded-xl  px-4 py-4 text-Main shadow-xl transition-colors hover:bg-Main hover:text-White",
           theme === "light" ? "bg-white" : "",
           theme === "dark" ? "bg-DarkGrey" : "",
         )}
@@ -65,8 +65,8 @@ const SeasonSelecor: React.FunctionComponent<ISeasonSelecorProps> = ({
             e.stopPropagation();
           }}
           className={clsx(
-            `absolute left-32 z-50 mt-4 grid w-[300px] -translate-x-[50%] grid-cols-2 items-center justify-center gap-2 overflow-hidden rounded-md  p-2
-      text-DarkGrey shadow-lg focus:outline-none sm:text-sm md:w-[500px]`,
+            `absolute z-50 mt-4 grid w-full  grid-cols-2 items-center justify-center gap-2 overflow-hidden rounded-md p-2 text-DarkGrey  shadow-lg
+      focus:outline-none sm:left-32 sm:min-w-[300px] sm:-translate-x-[50%] sm:text-sm`,
             theme === "light" ? "bg-white" : "",
             theme === "dark" ? "bg-DarkGrey" : "",
           )}

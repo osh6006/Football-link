@@ -1,17 +1,33 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
-export default function useDebounce(value: string, delay: number) {
-  const [debouncedValue, setDebouncedValue] = useState(value);
+// debounce 커스텀 훅
+const useDebounce = (callback: Function, delay: number) => {
+  const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
+
+  const debounceCallback = useCallback(
+    (...args: any[]) => {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+      const newTimerId = setTimeout(() => {
+        callback(...args);
+      }, delay);
+
+      setTimerId(newTimerId);
+    },
+    [callback, delay, timerId],
+  );
 
   useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
+    // 컴포넌트가 언마운트되면 타이머 제거
     return () => {
-      clearTimeout(handler);
+      if (timerId) {
+        clearTimeout(timerId);
+      }
     };
-  }, [value, delay]);
+  }, [timerId]);
 
-  return debouncedValue;
-}
+  return debounceCallback;
+};
+
+export default useDebounce;
