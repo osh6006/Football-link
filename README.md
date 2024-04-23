@@ -34,15 +34,15 @@
 <hr> -->
 
 <p align="center">
-  <a href="#dart">프로젝트 소개</a> &#xa0; | &#xa0; 
-  <a href="#rocket">개발 환경</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark">필수 사항</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag">시작하기</a> &#xa0; | &#xa0;
-  <a href="#hammer">채택 기술</a> &#xa0; | &#xa0;
-  <a href="#sparkles">페이지 별 기능</a> &#xa0; | &#xa0;
-  <a href="#lightbulb">프로젝트를 통해 배운 부분</a> &#xa0; | &#xa0;
-  <a href="#construction">트러블 슈팅</a> &#xa0; | &#xa0;
-  <a href="#roller_coaster">개선해야 할 사항</a> &#xa0; | &#xa0;
+  <a href="#dart-프로젝트-소개">프로젝트 소개</a> &#xa0; | &#xa0; 
+  <a href="#rocket-개발-환경">개발 환경</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-필수-사항">필수 사항</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-시작하기">시작하기</a> &#xa0; | &#xa0;
+  <a href="#hammer-채택-기술">채택 기술</a> &#xa0; | &#xa0;
+  <a href="#sparkles-페이지-별-기능">페이지 별 기능</a> &#xa0; | &#xa0;
+  <a href="#lightbulb-프로젝트를-통해-배운-부분">프로젝트를 통해 배운 부분</a> &#xa0; | &#xa0;
+  <a href="#construction-트러블-슈팅">트러블 슈팅</a> &#xa0; | &#xa0;
+  <a href="#roller_coaster-개선해야-할-사항">개선해야 할 사항</a> &#xa0; | &#xa0;
   <a href="#memo-라이센스">라이센스</a> &#xa0; | &#xa0;
   <a href="https://github.com/osh6006" target="_blank">작성자</a>
 </p>
@@ -59,7 +59,7 @@
 
 사용자가 원하는 나라와 해당 국가에 맞는 리그를 선택하여 다양한 축구 정보를 얻을 수 있으며, 주요 리그부터 소수의 작은 국가 리그까지 다양한 리그의 랭킹, 일정, 예측, 선수 정보, 팀 정보, 라이브 경기 정보 등을 제공하여 전 세계 축구 팬들에게 다양한 서비스를 제공합니다.
 
-## :rocket: 개발환경
+## :rocket: 개발 환경
 
 이 프로젝트에는 다음의 기술 및 도구가 활용 되었습니다.
 
