@@ -161,8 +161,6 @@ $ npm start
   - 또한 데이터베이스, 인증, 파일 스토리지 등의 기능을 클라우드에서 제공하여 개발 과정을 간소화 하였습니다.
   - 현 웹사이트에서는 Supabase를 통해 SNS 로그인 및 로그아웃, 배너 사진의 스토리지, 로그인을 한 유저에게만 주어지는 특별한 기능(두 팀의 승리예측 기능)에 사용되고 있습니다.
 
-## :pencil2: 프로젝트를 통해 배운 점
-
 ## :sparkles: 페이지별 기능
 
 ### :heavy_check_mark: 국가 & 리그 선택
@@ -279,7 +277,7 @@ $ npm start
 
 [logout.webm](https://github.com/osh6006/football-link/assets/56256924/081d76ab-4781-4b9e-8589-6cc4ab3bcefc)
 
-## :lightbulb: 프로젝트를 통해 배운 부분
+## :pencil2: 프로젝트를 통해 배운 점
 
 - [react에서 debounce 기능 구현하기](https://osh6006.github.io/posts/react%EC%97%90%EC%84%9C-debounce-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0/)
 - [react에서 seo 최적화 해보기](https://osh6006.github.io/posts/react%EB%A1%9C-SEO-%EC%B5%9C%EC%A0%81%ED%99%94-%ED%95%98%EA%B8%B0/)
