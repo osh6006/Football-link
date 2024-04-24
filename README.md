@@ -67,6 +67,7 @@
 
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
+![vscode](https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
 ![Github](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white)
@@ -113,11 +114,16 @@ $ npm start
 
 ## :hammer: 채택기술
 
-### React, tailwindcss
+### React, TypeScript tailwindcss
 
 - React
 
   - React는 컴포넌트 기반 아키텍처를 이용하여 UI를 여러 개의 독립적이고 재사용 가능한 컴포넌트로 나눌 수 있게 해줍니다. 이러한 구조를 통해 코드를 구성하면서 유지 보수가 쉬워지고, 개발 속도를 향상시킬 수 있었습니다.
+
+- TypeScirpt
+
+  - 타입스크립트는 자바스크립트에 정적 타이핑을 추가하는 오픈 소스 프로그래밍 언어입니다. 이는 개발 과정에서 타입 오류를 사전에 발견하고 수정할 수 있게 해주어, 런타임에서의 버그를 크게 줄여주고 코드의 안정성과 유지보수성을 향상시킵니다.
+  - 현 웹 사이트에서는 사용하고 있는 라이브러리 모두 Typescript를 지원하며 백엔드에서 받아오는 데이터 타입은 Type이라는 폴더를 만들어 타입을 초기화 해주었습니다.
 
 - Tailwindcss
 
@@ -279,6 +285,8 @@ $ npm start
 
 ## :pencil2: 프로젝트를 통해 배운 점
 
+프로젝트를 통해 배운 점을 블로그에 정리하였습니다.
+
 - [react에서 debounce 기능 구현하기](https://osh6006.github.io/posts/react%EC%97%90%EC%84%9C-debounce-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0/)
 - [react에서 seo 최적화 해보기](https://osh6006.github.io/posts/react%EB%A1%9C-SEO-%EC%B5%9C%EC%A0%81%ED%99%94-%ED%95%98%EA%B8%B0/)
 - [react로 제네릭 컴포넌트 만들기](https://osh6006.github.io/posts/react-%EC%A0%9C%EB%84%A4%EB%A6%AD-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/)
@@ -287,6 +295,8 @@ $ npm start
 - [React와 Zustand로 완벽한 다크모드 만들기](https://osh6006.github.io/posts/react%EC%99%80-zustand%EB%A1%9C-%EC%99%84%EB%B2%BD%ED%95%9C-%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0-with-tailwind-clsx/)
 
 ## :construction: 트러블 슈팅
+
+프로젝트 도중 발생한 트러블 슈팅에 대해 블로그에 정리하였습니다.
 
 - [CORS Error 해결하기](https://osh6006.github.io/posts/react%EC%97%90%EC%84%9C-cors-%EC%97%90%EB%9F%AC-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0/)
 - [Lighthouse 점수 개선하기](https://osh6006.github.io/posts/react%EB%A1%9C-lighthouse-%EC%A0%90%EC%88%98-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0/)
