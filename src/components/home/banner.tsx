@@ -1,10 +1,11 @@
 import clsx from "clsx";
+
 import Autoplay from "embla-carousel-autoplay";
+import useEmblaCarousel from "embla-carousel-react";
 
 import Loading from "components/common/loading";
 
 import { useTheme } from "stores/theme-store";
-import useEmblaCarousel from "embla-carousel-react";
 import { useBannerQuery } from "hooks/services/quries/use-banner-query";
 
 import styles from "./banner.module.css";
@@ -32,7 +33,7 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
     );
   }
 
-  const BASE_URL = process.env.REACT_APP_SUPERBASE_API_URL;
+  const BASE_URL = import.meta.env.VITE_SUPERBASE_API_URL;
 
   if (banners && banners.length <= 0) {
     return (

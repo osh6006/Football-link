@@ -40,7 +40,7 @@
   <a href="#checkered_flag-시작하기">시작하기</a> &#xa0; | &#xa0;
   <a href="#hammer-채택-기술">채택 기술</a> &#xa0; | &#xa0;
   <a href="#sparkles-페이지-별-기능">페이지 별 기능</a> &#xa0; | &#xa0;
-  <a href="#lightbulb-프로젝트를-통해-배운-부분">프로젝트를 통해 배운 부분</a> &#xa0; | &#xa0;
+  <a href="#:pencil2:-프로젝트를-통해-배운-점">프로젝트를 통해 배운 점</a> &#xa0; | &#xa0;
   <a href="#construction-트러블-슈팅">트러블 슈팅</a> &#xa0; | &#xa0;
   <a href="#roller_coaster-개선해야-할-사항">개선해야 할 사항</a> &#xa0; | &#xa0;
   <a href="#memo-라이센스">라이센스</a> &#xa0; | &#xa0;
@@ -49,7 +49,7 @@
 
 <br>
 
-![screely-1712852886252](https://github.com/osh6006/football-link/assets/56256924/c47f75bb-56f7-4fdd-a014-a7e7abde97d1)
+![메인 페이지](https://github.com/osh6006/football-link/assets/56256924/c47f75bb-56f7-4fdd-a014-a7e7abde97d1)
 
 ## :dart: 프로젝트 소개
 
@@ -112,7 +112,7 @@ $ npm start
 # 이 프로젝트는 <http://localhost:3000>에서 실행됩니다!
 ```
 
-## :hammer: 채택기술
+## :hammer: 채택 기술
 
 ### React, TypeScript tailwindcss
 
@@ -167,7 +167,7 @@ $ npm start
   - 또한 데이터베이스, 인증, 파일 스토리지 등의 기능을 클라우드에서 제공하여 개발 과정을 간소화 하였습니다.
   - 현 웹사이트에서는 Supabase를 통해 SNS 로그인 및 로그아웃, 배너 사진의 스토리지, 로그인을 한 유저에게만 주어지는 특별한 기능(두 팀의 승리예측 기능)에 사용되고 있습니다.
 
-## :sparkles: 페이지별 기능
+## :sparkles: 페이지 별 기능
 
 ### :heavy_check_mark: 국가 & 리그 선택
 
@@ -285,7 +285,7 @@ $ npm start
 
 ## :pencil2: 프로젝트를 통해 배운 점
 
-프로젝트를 통해 배운 점을 블로그에 정리하였습니다.
+프로젝트를 통해 배운 점을 저의 블로그에 정리하였습니다.
 
 - [react에서 debounce 기능 구현하기](https://osh6006.github.io/posts/react%EC%97%90%EC%84%9C-debounce-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0/)
 - [react에서 seo 최적화 해보기](https://osh6006.github.io/posts/react%EB%A1%9C-SEO-%EC%B5%9C%EC%A0%81%ED%99%94-%ED%95%98%EA%B8%B0/)
@@ -296,7 +296,7 @@ $ npm start
 
 ## :construction: 트러블 슈팅
 
-프로젝트 도중 발생한 트러블 슈팅에 대해 블로그에 정리하였습니다.
+프로젝트 도중 발생한 트러블 슈팅에 대해 저의 블로그에 정리하였습니다.
 
 - [CORS Error 해결하기](https://osh6006.github.io/posts/react%EC%97%90%EC%84%9C-cors-%EC%97%90%EB%9F%AC-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0/)
 - [Lighthouse 점수 개선하기](https://osh6006.github.io/posts/react%EB%A1%9C-lighthouse-%EC%A0%90%EC%88%98-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0/)

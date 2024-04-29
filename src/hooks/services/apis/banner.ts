@@ -1,6 +1,6 @@
+import toast from "react-hot-toast";
 import { supabase } from "libs/superbase-client";
 import { FileObject } from "@supabase/storage-js/src/lib/types";
-import toast from "react-hot-toast";
 
 export const getBanner = async (): Promise<FileObject[]> => {
   const { data, error } = await supabase.storage

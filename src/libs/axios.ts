@@ -1,16 +1,14 @@
 import axios from "axios";
 
-const RAPID_BASE_URL = process.env.REACT_APP_FOOTBALL_API_URL;
-const RAPID_API_KEY = process.env.REACT_APP_FOOTBALL_API_KEY;
-const RAPID_API_HOST = process.env.REACT_APP_FOOTBALL_API_HOST;
+const RAPID_BASE_URL = import.meta.env.VITE_FOOTBALL_API_URL;
+const RAPID_API_KEY = import.meta.env.VITE_APP_FOOTBALL_API_KEY;
+const RAPID_API_HOST = import.meta.env.VITE_APP_FOOTBALL_API_HOST;
 
-const globalNewsURL =
-  process.env.NODE_ENV === "development"
-    ? "https://newsapi.org/v2/"
-    : "/globalNews/api";
+const globalNewsURL = import.meta.env.DEV
+  ? "https://newsapi.org/v2/"
+  : "/globalNews/api";
 
-const localNewsURL =
-  process.env.NODE_ENV === "development" ? "/naverApi" : "/localNews/api";
+const localNewsURL = import.meta.env.DEV ? "/naverApi" : "/localNews/api";
 
 export const rapidApi = axios.create({
   baseURL: RAPID_BASE_URL,
@@ -20,8 +18,8 @@ export const rapidApi = axios.create({
   },
 });
 
-const NAVER_API_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
-const NAVER_CLIENT_SECRET = process.env.REACT_APP_NAVER_CLIENT_SECRET;
+const NAVER_API_ID = import.meta.env.VITE_APP_NAVER_CLIENT_ID;
+const NAVER_CLIENT_SECRET = import.meta.env.VITE_APP_NAVER_CLIENT_SECRET;
 export const naverApi = axios.create({
   baseURL: localNewsURL,
   headers: {
@@ -30,7 +28,7 @@ export const naverApi = axios.create({
   },
 });
 
-const NEWS_API_KEY = process.env.REACT_APP_NEWS_API_KEY;
+const NEWS_API_KEY = import.meta.env.VITE_APP_NEWS_API_KEY;
 export const newsApi = axios.create({
   baseURL: globalNewsURL,
   headers: {
