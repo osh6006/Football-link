@@ -300,6 +300,7 @@ $ npm start
 
 - [CORS Error 해결하기](https://osh6006.github.io/posts/react%EC%97%90%EC%84%9C-cors-%EC%97%90%EB%9F%AC-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0/)
 - [Lighthouse 점수 개선하기](https://osh6006.github.io/posts/react%EB%A1%9C-lighthouse-%EC%A0%90%EC%88%98-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0/)
+- [CRA 에서 Vite로 마이그레이션 하기](https://osh6006.github.io/posts/cra-%EC%97%90%EC%84%9C-vite-react-%EB%A1%9C-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%9E%98%EC%9D%B4%EC%85%98%ED%95%98%EA%B8%B0/)
 
 ## :roller_coaster: 개선해야 할 사항
 
