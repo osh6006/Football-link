@@ -26,7 +26,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
 
       {/* right */}
       <div className="mx-auto w-full max-w-[1100px] space-y-4 py-2">
-        <div className="space-y-4">
+        <div className="flex-col flex sm:flex-row gap-4 2xl:flex-col">
           <HomePlayerRankTable distance="short" type="goal" />
           <HomePlayerRankTable distance="short" type="assist" />
         </div>

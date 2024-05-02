@@ -66,7 +66,7 @@ const HomePlayerRankTable: React.FunctionComponent<
   }
 
   return (
-    <div className="space-y-2">
+    <div className="flex-1 space-y-2">
       <Title>
         {type === "goal" ? "Top Scorers" : "Top Assists"}
         <MoreArrow path="/rank" />
@@ -78,7 +78,7 @@ const HomePlayerRankTable: React.FunctionComponent<
           theme === "dark" && "bg-VeryDarkGreyDark",
         )}
       >
-        <table className="min-w-full  divide-gray-200 ">
+        <table className="min-w-full divide-gray-200 ">
           <thead className="text-base font-semibold">
             <tr>
               <th className="whitespace-nowrap px-2 py-3 text-left uppercase leading-4 tracking-wider text-gray-500 sm:px-4">
