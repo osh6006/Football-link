@@ -45,7 +45,7 @@ const HowToLeague: React.FunctionComponent<IHowToLeagueProps> = () => {
       </div>
         <div className="my-2 flex w-fullflex-1 flex-col items-center justify-center gap-y-2 sm:flex-row sm:items-start sm:justify-around">
           <h3 className="text-lg font-semibold">
-            <strong className="text-Main">Step 1.</strong> Please choose a
+            <strong className="text-Main">Step 1.</strong> Choose a
             country
           </h3>
           <img
@@ -59,8 +59,8 @@ const HowToLeague: React.FunctionComponent<IHowToLeagueProps> = () => {
           />
         </div>
         <div className="my-2 flex w-full flex-1 flex-col items-center justify-center gap-y-2 sm:flex-row sm:items-start sm:justify-around">
-          <h3 className="text-lg font-semibold">
-            <strong className="text-Main">Step 2.</strong> Please choose a
+          <h3 className="text-lg ">
+            <strong className="text-Main">Step 2.</strong> Choose a
             league
           </h3>
           <img
