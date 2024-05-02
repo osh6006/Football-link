@@ -57,9 +57,7 @@ function App() {
         {selectedLeague ? (
           <Outlet />
         ) : (
-          <div className="my-24 flex h-[calc(100dvh-55px)] flex-col items-center justify-center gap-y-2 p-5 font-bold sm:my-0 ">
             <HowToLeague />
-          </div>
         )}
       </div>
       <TopButton isVisible={isVisible} />
