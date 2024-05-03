@@ -24,4 +24,12 @@ export default defineConfig({
       exclude: [],
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: "./index.html",
+        sw: "./sw.js",
+      },
+    },
+  },
 });
