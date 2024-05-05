@@ -292,7 +292,8 @@ $ npm start
 - [react로 제네릭 컴포넌트 만들기](https://osh6006.github.io/posts/react-%EC%A0%9C%EB%84%A4%EB%A6%AD-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/)
 - [react와 react-router V6로 protected 경로 만들기](https://osh6006.github.io/posts/react%EC%99%80-react-router%EB%A1%9C-protected-%EA%B2%BD%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/)
 - [react와-zustand로 더 완벽한 modal 만들기](https://osh6006.github.io/posts/react%EC%99%80-zustand%EB%A1%9C-%EB%8D%94-%EC%99%84%EB%B2%BD%ED%95%9C-modal-%EB%A7%8C%EB%93%A4%EA%B8%B0/)
-- [React와 Zustand로 완벽한 다크모드 만들기](https://osh6006.github.io/posts/react%EC%99%80-zustand%EB%A1%9C-%EC%99%84%EB%B2%BD%ED%95%9C-%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0-with-tailwind-clsx/)
+- [react와 Zustand로 완벽한 다크모드 만들기](https://osh6006.github.io/posts/react%EC%99%80-zustand%EB%A1%9C-%EC%99%84%EB%B2%BD%ED%95%9C-%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0-with-tailwind-clsx/)
+- [react vite로 PWA 설정하기](https://osh6006.github.io/posts/react%EC%99%80-vite%EB%A1%9C-pwa-%EB%A7%8C%EB%93%A4%EA%B8%B0/)
 
 ## :construction: 트러블 슈팅
 
