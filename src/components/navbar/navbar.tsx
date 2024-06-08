@@ -52,15 +52,15 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-x-2">
+        <button
+          aria-label="search-button"
+          onClick={toggleSearchBar}
+          className="transition-colors hover:text-Main"
+        >
+          <SearchIcon className="mb-1" size={25} />
+        </button>
         {user ? (
           <div className="flex items-center gap-x-2">
-            <button
-              aria-label="search-button"
-              onClick={toggleSearchBar}
-              className="transition-colors hover:text-Main"
-            >
-              <SearchIcon className="mb-1" size={25} />
-            </button>
             <AvatarMenu user={user!} size="md" />
           </div>
         ) : (

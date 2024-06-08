@@ -33,7 +33,7 @@ const SearchBar: React.FunctionComponent<ISearchBarProps> = () => {
               setIsSearchbarOpen(false);
               setkeyword("");
             }}
-            className="absolute right-2 top-2 rounded-md bg-black/50 p-1 text-White transition-colors hover:text-Main active:scale-95 sm:right-10 sm:top-10"
+            className="active:scale-9 absolute right-2 top-2 rounded-md bg-black/50 p-1 text-White transition-colors hover:text-Main lg:right-5 lg:top-5 2xl:right-10 2xl:top-10"
           >
             <X />
           </button>

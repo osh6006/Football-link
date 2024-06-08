@@ -12,5 +12,7 @@ export const getBanner = async (): Promise<FileObject[]> => {
     throw new Error(error.message);
   }
 
+  console.log(data);
+
   return data.filter((item) => item.metadata.size > 0).reverse();
 };
