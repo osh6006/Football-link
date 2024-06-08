@@ -11,5 +11,6 @@ export const useBannerQuery = () => {
     queryFn: ({ queryKey }) => getBanner(),
     staleTime: Infinity,
     gcTime: Infinity,
+    refetchOnWindowFocus: false,
   });
 };

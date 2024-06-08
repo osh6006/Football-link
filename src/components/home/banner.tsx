@@ -27,7 +27,7 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
 
   if (isError) {
     return (
-      <div className="flex h-full min-h-[350px] min-w-[1000px] items-center justify-center text-xl">
+      <div className="flex min-h-[350px] min-w-[1000px] items-center justify-center bg-White text-xl">
         There's been an error on the server 🤮
       </div>
     );
