@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export const useLiveMathesQuery = (leagueId: number | null) => {
   return useQuery({
-    ...queries.lives.lineup(leagueId!),
+    ...queries.lives.live(leagueId!),
     enabled: !!leagueId,
     staleTime: 60000,
     gcTime: 60000,
