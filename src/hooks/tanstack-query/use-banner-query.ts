@@ -1,5 +1,5 @@
 import { FileObject } from "@supabase/storage-js/src/lib/types";
-import { queries } from "./../services/quries/index";
+import { queries } from "../services/quries-key/index";
 import { useQuery } from "@tanstack/react-query";
 import { getBanner } from "hooks/services/apis/banner";
 

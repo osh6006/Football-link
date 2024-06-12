@@ -55,7 +55,7 @@ const MatchResultStat: React.FunctionComponent<IMatchResultStatProps> = ({
         </div>
         <ul className="divide-y-2 divide-MediumGrey ">
           {awayStat?.statistics?.map((el, i) => (
-            <li className="flex items-center gap-x-4 " key={i}>
+            <li className="flex items-center gap-x-4 " key={el.value + el.type}>
               <dt className="flex flex-1 items-center justify-center border-r-2 border-MediumGrey p-2.5">
                 {el.type || "-"}
               </dt>

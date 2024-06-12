@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { queries } from "hooks/services/quries";
+import { getLeaguesByCountryCode } from "hooks/services/apis/league";
+import { queries } from "hooks/services/quries-key";
 
 export const useLeagueQueryComboBox = (countryCode?: string) => {
   return useQuery({
     ...queries.leagues.countryCode(countryCode!),
+    queryFn: () => getLeaguesByCountryCode(countryCode as string),
     enabled: !!countryCode,
     select: (data) => {
       const parsingData = data.map((el) => {

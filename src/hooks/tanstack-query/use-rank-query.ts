@@ -1,4 +1,5 @@
-import { queries } from "./../services/quries/index";
+import { getTeamStandings, getTopPlayers } from "hooks/services/apis/football";
+import { queries } from "../services/quries-key/index";
 import { useQuery } from "@tanstack/react-query";
 
 export const useTeamRankQuery = (
@@ -10,6 +11,11 @@ export const useTeamRankQuery = (
     select: (data) => {
       return data;
     },
+    queryFn: () =>
+      getTeamStandings({
+        league: league as string,
+        season: season as string,
+      }),
     enabled: !!league && !!season,
     staleTime: Infinity,
     gcTime: Infinity,
@@ -23,6 +29,16 @@ export const useTopPlayerQuery = (
 ) => {
   return useQuery({
     ...queries.ranks.topPlayer(type, season, leagueId),
+    queryFn: () =>
+      getTopPlayers({
+        type,
+        season,
+        leagueId,
+      } as {
+        type: string;
+        season: string;
+        leagueId: number;
+      }),
     enabled: !!type && !!season && !!leagueId,
     staleTime: Infinity,
     gcTime: Infinity,

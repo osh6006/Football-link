@@ -1,5 +1,12 @@
-import { queries } from "hooks/services/quries";
+import { queries } from "../services/quries-key/index";
 import { useInfiniteQuery } from "@tanstack/react-query";
+
+import { getGlobalNews, getNaverNews } from "../services/apis/news";
+
+export const newsQueryKey = {
+  useGlobalNewsQuery: "globalNewsQuery",
+  useLocalNewsQuery: "localNewsQuery",
+};
 
 export const useGlobalNewsQuery = (
   query: string,
@@ -8,6 +15,7 @@ export const useGlobalNewsQuery = (
 ) => {
   return useInfiniteQuery({
     ...queries.news.global(query, filter),
+    queryFn: ({ pageParam }) => getGlobalNews(query, pageParam, filter),
     initialPageParam: 1,
     enabled: !!query && !!isUse,
     getNextPageParam: (lastPage, pages) => {
@@ -25,6 +33,7 @@ export const useGlobalNewsQuery = (
 export const useLocalNewsQuery = (query: string, isUse: boolean) => {
   return useInfiniteQuery({
     ...queries.news.local(query),
+    queryFn: ({ pageParam }) => getNaverNews(query, pageParam),
     initialPageParam: 1,
     enabled: !!query && !!isUse,
     getNextPageParam: (lastPage) => {

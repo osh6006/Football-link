@@ -1,4 +1,4 @@
-import { queries } from "./../services/quries/index";
+import { queries } from "../services/quries-key/index";
 import { useQuery } from "@tanstack/react-query";
 
 export const useTeamSearchQuery = (leagueId?: number, value?: string) => {

@@ -5,6 +5,5 @@ import { getLeaguesByCountryCode } from "../apis/league";
 export const leagues = createQueryKeys("leagues", {
   countryCode: (countryCode: string) => ({
     queryKey: [countryCode],
-    queryFn: () => getLeaguesByCountryCode(countryCode),
   }),
 });
