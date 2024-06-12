@@ -35,7 +35,7 @@ const Banner: React.FunctionComponent<IBannerProps> = () => {
 
   const BASE_URL = import.meta.env.VITE_SUPERBASE_API_URL;
 
-  if (banners && banners.length <= 0) {
+  if (banners && banners?.length <= 0) {
     return (
       <div
         className={clsx(
