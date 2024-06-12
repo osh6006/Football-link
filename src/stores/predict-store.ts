@@ -1,6 +1,6 @@
 import { rapidFootballTeamStanding } from "types/football";
 import { SelectorHook, createStore } from "./root-store";
-import produce from "immer";
+import { produce } from "immer";
 
 interface IPredictState {
   homeTeam: rapidFootballTeamStanding | null;
