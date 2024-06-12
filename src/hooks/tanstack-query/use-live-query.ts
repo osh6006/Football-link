@@ -1,9 +1,11 @@
+import { getLiveMatches } from "hooks/services/apis/live";
 import { queries } from "./../services/quries/index";
 import { useQuery } from "@tanstack/react-query";
 
 export const useLiveMathesQuery = (leagueId: number | null) => {
   return useQuery({
-    ...queries.lives.live(leagueId!),
+    queryKey: [leagueId],
+    queryFn: () => getLiveMatches(leagueId!),
     enabled: !!leagueId,
     staleTime: 60000,
     gcTime: 60000,

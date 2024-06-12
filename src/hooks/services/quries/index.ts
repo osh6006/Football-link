@@ -1,4 +1,7 @@
-import { mergeQueryKeys } from "@lukemorales/query-key-factory";
+import {
+  mergeQueryKeys,
+  inferQueryKeyStore,
+} from "@lukemorales/query-key-factory";
 
 import { banners } from "./banner";
 import { leagues } from "./league";
@@ -25,3 +28,5 @@ export const queries = mergeQueryKeys(
   searches,
   teams,
 );
+
+export type QueryKeys = inferQueryKeyStore<typeof queries>;
