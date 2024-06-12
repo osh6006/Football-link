@@ -6,7 +6,7 @@ import ComponentStatusContainer from "components/layouts/component-status-contai
 
 import { useTheme } from "stores/theme-store";
 import { usePredicts } from "stores/predict-store";
-import { usePredictQuery } from "hooks/services/quries/use-pedict-query";
+import { usePredictQuery } from "hooks/tanstack-query/use-pedict-query";
 
 import { PredictResponse } from "types";
 import LatestForm from "components/common/latest-form";

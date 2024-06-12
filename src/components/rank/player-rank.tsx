@@ -6,7 +6,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useSearchParams } from "react-router-dom";
-import { useTopPlayerQuery } from "hooks/services/quries/use-rank-query";
+import { useTopPlayerQuery } from "hooks/tanstack-query/use-rank-query";
 
 import Table from "components/common/table";
 import Avatar from "components/common/avatar";

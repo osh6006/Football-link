@@ -1,5 +1,5 @@
+import { queries } from "./../services/quries/index";
 import { useQuery } from "@tanstack/react-query";
-import { getPredict } from "../apis/predict";
 
 export const predictQueryKey = {
   usePredictQuery: "predictQuery",
@@ -7,8 +7,7 @@ export const predictQueryKey = {
 
 export const usePredictQuery = (homeId?: number, awayId?: number) => {
   return useQuery({
-    queryKey: [predictQueryKey.usePredictQuery, homeId, awayId],
-    queryFn: ({ queryKey }) => getPredict(`${queryKey[1]}-${queryKey[2]}`),
+    ...queries.predicts.all(homeId, awayId),
     enabled: !!homeId && !!awayId,
     staleTime: Infinity,
     gcTime: Infinity,

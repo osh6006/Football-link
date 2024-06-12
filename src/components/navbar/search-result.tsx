@@ -4,7 +4,7 @@ import Loading from "components/common/loading";
 import {
   usePlayerSearchQuery,
   useTeamSearchQuery,
-} from "hooks/services/quries/use-search-query";
+} from "hooks/tanstack-query/use-search-query";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 

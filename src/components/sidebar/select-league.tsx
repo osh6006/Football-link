@@ -13,7 +13,7 @@ import { useTheme } from "stores/theme-store";
 import useSelectBox from "hooks/use-select-box";
 import { useCountryStore } from "stores/country-store";
 import { ILeague, useLeagueStore } from "stores/league-store";
-import { useLeagueQueryComboBox } from "hooks/services/quries/use-league-query";
+import { useLeagueQueryComboBox } from "hooks/tanstack-query/use-league-query";
 import { usePredictActions } from "stores/predict-store";
 
 import useScheduleStore from "stores/schedule-store";

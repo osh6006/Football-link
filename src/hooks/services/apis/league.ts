@@ -5,39 +5,6 @@ import { ISupabaseLeague } from "types/football/league";
 import { ILeagueResponse } from "types";
 import { rapidApi } from "libs/axios";
 
-export const getLeagues: QueryFunction<
-  ISupabaseLeague[] | null,
-  string[]
-> = async ({ queryKey }) => {
-  const [, sportsId] = queryKey;
-  const { data: sessionData, error: sessionError } =
-    await supabase.auth.getSession();
-  if (sessionError) {
-    toast.error(sessionError.message);
-    return null;
-  }
-
-  const userId = sessionData.session?.user.id;
-
-  if (userId && sportsId) {
-    const { data: leagueData, error: leagueError } = await supabase
-      .from("league")
-      .select("*")
-      .eq("sports_id", sportsId)
-      .order("created_at");
-
-    if (leagueError) {
-      toast.error(leagueError.message);
-      return null;
-    }
-
-    return leagueData;
-  }
-
-  toast.error("not userId");
-  return null;
-};
-
 export const getSavedLeague: QueryFunction<any | null, string[]> = async ({
   queryKey,
 }) => {

@@ -4,7 +4,7 @@ import Loading from "components/common/loading";
 
 import { useTheme } from "stores/theme-store";
 import { useLocation } from "react-router-dom";
-import { useMatchResultQuery } from "hooks/services/quries/use-match-result-query";
+import { useMatchResultQuery } from "hooks/tanstack-query/use-match-result-query";
 
 import MatchResultBody from "components/match-result/match-result-body";
 import MatchResultHeader from "components/match-result/match-result-header";

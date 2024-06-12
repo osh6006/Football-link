@@ -13,7 +13,7 @@ import {
   PrevButton,
   useNewsPrevNextButtons,
 } from "./news-carousel-buttons";
-import { useGlobalNewsQuery } from "hooks/services/quries/use-news-query";
+import { useGlobalNewsQuery } from "hooks/tanstack-query/use-news-query";
 
 import styles from "./news.module.css";
 

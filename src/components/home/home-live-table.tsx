@@ -6,7 +6,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { useTheme } from "stores/theme-store";
 import { useLeagueStore } from "stores/league-store";
-import { useLiveMathesQuery } from "hooks/services/quries/use-live-query";
+import { useLiveMathesQuery } from "hooks/tanstack-query/use-live-query";
 
 import "react-lazy-load-image-component/src/effects/opacity.css";
 import Title from "./title";

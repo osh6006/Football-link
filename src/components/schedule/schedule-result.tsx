@@ -6,7 +6,7 @@ import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
 import { useLeagueStore } from "stores/league-store";
-import { useScheduleQuery } from "hooks/services/quries/use-schedule-query";
+import { useScheduleQuery } from "hooks/tanstack-query/use-schedule-query";
 
 import { ILeagueSeason } from "types";
 

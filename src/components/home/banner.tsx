@@ -6,7 +6,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Loading from "components/common/loading";
 
 import { useTheme } from "stores/theme-store";
-import { useBannerQuery } from "hooks/services/quries/use-banner-query";
+import { useBannerQuery } from "hooks/tanstack-query/use-banner-query";
 
 import styles from "./banner.module.css";
 

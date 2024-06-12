@@ -7,7 +7,7 @@ import ListBox from "components/common/list-box";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { useLeagueStore } from "stores/league-store";
-import { useTeamRankQuery } from "hooks/services/quries/use-rank-query";
+import { useTeamRankQuery } from "hooks/tanstack-query/use-rank-query";
 import { usePredictActions, usePredicts } from "stores/predict-store";
 
 interface IPredictHeaderProps {}

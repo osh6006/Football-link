@@ -7,7 +7,7 @@ import Loading from "components/common/loading";
 import { useTheme } from "stores/theme-store";
 import { useNavigate } from "react-router-dom";
 import { useLeagueStore } from "stores/league-store";
-import { useTeamRankQuery } from "hooks/services/quries/use-rank-query";
+import { useTeamRankQuery } from "hooks/tanstack-query/use-rank-query";
 import LatestForm from "components/common/latest-form";
 import Title from "./title";
 import MoreArrow from "components/common/more-arrow";

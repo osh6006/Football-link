@@ -7,7 +7,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useTheme } from "stores/theme-store";
 import { useLeagueStore } from "stores/league-store";
 import "react-lazy-load-image-component/src/effects/opacity.css";
-import { useNextMatchQuery } from "hooks/services/quries/use-schedule-query";
+import { useNextMatchQuery } from "hooks/tanstack-query/use-schedule-query";
 import Title from "./title";
 import MoreArrow from "components/common/more-arrow";
 

@@ -11,7 +11,7 @@ import {
   rapidFootballTeamInfoResponse,
 } from "types/football";
 import DetailMenuTabs from "components/common/detail-menu-tabs";
-import { useTeamInfoQuery } from "hooks/services/quries/use-team-query";
+import { useTeamInfoQuery } from "hooks/tanstack-query/use-team-query";
 import { useLeagueStore } from "stores/league-store";
 import SEO from "components/seo/seo";
 

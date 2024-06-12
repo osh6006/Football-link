@@ -7,7 +7,7 @@ import Loading from "components/common/loading";
 import { useTheme } from "stores/theme-store";
 import { useNavigate } from "react-router-dom";
 import { useLeagueStore } from "stores/league-store";
-import { useTopPlayerQuery } from "hooks/services/quries/use-rank-query";
+import { useTopPlayerQuery } from "hooks/tanstack-query/use-rank-query";
 import MoreArrow from "components/common/more-arrow";
 import Title from "./title";
 

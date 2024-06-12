@@ -2,7 +2,7 @@ import LineUp from "./lineup";
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
-import { useLiveLineUpQuery } from "hooks/services/quries/use-live-query";
+import { useLiveLineUpQuery } from "hooks/tanstack-query/use-live-query";
 
 interface ILineUpFieldProps {
   fixtureId?: number;

@@ -6,7 +6,7 @@ import PlayerHeader from "components/player/player-header";
 import PlayerRootContainer from "components/layouts/player-root-container";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
-import { usePlayerInfoQuery } from "hooks/services/quries/use-player-query";
+import { usePlayerInfoQuery } from "hooks/tanstack-query/use-player-query";
 
 import { rapidPlayerResponse } from "types/football";
 import SEO from "components/seo/seo";

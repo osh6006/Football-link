@@ -7,7 +7,7 @@ import ComponentStatusContainer from "components/layouts/component-status-contai
 import { useEffect } from "react";
 import { useMatches } from "react-router-dom";
 import useScheduleStore from "stores/schedule-store";
-import { useScheduleQuery } from "hooks/services/quries/use-schedule-query";
+import { useScheduleQuery } from "hooks/tanstack-query/use-schedule-query";
 
 interface IFootballTeamCalendarProps {
   isAll: boolean;

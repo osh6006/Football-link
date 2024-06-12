@@ -12,7 +12,7 @@ import { useInfiniteScroll } from "hooks/use-infinite-scroll";
 import {
   useGlobalNewsQuery,
   useLocalNewsQuery,
-} from "hooks/services/quries/use-news-query";
+} from "hooks/tanstack-query/use-news-query";
 
 import "react-lazy-load-image-component/src/effects/opacity.css";
 

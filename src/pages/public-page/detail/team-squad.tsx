@@ -8,7 +8,7 @@ import ComponentStatusContainer from "components/layouts/component-status-contai
 
 import { SquadPlayer } from "types/football/team";
 import { useLeagueStore } from "stores/league-store";
-import { useTeamSquadQuery } from "hooks/services/quries/use-team-query";
+import { useTeamSquadQuery } from "hooks/tanstack-query/use-team-query";
 
 interface ITeamSquadProps {}
 

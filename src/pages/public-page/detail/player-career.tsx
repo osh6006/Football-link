@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Loading from "components/common/loading";
 import ComponentStatusContainer from "components/layouts/component-status-container";
 
-import { usePlayerCareerQuery } from "hooks/services/quries/use-player-query";
+import { usePlayerCareerQuery } from "hooks/tanstack-query/use-player-query";
 
 interface IPlayerCareerProps {}
 

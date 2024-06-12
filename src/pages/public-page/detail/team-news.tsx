@@ -4,7 +4,7 @@ import ComponentStatusContainer from "components/layouts/component-status-contai
 
 import { useTeamRoot } from "./team-root";
 import { useInfiniteScroll } from "hooks/use-infinite-scroll";
-import { useGlobalNewsQuery } from "hooks/services/quries/use-news-query";
+import { useGlobalNewsQuery } from "hooks/tanstack-query/use-news-query";
 
 import "react-lazy-load-image-component/src/effects/opacity.css";
 
