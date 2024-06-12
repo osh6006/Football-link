@@ -49,13 +49,13 @@ const HomeLiveTable: React.FunctionComponent<IHomeLiveTableProps> = () => {
           </div>
         ) : null}
 
-        {isSuccess && liveMatch && liveMatch.length === 0 ? (
+        {isSuccess && liveMatch.length === 0 ? (
           <div className="flex h-full w-full items-center justify-center p-2 text-xl font-bold">
             There are no matches in progress 🤔
           </div>
         ) : null}
 
-        {isSuccess && liveMatch && liveMatch.length !== 0 ? (
+        {isSuccess && liveMatch.length !== 0 ? (
           <>
             -
             <div className="flex w-fit select-none items-center gap-x-2 rounded-md px-2 py-1 uppercase shadow-md">
