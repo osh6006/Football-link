@@ -223,12 +223,14 @@ $ npm start
 
 [Schedule-페이지.webm](https://github.com/osh6006/football-link/assets/56256924/d2c4a399-411a-49e5-a5c8-dbd2fb1607e1)
 
-### :heavy_check_mark: 경기 결과 페이지
+### :heavy_check_mark: Match Result 페이지
 
 - Schedule 페이지 에서 MatchResult를 누르면 경기 결과 페이지로 이동합니다. 경기 결과 페이지에는 아래와 같은 탭을 확인하실 수 있습니다.
   - Events 탭 : 해당 경기에서 일어났었던 이벤트를 홈팀과 어웨이 팀으로 나누어 비교하며 볼 수 있습니다.
   - LineUp 탭 : 해당 경기에서 뛰었던 주전 선수와 포메이션, 교체선수 명단을 이벤트를 홈팀과 어웨이 팀으로 나누어 비교하며 볼 수 있습니다.
   - STATISTIC 탭 : 해당 경기의 주요 스탯을 이벤트를 홈팀과 어웨이 팀으로 나누어 비교하며 볼 수 있습니다.
+
+[Match-Result-페이지.webm](https://github.com/osh6006/Football-link/assets/56256924/759a1277-bb3b-4660-9db5-5a197d8ff897)
 
 ### :heavy_check_mark: News 페이지
 
@@ -301,6 +303,8 @@ $ npm start
 - [react와-zustand로 더 완벽한 modal 만들기](https://osh6006.github.io/posts/react%EC%99%80-zustand%EB%A1%9C-%EB%8D%94-%EC%99%84%EB%B2%BD%ED%95%9C-modal-%EB%A7%8C%EB%93%A4%EA%B8%B0/)
 - [react와 Zustand로 완벽한 다크모드 만들기](https://osh6006.github.io/posts/react%EC%99%80-zustand%EB%A1%9C-%EC%99%84%EB%B2%BD%ED%95%9C-%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0-with-tailwind-clsx/)
 - [react vite로 PWA 설정하기](https://osh6006.github.io/posts/react%EC%99%80-vite%EB%A1%9C-pwa-%EB%A7%8C%EB%93%A4%EA%B8%B0/)
+- [react에서 tanstack table 사용해 보기](https://osh6006.github.io/posts/React%EC%97%90%EC%84%9C-Tanstack-Table-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/)
+- [react-query key factory로 관리하기](https://osh6006.github.io/posts/React-Query-key-Factory/)
 
 ## :construction: 트러블 슈팅
 
