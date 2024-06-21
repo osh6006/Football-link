@@ -305,6 +305,7 @@ $ npm start
 - [react vite로 PWA 설정하기](https://osh6006.github.io/posts/react%EC%99%80-vite%EB%A1%9C-pwa-%EB%A7%8C%EB%93%A4%EA%B8%B0/)
 - [react에서 tanstack table 사용해 보기](https://osh6006.github.io/posts/React%EC%97%90%EC%84%9C-Tanstack-Table-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/)
 - [react-query key factory로 관리하기](https://osh6006.github.io/posts/React-Query-key-Factory/)
+- [Vite React로 PWA 설정하기](https://osh6006.github.io/posts/react%EC%99%80-vite%EB%A1%9C-pwa-%EB%A7%8C%EB%93%A4%EA%B8%B0/)
 
 ## :construction: 트러블 슈팅
 
@@ -316,7 +317,6 @@ $ npm start
 
 ## :roller_coaster: 개선해야 할 사항
 
-- PWA 설정
 - 배팅 사이트 예측 추가
 
 ## :memo: 라이센스
