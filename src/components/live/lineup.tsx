@@ -24,67 +24,32 @@ const LineUp: React.FunctionComponent<ILineUpProps> = ({
   const newLineUp = [...lineUp];
   const goalkeeper = newLineUp.shift();
 
+  const renderPlayer = (player: Player | undefined) => (
+    <div className="flex flex-1 flex-col items-center justify-center truncate">
+      <div
+        className={clsx(
+          "relative flex aspect-square h-12 w-12 items-center justify-center rounded-full ",
+          isHome ? "bg-red-500" : "bg-blue-500",
+        )}
+      >
+        <span className="absolute">{player?.number}</span>
+      </div>
+      <div>{player?.name}</div>
+    </div>
+  );
+
   const renderGrid = () => {
-    const grid: any[] = [
+    const grid: JSX.Element[] = [
       <div className="flex flex-col items-center justify-center ">
-        <div
-          className={clsx(
-            "relative flex aspect-square h-12 w-12 items-center justify-center rounded-full ",
-            isHome ? "bg-red-500" : "bg-blue-500",
-          )}
-        >
-          {goalkeeper?.number}
-        </div>
-        <div>{goalkeeper?.name}</div>
+        {renderPlayer(goalkeeper)}
       </div>,
     ];
 
     parseFormation.forEach((el) => {
-      const newArr = Array.from({ length: el }, (el, i) => i + 1);
-
+      const newArr = Array.from({ length: el }, (_, i) => i + 1);
       const tempEL = (
         <div className="flex items-center justify-center gap-5">
-          {isHome
-            ? newArr
-                .map((el) => {
-                  const player = newLineUp.shift();
-                  return (
-                    <div
-                      key={el}
-                      className="flex flex-1 flex-col items-center justify-center truncate"
-                    >
-                      <div
-                        className={clsx(
-                          "relative flex aspect-square h-12 w-12 items-center justify-center rounded-full ",
-                          isHome ? "bg-red-500" : "bg-blue-500",
-                        )}
-                      >
-                        <span className="absolute">{player?.number}</span>
-                      </div>
-                      <div>{player?.name}</div>
-                    </div>
-                  );
-                })
-                .reverse()
-            : newArr.map((el) => {
-                const player = newLineUp.shift();
-                return (
-                  <div
-                    key={el}
-                    className="flex flex-1 flex-col items-center justify-center truncate"
-                  >
-                    <div
-                      className={clsx(
-                        "relative flex aspect-square h-12 w-12 items-center justify-center rounded-full ",
-                        isHome ? "bg-red-500" : "bg-blue-500",
-                      )}
-                    >
-                      <span className="absolute">{player?.number}</span>
-                    </div>
-                    <div>{player?.name}</div>
-                  </div>
-                );
-              })}
+          {newArr.map(() => renderPlayer(newLineUp.shift()))}
         </div>
       );
       grid.push(tempEL);
